@@ -1,6 +1,6 @@
 ---
 title: Welcome
-subtitle: 동국대 융합교육원, 데이터분석 및 시각화, 2023 1학기
+subtitle: 동국대 융합교육원, 데이터분석 및 시각화, 2023 2학기
 date: Feb 11, 2023
 author: Sungkyun Cho
 ---
@@ -8,8 +8,8 @@ author: Sungkyun Cho
 ## 강의 정보
 강사: 조성균 / sk.cho@snu.ac.kr  
 면담 시간: 수업 후  
-수업시간: 월, 수 1:00 ~ 2:50PM  
-Website: [da.modellings.art](https://da.modellings.art)
+수업시간: 월, 수 3:00 ~ 4:50PM  
+Website: [dgdavs.modellings.art](https://dgdavs.modellings.art)
 
 과제: Notice  
 질문: Communicate/Ask
@@ -36,8 +36,8 @@ Website: [da.modellings.art](https://da.modellings.art)
     2판 번역서: 파이썬 라이브러리를 활용한 데이터 분석
 
 - [R for Data Science](https://r4ds.had.co.nz/index.html) by Wickham & Grolemund; 
-    [2e in progress](https://r4ds.hadley.nz/ )
+    [2nd edition](https://r4ds.hadley.nz/ )
 
 
 ## 수업 활동
-출석 (5%), 일반과제 (25%), 중간고사 (20%), 기말고사 (20%), 개별 프로젝트 (30%)
+출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)
