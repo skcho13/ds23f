@@ -39,7 +39,7 @@
     "href": "contents/pandas.html",
     "title": "NumPy and pandas",
     "section": "",
-    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\nimport plotly.express as px\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.precision = 2\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)\nNumpy & pandas\nPython 언어는 수치 계산을 위해 디자인되지 않았기 때문에, 데이터 분석에 대한 효율적이고 빠른 계산이 요구되면서 C/C++이라는 언어로 구현된 NumPy (Numerical Python)가 탄생하였고, Python 생태계 안에 통합되었음. 기본적으로 Python 언어 안에 새로운 언어라고 볼 수 있음. 데이터 사이언스에서의 대부분의 계산은 NumPy의 ndarray (n-dimensioal array)와 수학적 operator들을 통해 계산됨.\n데이터 사이언스가 발전함에 따라 단일한 floating-point number들을 성분으로하는 array들의 계산에서 벗어나 칼럼별로 다른 데이터 타입(string, integer, object..)을 포함하는 tabular형태의 데이터를 효율적으로 처리해야 할 필요성이 나타났고, 이를 다룰 수 있는 새로운 언어를 NumPy 위에 개발한 것이 pandas임. 이는 기본적으로 Wes Mckinney에 의해 독자적으로 개발이 시작되었으며, 디자인적으로 불만족스러운 점이 지적되고는 있으나 데이터 사이언스의 기본적인 언어가 되었음.\nNumPy와 pandas에 대한 자세한 내용은 Python for Data Analysis by Wes MacKinney 참고\n특히, NumPy는 Ch.4 & appendices"
+    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)\nNumpy & pandas\nPython 언어는 수치 계산을 위해 디자인되지 않았기 때문에, 데이터 분석에 대한 효율적이고 빠른 계산이 요구되면서 C/C++이라는 언어로 구현된 NumPy (Numerical Python)가 탄생하였고, Python 생태계 안에 통합되었음. 기본적으로 Python 언어 안에 새로운 언어라고 볼 수 있음. 데이터 사이언스에서의 대부분의 계산은 NumPy의 ndarray (n-dimensioal array)와 수학적 operator들을 통해 계산됨.\n데이터 사이언스가 발전함에 따라 단일한 floating-point number들을 성분으로하는 array들의 계산에서 벗어나 칼럼별로 다른 데이터 타입(string, integer, object..)을 포함하는 tabular형태의 데이터를 효율적으로 처리해야 할 필요성이 나타났고, 이를 다룰 수 있는 새로운 언어를 NumPy 위에 개발한 것이 pandas임. 이는 기본적으로 Wes Mckinney에 의해 독자적으로 개발이 시작되었으며, 디자인적으로 불만족스러운 점이 지적되고는 있으나 데이터 사이언스의 기본적인 언어가 되었음.\nNumPy와 pandas에 대한 자세한 내용은 Python for Data Analysis by Wes MacKinney 참고\n특히, NumPy는 Ch.4 & appendices"
   },
   {
     "objectID": "contents/pandas.html#numpy",
@@ -95,7 +95,7 @@
     "href": "index.html#강의-개요",
     "title": "Welcome",
     "section": "강의 개요",
-    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n수업은 크게 4부분으로 나뉨\n\n데이터 시각화와 탐색적 분석 (exploratory data analysis)\n모델링 (modelling)\n통계 (statistics)\n기술적 분석 (descriptive analysis)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n2판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition"
+    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition"
   },
   {
     "objectID": "index.html#수업-활동",
@@ -105,25 +105,18 @@
     "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)"
   },
   {
-    "objectID": "contents/intro.html",
-    "href": "contents/intro.html",
-    "title": "데이터 분석 및 시각화",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보: 인류, 실시간\n의료서비스, 보건\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표, 설문 조사: 고용, 물류, 직업, 연봉, 만족도 조사, 우울\n\n\n\n\n\n\n\n\n\n초연결성, 투명성\n완전한 감시와 통제\n\n\n\n\n\n\n\n\n정보의 주권, 매매, 웹3(Web3)"
-  },
-  {
     "objectID": "contents/intro.html#미래-데이터의-중요성",
     "href": "contents/intro.html#미래-데이터의-중요성",
     "title": "데이터 분석 및 시각화",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보: 인류, 실시간\n의료서비스, 보건\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표, 설문 조사: 고용, 물류, 직업, 연봉, 만족도 조사, 우울\n\n\n\n\n\n\n\n\n\n초연결성, 투명성\n완전한 감시와 통제\n\n\n\n\n\n\n\n\n정보의 주권, 매매, 웹3(Web3)"
+    "section": "미래 데이터의 중요성",
+    "text": "미래 데이터의 중요성\n4차 산업혁명의 ‘원유’: 머신러닝, AI\n\n다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보: 인류, 실시간\n의료서비스, 보건\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표, 설문 조사: 고용, 물류, 직업, 연봉, 만족도 조사, 우울\n\n\n\n\n\n\n유토피아 vs. 디스토피아?\n\n초연결성, 투명성\n완전한 감시와 통제\n\n\n\n\n\n개인정보의 가치\n\n정보의 주권, 매매, 웹3(Web3)"
   },
   {
     "objectID": "contents/intro.html#data-science",
     "href": "contents/intro.html#data-science",
     "title": "데이터 분석 및 시각화",
     "section": "Data Science",
-    "text": "Data Science\n\n\n\n\n소프트웨어 개발\n. . .\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n. . .\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시\n\n\n\n\n\n대부분의 경우 양쪽 모두에 걸쳐있음."
+    "text": "Data Science\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n정책의 유효성을 분석해서 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시\n\n\n\n\n대부분의 경우 양쪽 모두에 걸쳐있음."
   },
   {
     "objectID": "contents/intro.html#data-analysis",
@@ -137,7 +130,7 @@
     "href": "contents/intro.html#데이터를-분석한다는-것은",
     "title": "데이터 분석 및 시각화",
     "section": "데이터를 분석한다는 것은?",
-    "text": "데이터를 분석한다는 것은?\n\n예측 모델 vs. 관계/원인 분석\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n고양이인가 아닌가? 예측의 정확성\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리의 답변\n비즈니스 분석\n\n\n\n\n\n\n관계/원인 분석\n현상 본질과 매커니즘 파악\nStatistical Models 강점 Parametric\n\nQ: 닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n\n\n\n\n가난, 인종, 범죄\n임금 차별\n\n\n\n\n\n출산율의 감소\n\n\n\n\n\n\n\n\n\n. . .\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지는 서로 상보 관계!"
+    "text": "데이터를 분석한다는 것은?\n예측 모델 vs. 관계/원인 분석\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n고양이인가 아닌가? 예측의 정확성\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리의 답변\n비즈니스 분석\n\n\n\n\n\n관계/원인 분석\n현상 본질과 매커니즘 파악\nStatistical Models 강점 Parametric\n\nQ: 닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n\n\n\n\n가난, 인종, 범죄\n임금 차별\n\n\n\n\n\n출산율의 감소\n\n\n\n\n\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지는 서로 상보 관계!"
   },
   {
     "objectID": "contents/intro.html#데이터를-분석한다는-것은-1",
@@ -151,21 +144,21 @@
     "href": "contents/intro.html#통계적-사고-i",
     "title": "데이터 분석 및 시각화",
     "section": "통계적 사고 I",
-    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\n\n\nSimpson’s paradox\n\n\n\n\nSource: The book of why by Judea Pearl"
+    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\n\n\nSimpson’s paradox\n\n\n\n\n\n\nSource: The book of why by Judea Pearl"
   },
   {
     "objectID": "contents/intro.html#통계적-사고-ii",
     "href": "contents/intro.html#통계적-사고-ii",
     "title": "데이터 분석 및 시각화",
     "section": "통계적 사고 II",
-    "text": "통계적 사고 II\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
+    "text": "통계적 사고 II\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
   },
   {
     "objectID": "contents/intro.html#데이터-시각화",
     "href": "contents/intro.html#데이터-시각화",
     "title": "데이터 분석 및 시각화",
     "section": "데이터 시각화",
-    "text": "데이터 시각화\nData Visualization \n\n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\n\nInteractive\n\n\n\n\n\n\n\n\n  \n\n끝\nBack Home"
+    "text": "데이터 시각화\nData Visualization \n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\nInteractive"
   },
   {
     "objectID": "about.html",
@@ -200,7 +193,7 @@
     "href": "contents/inspection.html",
     "title": "Inspecting data",
     "section": "",
-    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\nimport plotly.express as px\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.precision = 2\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
+    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
   },
   {
     "objectID": "contents/inspection.html#useful-method",
@@ -263,14 +256,14 @@
     "href": "contents/setup.html#windows의-경우-windows-terminal-추천",
     "title": "환경설정",
     "section": "Windows의 경우: Windows Terminal 추천",
-    "text": "Windows의 경우: Windows Terminal 추천\n\n설치 링크는 구글링…\n명령프롬프트(CMD) vs. Powershell\nPowershell에서 conda를 사용하기 위해서는 몇 가지 설정 필요: 블로그 링크"
+    "text": "Windows의 경우: Windows Terminal 추천\n\n설치 링크는 구글링…\n명령프롬프트(CMD) vs. Powershell\nPowershell에서 conda를 사용하기 위해서는 몇 가지 설정 필요: 블로그 링크\n다 잘 안될 경우, 그냥 conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용"
   },
   {
     "objectID": "contents/setup.html#extensions",
     "href": "contents/setup.html#extensions",
     "title": "환경설정",
     "section": "Extensions",
-    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View"
+    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결"
   },
   {
     "objectID": "contents/setup.html#preferences",
