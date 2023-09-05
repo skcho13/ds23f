@@ -144,14 +144,14 @@
     "href": "contents/intro.html#통계적-사고-i",
     "title": "데이터 분석 및 시각화",
     "section": "통계적 사고 I",
-    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\n\n\nSimpson’s paradox\n\n\n\n\n\n\nSource: The book of why by Judea Pearl"
+    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n“Spurisous!”\n\n\n\nCommon cause\n\n\n신발을 신고 잠든 다음날 두통이 생긴다면?\n\n\n\n\n\n\n\n\nSource: Introduction to Causal Inference (ICI) by Brady Neal"
   },
   {
     "objectID": "contents/intro.html#통계적-사고-ii",
     "href": "contents/intro.html#통계적-사고-ii",
     "title": "데이터 분석 및 시각화",
     "section": "통계적 사고 II",
-    "text": "통계적 사고 II\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
+    "text": "통계적 사고 II\n\n\n\n\nSimpson’s paradox\n운동을 하면 콜레스테롤 수치가 증가하는가?\n\n\n\n\n\n\nColider Bias\n운동능력이 뛰어나면 지능이 떨어지는가? \nSimpson’s paradox\nCOVID-27\n\n\n\n\n\n\nSource:\n- The book of why by Judea Pearl\n- Introduction to Causal Inference (ICI) by Brady Neal"
   },
   {
     "objectID": "contents/intro.html#데이터-시각화",
@@ -207,14 +207,14 @@
     "href": "contents/setup.html",
     "title": "환경설정",
     "section": "",
-    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 3. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#&gt; conda info # 콘다 정보 \n#&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#&gt; conda config --add channels conda-forge\n#&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면\n#&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#$ conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#$ conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv) python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#&gt; jupyter kernelspec list\n커널 삭제\n#&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# update\n#&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda update --all # all packages\n\n# 패키지 리스트\n#&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#&gt; conda install python=3.9\n\n\n# 수업에 필요한 기본 패키지 설치\n#&gt; conda install jupyter numpy pandas matplotlib seaborn\n#&gt; conda install -c plotly plotly=5.13.0"
+    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#&gt; conda info # 콘다 정보 \n#&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#&gt; conda config --add channels conda-forge\n#&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면\n#&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#$ conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#$ conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv) python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#&gt; jupyter kernelspec list\n커널 삭제\n#&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# update\n#&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda update --all # all packages\n\n# 패키지 리스트\n#&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#&gt; conda install python=3.9\n\n\n# 수업에 필요한 기본 패키지 설치\n#&gt; conda install jupyter numpy pandas matplotlib seaborn"
   },
   {
     "objectID": "contents/setup.html#miniconda-설치",
     "href": "contents/setup.html#miniconda-설치",
     "title": "환경설정",
     "section": "",
-    "text": "Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 3. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#&gt; conda info # 콘다 정보 \n#&gt; conda update conda # 콘다 업데이트"
+    "text": "Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#&gt; conda info # 콘다 정보 \n#&gt; conda update conda # 콘다 업데이트"
   },
   {
     "objectID": "contents/setup.html#패키지-repositorychannel-선택",
@@ -235,7 +235,7 @@
     "href": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
     "title": "환경설정",
     "section": "",
-    "text": "# 특정 환경을 activate한 후\n#&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# update\n#&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda update --all # all packages\n\n# 패키지 리스트\n#&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#&gt; conda install python=3.9\n\n\n# 수업에 필요한 기본 패키지 설치\n#&gt; conda install jupyter numpy pandas matplotlib seaborn\n#&gt; conda install -c plotly plotly=5.13.0"
+    "text": "# 특정 환경을 activate한 후\n#&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# update\n#&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda update --all # all packages\n\n# 패키지 리스트\n#&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#&gt; conda install python=3.9\n\n\n# 수업에 필요한 기본 패키지 설치\n#&gt; conda install jupyter numpy pandas matplotlib seaborn"
   },
   {
     "objectID": "contents/setup.html#vs-code-설치",
@@ -285,5 +285,12 @@
     "title": "환경설정",
     "section": "그 외",
     "text": "그 외\n\ninteractive mode\nexport\ndocs view\nvariables viewer, data viewer\nformatter\nsnippets"
+  },
+  {
+    "objectID": "contents/intro.html#통계적-사고-iii",
+    "href": "contents/intro.html#통계적-사고-iii",
+    "title": "데이터 분석 및 시각화",
+    "section": "통계적 사고 III",
+    "text": "통계적 사고 III\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
   }
 ]

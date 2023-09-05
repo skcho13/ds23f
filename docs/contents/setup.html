@@ -226,14 +226,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#conda-environment" id="toc-conda-environment" class="nav-link" data-scroll-target="#conda-environment">Conda Environment</a></li>
   <li><a href="#activated-환경-내에서-패키지-설치-및-제거" id="toc-activated-환경-내에서-패키지-설치-및-제거" class="nav-link" data-scroll-target="#activated-환경-내에서-패키지-설치-및-제거">(activated) 환경 내에서 패키지 설치 및 제거</a></li>
   </ul></li>
-  <li><a href="#sec-vscode" id="toc-sec-vscode" class="nav-link" data-scroll-target="#sec-vscode">2. Visual Studio Code</a>
-  <ul>
-  <li><a href="#vs-code-설치" id="toc-vs-code-설치" class="nav-link" data-scroll-target="#vs-code-설치">VS Code 설치</a></li>
-  </ul></li>
-  <li><a href="#command-line-tool" id="toc-command-line-tool" class="nav-link" data-scroll-target="#command-line-tool">3. Command Line Tool</a>
+  <li><a href="#command-line-tool" id="toc-command-line-tool" class="nav-link" data-scroll-target="#command-line-tool">2. Command Line Tool</a>
   <ul>
   <li><a href="#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천" id="toc-mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천" class="nav-link" data-scroll-target="#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천">Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천</a></li>
   <li><a href="#windows의-경우-windows-terminal-추천" id="toc-windows의-경우-windows-terminal-추천" class="nav-link" data-scroll-target="#windows의-경우-windows-terminal-추천">Windows의 경우: <code>Windows Terminal</code> 추천</a></li>
+  </ul></li>
+  <li><a href="#sec-vscode" id="toc-sec-vscode" class="nav-link" data-scroll-target="#sec-vscode">3. Visual Studio Code</a>
+  <ul>
+  <li><a href="#vs-code-설치" id="toc-vs-code-설치" class="nav-link" data-scroll-target="#vs-code-설치">VS Code 설치</a></li>
   </ul></li>
   <li><a href="#vs-code-활용" id="toc-vs-code-활용" class="nav-link" data-scroll-target="#vs-code-활용">4. VS Code 활용</a>
   <ul>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Windows 경우: 설치시 물어보는 <em>“add Miniconda to your PATH variable”</em> 옵션을 켜고 설치할 것</li>
 </ul>
-<p>Shell 사용에 대해서는 아래 3. Command Line Tool 참고</p>
+<p>Shell 사용에 대해서는 아래 2. Command Line Tool 참고</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Terminal (Mac) or Miniconda Powershell Prompt (Windows)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -397,20 +397,12 @@ Jupyter notebook을 쓰는 경우
 </div>
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수업에 필요한 기본 패키지 설치</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; conda install jupyter numpy pandas matplotlib seaborn</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; conda install -c plotly plotly=5.13.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; conda install jupyter numpy pandas matplotlib seaborn</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="sec-vscode" class="level1">
-<h1>2. Visual Studio Code</h1>
-<section id="vs-code-설치" class="level2">
-<h2 class="anchored" data-anchor-id="vs-code-설치">VS Code 설치</h2>
-<p>개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: <a href="https://code.visualstudio.com">download and install here</a></p>
-</section>
-</section>
 <section id="command-line-tool" class="level1">
-<h1>3. Command Line Tool</h1>
+<h1>2. Command Line Tool</h1>
 <section id="mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천" class="level2">
 <h2 class="anchored" data-anchor-id="mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천">Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천</h2>
 <p><code>Oh-My-Zsh!</code>: <a href="https://ohmyz.sh/">링크</a></p>
@@ -432,6 +424,13 @@ Jupyter notebook을 쓰는 경우
 <li><p><code>Powershell</code>에서 conda를 사용하기 위해서는 몇 가지 설정 필요: <a href="https://velog.io/@d2h10s/Anaconda-Powershell%EC%97%90%EC%84%9C-Anaconda-%ED%99%98%EA%B2%BD-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">블로그 링크</a></p></li>
 <li><p>다 잘 안될 경우, 그냥 conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용</p></li>
 </ul>
+</section>
+</section>
+<section id="sec-vscode" class="level1">
+<h1>3. Visual Studio Code</h1>
+<section id="vs-code-설치" class="level2">
+<h2 class="anchored" data-anchor-id="vs-code-설치">VS Code 설치</h2>
+<p>개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: <a href="https://code.visualstudio.com">download and install here</a></p>
 </section>
 </section>
 <section id="vs-code-활용" class="level1">
