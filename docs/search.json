@@ -144,7 +144,7 @@
     "href": "contents/intro.html#통계적-사고-i",
     "title": "데이터 분석 및 시각화",
     "section": "통계적 사고 I",
-    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n“Spurisous!”\n\n\n\nCommon cause\n\n\n신발을 신고 잠든 다음날 두통이 생긴다면?\n\n\n\n\n\n\n\n\nSource: Introduction to Causal Inference (ICI) by Brady Neal"
+    "text": "통계적 사고 I\n\n\n\n\n남녀 임금의 차이\n\n\n\n\n\n\n\nConfounding\n\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n“Spurious!”\n\n\n\nCommon cause\n\n\n신발을 신고 잠든 다음날 두통이 생긴다면?\n\n\n\n\n\n\n\n\nSource: Introduction to Causal Inference (ICI) by Brady Neal"
   },
   {
     "objectID": "contents/intro.html#통계적-사고-ii",
