@@ -1,5 +1,5 @@
-# ds23f
+# 동국대학교, 데이터 분석 및 시각화, 2023-2, 강의 노트
 
-동국대 Data Analysis and Visualization
+# Data Analysis and Visualization, Dongguk University, 2023-2
 
-Lecture notes
+Lecture Note
