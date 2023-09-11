@@ -207,35 +207,35 @@
     "href": "contents/setup.html",
     "title": "환경설정",
     "section": "",
-    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#&gt; conda info # 콘다 정보 \n#&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#&gt; conda config --add channels conda-forge\n#&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면\n#&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#$ conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#$ conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv) python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#&gt; jupyter kernelspec list\n커널 삭제\n#&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# update\n#&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda update --all # all packages\n\n# 패키지 리스트\n#&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#&gt; conda install python=3.9\n\n\n# 수업에 필요한 기본 패키지 설치\n#&gt; conda install jupyter numpy pandas matplotlib seaborn"
+    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#(myenv)&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
   },
   {
     "objectID": "contents/setup.html#miniconda-설치",
     "href": "contents/setup.html#miniconda-설치",
     "title": "환경설정",
     "section": "",
-    "text": "Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#&gt; conda info # 콘다 정보 \n#&gt; conda update conda # 콘다 업데이트"
+    "text": "Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트"
   },
   {
     "objectID": "contents/setup.html#패키지-repositorychannel-선택",
     "href": "contents/setup.html#패키지-repositorychannel-선택",
     "title": "환경설정",
     "section": "",
-    "text": "conda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#&gt; conda config --add channels conda-forge\n#&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면\n#&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#&gt; conda install python=3.10  # python update"
+    "text": "conda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update"
   },
   {
     "objectID": "contents/setup.html#conda-environment",
     "href": "contents/setup.html#conda-environment",
     "title": "환경설정",
     "section": "",
-    "text": "conda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#$ conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#$ conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv) python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#&gt; jupyter kernelspec list\n커널 삭제\n#&gt; jupyter kernelspec remove myenv"
+    "text": "conda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#(myenv)&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv"
   },
   {
     "objectID": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
     "href": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
     "title": "환경설정",
     "section": "",
-    "text": "# 특정 환경을 activate한 후\n#&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# update\n#&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#&gt; conda update --all # all packages\n\n# 패키지 리스트\n#&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#&gt; conda install python=3.9\n\n\n# 수업에 필요한 기본 패키지 설치\n#&gt; conda install jupyter numpy pandas matplotlib seaborn"
+    "text": "# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
   },
   {
     "objectID": "contents/setup.html#vs-code-설치",
@@ -263,28 +263,28 @@
     "href": "contents/setup.html#extensions",
     "title": "환경설정",
     "section": "Extensions",
-    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결"
+    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…"
   },
   {
     "objectID": "contents/setup.html#preferences",
     "href": "contents/setup.html#preferences",
     "title": "환경설정",
     "section": "Preferences",
-    "text": "Preferences\n\nThemes\nFont, font size (notebook, results)"
+    "text": "Preferences\n\nThemes\nFont, font size (notebook, markup, output)"
   },
   {
     "objectID": "contents/setup.html#shortcuts",
     "href": "contents/setup.html#shortcuts",
     "title": "환경설정",
     "section": "Shortcuts",
-    "text": "Shortcuts\nShow Command Palette: ctrl(cmd) + shift + p, 또는 F1\nCell 안과 밖\n\nundo/redo : ctrl(cmd) + z / ctrl(cmd) + shift + z\nalt(option) + arrow up/down : move\nalt(option) + shift + arrow up/down : copy\n\n실행: ctrl/shift/alt(option) + enter\nBasic editing 참고"
+    "text": "Shortcuts\nShow Command Palette: ctrl(cmd) + shift + p, 또는 F1\nCell 안과 밖에서 다르게 작동\n\nundo/redo : ctrl(cmd) + z / ctrl(cmd) + shift + z\nalt(option) + arrow up/down : move\nalt(option) + shift + arrow up/down : copy\n\n실행 방식 3가지: ctrl/shift/alt(option) + enter\nHelp:Keyboard shortcuts reference의 Basic editing 참고"
   },
   {
     "objectID": "contents/setup.html#그-외",
     "href": "contents/setup.html#그-외",
     "title": "환경설정",
     "section": "그 외",
-    "text": "그 외\n\ninteractive mode\nexport\ndocs view\nvariables viewer, data viewer\nformatter\nsnippets"
+    "text": "그 외\n\ninteractive mode\nexport\ndocs view\nvariables viewer, data viewer\nformatter: “Black formatter”\nsnippets: 구글링…"
   },
   {
     "objectID": "contents/intro.html#통계적-사고-iii",
