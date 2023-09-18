@@ -52,15 +52,15 @@ website:
             - href: contents/inspection.ipynb
           - href: contents/vis.ipynb
             text: Data visualization
-      # - text: ---
-      # - section: Visualize
-      #   contents:
-      #     - href: contents/seaborn.ipynb
-      #       text: Seaborn.objects
-      #     - section: contents/plots.ipynb
-      #       contents: 
-      #         - href: contents/alt_plots.ipynb
-      #     - href: contents/customizing.ipynb
+      - text: ---
+      - section: Visualize
+        contents:
+          - href: contents/seaborn.ipynb
+            text: Seaborn.objects
+          - section: contents/plots.ipynb
+            contents: 
+              - href: contents/alt_plots.ipynb
+          - href: contents/customizing.ipynb
       # - text: ---
       # - section: Transform
       #   contents:
