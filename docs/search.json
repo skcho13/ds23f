@@ -35,6 +35,13 @@
     "text": "Interative Plots\nAltair\n\n\n\n\n\n\n\nPlotly"
   },
   {
+    "objectID": "contents/seaborn.html",
+    "href": "contents/seaborn.html",
+    "title": "The seaborn.objects interface",
+    "section": "",
+    "text": "The seaborn.objects interface\nThe grammer of graphics의 데이터 시각화 이론을 잘 반영하고 있으며 아직 발전 중\n기존 seaborn modules을 완전히 대체하지는 못하므로 필요시 병행하여 사용\n\nv0.12.0 (September 2022)\nIntroduction of the objects interface\nThis release debuts the seaborn.objects interface, an entirely new approach to making plots with seaborn. It is the product of several years of design and 16 months of implementation work. The interface aims to provide a more declarative, composable, and extensible API for making statistical graphics. It is inspired by Wilkinson’s grammar of graphics, offering a Pythonic API that is informed by the design of libraries such as ggplot2 and vega-lite along with lessons from the past 10 years of seaborn’s development.\n\n\n\n\n\n\n\nCaution\n\n\n\nThe objects interface is currently experimental and incomplete. It is stable enough for serious use, but there certainly are some rough edges and missing features.\n\n\n\nThe seaborn.objects interface tutorial\nAPI reference\n\n\n\n\n\n\n\nNote\n\n\n\n현재 pandas 2.1.0 (Aug 30, 2023)에서 seaborn 실행시 경고메세지가 많이 발생하므로, 수업에서는 pandas 2.0.3 버전을 사용\n# 버전 확인\nimport pandas as pd\npd.__version__\n\n#&gt; '2.0.3'\n다운그레이드 하려면, 쉘 환경에서\n#(myenv)&gt; conda install pandas=2.0.3"
+  },
+  {
     "objectID": "contents/pandas.html",
     "href": "contents/pandas.html",
     "title": "NumPy and pandas",
@@ -75,6 +82,41 @@
     "title": "NumPy and pandas",
     "section": "Creating DataFrames",
     "text": "Creating DataFrames\nDataFrame을 만드는 방식에 대해서는\nMckinney’s: 5.1 Introduction to pandas Data Structures"
+  },
+  {
+    "objectID": "contents/customizing.html",
+    "href": "contents/customizing.html",
+    "title": "Customizing",
+    "section": "",
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
+  },
+  {
+    "objectID": "contents/customizing.html#scales-and-layouts",
+    "href": "contents/customizing.html#scales-and-layouts",
+    "title": "Customizing",
+    "section": "Scales and layouts",
+    "text": "Scales and layouts\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(.5))\n    .scale(color=\"Set2\")  # color palettes: \"Set2\"\n    .layout(size=(8, 5))  # plot size\n)\n\n\n\n\n\ndiamonds = sns.load_dataset(\"diamonds\")\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\", marker=\"cut\")\n    .add(so.Dots())\n    .scale(\n        color=so.Continuous(\"crest\", norm=(0, 3), trans=\"sqrt\"),\n    )\n)\n\n\n\n\nChoosing color palettes"
+  },
+  {
+    "objectID": "contents/customizing.html#legends-and-ticks",
+    "href": "contents/customizing.html#legends-and-ticks",
+    "title": "Customizing",
+    "section": "Legends and ticks",
+    "text": "Legends and ticks\n\n(\n    so.Plot(penguins, x=\"species\")\n    .add(so.Bar(), so.Count())\n    .scale(x=so.Nominal(order=[\"Adelie\", \"Gentoo\", \"Chinstrap\"])) # x축의 카테고리 순서를 변경\n)\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\")\n    .add(so.Dots())\n    .scale(\n        x=so.Continuous().tick(every=0.5),\n        y=so.Continuous().label(like=\"${x:.0f}\"), # %표시: like=\"{x:.1%}\" \n        color=so.Continuous().tick(at=[1, 2, 3, 4]),\n    )\n)"
+  },
+  {
+    "objectID": "contents/customizing.html#limits-labels-and-titles",
+    "href": "contents/customizing.html#limits-labels-and-titles",
+    "title": "Customizing",
+    "section": "Limits, labels, and titles",
+    "text": "Limits, labels, and titles\nPlot has a number of methods for simple customization, including Plot.label(), Plot.limit(), and Plot.share():\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(.5))\n    .share(x=False)\n    .limit(y=(2.5, -.5))\n    .label(\n        x=\"Body mass (g)\", y=\"\",\n        color=str.capitalize,\n        title=\"{} penguins\".format,\n    )\n)"
+  },
+  {
+    "objectID": "contents/customizing.html#themes",
+    "href": "contents/customizing.html#themes",
+    "title": "Customizing",
+    "section": "Themes",
+    "text": "Themes\n\ntips = sns.load_dataset(\"tips\")\np = (\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\")\n    .add(so.Dot())\n)\np.theme({\"axes.facecolor\": \"white\", \n         \"axes.edgecolor\": \"0.8\", \n         'axes.spines.top': False,\n         'axes.spines.right': False})\n\n\n\n\nseaborn.axes_style\n\nfrom seaborn import axes_style\np.theme({**axes_style(\"whitegrid\")})\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\np.theme({**style.library[\"fivethirtyeight\"]})"
   },
   {
     "objectID": "index.html",
@@ -154,6 +196,13 @@
     "text": "통계적 사고 II\n\n\n\n\nSimpson’s paradox\n운동을 하면 콜레스테롤 수치가 증가하는가?\n\n\n\n\n\n\nColider Bias\n운동능력이 뛰어나면 지능이 떨어지는가? \nSimpson’s paradox\nCOVID-27\n\n\n\n\n\n\nSource:\n- The book of why by Judea Pearl\n- Introduction to Causal Inference (ICI) by Brady Neal"
   },
   {
+    "objectID": "contents/intro.html#통계적-사고-iii",
+    "href": "contents/intro.html#통계적-사고-iii",
+    "title": "데이터 분석 및 시각화",
+    "section": "통계적 사고 III",
+    "text": "통계적 사고 III\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
+  },
+  {
     "objectID": "contents/intro.html#데이터-시각화",
     "href": "contents/intro.html#데이터-시각화",
     "title": "데이터 분석 및 시각화",
@@ -189,153 +238,6 @@
     "text": "개별 프로젝트"
   },
   {
-    "objectID": "contents/inspection.html",
-    "href": "contents/inspection.html",
-    "title": "Inspecting data",
-    "section": "",
-    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
-  },
-  {
-    "objectID": "contents/inspection.html#useful-method",
-    "href": "contents/inspection.html#useful-method",
-    "title": "Inspecting data",
-    "section": "Useful method",
-    "text": "Useful method\n.head(), .tail(), .sample()\n.info(), .describe(),\n.value_counts(),\n.sort_values(), .nlargest(), .nsmallest()\nData: Tips\n일정기간 한 웨이터가 얻은 팁에 대한 데이터\n\n# load a dataset\ntips = sns.load_dataset(\"tips\")\ntips\n\n     total_bill  tip     sex smoker   day    time  size\n0         16.99 1.01  Female     No   Sun  Dinner     2\n1         10.34 1.66    Male     No   Sun  Dinner     3\n2         21.01 3.50    Male     No   Sun  Dinner     3\n3         23.68 3.31    Male     No   Sun  Dinner     2\n..          ...  ...     ...    ...   ...     ...   ...\n240       27.18 2.00  Female    Yes   Sat  Dinner     2\n241       22.67 2.00    Male    Yes   Sat  Dinner     2\n242       17.82 1.75    Male     No   Sat  Dinner     2\n243       18.78 3.00  Female     No  Thur  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\n# DataFrame의 값들: ndarray\ntips.values # or tips.to_numpy()\n\narray([[16.99, 1.01, 'Female', ..., 'Sun', 'Dinner', 2],\n       [10.34, 1.66, 'Male', ..., 'Sun', 'Dinner', 3],\n       [21.01, 3.5, 'Male', ..., 'Sun', 'Dinner', 3],\n       ...,\n       [22.67, 2.0, 'Male', ..., 'Sat', 'Dinner', 2],\n       [17.82, 1.75, 'Male', ..., 'Sat', 'Dinner', 2],\n       [18.78, 3.0, 'Female', ..., 'Thur', 'Dinner', 2]], dtype=object)\n\n\n\ntips.head() # 처음 N개 나열\n\n   total_bill  tip     sex smoker  day    time  size\n0       16.99 1.01  Female     No  Sun  Dinner     2\n1       10.34 1.66    Male     No  Sun  Dinner     3\n2       21.01 3.50    Male     No  Sun  Dinner     3\n3       23.68 3.31    Male     No  Sun  Dinner     2\n4       24.59 3.61  Female     No  Sun  Dinner     4\n\n\n\ntips.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 244 entries, 0 to 243\nData columns (total 7 columns):\n #   Column      Non-Null Count  Dtype   \n---  ------      --------------  -----   \n 0   total_bill  244 non-null    float64 \n 1   tip         244 non-null    float64 \n 2   sex         244 non-null    category\n 3   smoker      244 non-null    category\n 4   day         244 non-null    category\n 5   time        244 non-null    category\n 6   size        244 non-null    int64   \ndtypes: category(4), float64(2), int64(1)\nmemory usage: 7.4 KB\n\n\n\ntips.describe() # numerical type만 나열\n\n\n\n       total_bill    tip   size\ncount      244.00 244.00 244.00\nmean        19.79   3.00   2.57\nstd          8.90   1.38   0.95\nmin          3.07   1.00   1.00\n25%         13.35   2.00   2.00\n50%         17.80   2.90   2.00\n75%         24.13   3.56   3.00\nmax         50.81  10.00   6.00\n\n\n\n\n\ntips.describe(include=\"all\") # all types 나열\n\n        total_bill    tip   sex smoker  day    time   size\ncount       244.00 244.00   244    244  244     244 244.00\nunique         NaN    NaN     2      2    4       2    NaN\ntop            NaN    NaN  Male     No  Sat  Dinner    NaN\nfreq           NaN    NaN   157    151   87     176    NaN\n...            ...    ...   ...    ...  ...     ...    ...\n25%          13.35   2.00   NaN    NaN  NaN     NaN   2.00\n50%          17.80   2.90   NaN    NaN  NaN     NaN   2.00\n75%          24.13   3.56   NaN    NaN  NaN     NaN   3.00\nmax          50.81  10.00   NaN    NaN  NaN     NaN   6.00\n\n[11 rows x 7 columns]\n\n\n\ntips.describe(include=\"category\")\n\n\n\n         sex smoker  day    time\ncount    244    244  244     244\nunique     2      2    4       2\ntop     Male     No  Sat  Dinner\nfreq     157    151   87     176\n\n\n\n\n\ns1 = tips.value_counts(\"day\") # \"day\" 칼럼에 대한 각 카테고리별 counts\ns2 = tips.value_counts(\"day\", sort=False) # default: sort is true\ns3 = tips.value_counts(\"day\", ascending=True) # default: ascending is False\ns4 = tips.value_counts(\"day\", normalize=True) # 카테고리별 비율\ns5 = tips.value_counts([\"sex\", \"smoker\"]) # \"sex\", \"smoker\" 칼럼에 대한 유니크한 카테고리별 counts\n\n\n\n\n\n\nday\nSat     87\nSun     76\nThur    62\nFri     19\nName: count, dtype: int64\n(a) s1\n\n\n\n\nday\nThur    62\nFri     19\nSat     87\nSun     76\nName: count, dtype: int64\n(b) s2\n\n\n\n\n\n\nday\nFri     19\nThur    62\nSun     76\nSat     87\nName: count, dtype: int64\n(c) s3\n\n\n\n\nday\nSat    0.36\nSun    0.31\nThur   0.25\nFri    0.08\nName: proportion, dtype: float64\n(d) s4\n\n\n\n\n\n\nsex     smoker\nMale    No        97\n        Yes       60\nFemale  No        54\n        Yes       33\nName: count, dtype: int64\n(e) s5\n\n\n\nFigure 1: value_count()의 arguments\n\n\n\n\n\n\n\n\nTip\n\n\n\n.value_count()의 결과는 Series이며 그 이름은 ‘count’ 또는 ’proportion’임 (pandas 2.0)\nMissing(NA)을 count하지 않으나 dropna=False을 이용해 나타낼 수 있음\ntips.value_counts(\"day\", dropna=False)\nSeries에 대해서도 적용되며, DataFrame을 먼저 선택해 적용할 수 있음\ntips[\"day\"].value_counts()  # tips[\"day\"]: Series object\ntips[[\"sex\", \"smoker\"]].value_counts()\n\n\n\nData: palmerpenguins\n\n# load a dataset\npenguins = sns.load_dataset(\"penguins\")\npenguins\n\n    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0    Adelie  Torgersen            39.1           18.7              181.0   \n1    Adelie  Torgersen            39.5           17.4              186.0   \n2    Adelie  Torgersen            40.3           18.0              195.0   \n3    Adelie  Torgersen             NaN            NaN                NaN   \n4    Adelie  Torgersen            36.7           19.3              193.0   \n..      ...        ...             ...            ...                ...   \n339  Gentoo     Biscoe             NaN            NaN                NaN   \n340  Gentoo     Biscoe            46.8           14.3              215.0   \n341  Gentoo     Biscoe            50.4           15.7              222.0   \n342  Gentoo     Biscoe            45.2           14.8              212.0   \n343  Gentoo     Biscoe            49.9           16.1              213.0   \n\n     body_mass_g     sex  \n0         3750.0    Male  \n1         3800.0  Female  \n2         3250.0  Female  \n3            NaN     NaN  \n4         3450.0  Female  \n..           ...     ...  \n339          NaN     NaN  \n340       4850.0  Female  \n341       5750.0    Male  \n342       5200.0  Female  \n343       5400.0    Male  \n\n[344 rows x 7 columns]\n\n\n\npenguins.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 344 entries, 0 to 343\nData columns (total 7 columns):\n #   Column             Non-Null Count  Dtype  \n---  ------             --------------  -----  \n 0   species            344 non-null    object \n 1   island             344 non-null    object \n 2   bill_length_mm     342 non-null    float64\n 3   bill_depth_mm      342 non-null    float64\n 4   flipper_length_mm  342 non-null    float64\n 5   body_mass_g        342 non-null    float64\n 6   sex                333 non-null    object \ndtypes: float64(4), object(3)\nmemory usage: 18.9+ KB\n\n\n\npenguins.describe(include=\"object\")\n\n\n\n       species  island   sex\ncount      344     344   333\nunique       3       3     2\ntop     Adelie  Biscoe  Male\nfreq       152     168   168\n\n\n\n\n\npenguins.value_counts([\"island\", \"species\"])\n\nisland     species  \nBiscoe     Gentoo       124\nDream      Chinstrap     68\n           Adelie        56\nTorgersen  Adelie        52\nBiscoe     Adelie        44\nName: count, dtype: int64\n\n\n\npenguins.value_counts([\"sex\", \"species\"], dropna=False) # NA은 기본적으로 생략\n\nsex     species  \nFemale  Adelie       73\nMale    Adelie       73\n        Gentoo       61\nFemale  Gentoo       58\n        Chinstrap    34\nMale    Chinstrap    34\nNaN     Adelie        6\n        Gentoo        5\nName: count, dtype: int64\n\n\n\n# NA의 개수\npenguins.isna().sum()\n\nspecies               0\nisland                0\nbill_length_mm        2\nbill_depth_mm         2\nflipper_length_mm     2\nbody_mass_g           2\nsex                  11\ndtype: int64\n\n\n\n# NA의 비율\npenguins.isna().mean()\n\nspecies              0.000000\nisland               0.000000\nbill_length_mm       0.005814\nbill_depth_mm        0.005814\nflipper_length_mm    0.005814\nbody_mass_g          0.005814\nsex                  0.031977\ndtype: float64\n\n\n\ntips.sort_values(\"tip\", ascending=False)\n\n     total_bill   tip     sex smoker  day    time  size\n170       50.81 10.00    Male    Yes  Sat  Dinner     3\n212       48.33  9.00    Male     No  Sat  Dinner     4\n23        39.42  7.58    Male     No  Sat  Dinner     4\n59        48.27  6.73    Male     No  Sat  Dinner     4\n..          ...   ...     ...    ...  ...     ...   ...\n236       12.60  1.00    Male    Yes  Sat  Dinner     2\n111        7.25  1.00  Female     No  Sat  Dinner     1\n67         3.07  1.00  Female    Yes  Sat  Dinner     1\n92         5.75  1.00  Female    Yes  Fri  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\ntips.sort_values([\"size\", \"tip\"], ascending=[False, True])\n\n     total_bill  tip     sex smoker   day    time  size\n125       29.80 4.20  Female     No  Thur   Lunch     6\n143       27.05 5.00  Female     No  Thur   Lunch     6\n156       48.17 5.00    Male     No   Sun  Dinner     6\n141       34.30 6.70    Male     No  Thur   Lunch     6\n..          ...  ...     ...    ...   ...     ...   ...\n67         3.07 1.00  Female    Yes   Sat  Dinner     1\n111        7.25 1.00  Female     No   Sat  Dinner     1\n82        10.07 1.83  Female     No  Thur   Lunch     1\n222        8.58 1.92    Male    Yes   Fri   Lunch     1\n\n[244 rows x 7 columns]\n\n\n\ntips.nlargest(3, \"tip\")  # 다수의 동등 순위가 있을 때 처리: keep=\"first\", \"last\", \"all\"\n\n     total_bill   tip   sex smoker  day    time  size\n170       50.81 10.00  Male    Yes  Sat  Dinner     3\n212       48.33  9.00  Male     No  Sat  Dinner     4\n23        39.42  7.58  Male     No  Sat  Dinner     4"
-  },
-  {
-    "objectID": "contents/setup.html",
-    "href": "contents/setup.html",
-    "title": "환경설정",
-    "section": "",
-    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#(myenv)&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
-  },
-  {
-    "objectID": "contents/setup.html#miniconda-설치",
-    "href": "contents/setup.html#miniconda-설치",
-    "title": "환경설정",
-    "section": "",
-    "text": "Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트"
-  },
-  {
-    "objectID": "contents/setup.html#패키지-repositorychannel-선택",
-    "href": "contents/setup.html#패키지-repositorychannel-선택",
-    "title": "환경설정",
-    "section": "",
-    "text": "conda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update"
-  },
-  {
-    "objectID": "contents/setup.html#conda-environment",
-    "href": "contents/setup.html#conda-environment",
-    "title": "환경설정",
-    "section": "",
-    "text": "conda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#(myenv)&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv"
-  },
-  {
-    "objectID": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
-    "href": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
-    "title": "환경설정",
-    "section": "",
-    "text": "# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
-  },
-  {
-    "objectID": "contents/setup.html#vs-code-설치",
-    "href": "contents/setup.html#vs-code-설치",
-    "title": "환경설정",
-    "section": "VS Code 설치",
-    "text": "VS Code 설치\n개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: download and install here"
-  },
-  {
-    "objectID": "contents/setup.html#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천",
-    "href": "contents/setup.html#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천",
-    "title": "환경설정",
-    "section": "Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천",
-    "text": "Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천\nOh-My-Zsh!: 링크\n\n이 경우 miniconda 설치시 bash의 추가된 conda setup을 zsh로 가져와야 함: minconda를 zsh 설치 후에 설치하는 경우는 miniconda가 추가시키니 신경쓸 필요 없음\n\nhome directory에 있는 .bash_profile 을 열면 # &gt;&gt;&gt; conda initialize &gt;&gt;&gt; 로 시작해서 # &lt;&lt;&lt; conda initialize &lt;&lt;&lt; 부분까지를 복사한 후 .zshrc 파일을 열어 맨 뒤에 붙여넣음\n위 파일을 VS Code에서 쉽게 열어보려면 아래 그림처럼 VS Code에서 Sehll Command: Install 'Code' command in PATH 실행하고 나면\nshell 환경에서 code .zshrc를 실행하면 VS Code에서 편집할 수 있음"
-  },
-  {
-    "objectID": "contents/setup.html#windows의-경우-windows-terminal-추천",
-    "href": "contents/setup.html#windows의-경우-windows-terminal-추천",
-    "title": "환경설정",
-    "section": "Windows의 경우: Windows Terminal 추천",
-    "text": "Windows의 경우: Windows Terminal 추천\n\n설치 링크는 구글링…\n명령프롬프트(CMD) vs. Powershell\nPowershell에서 conda를 사용하기 위해서는 몇 가지 설정 필요: 블로그 링크\n다 잘 안될 경우, 그냥 conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용"
-  },
-  {
-    "objectID": "contents/setup.html#extensions",
-    "href": "contents/setup.html#extensions",
-    "title": "환경설정",
-    "section": "Extensions",
-    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…"
-  },
-  {
-    "objectID": "contents/setup.html#preferences",
-    "href": "contents/setup.html#preferences",
-    "title": "환경설정",
-    "section": "Preferences",
-    "text": "Preferences\n\nThemes\nFont, font size (notebook, markup, output)"
-  },
-  {
-    "objectID": "contents/setup.html#shortcuts",
-    "href": "contents/setup.html#shortcuts",
-    "title": "환경설정",
-    "section": "Shortcuts",
-    "text": "Shortcuts\nShow Command Palette: ctrl(cmd) + shift + p, 또는 F1\nCell 안과 밖에서 다르게 작동\n\nundo/redo : ctrl(cmd) + z / ctrl(cmd) + shift + z\nalt(option) + arrow up/down : move\nalt(option) + shift + arrow up/down : copy\n\n실행 방식 3가지: ctrl/shift/alt(option) + enter\nHelp:Keyboard shortcuts reference의 Basic editing 참고"
-  },
-  {
-    "objectID": "contents/setup.html#그-외",
-    "href": "contents/setup.html#그-외",
-    "title": "환경설정",
-    "section": "그 외",
-    "text": "그 외\n\ninteractive mode\nexport\ndocs view: sticky mode\nvariables viewer, data viewer\nformatter: “Black formatter”\nsnippets: 구글링…"
-  },
-  {
-    "objectID": "contents/intro.html#통계적-사고-iii",
-    "href": "contents/intro.html#통계적-사고-iii",
-    "title": "데이터 분석 및 시각화",
-    "section": "통계적 사고 III",
-    "text": "통계적 사고 III\n\n\n\n\n레몬과 괴혈병\n\n남녀 연봉 차이의 원인?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\n\n\n\n\n\n수집된 데이터의 성격\nSelection Bias\n\n\n노인에 관한 데이터: 누가 사망했는가?\n설문 데이터: 누가 참여했는가?\n회사 내에서의 만족도 조사: 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?"
-  },
-  {
-    "objectID": "contents/seaborn.html",
-    "href": "contents/seaborn.html",
-    "title": "The seaborn.objects interface",
-    "section": "",
-    "text": "The seaborn.objects interface\nThe grammer of graphics의 데이터 시각화 이론을 잘 반영하고 있으며 아직 발전 중\n기존 seaborn modules을 완전히 대체하지는 못하므로 필요시 병행하여 사용\n\nv0.12.0 (September 2022)\nIntroduction of the objects interface\nThis release debuts the seaborn.objects interface, an entirely new approach to making plots with seaborn. It is the product of several years of design and 16 months of implementation work. The interface aims to provide a more declarative, composable, and extensible API for making statistical graphics. It is inspired by Wilkinson’s grammar of graphics, offering a Pythonic API that is informed by the design of libraries such as ggplot2 and vega-lite along with lessons from the past 10 years of seaborn’s development.\n\n\n\n\n\n\n\nCaution\n\n\n\nThe objects interface is currently experimental and incomplete. It is stable enough for serious use, but there certainly are some rough edges and missing features.\n\n\n\nThe seaborn.objects interface tutorial\nAPI reference\n\n\n\n\n\n\n\nNote\n\n\n\n현재 pandas 2.1.0 (Aug 30, 2023)에서 seaborn 실행시 경고메세지가 많이 발생하므로, 수업에서는 pandas 2.0.3 버전을 사용\n# 버전 확인\nimport pandas as pd\npd.__version__\n\n#&gt; '2.0.3'\n다운그레이드 하려면, 쉘 환경에서\n#(myenv)&gt; conda install pandas=2.0.3"
-  },
-  {
-    "objectID": "contents/customizing.html",
-    "href": "contents/customizing.html",
-    "title": "Customizing",
-    "section": "",
-    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
-  },
-  {
-    "objectID": "contents/customizing.html#scales-and-layouts",
-    "href": "contents/customizing.html#scales-and-layouts",
-    "title": "Customizing",
-    "section": "Scales and layouts",
-    "text": "Scales and layouts\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(.5))\n    .scale(color=\"Set2\")  # color palettes: \"Set2\"\n    .layout(size=(8, 5))  # plot size\n)\n\n\n\n\n\ndiamonds = sns.load_dataset(\"diamonds\")\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\", marker=\"cut\")\n    .add(so.Dots())\n    .scale(\n        color=so.Continuous(\"crest\", norm=(0, 3), trans=\"sqrt\"),\n    )\n)\n\n\n\n\nChoosing color palettes"
-  },
-  {
-    "objectID": "contents/customizing.html#legends-and-ticks",
-    "href": "contents/customizing.html#legends-and-ticks",
-    "title": "Customizing",
-    "section": "Legends and ticks",
-    "text": "Legends and ticks\n\n(\n    so.Plot(penguins, x=\"species\")\n    .add(so.Bar(), so.Count())\n    .scale(x=so.Nominal(order=[\"Adelie\", \"Gentoo\", \"Chinstrap\"])) # x축의 카테고리 순서를 변경\n)\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\")\n    .add(so.Dots())\n    .scale(\n        x=so.Continuous().tick(every=0.5),\n        y=so.Continuous().label(like=\"${x:.0f}\"), # %표시: like=\"{x:.1%}\" \n        color=so.Continuous().tick(at=[1, 2, 3, 4]),\n    )\n)"
-  },
-  {
-    "objectID": "contents/customizing.html#limits-labels-and-titles",
-    "href": "contents/customizing.html#limits-labels-and-titles",
-    "title": "Customizing",
-    "section": "Limits, labels, and titles",
-    "text": "Limits, labels, and titles\nPlot has a number of methods for simple customization, including Plot.label(), Plot.limit(), and Plot.share():\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(.5))\n    .share(x=False)\n    .limit(y=(2.5, -.5))\n    .label(\n        x=\"Body mass (g)\", y=\"\",\n        color=str.capitalize,\n        title=\"{} penguins\".format,\n    )\n)"
-  },
-  {
-    "objectID": "contents/customizing.html#themes",
-    "href": "contents/customizing.html#themes",
-    "title": "Customizing",
-    "section": "Themes",
-    "text": "Themes\n\ntips = sns.load_dataset(\"tips\")\np = (\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\")\n    .add(so.Dot())\n)\np.theme({\"axes.facecolor\": \"white\", \n         \"axes.edgecolor\": \"0.8\", \n         'axes.spines.top': False,\n         'axes.spines.right': False})\n\n\n\n\nseaborn.axes_style\n\nfrom seaborn import axes_style\np.theme({**axes_style(\"whitegrid\")})\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\np.theme({**style.library[\"fivethirtyeight\"]})"
-  },
-  {
     "objectID": "contents/alt_plots.html",
     "href": "contents/alt_plots.html",
     "title": "Alternative plots",
@@ -355,6 +257,20 @@
     "title": "Alternative plots",
     "section": "Box plot",
     "text": "Box plot\n\npenguins = sns.load_dataset(\"penguins\")\n\n\nimport plotly.express as px\n\npx.box(penguins.dropna(subset=[\"sex\"]), x=\"species\", y=\"bill_length_mm\", color=\"island\",  facet_col=\"sex\")\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.catplot(\n    data=penguins, x=\"species\", y=\"bill_length_mm\", hue=\"sex\", col=\"island\",\n    kind=\"box\", height=4, aspect=.6,\n)\nplt.show()"
+  },
+  {
+    "objectID": "contents/inspection.html",
+    "href": "contents/inspection.html",
+    "title": "Inspecting data",
+    "section": "",
+    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
+  },
+  {
+    "objectID": "contents/inspection.html#useful-method",
+    "href": "contents/inspection.html#useful-method",
+    "title": "Inspecting data",
+    "section": "Useful method",
+    "text": "Useful method\n.head(), .tail(), .sample()\n.info(), .describe(),\n.value_counts(),\n.sort_values(), .nlargest(), .nsmallest()\nData: Tips\n일정기간 한 웨이터가 얻은 팁에 대한 데이터\n\n# load a dataset\ntips = sns.load_dataset(\"tips\")\ntips\n\n     total_bill  tip     sex smoker   day    time  size\n0         16.99 1.01  Female     No   Sun  Dinner     2\n1         10.34 1.66    Male     No   Sun  Dinner     3\n2         21.01 3.50    Male     No   Sun  Dinner     3\n3         23.68 3.31    Male     No   Sun  Dinner     2\n..          ...  ...     ...    ...   ...     ...   ...\n240       27.18 2.00  Female    Yes   Sat  Dinner     2\n241       22.67 2.00    Male    Yes   Sat  Dinner     2\n242       17.82 1.75    Male     No   Sat  Dinner     2\n243       18.78 3.00  Female     No  Thur  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\n# DataFrame의 값들: ndarray\ntips.values # or tips.to_numpy()\n\narray([[16.99, 1.01, 'Female', ..., 'Sun', 'Dinner', 2],\n       [10.34, 1.66, 'Male', ..., 'Sun', 'Dinner', 3],\n       [21.01, 3.5, 'Male', ..., 'Sun', 'Dinner', 3],\n       ...,\n       [22.67, 2.0, 'Male', ..., 'Sat', 'Dinner', 2],\n       [17.82, 1.75, 'Male', ..., 'Sat', 'Dinner', 2],\n       [18.78, 3.0, 'Female', ..., 'Thur', 'Dinner', 2]], dtype=object)\n\n\n\ntips.head() # 처음 N개 나열\n\n   total_bill  tip     sex smoker  day    time  size\n0       16.99 1.01  Female     No  Sun  Dinner     2\n1       10.34 1.66    Male     No  Sun  Dinner     3\n2       21.01 3.50    Male     No  Sun  Dinner     3\n3       23.68 3.31    Male     No  Sun  Dinner     2\n4       24.59 3.61  Female     No  Sun  Dinner     4\n\n\n\ntips.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 244 entries, 0 to 243\nData columns (total 7 columns):\n #   Column      Non-Null Count  Dtype   \n---  ------      --------------  -----   \n 0   total_bill  244 non-null    float64 \n 1   tip         244 non-null    float64 \n 2   sex         244 non-null    category\n 3   smoker      244 non-null    category\n 4   day         244 non-null    category\n 5   time        244 non-null    category\n 6   size        244 non-null    int64   \ndtypes: category(4), float64(2), int64(1)\nmemory usage: 7.4 KB\n\n\n\ntips.describe() # numerical type만 나열\n\n\n\n       total_bill    tip   size\ncount      244.00 244.00 244.00\nmean        19.79   3.00   2.57\nstd          8.90   1.38   0.95\nmin          3.07   1.00   1.00\n25%         13.35   2.00   2.00\n50%         17.80   2.90   2.00\n75%         24.13   3.56   3.00\nmax         50.81  10.00   6.00\n\n\n\n\n\ntips.describe(include=\"all\") # all types 나열\n\n        total_bill    tip   sex smoker  day    time   size\ncount       244.00 244.00   244    244  244     244 244.00\nunique         NaN    NaN     2      2    4       2    NaN\ntop            NaN    NaN  Male     No  Sat  Dinner    NaN\nfreq           NaN    NaN   157    151   87     176    NaN\n...            ...    ...   ...    ...  ...     ...    ...\n25%          13.35   2.00   NaN    NaN  NaN     NaN   2.00\n50%          17.80   2.90   NaN    NaN  NaN     NaN   2.00\n75%          24.13   3.56   NaN    NaN  NaN     NaN   3.00\nmax          50.81  10.00   NaN    NaN  NaN     NaN   6.00\n\n[11 rows x 7 columns]\n\n\n\ntips.describe(include=\"category\")\n\n\n\n         sex smoker  day    time\ncount    244    244  244     244\nunique     2      2    4       2\ntop     Male     No  Sat  Dinner\nfreq     157    151   87     176\n\n\n\n\n\ns1 = tips.value_counts(\"day\") # \"day\" 칼럼에 대한 각 카테고리별 counts\ns2 = tips.value_counts(\"day\", sort=False) # default: sort is true\ns3 = tips.value_counts(\"day\", ascending=True) # default: ascending is False\ns4 = tips.value_counts(\"day\", normalize=True) # 카테고리별 비율\ns5 = tips.value_counts([\"sex\", \"smoker\"]) # \"sex\", \"smoker\" 칼럼에 대한 유니크한 카테고리별 counts\n\n\n\n\n\n\nday\nSat     87\nSun     76\nThur    62\nFri     19\nName: count, dtype: int64\n(a) s1\n\n\n\n\nday\nThur    62\nFri     19\nSat     87\nSun     76\nName: count, dtype: int64\n(b) s2\n\n\n\n\n\n\nday\nFri     19\nThur    62\nSun     76\nSat     87\nName: count, dtype: int64\n(c) s3\n\n\n\n\nday\nSat    0.36\nSun    0.31\nThur   0.25\nFri    0.08\nName: proportion, dtype: float64\n(d) s4\n\n\n\n\n\n\nsex     smoker\nMale    No        97\n        Yes       60\nFemale  No        54\n        Yes       33\nName: count, dtype: int64\n(e) s5\n\n\n\nFigure 1: value_count()의 arguments\n\n\n\n\n\n\n\n\nTip\n\n\n\n.value_count()의 결과는 Series이며 그 이름은 ‘count’ 또는 ’proportion’임 (pandas 2.0)\nMissing(NA)을 count하지 않으나 dropna=False을 이용해 나타낼 수 있음\ntips.value_counts(\"day\", dropna=False)\nSeries에 대해서도 적용되며, DataFrame을 먼저 선택해 적용할 수 있음\ntips[\"day\"].value_counts()  # tips[\"day\"]: Series object\ntips[[\"sex\", \"smoker\"]].value_counts()\n\n\n\nData: palmerpenguins\n\n# load a dataset\npenguins = sns.load_dataset(\"penguins\")\npenguins\n\n    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0    Adelie  Torgersen            39.1           18.7              181.0   \n1    Adelie  Torgersen            39.5           17.4              186.0   \n2    Adelie  Torgersen            40.3           18.0              195.0   \n3    Adelie  Torgersen             NaN            NaN                NaN   \n4    Adelie  Torgersen            36.7           19.3              193.0   \n..      ...        ...             ...            ...                ...   \n339  Gentoo     Biscoe             NaN            NaN                NaN   \n340  Gentoo     Biscoe            46.8           14.3              215.0   \n341  Gentoo     Biscoe            50.4           15.7              222.0   \n342  Gentoo     Biscoe            45.2           14.8              212.0   \n343  Gentoo     Biscoe            49.9           16.1              213.0   \n\n     body_mass_g     sex  \n0         3750.0    Male  \n1         3800.0  Female  \n2         3250.0  Female  \n3            NaN     NaN  \n4         3450.0  Female  \n..           ...     ...  \n339          NaN     NaN  \n340       4850.0  Female  \n341       5750.0    Male  \n342       5200.0  Female  \n343       5400.0    Male  \n\n[344 rows x 7 columns]\n\n\n\npenguins.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 344 entries, 0 to 343\nData columns (total 7 columns):\n #   Column             Non-Null Count  Dtype  \n---  ------             --------------  -----  \n 0   species            344 non-null    object \n 1   island             344 non-null    object \n 2   bill_length_mm     342 non-null    float64\n 3   bill_depth_mm      342 non-null    float64\n 4   flipper_length_mm  342 non-null    float64\n 5   body_mass_g        342 non-null    float64\n 6   sex                333 non-null    object \ndtypes: float64(4), object(3)\nmemory usage: 18.9+ KB\n\n\n\npenguins.describe(include=\"object\")\n\n\n\n       species  island   sex\ncount      344     344   333\nunique       3       3     2\ntop     Adelie  Biscoe  Male\nfreq       152     168   168\n\n\n\n\n\npenguins.value_counts([\"island\", \"species\"])\n\nisland     species  \nBiscoe     Gentoo       124\nDream      Chinstrap     68\n           Adelie        56\nTorgersen  Adelie        52\nBiscoe     Adelie        44\nName: count, dtype: int64\n\n\n\npenguins.value_counts([\"sex\", \"species\"], dropna=False) # NA은 기본적으로 생략\n\nsex     species  \nFemale  Adelie       73\nMale    Adelie       73\n        Gentoo       61\nFemale  Gentoo       58\n        Chinstrap    34\nMale    Chinstrap    34\nNaN     Adelie        6\n        Gentoo        5\nName: count, dtype: int64\n\n\n\n# NA의 개수\npenguins.isna().sum()\n\nspecies               0\nisland                0\nbill_length_mm        2\nbill_depth_mm         2\nflipper_length_mm     2\nbody_mass_g           2\nsex                  11\ndtype: int64\n\n\n\n# NA의 비율\npenguins.isna().mean()\n\nspecies              0.000000\nisland               0.000000\nbill_length_mm       0.005814\nbill_depth_mm        0.005814\nflipper_length_mm    0.005814\nbody_mass_g          0.005814\nsex                  0.031977\ndtype: float64\n\n\n\ntips.sort_values(\"tip\", ascending=False)\n\n     total_bill   tip     sex smoker  day    time  size\n170       50.81 10.00    Male    Yes  Sat  Dinner     3\n212       48.33  9.00    Male     No  Sat  Dinner     4\n23        39.42  7.58    Male     No  Sat  Dinner     4\n59        48.27  6.73    Male     No  Sat  Dinner     4\n..          ...   ...     ...    ...  ...     ...   ...\n236       12.60  1.00    Male    Yes  Sat  Dinner     2\n111        7.25  1.00  Female     No  Sat  Dinner     1\n67         3.07  1.00  Female    Yes  Sat  Dinner     1\n92         5.75  1.00  Female    Yes  Fri  Dinner     2\n\n[244 rows x 7 columns]\n\n\n\ntips.sort_values([\"size\", \"tip\"], ascending=[False, True])\n\n     total_bill  tip     sex smoker   day    time  size\n125       29.80 4.20  Female     No  Thur   Lunch     6\n143       27.05 5.00  Female     No  Thur   Lunch     6\n156       48.17 5.00    Male     No   Sun  Dinner     6\n141       34.30 6.70    Male     No  Thur   Lunch     6\n..          ...  ...     ...    ...   ...     ...   ...\n67         3.07 1.00  Female    Yes   Sat  Dinner     1\n111        7.25 1.00  Female     No   Sat  Dinner     1\n82        10.07 1.83  Female     No  Thur   Lunch     1\n222        8.58 1.92    Male    Yes   Fri   Lunch     1\n\n[244 rows x 7 columns]\n\n\n\ntips.nlargest(3, \"tip\")  # 다수의 동등 순위가 있을 때 처리: keep=\"first\", \"last\", \"all\"\n\n     total_bill   tip   sex smoker  day    time  size\n170       50.81 10.00  Male    Yes  Sat  Dinner     3\n212       48.33  9.00  Male     No  Sat  Dinner     4\n23        39.42  7.58  Male     No  Sat  Dinner     4"
   },
   {
     "objectID": "contents/plots.html",
@@ -453,5 +369,89 @@
     "title": "Plots",
     "section": "Exercises",
     "text": "Exercises\n다음 데이터들로 위에서 다룬 시각화를 연습해보세요.\n\ntips\ntips = sns.load_dataset(\"tips\")\nData on houses in Saratoga County, New York, USA in 2006\nhouses_data = sm.datasets.get_rdataset(\"SaratogaHouses\", \"mosaicData\")\n\nhouses = houses_data.data # data\nprint(houses_data.__doc__) # documents"
+  },
+  {
+    "objectID": "contents/setup.html",
+    "href": "contents/setup.html",
+    "title": "환경설정",
+    "section": "",
+    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#(myenv)&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
+  },
+  {
+    "objectID": "contents/setup.html#miniconda-설치",
+    "href": "contents/setup.html#miniconda-설치",
+    "title": "환경설정",
+    "section": "",
+    "text": "Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트"
+  },
+  {
+    "objectID": "contents/setup.html#패키지-repositorychannel-선택",
+    "href": "contents/setup.html#패키지-repositorychannel-선택",
+    "title": "환경설정",
+    "section": "",
+    "text": "conda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update"
+  },
+  {
+    "objectID": "contents/setup.html#conda-environment",
+    "href": "contents/setup.html#conda-environment",
+    "title": "환경설정",
+    "section": "",
+    "text": "conda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#&gt; conda deactivate  # activated 환경 내에서\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 가상환경을 등록해줘야 함.\n#(myenv)&gt; ipython kernel install --user --name=myenv\n가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv"
+  },
+  {
+    "objectID": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
+    "href": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
+    "title": "환경설정",
+    "section": "",
+    "text": "# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
+  },
+  {
+    "objectID": "contents/setup.html#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천",
+    "href": "contents/setup.html#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천",
+    "title": "환경설정",
+    "section": "Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천",
+    "text": "Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천\nOh-My-Zsh!: 링크\n\n이 경우 miniconda 설치시 bash의 추가된 conda setup을 zsh로 가져와야 함: minconda를 zsh 설치 후에 설치하는 경우는 miniconda가 추가시키니 신경쓸 필요 없음\n\nhome directory에 있는 .bash_profile 을 열면 # &gt;&gt;&gt; conda initialize &gt;&gt;&gt; 로 시작해서 # &lt;&lt;&lt; conda initialize &lt;&lt;&lt; 부분까지를 복사한 후 .zshrc 파일을 열어 맨 뒤에 붙여넣음\n위 파일을 VS Code에서 쉽게 열어보려면 아래 그림처럼 VS Code에서 Sehll Command: Install 'Code' command in PATH 실행하고 나면\nshell 환경에서 code .zshrc를 실행하면 VS Code에서 편집할 수 있음"
+  },
+  {
+    "objectID": "contents/setup.html#windows의-경우-windows-terminal-추천",
+    "href": "contents/setup.html#windows의-경우-windows-terminal-추천",
+    "title": "환경설정",
+    "section": "Windows의 경우: Windows Terminal 추천",
+    "text": "Windows의 경우: Windows Terminal 추천\n\n설치 링크는 구글링…\n명령프롬프트(CMD) vs. Powershell\nPowershell에서 conda를 사용하기 위해서는 몇 가지 설정 필요: 블로그 링크\n다 잘 안될 경우, 그냥 conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용"
+  },
+  {
+    "objectID": "contents/setup.html#vs-code-설치",
+    "href": "contents/setup.html#vs-code-설치",
+    "title": "환경설정",
+    "section": "VS Code 설치",
+    "text": "VS Code 설치\n개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: download and install here"
+  },
+  {
+    "objectID": "contents/setup.html#extensions",
+    "href": "contents/setup.html#extensions",
+    "title": "환경설정",
+    "section": "Extensions",
+    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…"
+  },
+  {
+    "objectID": "contents/setup.html#preferences",
+    "href": "contents/setup.html#preferences",
+    "title": "환경설정",
+    "section": "Preferences",
+    "text": "Preferences\n\nThemes\nFont, font size (notebook, markup, output)"
+  },
+  {
+    "objectID": "contents/setup.html#shortcuts",
+    "href": "contents/setup.html#shortcuts",
+    "title": "환경설정",
+    "section": "Shortcuts",
+    "text": "Shortcuts\nShow Command Palette: ctrl(cmd) + shift + p, 또는 F1\nCell 안과 밖에서 다르게 작동\n\nundo/redo : ctrl(cmd) + z / ctrl(cmd) + shift + z\nalt(option) + arrow up/down : move\nalt(option) + shift + arrow up/down : copy\n\n실행 방식 3가지: ctrl/shift/alt(option) + enter\nHelp:Keyboard shortcuts reference의 Basic editing 참고"
+  },
+  {
+    "objectID": "contents/setup.html#그-외",
+    "href": "contents/setup.html#그-외",
+    "title": "환경설정",
+    "section": "그 외",
+    "text": "그 외\n\ninteractive mode\nexport\ndocs view: sticky mode\nvariables viewer, data viewer\nformatter: “Black formatter”\nsnippets: 구글링…"
   }
 ]
