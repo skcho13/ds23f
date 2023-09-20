@@ -1140,7 +1140,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>복잡한 통계치의 경우 직접 구한후 plot을 그리는 것이 용이</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>count_day <span class="op">=</span> tips[[<span class="st">"day"</span>]].value_counts(normalize<span class="op">=</span><span class="va">True</span>).reset_index(name<span class="op">=</span><span class="st">"pct"</span>)</span>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>count_day <span class="op">=</span> tips.value_counts(<span class="st">"day"</span>, normalize<span class="op">=</span><span class="va">True</span>).reset_index(name<span class="op">=</span><span class="st">"pct"</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     day  pct</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 0   Sat 0.36</span></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1   Sun 0.31</span></span>
@@ -1196,18 +1196,18 @@ Important
 </div>
 <div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># value_counts()는 크기대로 sorting!</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>cl <span class="op">=</span> penguins[<span class="st">"species"</span>].value_counts().index.values</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>reorder <span class="op">=</span> penguins.value_counts(<span class="st">"species"</span>).index.values</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; array(['Adelie', 'Gentoo', 'Chinstrap'], dtype=object)</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Count())</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    .scale(x<span class="op">=</span>so.Nominal(order<span class="op">=</span>cl)) <span class="co"># x축의 카테고리 순서를 변경</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    .scale(x<span class="op">=</span>so.Nominal(order<span class="op">=</span>reorder)) <span class="co"># x축의 카테고리 순서를 변경</span></span>
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 직접 개수를 구해 그리는 경우, 테이블의 순서대로 그려짐</span></span>
 <span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins[<span class="st">"species"</span>].value_counts().reset_index(), </span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins.value_counts(<span class="st">"species"</span>).reset_index(), </span>
 <span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"count"</span>)</span>
 <span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar())</span>
 <span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
