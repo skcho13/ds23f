@@ -102,7 +102,7 @@
     "href": "contents/customizing.html#legends-and-ticks",
     "title": "Customizing",
     "section": "Legends and ticks",
-    "text": "Legends and ticks\n\n(\n    so.Plot(penguins, x=\"species\")\n    .add(so.Bar(), so.Count())\n    .scale(x=so.Nominal(order=[\"Adelie\", \"Gentoo\", \"Chinstrap\"])) # x축의 카테고리 순서를 변경\n)\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\")\n    .add(so.Dots())\n    .scale(\n        x=so.Continuous().tick(every=0.5),\n        y=so.Continuous().label(like=\"${x:.0f}\"), # %표시: like=\"{x:.1f%}\" \n        color=so.Continuous().tick(at=[1, 2, 3, 4]),\n    )\n)"
+    "text": "Legends and ticks\n\n(\n    so.Plot(penguins, x=\"species\")\n    .add(so.Bar(), so.Count())\n    .scale(x=so.Nominal(order=[\"Adelie\", \"Gentoo\", \"Chinstrap\"])) # x축의 카테고리 순서를 변경\n)\n\n\n\n\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\")\n    .add(so.Dots())\n    .scale(\n        x=so.Continuous().tick(every=0.5),\n        y=so.Continuous().label(like=\"${x:.0f}\"), # %표시: like=\"{x:.1f%}\" \n        color=so.Continuous().tick(at=[1, 2, 3, 4]),\n    )\n)"
   },
   {
     "objectID": "contents/customizing.html#limits-labels-and-titles",
@@ -116,7 +116,7 @@
     "href": "contents/customizing.html#themes",
     "title": "Customizing",
     "section": "Themes",
-    "text": "Themes\n\ntips = sns.load_dataset(\"tips\")\np = (\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\")\n    .add(so.Dot())\n)\np.theme({\"axes.facecolor\": \"white\", \n         \"axes.edgecolor\": \"0.8\", \n         'axes.spines.top': False,\n         'axes.spines.right': False})\n\n\n\n\nseaborn.axes_style\n\nfrom seaborn import axes_style\np.theme({**axes_style(\"whitegrid\")})\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\np.theme({**style.library[\"fivethirtyeight\"]})"
+    "text": "Themes\n\ntips = sns.load_dataset(\"tips\")\np = (\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\")\n    .add(so.Dot())\n)\np.theme({\"axes.facecolor\": \"white\", \n         \"axes.edgecolor\": \"0.8\", \n         'axes.spines.top': False,\n         'axes.spines.right': False})\n\n\n\n\n\n\n\n\nseaborn.axes_style\n\nfrom seaborn import axes_style\np.theme({**axes_style(\"whitegrid\")})\n\n\n\n\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\np.theme({**style.library[\"fivethirtyeight\"]})"
   },
   {
     "objectID": "index.html",
