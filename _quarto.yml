@@ -61,15 +61,14 @@ website:
             contents: 
               - href: contents/alt_plots.ipynb
           - href: contents/customizing.ipynb
-
-      # - text: ---
-      # - section: Transform
-      #   contents:
-      #     - href: contents/subsetting.ipynb
-      #       contents:
-      #         - href: contents/views.ipynb
-      #     - section: contents/transform.ipynb
-      #       contents: 
+      - text: ---
+      - section: Transform
+        contents:
+          - href: contents/subsetting.ipynb
+            contents:
+              - href: contents/views.ipynb
+          - href: contents/transform.ipynb
+            contents:
       #         - href: contents/case1.ipynb
       #         - href: contents/exercise_transform.ipynb
       #     - section: Transforming II
