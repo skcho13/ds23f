@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     - "*.ipynb"
     - "!contents/ignore/"
-    - "!exercise*.ipynb"
+    #- "!exercise*.ipynb"
     - "!contents/*.py"
     - "!final*.ipynb"
   resources: CNAME
@@ -69,8 +69,8 @@ website:
               - href: contents/views.ipynb
           - href: contents/transform.ipynb
             contents:
-      #         - href: contents/case1.ipynb
-      #         - href: contents/exercise_transform.ipynb
+              - href: contents/case1.ipynb
+              - href: contents/exercise_transform.ipynb
       #     - section: Transforming II
       #       contents:
       #         - href: contents/combine.ipynb
