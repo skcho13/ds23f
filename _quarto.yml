@@ -70,6 +70,9 @@ website:
           - href: contents/transform.ipynb
             contents:
               - href: contents/case1.ipynb
+                text: Case Study 1
+              - href: contents/babynames.ipynb
+                text: Case Study 2
               - href: contents/exercise_transform.ipynb
       #     - section: Transforming II
       #       contents:

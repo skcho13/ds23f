@@ -294,67 +294,67 @@
     "text": "Themes\n\ntips = sns.load_dataset(\"tips\")\np = (\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\")\n    .add(so.Dot())\n)\np.theme({\"axes.facecolor\": \"white\", \n         \"axes.edgecolor\": \"0.8\", \n         'axes.spines.top': False,\n         'axes.spines.right': False})\n\n\n\n\n\n\n\n\nseaborn.axes_style\n\nfrom seaborn import axes_style\np.theme({**axes_style(\"whitegrid\")})\n\n\n\n\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\np.theme({**style.library[\"fivethirtyeight\"]})"
   },
   {
-    "objectID": "contents/alt_plots.html",
-    "href": "contents/alt_plots.html",
-    "title": "Alternative plots",
+    "objectID": "contents/babynames.html",
+    "href": "contents/babynames.html",
+    "title": "Baby Names",
     "section": "",
-    "text": "alternatives: plotly, seaborn\n\n\n\nimport plotly.express as px\n\npx.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", trendline=\"lowess\")\n\n\n                                                \n\n\n다음과 같이 smoothing parameter를 지정할 수 있음\n자세한 옵션은 여기 참조: plotly linear fits\n\n(\n    px.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", \n               trendline=\"lowess\", trendline_options=dict(frac=0.3)) # smoothing parameter \n    .update_layout(width=600, height=500)\n)\n\n\n                                                \n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    px.scatter(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", color=\"species\",\n               trendline=\"lowess\", trendline_options=dict(frac=0.5),\n               facet_col=\"island\", # faceting\n               opacity=0.5) # alpha\n    .update_layout(width=900, height=400)\n)\n\n\n                                                \n\n\n\n\n\n\n\nsns.lmplot(mpg, x=\"displ\", y=\"hwy\", hue=\"drv\", # color대신 hue\n           lowess=True, \n           scatter_kws={\"alpha\":.5, \"s\":20}, # s: point size\n           height=3, aspect=5/3) \nplt.show() # 생략해도 무방\n\n\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.lmplot(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", hue=\"species\", \n           lowess=True, \n           col=\"sex\", # faceting: col, row\n           height=3, scatter_kws={\"alpha\":.5, \"s\":5})"
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.mode.copy_on_write = True\npd.options.display.float_format = '{:.5f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 8"
   },
   {
-    "objectID": "contents/alt_plots.html#fitted-lines",
-    "href": "contents/alt_plots.html#fitted-lines",
-    "title": "Alternative plots",
+    "objectID": "contents/babynames.html#us-baby-names-18802010",
+    "href": "contents/babynames.html#us-baby-names-18802010",
+    "title": "Baby Names",
+    "section": "US Baby Names 1880–2010",
+    "text": "US Baby Names 1880–2010\nSource: McKinney’s: 13. Data Analysis Examples\n다음 데이터는 미국의 출생아 이름에 대한 데이터입니다. 링크\n\n2021년 업데이트된 버전으로 1880년부터 2021년까지의 데이터가 있으며,\n각 연도별로 남자아이와 여자아이의 이름별 출생아 수를 나타내고 있습니다.\n\n\nnames = pd.read_csv(\"data/babynames.csv\")\nnames\n\n              name sex  births  year\n0             Mary   F    7065  1880\n1             Anna   F    2604  1880\n2             Emma   F    2003  1880\n3        Elizabeth   F    1939  1880\n...            ...  ..     ...   ...\n2052777       Zyel   M       5  2021\n2052778      Zyian   M       5  2021\n2052779      Zylar   M       5  2021\n2052780        Zyn   M       5  2021\n\n[2052781 rows x 4 columns]\n\n\n\n1. 다음과 같이 년도와 성별에 따른 출생아 수의 합계를 구해보세요.\n\ngroupby와 sum을 사용하세요.\n\n\n\ncode\nnames_sex_year = names.groupby([\"year\", \"sex\"])[\"births\"].sum().reset_index()\n\n\n\nnames_sex_year\n\n     year sex   births\n0    1880   F    90994\n1    1880   M   110490\n2    1881   F    91953\n3    1881   M   100737\n..    ...  ..      ...\n280  2020   F  1609171\n281  2020   M  1718248\n282  2021   F  1627098\n283  2021   M  1734277\n\n[284 rows x 3 columns]\n\n\n\n\n2. 이를 이용해 다음과 같이 연도에 따른 출생아 수의 변화를 성별에 따라 그려보세요.\n\n\ncode\n(\n    so.Plot(names_sex_year, x='year', y='births', color=\"sex\")\n    .add(so.Line())\n    .scale(color=\"Set2\")\n)\n\n\n\n\n\n\n\n3. names 데이터프레임에 각 이름별 출생아 수의 비율을 나타내는 컬럼 prop을 추가하세요.\n\n예를 들어, 아래 결과 테이블 첫 행을 보면, 1880년 Mary라는 이름의 여자 출생아 수는 7065명인데, 이는 1880년에 태어난 총 여자 아이 중 7.764%를 차지합니다.\nyear, sex로 그룹핑을 한 후\n이 비율을 계산하는 함수를 세워서 apply method를 이용하여 prop 컬럼을 추가해 보세요.\n\n\n\ncode\ndef add_prop(group):\n    group = group.assign(prop = lambda x: x.births / x.births.sum())\n    return group\n\n# 또는\ndef add_prop(group):\n    group[\"prop\"] = group[\"births\"] / group[\"births\"].sum()\n    return group\n\nnames = names.groupby([\"year\", \"sex\"], group_keys=False).apply(add_prop)\n\n\n\nnames\n\n              name sex  births  year    prop\n0             Mary   F    7065  1880 0.07764\n1             Anna   F    2604  1880 0.02862\n2             Emma   F    2003  1880 0.02201\n3        Elizabeth   F    1939  1880 0.02131\n...            ...  ..     ...   ...     ...\n2052777       Zyel   M       5  2021 0.00000\n2052778      Zyian   M       5  2021 0.00000\n2052779      Zylar   M       5  2021 0.00000\n2052780        Zyn   M       5  2021 0.00000\n\n[2052781 rows x 5 columns]\n\n\n\n\n4. 이제 names에서 각 연도에서 남녀별 인기있는 이름 1000개씩을 추립니다.\n\n즉, 1880년 인기있는 여자아이 1000개, 남자아이 1000개를 추리고, 1881년에도 마찬가지…\n인기있다는 것은 그 이름의 출생아 수가 많다는 의미입니다.\n3번과 마찬가지로, year, sex로 그룹핑을 한 후\ngrouped object에 sort_values method를 적용하여 상위 1000개를 추출하는 함수 세워 apply로 적용해 보세요.\n\n\n\ncode\ndef get_top1000(group):\n    return group.sort_values(\"births\", ascending=False)[:1000]\n\ntop1000 = names.groupby([\"year\", \"sex\"], group_keys=False).apply(\n    get_top1000\n)  # group_keys=False: 그룹핑 한 변수들을 인덱스로 사용하지 않음\n\n\n\ntop1000\n\n              name sex  births  year    prop\n0             Mary   F    7065  1880 0.07764\n1             Anna   F    2604  1880 0.02862\n2             Emma   F    2003  1880 0.02201\n3        Elizabeth   F    1939  1880 0.02131\n...            ...  ..     ...   ...     ...\n2039789     Harris   M     217  2021 0.00013\n2039793     Ronnie   M     217  2021 0.00013\n2039792    Merrick   M     217  2021 0.00013\n2039791     Mayson   M     217  2021 0.00013\n\n[283876 rows x 5 columns]"
+  },
+  {
+    "objectID": "contents/babynames.html#measuring-the-increase-in-naming-diversity",
+    "href": "contents/babynames.html#measuring-the-increase-in-naming-diversity",
+    "title": "Baby Names",
+    "section": "Measuring the increase in naming diversity",
+    "text": "Measuring the increase in naming diversity\n\n6. 이제 이름의 다양성이 시간에 따라 어떻게 변화하는지를 살펴봅니다.\n\ntop1000은 이미 각 년도별, 성별에 따른 인기있는 이름 1000개씩을 추려놓은 데이터프레임입니다.\n이제 년도별, 성별에 따른 비율(prop)의 합의 의미를 잘 생각해보면,\n이는 인기있는 1000개의 이름을 가진 아이들의 총 비율이 되는데,\n이 비율이 적다는 것은 더 다양한 이름이 사용되고 있다는 것을 의미합니다.\n아래 시각화에서 나타나듯이, 이름의 다양성은 시간이 지남에 따라 증가하며, 특히 여자 이름이 더욱 그러한 것을 알 수 있습니다.\n\n\ntop1000\n\n              name sex  births  year    prop\n0             Mary   F    7065  1880 0.07764\n1             Anna   F    2604  1880 0.02862\n2             Emma   F    2003  1880 0.02201\n3        Elizabeth   F    1939  1880 0.02131\n...            ...  ..     ...   ...     ...\n2039789     Harris   M     217  2021 0.00013\n2039793     Ronnie   M     217  2021 0.00013\n2039792    Merrick   M     217  2021 0.00013\n2039791     Mayson   M     217  2021 0.00013\n\n[283876 rows x 5 columns]\n\n\n\n\ncode\ntable = top1000.groupby([\"year\", \"sex\"])[\"prop\"].sum().reset_index()\n\n(\n    so.Plot(table, x='year', y='prop', color=\"sex\")\n    .add(so.Line())\n    .scale(color=\"Set2\")\n)\n\n\n\n\n\n\n\n7. 이름의 다양성의 변화를 다른 방식으로 살펴봅니다.\n\n예를 들어, 2010년에 한정해서 살펴보면, 이 해에 인기있는 이름 순으로 나열한 후,\n그 비율(prop)의 누적합이 0.5가 되는 지점을 찾아보면,\n인기 상위 50%의 이름이 몇 개나 되는지 알 수 있습니다.\n이 개수를 지표로 이용하면, 이름의 다양성이 어떻게 변화하는지를 살펴볼 수 있습니다.\n\n\ndf = top1000.query('sex == \"M\" and year == 2010')  # 2010년도에 태어난 남자아이들의 이름\nprop_cumsum = df[\"prop\"].sort_values(ascending=False).cumsum()  # 인기순서로 비율의 누적합\nprop_cumsum\n\n1678130   0.01155\n1678131   0.02094\n1678132   0.03000\n1678133   0.03896\n            ...  \n1679126   0.84249\n1679127   0.84260\n1679128   0.84270\n1679129   0.84280\nName: prop, Length: 1000, dtype: float64\n\n\n\n# 누적 비율 50%까지의 이름의 개수\nprop_cumsum[prop_cumsum &lt;= 0.5].size + 1  # .size: Series의 열의 개수\n\n117\n\n\n이제 위 예를 이용하여, 각 연도별, 성별에 따른 인기 상위 50% 이름의 개수를 구해보세요.\n\nyear, sex로 그룹핑을 한 후\ngrouped object에 인기 상위 50% 이름의 개수를 구하는 함수를 세워 apply로 적용해 보세요.\n이를 diversity라는 이름의 데이터프레임으로 저장하면, 다음과 같고,\n이를 이용해 아래와 같은 시각화를 해보세요.\n\n\n\ncode\ndef get_quantile_count(group, q=0.5):\n    prop_cumsum = group[\"prop\"].sort_values(ascending=False).cumsum()\n    return prop_cumsum[prop_cumsum &lt;= q].size + 1\n\ndiversity = top1000.groupby([\"year\", \"sex\"]).apply(get_quantile_count)\ndiversity = diversity.reset_index(name=\"count\")\n\n\n\ndiversity\n\n     year sex  count\n0    1880   F     38\n1    1880   M     14\n2    1881   F     38\n3    1881   M     14\n..    ...  ..    ...\n280  2020   F    272\n281  2020   M    163\n282  2021   F    276\n283  2021   M    167\n\n[284 rows x 3 columns]\n\n\n\n\ncode\n(\n    so.Plot(diversity, x='year', y='count', color=\"sex\")\n    .add(so.Line())\n    .scale(color=\"Set2\")\n)"
+  },
+  {
+    "objectID": "contents/babynames.html#the-last-letter-revolution",
+    "href": "contents/babynames.html#the-last-letter-revolution",
+    "title": "Baby Names",
+    "section": "The “last letter” revolution",
+    "text": "The “last letter” revolution\n\n“In 2007, baby name researcher Laura Wattenberg pointed out that the distribution of boy names by final letter has changed significantly over the last 100 years.” (p. 452)\n\n이름의 마지막 철자는 이름의 느낌을 좌우해서인지 특히 자주 쓰이는 철자가 있으며, 그 트렌드도 시간에 따라 크게 변화하는 것 같습니다.\n이제, 이름의 마지막 철자가 시간에 따라 어떻게 변화하는지 살펴봅니다.\n\n8. 아래와 같이 이름의 마지막 철자를 last_letter라는 칼럼에 추가합니다.\n\n문자열의 마지막 철자를 구하는 함수를 구한 후,\nnames데이터의 name 칼럼을 Series로 추출 후 .map Series method를 이용하여 적용합니다.\n\n\n\ncode\n# 함수를 이용해 이름의 마지막 글자를 추출\ndef get_last_letter(x):\n    return x[-1]\n\nlast_letters = names[\"name\"].map(get_last_letter)\n\n# 또는 간단히 lambda 함수를 이용\nlast_letters = names[\"name\"].map(lambda x: x[-1])\n\n# DataFrame에 새로운 열로 추가\nnames[\"last_letter\"] = last_letters\n\n\n\nnames\n\n              name sex  births  year    prop last_letter\n0             Mary   F    7065  1880 0.07764           y\n1             Anna   F    2604  1880 0.02862           a\n2             Emma   F    2003  1880 0.02201           a\n3        Elizabeth   F    1939  1880 0.02131           h\n...            ...  ..     ...   ...     ...         ...\n2052777       Zyel   M       5  2021 0.00000           l\n2052778      Zyian   M       5  2021 0.00000           n\n2052779      Zylar   M       5  2021 0.00000           r\n2052780        Zyn   M       5  2021 0.00000           n\n\n[2052781 rows x 6 columns]\n\n\n\n\n9. 이제 아래와 같이 각 연도별, 성별에 따른 last_letter로 끝나는 이름을 가진 출생아 수를 구해보세요.\n\n\ncode\ntable = names.groupby([\"year\", \"sex\", \"last_letter\"])[\"births\"].sum().reset_index()\n\n\n\ntable\n\n      year sex last_letter  births\n0     1880   F           a   31446\n1     1880   F           d     609\n2     1880   F           e   33381\n3     1880   F           g       7\n...    ...  ..         ...     ...\n6733  2021   M           w   16292\n6734  2021   M           x   21014\n6735  2021   M           y   82625\n6736  2021   M           z    3519\n\n[6737 rows x 4 columns]\n\n\n\n\n10. 우선 3개 년도 1910, 1960, 2010에 한해 살펴보는데, births의 비율을 다음과 같이 시각화 해보세요.\n\n1910, 1960, 2010년도로 필터링한 후\n각 년도별, 성별에 따른 last_letter로 철자가 끝나는 출생아 수의 비율을 구합니다.\n이를 이용해 다음과 같이 시각화 해보세요.\n이 플랏에서 남자 이름의 경우, “d”, “n”, “y”로 끝나는 이름이 많고 변화가 크다는 것을 볼 수 있습니다.\n\n\n\ncode\n# Filtering\nsubtable = table.query('year in [1910, 1960, 2010]')\n\n# transform을 이용해서 비율을 구하거나\nsubtable[\"total\"] = subtable.groupby([\"year\", \"sex\"])[\"births\"].transform(\"sum\")\nsubtable = subtable.assign(prop = lambda x: x[\"births\"] / x[\"total\"])\n\n# 앞서와 같이 함수를 이용해서 비율을 구할 수도 있음\ndef add_prop(group):\n    group = group.assign(prop = lambda x: x.births / x.births.sum())\n    return group\n\nsubtable = subtable.groupby([\"year\", \"sex\"], group_keys=False).apply(add_prop)\ndisplay(subtable)\n\n# Visualization\n(\n    so.Plot(subtable, x='last_letter', y='prop', color=subtable[\"year\"].astype(str))  # year가 연속형 변수라 string으로 바꾸어 구별되는 색으로 표현되도록 함\n    .add(so.Bar(), so.Dodge())\n    .facet(row=\"sex\")\n    .layout(size=(8, 6))\n    .scale(color=\"Set2\")\n)\n\n\n      year sex last_letter  births    total    prop\n1260  1910   F           a  108399   396505 0.27339\n1261  1910   F           c       5   396505 0.00001\n1262  1910   F           d    6751   396505 0.01703\n1263  1910   F           e  133601   396505 0.33695\n...    ...  ..         ...     ...      ...     ...\n6161  2010   M           w   31027  1917416 0.01618\n6162  2010   M           x   16487  1917416 0.00860\n6163  2010   M           y  111600  1917416 0.05820\n6164  2010   M           z    3507  1917416 0.00183\n\n[145 rows x 6 columns]\n\n\n\n\n\n\n\n11. 이제 ‘d’, ‘n’, ’y’로 끝나는 남자 이름의 시간에 따른 변화를 다음과 같이 시각화 해보세요.\n\n위에 table 데이터를 이용해 모든 년도에 대해 last_letter의 비율을 구해보세요.\n남자아이이고 ‘d’, ‘n’, ’y’로 끝나는 이름으로 필터링 한 후 시각화 합니다.\n\n\n\ncode\n# 앞서 정의한 `add_prop` 함수를 이용해서 비율을 구함\ntable = table.groupby([\"year\", \"sex\"], group_keys=False).apply(add_prop)\n\n# visualization\n(\n    so.Plot(\n        table.query('sex == \"M\" and last_letter in [\"d\", \"n\", \"y\"]'),\n        x=\"year\",\n        y=\"prop\",\n        color=\"last_letter\",\n    )\n    .add(so.Line())\n    .scale(color=\"Set2\")\n)"
+  },
+  {
+    "objectID": "contents/babynames.html#boy-names-that-became-girl-names-and-vice-versa",
+    "href": "contents/babynames.html#boy-names-that-became-girl-names-and-vice-versa",
+    "title": "Baby Names",
+    "section": "Boy names that became girl names (and vice versa)",
+    "text": "Boy names that became girl names (and vice versa)\n남자 아이의 이름이였다가 여자 아이의 이름으로 점차 변하고 있는 경우가 있습니다. (혹은 반대)\n\n아래와 같이 Leslie와 비슷한 철자를 가진 발음이 비슷한 이름들을 살펴보면,\n\n\n# 유닉크한 이름을 Series로 추출\nall_names = pd.Series(top1000[\"name\"].unique())  # .unique(): numpy array로 반환됨\n\n# `Lesl` 문자열을 포함하는 이름들 추출\nlesley_like = all_names[all_names.str.contains(\"Lesl\")]  # Series의 method로 .str.contains()는 문자열 포함 여부를 판단\n\n\nlesley_like\n\n632     Leslie\n2293    Lesley\n4263    Leslee\n4731     Lesli\n6106     Lesly\ndtype: object\n\n\n\n12. 이 lesley_like에 해당하는 이름들로 top1000 데이터를 필터링하여 filtered에 저장하세요.\n\n\ncode\n# query를 이용하거나\nfiltered = top1000.query('name in @lesley_like')  # @: 외부 변수를 참조할 때 사용\n\n# .isin()을 이용\nfiltered = top1000[top1000[\"name\"].isin(lesley_like)]\n\n\n\nfiltered\n\n           name sex  births  year    prop\n654      Leslie   F       8  1880 0.00009\n1108     Leslie   M      79  1880 0.00071\n2522     Leslie   F      11  1881 0.00012\n3072     Leslie   M      92  1881 0.00091\n...         ...  ..     ...   ...     ...\n1926042  Leslie   F     600  2018 0.00035\n1958254  Leslie   F     571  2019 0.00034\n1990386  Leslie   F     486  2020 0.00030\n2021863  Leslie   F     476  2021 0.00029\n\n[415 rows x 5 columns]\n\n\n\n\n13. filtered 데이터에서 Leslie_like에 포함된 이름들이 각 연도별로, 남자로 쓰인 비율과 여자로 쓰인 비율을 구해보세요.\n\n우선, filtered 데이터에서 연도별, 성별에 따른 출생아수의 합를 구한 후\n이를 연도에 따른 비율을 계산하면, 각 연도에서 Leslie와 같은 이름들이 남자로 쓰인 비율과 여자로 쓰인 비율을 구할 수 있습니다.\n즉, 아래 플랏에서 보면 각 연도에서 남자로 쓰인 비율과 여자로 쓰인 비율의 합이 1이 됩니다.\n\n\n\ncode\n# 연도별, 성별에 따른 출생아수의 합\ntable = filtered.groupby([\"year\", \"sex\"])[\"births\"].sum().reset_index()\n\n# 긱 연도에 따른 비율\ntable = table.groupby(\"year\", group_keys=False).apply(add_prop)\n\n# Visualization\n(\n    so.Plot(table, x='year', y='prop', color=\"sex\")\n    .add(so.Line())\n    .scale(color=\"Set2\")\n)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
     "section": "",
-    "text": "alternatives: plotly, seaborn\n\n\n\nimport plotly.express as px\n\npx.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", trendline=\"lowess\")\n\n\n                                                \n\n\n다음과 같이 smoothing parameter를 지정할 수 있음\n자세한 옵션은 여기 참조: plotly linear fits\n\n(\n    px.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", \n               trendline=\"lowess\", trendline_options=dict(frac=0.3)) # smoothing parameter \n    .update_layout(width=600, height=500)\n)\n\n\n                                                \n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    px.scatter(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", color=\"species\",\n               trendline=\"lowess\", trendline_options=dict(frac=0.5),\n               facet_col=\"island\", # faceting\n               opacity=0.5) # alpha\n    .update_layout(width=900, height=400)\n)\n\n\n                                                \n\n\n\n\n\n\n\nsns.lmplot(mpg, x=\"displ\", y=\"hwy\", hue=\"drv\", # color대신 hue\n           lowess=True, \n           scatter_kws={\"alpha\":.5, \"s\":20}, # s: point size\n           height=3, aspect=5/3) \nplt.show() # 생략해도 무방\n\n\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.lmplot(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", hue=\"species\", \n           lowess=True, \n           col=\"sex\", # faceting: col, row\n           height=3, scatter_kws={\"alpha\":.5, \"s\":5})"
+    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 3:00 ~ 4:50PM\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask"
   },
   {
-    "objectID": "contents/alt_plots.html#box-plot",
-    "href": "contents/alt_plots.html#box-plot",
-    "title": "Alternative plots",
-    "section": "Box plot",
-    "text": "Box plot\n\npenguins = sns.load_dataset(\"penguins\")\n\n\nimport plotly.express as px\n\npx.box(penguins.dropna(subset=[\"sex\"]), x=\"species\", y=\"bill_length_mm\", color=\"island\",  facet_col=\"sex\")\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.catplot(\n    data=penguins, x=\"species\", y=\"bill_length_mm\", hue=\"sex\", col=\"island\",\n    kind=\"box\", height=4, aspect=.6,\n)\nplt.show()"
-  },
-  {
-    "objectID": "contents/notice.html",
-    "href": "contents/notice.html",
-    "title": "Notice",
+    "objectID": "index.html#강의-정보",
+    "href": "index.html#강의-정보",
+    "title": "Welcome",
     "section": "",
-    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼"
+    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 3:00 ~ 4:50PM\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask"
   },
   {
-    "objectID": "contents/notice.html#과제",
-    "href": "contents/notice.html#과제",
-    "title": "Notice",
-    "section": "",
-    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼"
+    "objectID": "index.html#강의-개요",
+    "href": "index.html#강의-개요",
+    "title": "Welcome",
+    "section": "강의 개요",
+    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition"
   },
   {
-    "objectID": "contents/notice.html#중간고사",
-    "href": "contents/notice.html#중간고사",
-    "title": "Notice",
-    "section": "중간고사",
-    "text": "중간고사"
-  },
-  {
-    "objectID": "contents/notice.html#기말고사",
-    "href": "contents/notice.html#기말고사",
-    "title": "Notice",
-    "section": "기말고사",
-    "text": "기말고사"
-  },
-  {
-    "objectID": "contents/notice.html#개별-프로젝트",
-    "href": "contents/notice.html#개별-프로젝트",
-    "title": "Notice",
-    "section": "개별 프로젝트",
-    "text": "개별 프로젝트"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "index.html#수업-활동",
+    "href": "index.html#수업-활동",
+    "title": "Welcome",
+    "section": "수업 활동",
+    "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)"
   },
   {
     "objectID": "contents/intro.html#미래-데이터의-중요성",
@@ -420,60 +420,95 @@
     "text": "데이터 시각화\nData Visualization \n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\nInteractive"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 3:00 ~ 4:50PM\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask"
+    "text": "About this site"
   },
   {
-    "objectID": "index.html#강의-정보",
-    "href": "index.html#강의-정보",
-    "title": "Welcome",
+    "objectID": "contents/notice.html",
+    "href": "contents/notice.html",
+    "title": "Notice",
     "section": "",
-    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 3:00 ~ 4:50PM\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask"
+    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼"
   },
   {
-    "objectID": "index.html#강의-개요",
-    "href": "index.html#강의-개요",
-    "title": "Welcome",
-    "section": "강의 개요",
-    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition"
+    "objectID": "contents/notice.html#과제",
+    "href": "contents/notice.html#과제",
+    "title": "Notice",
+    "section": "",
+    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼"
   },
   {
-    "objectID": "index.html#수업-활동",
-    "href": "index.html#수업-활동",
-    "title": "Welcome",
-    "section": "수업 활동",
-    "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)"
+    "objectID": "contents/notice.html#중간고사",
+    "href": "contents/notice.html#중간고사",
+    "title": "Notice",
+    "section": "중간고사",
+    "text": "중간고사"
+  },
+  {
+    "objectID": "contents/notice.html#기말고사",
+    "href": "contents/notice.html#기말고사",
+    "title": "Notice",
+    "section": "기말고사",
+    "text": "기말고사"
+  },
+  {
+    "objectID": "contents/notice.html#개별-프로젝트",
+    "href": "contents/notice.html#개별-프로젝트",
+    "title": "Notice",
+    "section": "개별 프로젝트",
+    "text": "개별 프로젝트"
+  },
+  {
+    "objectID": "contents/alt_plots.html",
+    "href": "contents/alt_plots.html",
+    "title": "Alternative plots",
+    "section": "",
+    "text": "alternatives: plotly, seaborn\n\n\n\nimport plotly.express as px\n\npx.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", trendline=\"lowess\")\n\n\n                                                \n\n\n다음과 같이 smoothing parameter를 지정할 수 있음\n자세한 옵션은 여기 참조: plotly linear fits\n\n(\n    px.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", \n               trendline=\"lowess\", trendline_options=dict(frac=0.3)) # smoothing parameter \n    .update_layout(width=600, height=500)\n)\n\n\n                                                \n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    px.scatter(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", color=\"species\",\n               trendline=\"lowess\", trendline_options=dict(frac=0.5),\n               facet_col=\"island\", # faceting\n               opacity=0.5) # alpha\n    .update_layout(width=900, height=400)\n)\n\n\n                                                \n\n\n\n\n\n\n\nsns.lmplot(mpg, x=\"displ\", y=\"hwy\", hue=\"drv\", # color대신 hue\n           lowess=True, \n           scatter_kws={\"alpha\":.5, \"s\":20}, # s: point size\n           height=3, aspect=5/3) \nplt.show() # 생략해도 무방\n\n\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.lmplot(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", hue=\"species\", \n           lowess=True, \n           col=\"sex\", # faceting: col, row\n           height=3, scatter_kws={\"alpha\":.5, \"s\":5})"
+  },
+  {
+    "objectID": "contents/alt_plots.html#fitted-lines",
+    "href": "contents/alt_plots.html#fitted-lines",
+    "title": "Alternative plots",
+    "section": "",
+    "text": "alternatives: plotly, seaborn\n\n\n\nimport plotly.express as px\n\npx.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", trendline=\"lowess\")\n\n\n                                                \n\n\n다음과 같이 smoothing parameter를 지정할 수 있음\n자세한 옵션은 여기 참조: plotly linear fits\n\n(\n    px.scatter(mpg, x=\"displ\", y=\"hwy\", color=\"drv\", \n               trendline=\"lowess\", trendline_options=dict(frac=0.3)) # smoothing parameter \n    .update_layout(width=600, height=500)\n)\n\n\n                                                \n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    px.scatter(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", color=\"species\",\n               trendline=\"lowess\", trendline_options=dict(frac=0.5),\n               facet_col=\"island\", # faceting\n               opacity=0.5) # alpha\n    .update_layout(width=900, height=400)\n)\n\n\n                                                \n\n\n\n\n\n\n\nsns.lmplot(mpg, x=\"displ\", y=\"hwy\", hue=\"drv\", # color대신 hue\n           lowess=True, \n           scatter_kws={\"alpha\":.5, \"s\":20}, # s: point size\n           height=3, aspect=5/3) \nplt.show() # 생략해도 무방\n\n\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.lmplot(penguins, x=\"bill_length_mm\", y=\"bill_depth_mm\", hue=\"species\", \n           lowess=True, \n           col=\"sex\", # faceting: col, row\n           height=3, scatter_kws={\"alpha\":.5, \"s\":5})"
+  },
+  {
+    "objectID": "contents/alt_plots.html#box-plot",
+    "href": "contents/alt_plots.html#box-plot",
+    "title": "Alternative plots",
+    "section": "Box plot",
+    "text": "Box plot\n\npenguins = sns.load_dataset(\"penguins\")\n\n\nimport plotly.express as px\n\npx.box(penguins.dropna(subset=[\"sex\"]), x=\"species\", y=\"bill_length_mm\", color=\"island\",  facet_col=\"sex\")\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.catplot(\n    data=penguins, x=\"species\", y=\"bill_length_mm\", hue=\"sex\", col=\"island\",\n    kind=\"box\", height=4, aspect=.6,\n)\nplt.show()"
   },
   {
     "objectID": "contents/case1.html",
     "href": "contents/case1.html",
     "title": "Case study",
     "section": "",
-    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.mode.copy_on_write = True\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7\n\n# Numpy options\nnp.set_printoptions(precision = 2, suppress=True)"
+    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nOptions\n# pandas options\npd.options.mode.copy_on_write = True\npd.options.display.float_format = '{:.5f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7\n\n# Numpy options\n#np.set_printoptions(precision = 2, suppress=True)"
   },
   {
     "objectID": "contents/case1.html#q1",
     "href": "contents/case1.html#q1",
     "title": "Case study",
     "section": "Q1",
-    "text": "Q1\n각 도착지에 따른 비행거리와 도착지연시간과의 관계를 알아보고자 함.\n\nGroup flights by destination.\nSummarise to compute distance, average delay, and number of flights.\nFilter to remove noisy points and Honolulu airport, which is almost twice as far away as the next closest airport.\n\n\n# Load the nycflight13 dataset\nflights = sm.datasets.get_rdataset(\"flights\", \"nycflights13\").data.drop(columns=\"time_hour\")\n\n\n# grouping by destinations\nby_dest = flights.groupby(\"dest\")\n\n\ndelay = (by_dest\n         .agg(count=(\"distance\", \"count\"), \n              dist=(\"distance\", \"mean\"), \n              delays=(\"arr_delay\", \"mean\"))\n        .reset_index()\n)\n\n\ndelay.head()\n\n  dest  count    dist  delays\n0  ABQ    254 1826.00    4.38\n1  ACK    265  199.00    4.85\n2  ALB    439  143.00   14.40\n3  ANC      8 3370.00   -2.50\n4  ATL  17215  757.11   11.30\n\n\n\n(\n    so.Plot(delay, x=\"dist\", y=\"delays\")\n    .add(so.Dots(), pointsize=\"count\")\n    .add(so.Line(), so.PolyFit(5))\n    .scale(pointsize=(2, 20))\n)\n\n\n\n\n불필요한 자료를 제거하고 시각화하는 것이 유리\n\n# Filter to remove noisy points and Honolulu airport\ndelay_sub = delay.query('count &gt; 20 & dest != \"HNL\"')\n(\n    so.Plot(delay_sub, x=\"dist\", y=\"delays\")\n    .add(so.Dots(), pointsize=\"count\")\n    .add(so.Line(), so.PolyFit(5))\n    .scale(pointsize=(2, 20))\n)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n다음과 같이 제외되는 자료에 대해 label 혹은 True/False을 붙여 관리하는 것도 방법\nidx = (delay[\"count\"] &gt; 20) & (delay[\"dest\"] != \"HNL\")\ndelay[\"incl\"] = np.where(idx, \"out\", \"in\")  # idx가 True인 곳은 \"out\", False인 곳은 \"in\"\ndelay\n#   dest  count    dist  delay incl\n# 0  ABQ    254 1826.00   4.38  out\n# 1  ACK    265  199.00   4.85  out\n# 2  ALB    439  143.00  14.40  out\n# 3  ANC      8 3370.00  -2.50   in\n# 4  ATL  17215  757.11  11.30  out\n...\n\n# 제외되는 데이터를 같이 볼 수 있음\n(\n    so.Plot(delay, x=\"dist\", y=\"delay\", color=\"incl\")\n    .add(so.Dots(), pointsize=\"count\")\n    .add(so.Line(), so.PolyFit(5))\n    .scale(pointsize=(5, 20))\n)"
+    "text": "Q1\n각 도착지에 따른 비행거리(distance)와 도착지연시간(arr_delay)와의 관계를 알아보고자 함.\n\nGroup flights by destination.\nSummarise to compute distance, average delay, and number of flights.\nFilter to remove noisy points and Honolulu airport, which is almost twice as far away as the next closest airport.\n\n\n# Load the nycflight13 dataset\nflights = sm.datasets.get_rdataset(\"flights\", \"nycflights13\").data.drop(columns=\"time_hour\")\n\n\n# grouping by destinations\nby_dest = flights.groupby(\"dest\")\n\n\ndelay = (\n      by_dest\n      .agg(\n            count=(\"distance\", \"count\"), \n            dist=(\"distance\", \"mean\"), \n            delays=(\"arr_delay\", \"mean\")\n      )\n      .reset_index()\n)\n\n\ndelay\n\n    dest  count       dist   delays\n0    ABQ    254 1826.00000  4.38189\n1    ACK    265  199.00000  4.85227\n2    ALB    439  143.00000 14.39713\n..   ...    ...        ...      ...\n102  TVC    101  652.38614 12.96842\n103  TYS    631  638.80983 24.06920\n104  XNA   1036 1142.50579  7.46573\n\n[105 rows x 4 columns]\n\n\n\n(\n    so.Plot(delay, x=\"dist\", y=\"delays\")\n    .add(so.Dots(), pointsize=\"count\")\n    .add(so.Line(), so.PolyFit(5))\n    .scale(pointsize=(2, 20))\n)\n\n\n\n\n불필요한 자료를 제거하고 시각화하는 것이 유리\n\n# Filter to remove noisy points and Honolulu airport\ndelay_sub = delay.query('count &gt; 20 & dest != \"HNL\"')\n\n(\n    so.Plot(delay_sub, x=\"dist\", y=\"delays\")\n    .add(so.Dots(), pointsize=\"count\")\n    .add(so.Line(), so.PolyFit(5))\n    .scale(pointsize=(2, 20))\n)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n다음과 같이 제외되는 자료에 대해 label 혹은 True/False을 붙여 관리하는 것도 방법\nidx = (delay[\"count\"] &gt; 20) & (delay[\"dest\"] != \"HNL\")\n# 또는\nidx = delay.eval('count &gt; 20 and dest != \"HNL\"')  # query와 동일한 문법\n\ndelay[\"incl\"] = np.where(idx, \"out\", \"in\")  # idx가 True인 곳은 \"out\", False인 곳은 \"in\"\ndelay\n#   dest  count    dist  delay incl\n# 0  ABQ    254 1826.00   4.38  out\n# 1  ACK    265  199.00   4.85  out\n# 2  ALB    439  143.00  14.40  out\n# 3  ANC      8 3370.00  -2.50   in\n# 4  ATL  17215  757.11  11.30  out\n...\n\n# 제외되는 데이터를 같이 볼 수 있음\n(\n    so.Plot(delay, x=\"dist\", y=\"delay\", color=\"incl\")\n    .add(so.Dots(), pointsize=\"count\")\n    .add(so.Line(), so.PolyFit(5))\n    .scale(pointsize=(5, 20))\n)"
   },
   {
     "objectID": "contents/case1.html#q2",
     "href": "contents/case1.html#q2",
     "title": "Case study",
     "section": "Q2",
-    "text": "Q2\n평균적으로 가장 연착시간이 큰 항공기(tail number로 구분)를 살펴보는데,\n우선, count()를 사용하여 샘플 수가 극히 작은 케이스들 혹은 극단치들을 제거해서 살펴보는 것이 유리함.\n\ndelays = flights.groupby(\"tailnum\")[[\"arr_delay\"]].mean() # as DataFrame\ndelays\n\n         arr_delay\ntailnum           \nD942DN       31.50\nN0EGMQ        9.98\nN10156       12.72\n...            ...\nN998DL       16.39\nN999DN       14.31\nN9EAMQ        9.24\n\n[4043 rows x 1 columns]\n\n\n\n(\n    so.Plot(delays, x=\"arr_delay\")\n    .add(so.Line(), so.Hist())\n)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\npandas DataFrame method\ndelays.hist(bins=100)\n\n\n300분이 넘는 delay도 있음을 보는데, 각 평균 delay값이 몇 개 항목의 평균인지 살펴보면 흥미로운 사실을 발견할 수 있음. 즉,\n\ndelays = (\n    flights\n    .groupby(\"tailnum\")[\"arr_delay\"]\n    .agg([(\"delay\", \"mean\"), (\"n\", \"count\")])\n)\ndelays\n\n         delay    n\ntailnum            \nD942DN   31.50    4\nN0EGMQ    9.98  352\nN10156   12.72  145\n...        ...  ...\nN998DL   16.39   76\nN999DN   14.31   61\nN9EAMQ    9.24  238\n\n[4043 rows x 2 columns]\n\n\n\n(\n    so.Plot(delays, x=\"n\", y=\"delay\")\n    .add(so.Dots(alpha=.1))\n)\n\n\n\n\n비행횟수가 작을수록 편차가 크게 나타나는데,\n일반적으로 샘플수가 클수록 평균들의 편차가 줄어드는 현상이 나타남.\n위와 같은 플랏을 볼 때, 샘플 수가 매우 작은 그룹들은 제외하고 살펴보는 것이 패턴을 파악하는데 종종 도움이 됨.\n간단하게, query() method를 이용하면 편리\n\n(\n    so.Plot(delays.query('n &gt; 25'), x=\"n\", y=\"delay\")\n    .add(so.Dots(alpha=.1))\n)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n연속적인 함수 적용시 .pipe method를 권장; method chaining\n(\n    delays\n    .query('n &gt; 25')\n    .pipe(so.Plot, x=\"n\", y=\"delay\")  # 함수 so.Plot의 첫 번째 인자로 DataFrame을 받음\n    .add(so.Dots(alpha=.1))\n)"
+    "text": "Q2\n평균적으로 가장 연착시간이 큰 항공기(tail number로 구분)를 살펴보는데,\n우선, count()를 사용하여 샘플 수가 극히 작은 케이스들 혹은 극단치들을 제거해서 살펴보는 것이 유리함.\n\ndelays = flights.groupby(\"tailnum\")[[\"arr_delay\"]].mean() # as DataFrame\ndelays\n\n         arr_delay\ntailnum           \nD942DN    31.50000\nN0EGMQ     9.98295\nN10156    12.71724\n...            ...\nN998DL    16.39474\nN999DN    14.31148\nN9EAMQ     9.23529\n\n[4043 rows x 1 columns]\n\n\n\n(\n    so.Plot(delays, x=\"arr_delay\")\n    .add(so.Line(), so.Hist())\n)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\npandas DataFrame method .hist()를 간단히 이용할 수 있음\ndelays.hist(bins=100)\n\n\n300분이 넘는 delay도 있음을 보이는데, 각 평균 delay값이 몇 개 항목의 평균인지 살펴보면 흥미로운 사실을 발견할 수 있음. 즉,\n\ndelays = (\n    flights\n    .groupby(\"tailnum\")[\"arr_delay\"]\n    .agg([(\"delay\", \"mean\"), (\"n\", \"count\")])\n)\ndelays\n\n           delay    n\ntailnum              \nD942DN  31.50000    4\nN0EGMQ   9.98295  352\nN10156  12.71724  145\n...          ...  ...\nN998DL  16.39474   76\nN999DN  14.31148   61\nN9EAMQ   9.23529  238\n\n[4043 rows x 2 columns]\n\n\n\n(\n    so.Plot(delays, x=\"n\", y=\"delay\")\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".4\"), so.PolyFit(5))\n)\n\n\n\n\n비행횟수가 작을수록 편차가 크게 나타나는데,\n일반적으로 샘플 수가 클수록 평균들의 편차가 줄어드는 현상이 나타남.\n위와 같은 플랏을 볼 때, 샘플 수가 매우 작은 그룹들은 제외하고 살펴보는 것이 패턴을 파악하는데 종종 도움이 됨.\n간단하게, query() method를 이용하면 편리\n\n(\n    so.Plot(delays.query('n &gt; 25'), x=\"n\", y=\"delay\")\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".4\"), so.PolyFit(5))\n)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n연속적인 함수 적용시 .pipe method를 권장; method chaining\n(\n    delays\n    .query('n &gt; 25')\n    .pipe(so.Plot, x=\"n\", y=\"delay\")  # 함수 so.Plot의 첫 번째 인자로 DataFrame을 받음\n    .add(so.Dots(alpha=.1))\n)"
   },
   {
     "objectID": "contents/case1.html#q3",
     "href": "contents/case1.html#q3",
     "title": "Case study",
     "section": "Q3",
-    "text": "Q3\n\n# Lahman's Baseball Database\nbatting = pd.read_csv(\"https://raw.githubusercontent.com/beanumber/baseball_R/master/data/Batting.csv\") \n\n\nbatting\n\n        playerID  yearID  stint teamID lgID    G  G_batting     AB     R  \\\n0      aardsda01    2004      1    SFN   NL   11         11   0.00  0.00   \n1      aardsda01    2006      1    CHN   NL   45         43   2.00  0.00   \n2      aardsda01    2007      1    CHA   AL   25          2   0.00  0.00   \n...          ...     ...    ...    ...  ...  ...        ...    ...   ...   \n95192  zwilldu01    1914      1    CHF   FL  154        154 592.00 91.00   \n95193  zwilldu01    1915      1    CHF   FL  150        150 548.00 65.00   \n95194  zwilldu01    1916      1    CHN   NL   35         35  53.00  4.00   \n\n           H  ...    SB   CS    BB    SO  IBB  HBP    SH   SF  GIDP  G_old  \n0       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  0.00 0.00  0.00  11.00  \n1       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  1.00 0.00  0.00  45.00  \n2       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  0.00 0.00  0.00   2.00  \n...      ...  ...   ...  ...   ...   ...  ...  ...   ...  ...   ...    ...  \n95192 185.00  ... 21.00  NaN 46.00 68.00  NaN 1.00 10.00  NaN   NaN 154.00  \n95193 157.00  ... 24.00  NaN 67.00 65.00  NaN 2.00 18.00  NaN   NaN 150.00  \n95194   6.00  ...  0.00  NaN  4.00  6.00  NaN 0.00  2.00  NaN   NaN  35.00  \n\n[95195 rows x 24 columns]\n\n\n\n# AB: At Bats 타석에 나선 횟수, H: Hits; times reached base 출루한 횟수\nbatters = batting.groupby(\"playerID\")[[\"H\", \"AB\"]].sum()\nbatters = batters.assign(\n    BA = lambda x: x.H / x.AB   # BA: batting average 타율\n)\nbatters\n\n                H       AB   BA\nplayerID                       \naardsda01    0.00     3.00 0.00\naaronha01 3771.00 12364.00 0.30\naaronto01  216.00   944.00 0.23\n...           ...      ...  ...\nzuvelpa01  109.00   491.00 0.22\nzuverge01   21.00   142.00 0.15\nzwilldu01  364.00  1280.00 0.28\n\n[17661 rows x 3 columns]\n\n\n\n# filtering없이 보았을 때와 비교해서 어느 정도 제외할지 고민\n(\n    so.Plot(batters.query('AB &gt; 100'), x=\"AB\", y=\"BA\")\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\"orangered\"), so.PolyFit(5))\n)\n\n\n\n\n\n# 1번 기회를 얻은 타자... 타율 100%\nbatters.sort_values(\"BA\", ascending=False).head(10)\n\n             H   AB   BA\nplayerID                \npaciojo01 3.00 3.00 1.00\ngallaja01 1.00 1.00 1.00\nsellsda01 1.00 1.00 1.00\n...        ...  ...  ...\nkehnch01  2.00 2.00 1.00\ndevinha01 2.00 2.00 1.00\nliddeda01 1.00 1.00 1.00\n\n[10 rows x 3 columns]"
+    "text": "Q3\n\n# Lahman's Baseball Database\nbatting = pd.read_csv(\"https://raw.githubusercontent.com/beanumber/baseball_R/master/data/Batting.csv\") \n\n\nbatting\n\n        playerID  yearID  stint teamID lgID    G  G_batting     AB     R  \\\n0      aardsda01    2004      1    SFN   NL   11         11   0.00  0.00   \n1      aardsda01    2006      1    CHN   NL   45         43   2.00  0.00   \n2      aardsda01    2007      1    CHA   AL   25          2   0.00  0.00   \n...          ...     ...    ...    ...  ...  ...        ...    ...   ...   \n95192  zwilldu01    1914      1    CHF   FL  154        154 592.00 91.00   \n95193  zwilldu01    1915      1    CHF   FL  150        150 548.00 65.00   \n95194  zwilldu01    1916      1    CHN   NL   35         35  53.00  4.00   \n\n           H  ...    SB   CS    BB    SO  IBB  HBP    SH   SF  GIDP  G_old  \n0       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  0.00 0.00  0.00  11.00  \n1       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  1.00 0.00  0.00  45.00  \n2       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  0.00 0.00  0.00   2.00  \n...      ...  ...   ...  ...   ...   ...  ...  ...   ...  ...   ...    ...  \n95192 185.00  ... 21.00  NaN 46.00 68.00  NaN 1.00 10.00  NaN   NaN 154.00  \n95193 157.00  ... 24.00  NaN 67.00 65.00  NaN 2.00 18.00  NaN   NaN 150.00  \n95194   6.00  ...  0.00  NaN  4.00  6.00  NaN 0.00  2.00  NaN   NaN  35.00  \n\n[95195 rows x 24 columns]\n\n\n\n# AB: At Bats 타석에 나선 횟수, H: Hits; times reached base 출루한 횟수\nbatters = batting.groupby(\"playerID\")[[\"H\", \"AB\"]].sum()\nbatters = batters.assign(\n    BA = lambda x: x.H / x.AB   # BA: batting average 타율\n)\nbatters\n\n                   H          AB      BA\nplayerID                                \naardsda01    0.00000     3.00000 0.00000\naaronha01 3771.00000 12364.00000 0.30500\naaronto01  216.00000   944.00000 0.22881\n...              ...         ...     ...\nzuvelpa01  109.00000   491.00000 0.22200\nzuverge01   21.00000   142.00000 0.14789\nzwilldu01  364.00000  1280.00000 0.28437\n\n[17661 rows x 3 columns]\n\n\n\n# filtering없이 보았을 때와 비교해서 어느 정도 제외할지 고민\n(\n    so.Plot(batters.query('AB &gt; 100'), x=\"AB\", y=\"BA\")\n    .add(so.Dots(alpha=.1))\n    .add(so.Line(color=\".4\"), so.PolyFit(5))\n)\n\n\n\n\n\n# 1번 기회를 얻은 타자... 타율 100%\nbatters.sort_values(\"BA\", ascending=False).head(10)\n\n             H   AB   BA\nplayerID                \npaciojo01 3.00 3.00 1.00\ngallaja01 1.00 1.00 1.00\nsellsda01 1.00 1.00 1.00\n...        ...  ...  ...\nkehnch01  2.00 2.00 1.00\ndevinha01 2.00 2.00 1.00\nliddeda01 1.00 1.00 1.00\n\n[10 rows x 3 columns]"
   },
   {
     "objectID": "contents/exercise_transform.html",
