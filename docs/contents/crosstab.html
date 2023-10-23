@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-09-17">
+<meta name="dcterms.date" content="2023-10-04">
 
-<title>DG Data Analysis &amp; Vis - The seaborn.objects interface</title>
+<title>DG Data Analysis &amp; Vis - Cross-Tabulation and Pivot Tables</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/plots.html" rel="next">
+<link href="../contents/exercise_wrangle.html" rel="next">
+<link href="../contents/pivot.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -109,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/seaborn.html">Visualize</a></li><li class="breadcrumb-item"><a href="../contents/seaborn.html">Seaborn.objects</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/subsetting.html">Transform</a></li><li class="breadcrumb-item"><a href="../contents/combine.html">Transforming II</a></li><li class="breadcrumb-item"><a href="../contents/crosstab.html">Pivot Table</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -197,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/seaborn.html" class="sidebar-item-text sidebar-link active">
+  <a href="../contents/seaborn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Seaborn.objects</span></a>
   </div>
 </li>
@@ -284,13 +285,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Transforming II</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/combine.html" class="sidebar-item-text sidebar-link">
@@ -305,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/crosstab.html" class="sidebar-item-text sidebar-link">
+  <a href="../contents/crosstab.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Pivot Table</span></a>
   </div>
 </li>
@@ -376,7 +377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-seaborn.objects-interface" id="toc-the-seaborn.objects-interface" class="nav-link active" data-scroll-target="#the-seaborn.objects-interface">The seaborn.objects interface</a></li>
+  <li><a href="#pd.crosstab" id="toc-pd.crosstab" class="nav-link active" data-scroll-target="#pd.crosstab"><code>pd.crosstab()</code></a></li>
+  <li><a href="#pivot_table" id="toc-pivot_table" class="nav-link" data-scroll-target="#pivot_table"><code>pivot_table()</code></a></li>
   </ul>
 </nav>
     </div>
@@ -385,8 +387,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The seaborn.objects interface</h1>
-<p class="subtitle lead">mixed</p>
+<h1 class="title">Cross-Tabulation and Pivot Tables</h1>
+<p class="subtitle lead">R for Data Science by Wickham &amp; Grolemund</p>
 </div>
 
 
@@ -403,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 17, 2023</p>
+      <p class="date">October 4, 2023</p>
     </div>
   </div>
   
@@ -413,50 +415,215 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="the-seaborn.objects-interface" class="level1">
-<h1>The seaborn.objects interface</h1>
-<p>The grammer of graphics의 데이터 시각화 이론을 잘 반영하고 있으며 아직 발전 중</p>
-<p>기존 seaborn modules을 완전히 대체하지는 못하므로 필요시 병행하여 사용</p>
-<blockquote class="blockquote">
-<p>v0.12.0 (September 2022)</p>
-<p>Introduction of the objects interface</p>
-<p>This release debuts the seaborn.objects interface, an entirely new approach to making plots with seaborn. It is the product of <strong>several years of design and 16 months of implementation work</strong>. The interface aims to provide a more declarative, composable, and extensible API for making statistical graphics. It is inspired by <strong>Wilkinson’s grammar of graphics</strong>, offering a Pythonic API that is informed by the design of libraries such as <strong>ggplot2 and vega-lite</strong> along with lessons from the past 10 years of seaborn’s development.</p>
-</blockquote>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The objects interface is currently <strong>experimental and incomplete</strong>. It is stable enough for serious use, but there certainly are some rough edges and missing features.</p>
-</div>
-</div>
-<ul>
-<li><p><a href="https://seaborn.pydata.org/tutorial/objects_interface.html">The seaborn.objects interface tutorial</a></p></li>
-<li><p><a href="https://seaborn.pydata.org/api.html">API reference</a></p></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>현재 pandas 2.1.0 (Aug 30, 2023)에서 seaborn 실행시 경고메세지가 많이 발생하므로, 수업에서는 pandas 2.0.3 버전을 사용</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 버전 확인</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pd.__version__</span>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Load Packages</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; '2.0.3'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>다운그레이드 하려면, 쉘 환경에서</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; conda install pandas=2.0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Options</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy options</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a datdset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tips</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>     total_bill  tip     sex smoker   day    time  size
+0         16.99 1.01  Female     No   Sun  Dinner     2
+1         10.34 1.66    Male     No   Sun  Dinner     3
+2         21.01 3.50    Male     No   Sun  Dinner     3
+..          ...  ...     ...    ...   ...     ...   ...
+241       22.67 2.00    Male    Yes   Sat  Dinner     2
+242       17.82 1.75    Male     No   Sat  Dinner     2
+243       18.78 3.00  Female     No  Thur  Dinner     2
+
+[244 rows x 7 columns]</code></pre>
+</div>
+</div>
+<section id="pd.crosstab" class="level2">
+<h2 class="anchored" data-anchor-id="pd.crosstab"><code>pd.crosstab()</code></h2>
+<p>두 카테고리 변수의 모든 level 쌍에 대한 count.</p>
+<ul>
+<li><code>normalize</code>: 비율을 계산<br>
+</li>
+<li><code>margins</code>: 행과 열로 합</li>
+</ul>
+<p><code>groupby()</code>를 적용해 구할 수 있으나 좀 더 간결.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(tips[<span class="st">"day"</span>], tips[<span class="st">"time"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>time  Lunch  Dinner
+day                
+Thur     61       1
+Fri       7      12
+Sat       0      87
+Sun       0      76</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># groupby를 이용</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tips.groupby([<span class="st">"day"</span>, <span class="st">"time"</span>], observed<span class="op">=</span><span class="va">False</span>).size()  <span class="co"># observed: categorical type의 변수에 대한 처리 (default: True)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>day   time  
+Thur  Lunch     61
+      Dinner     1
+Fri   Lunch      7
+                ..
+Sat   Dinner    87
+Sun   Lunch      0
+      Dinner    76
+Length: 8, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># groupby &amp; unstack를 이용</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tips.groupby([<span class="st">"day"</span>, <span class="st">"time"</span>], observed<span class="op">=</span><span class="va">False</span>).size().unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>time  Lunch  Dinner
+day                
+Thur     61       1
+Fri       7      12
+Sat       0      87
+Sun       0      76</code></pre>
+</div>
+</div>
+<p>Parameters</p>
+<ul>
+<li><code>normalize</code>: 비율을 계산 (<code>index</code>, <code>columns</code>, <code>all</code>)<br>
+</li>
+<li><code>margins</code>: 행과 열로 합산</li>
+</ul>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(tips[<span class="st">"day"</span>], tips[<span class="st">"time"</span>], normalize<span class="op">=</span><span class="va">True</span>, margins<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>time  Lunch  Dinner  All
+day                     
+Thur   0.25    0.00 0.25
+Fri    0.03    0.05 0.08
+Sat    0.00    0.36 0.36
+Sun    0.00    0.31 0.31
+All    0.28    0.72 1.00</code></pre>
+</div>
+</div>
+</section>
+<section id="pivot_table" class="level2">
+<h2 class="anchored" data-anchor-id="pivot_table"><code>pivot_table()</code></h2>
+<ul>
+<li>count 대신 mean<br>
+</li>
+<li>mean 외에 다른 aggregation 함수를 지정할 수 있음<br>
+</li>
+<li>grouping을 할 변수들을 (<code>index</code> and/or <code>columns</code>)과 aggregate할 변수 지정 (<code>values</code>)</li>
+</ul>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grouping을 할 변수들을 index에 지정, aggregate할 변수 지정</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tips.pivot_table(index<span class="op">=</span>[<span class="st">"day"</span>, <span class="st">"time"</span>], values<span class="op">=</span><span class="st">"tip"</span>)  <span class="co"># dropna=True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>             tip
+day  time       
+Thur Lunch  2.77
+     Dinner 3.00
+Fri  Lunch  2.38
+     Dinner 2.94
+Sat  Dinner 2.99
+Sun  Dinner 3.26</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grouping을 할 변수들을 index &amp; columns에 지정, aggregate할 변수 지정</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tips.pivot_table(index<span class="op">=</span><span class="st">"day"</span>, columns<span class="op">=</span><span class="st">"time"</span>, values<span class="op">=</span><span class="st">"tip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>time  Lunch  Dinner
+day                
+Thur   2.77    3.00
+Fri    2.38    2.94
+Sat     NaN    2.99
+Sun     NaN    3.26</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># groupby를 이용</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tips.groupby([<span class="st">"day"</span>, <span class="st">"time"</span>], observed<span class="op">=</span><span class="va">True</span>)[<span class="st">"tip"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>day   time  
+Thur  Lunch    2.77
+      Dinner   3.00
+Fri   Lunch    2.38
+      Dinner   2.94
+Sat   Dinner   2.99
+Sun   Dinner   3.26
+Name: tip, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># groupby를 이용</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tips.groupby([<span class="st">"day"</span>, <span class="st">"time"</span>], observed<span class="op">=</span><span class="va">True</span>)[<span class="st">"tip"</span>].mean().unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>time  Lunch  Dinner
+day                
+Thur   2.77    3.00
+Fri    2.38    2.94
+Sat     NaN    2.99
+Sun     NaN    3.26</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 개 이상의 변수에 대한 aggregation</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tips.pivot_table(index<span class="op">=</span><span class="st">"day"</span>, columns<span class="op">=</span><span class="st">"time"</span>, values<span class="op">=</span>[<span class="st">"tip"</span>, <span class="st">"total_bill"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>       tip        total_bill       
+time Lunch Dinner      Lunch Dinner
+day                                
+Thur  2.77   3.00      17.66  18.78
+Fri   2.38   2.94      12.85  19.66
+Sat    NaN   2.99        NaN  20.44
+Sun    NaN   3.26        NaN  21.41</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># groupby를 이용</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tips.groupby([<span class="st">"day"</span>, <span class="st">"time"</span>])[[<span class="st">"tip"</span>, <span class="st">"total_bill"</span>]].mean().unstack()  <span class="co"># observed=True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>       tip        total_bill       
+time Lunch Dinner      Lunch Dinner
+day                                
+Thur  2.77   3.00      17.66  18.78
+Fri   2.38   2.94      12.85  19.66
+Sat    NaN   2.99        NaN  20.44
+Sun    NaN   3.26        NaN  21.41</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># margins 추가</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tips.pivot_table(index<span class="op">=</span><span class="st">"day"</span>, columns<span class="op">=</span><span class="st">"time"</span>, values<span class="op">=</span><span class="st">"tip"</span>, margins<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>time  Lunch  Dinner  All
+day                     
+Thur   2.77    3.00 2.77
+Fri    2.38    2.94 2.73
+Sat     NaN    2.99 2.99
+Sun     NaN    3.26 3.26
+All    2.73    3.10 3.00</code></pre>
 </div>
 </div>
 
@@ -713,10 +880,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../contents/pivot.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pivot</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/plots.html" class="pagination-link">
-        <span class="nav-page-text">Plots</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/exercise_wrangle.html" class="pagination-link">
+        <span class="nav-page-text">Exercises</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

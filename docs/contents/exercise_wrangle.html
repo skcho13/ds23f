@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-09-17">
+<meta name="dcterms.date" content="2023-10-04">
 
-<title>DG Data Analysis &amp; Vis - The seaborn.objects interface</title>
+<title>DG Data Analysis &amp; Vis - Exercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/plots.html" rel="next">
+<link href="../contents/billboard.html" rel="next">
+<link href="../contents/crosstab.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -109,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/seaborn.html">Visualize</a></li><li class="breadcrumb-item"><a href="../contents/seaborn.html">Seaborn.objects</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/subsetting.html">Transform</a></li><li class="breadcrumb-item"><a href="../contents/combine.html">Transforming II</a></li><li class="breadcrumb-item"><a href="../contents/exercise_wrangle.html">Exercises</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -197,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/seaborn.html" class="sidebar-item-text sidebar-link active">
+  <a href="../contents/seaborn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Seaborn.objects</span></a>
   </div>
 </li>
@@ -284,13 +285,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Transforming II</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/combine.html" class="sidebar-item-text sidebar-link">
@@ -311,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/exercise_wrangle.html" class="sidebar-item-text sidebar-link">
+  <a href="../contents/exercise_wrangle.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercises</span></a>
   </div>
 </li>
@@ -376,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-seaborn.objects-interface" id="toc-the-seaborn.objects-interface" class="nav-link active" data-scroll-target="#the-seaborn.objects-interface">The seaborn.objects interface</a></li>
+  <li><a href="#the-nycflight13-datasets" id="toc-the-nycflight13-datasets" class="nav-link active" data-scroll-target="#the-nycflight13-datasets">The nycflight13 datasets</a></li>
   </ul>
 </nav>
     </div>
@@ -385,8 +386,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The seaborn.objects interface</h1>
-<p class="subtitle lead">mixed</p>
+<h1 class="title">Exercises</h1>
+<p class="subtitle lead">R for Data Science by Wickham &amp; Grolemund</p>
 </div>
 
 
@@ -403,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 17, 2023</p>
+      <p class="date">October 4, 2023</p>
     </div>
   </div>
   
@@ -413,52 +414,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="the-seaborn.objects-interface" class="level1">
-<h1>The seaborn.objects interface</h1>
-<p>The grammer of graphics의 데이터 시각화 이론을 잘 반영하고 있으며 아직 발전 중</p>
-<p>기존 seaborn modules을 완전히 대체하지는 못하므로 필요시 병행하여 사용</p>
-<blockquote class="blockquote">
-<p>v0.12.0 (September 2022)</p>
-<p>Introduction of the objects interface</p>
-<p>This release debuts the seaborn.objects interface, an entirely new approach to making plots with seaborn. It is the product of <strong>several years of design and 16 months of implementation work</strong>. The interface aims to provide a more declarative, composable, and extensible API for making statistical graphics. It is inspired by <strong>Wilkinson’s grammar of graphics</strong>, offering a Pythonic API that is informed by the design of libraries such as <strong>ggplot2 and vega-lite</strong> along with lessons from the past 10 years of seaborn’s development.</p>
-</blockquote>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The objects interface is currently <strong>experimental and incomplete</strong>. It is stable enough for serious use, but there certainly are some rough edges and missing features.</p>
-</div>
-</div>
-<ul>
-<li><p><a href="https://seaborn.pydata.org/tutorial/objects_interface.html">The seaborn.objects interface tutorial</a></p></li>
-<li><p><a href="https://seaborn.pydata.org/api.html">API reference</a></p></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>현재 pandas 2.1.0 (Aug 30, 2023)에서 seaborn 실행시 경고메세지가 많이 발생하므로, 수업에서는 pandas 2.0.3 버전을 사용</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 버전 확인</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pd.__version__</span>
+<div class="cell">
+<details>
+<summary>Load Packages</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; '2.0.3'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>다운그레이드 하려면, 쉘 환경에서</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; conda install pandas=2.0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+<div class="cell">
+<details>
+<summary>Options</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy options</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+<section id="the-nycflight13-datasets" class="level1">
+<h1>The nycflight13 datasets</h1>
+<p>Combine 섹션에서 다른 <code>nycflight13</code>의 4개의 relational data를 이용하세요.</p>
+<ol type="1">
+<li><p>Add the location of the origin&nbsp;<em>and</em>&nbsp;destination (i.e.&nbsp;the&nbsp;<code>lat</code>&nbsp;and&nbsp;<code>lon</code> in <code>airports</code>) to&nbsp;<code>flights</code>.</p></li>
+<li><p>Is there a relationship between the age of a plane and its delays?</p></li>
+<li><p>What weather conditions make it more likely to see a delay?</p></li>
+<li><p><code>flights</code> 테이블에서 하루 평균 도착지연(<code>arr_delay</code>)가 가장 큰 10일에 해당하는 항공편을 선택</p></li>
+<li><p><code>flights</code> 테이블의 도착지(<code>dest</code>)에 대한 공항정보가 <code>airports</code> 테이블에 없는 그러한 도착지(<code>dest</code>)를 구하면?</p></li>
+<li><p>Filter flights (항공편) in <code>flights</code> to only show flights with planes that have flown at least 100 flights.</p></li>
+<li><p>Find the 48 hours (over the course of the whole year) that have the worst (departure) delays.</p>
+<ul>
+<li>flights의 hour 열을 이용할 것</li>
+</ul></li>
+<li><p>You might expect that there’s an implicit relationship between plane and airline, because each plane is flown by a single airline. Confirm or reject this hypothesis using the tools you’ve learned above.</p>
+<ul>
+<li>즉, 각 비행기는 특정 항공사에서만 운행되는가의 질문임. 2개 이상의 항공사에서 운항되는 비행기가 있는지 확인해 볼 것</li>
+<li>그리고, 2개 이상의 항공사에서 운항되는 비행기들만 포함하고, 그 항공사들의 full name을 함께 포함하는 테이블을 만들어 볼 것</li>
+</ul></li>
+</ol>
 
 
 </section>
@@ -711,12 +714,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
+
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../contents/crosstab.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pivot Table</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/plots.html" class="pagination-link">
-        <span class="nav-page-text">Plots</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/billboard.html" class="pagination-link">
+        <span class="nav-page-text">Billboard</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
