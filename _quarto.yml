@@ -81,9 +81,9 @@ website:
               - href: contents/crosstab.ipynb
                 text: Pivot Table
               - href: contents/exercise_wrangle.ipynb
-      #     # - section: Solutions
-      #     #   contents:
-      #     #     - href: contents/sol1.ipynb
+      - section: Solutions
+        contents:
+          - href: contents/sol1.ipynb
       #     #     - href: contents/sol2.ipynb
       - section: Exercises
         contents:

@@ -322,12 +322,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">Exercises</span></a>
+ <span class="menu-text">Solutions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/sol1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transform 1 Sol</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Exercises</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/billboard.html" class="sidebar-item-text sidebar-link">
@@ -345,13 +362,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -605,7 +622,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ul>
 <li>5번에서 구한 <code>popular_movies</code>에 한해 남녀 각각에 대해 영화별로 평점의 편차를 표준편차로 구해보고,
 <ul>
-<li>5번을 못 구한 경우, 다음 <a href="https://www.dropbox.com/s/f2qu13s9z6kv25f/popular_movies.csv?dl=1">파일</a>을 다운로드 받아 <code>popular_movies</code>로 사용합니다.</li>
+<li>5번을 못 구한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/tcs3pf6yd5hg386luunzb/popular_movies.csv?rlkey=r4kk3tjxhsea538wu1or164j3&amp;dl=1">파일</a>을 다운로드 받아 <code>popular_movies</code>로 사용합니다.</li>
 </ul></li>
 <li>남녀별로 편차 상위 2개만 표시합니다. (동등한 순서 모두 포함)
 <ul>
@@ -715,7 +732,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>50: “50-55”</li>
 <li>56: “56+”</li>
 </ul>
-<p>9번에서 데이터를 만들지 못한 경우 경우, 다음 .parquet <a href="https://www.dropbox.com/s/urchxe0n7g7w8np/movies_long_all.parquet?dl=1">파일</a>을 받아 이용해 다음 문제를 이어가세요.</p>
+<p>9번에서 데이터를 만들지 못한 경우 경우, 다음 .parquet <a href="https://www.dropbox.com/scl/fi/t85szukc0qzwp7up2ho01/movies_long_all.parquet?rlkey=bss0kp2dab1yln83e8gr9vipy&amp;dl=1">파일</a>을 받아 이용해 다음 문제를 이어가세요.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pd.read_parquet(<span class="st">"data/movies_long_all.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>10.1 우선, 위에서 western 장르가 남녀의 평점 차이가 가장 크게 나타나 남성이 선호하는 것으로 보이는데 western 장르만 따로 떼어 나이대/남녀 별로 rating에 차이가 있는지 살펴봅니다.</p>
 <ul>

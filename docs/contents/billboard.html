@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../contents/movielens.html" rel="next">
-<link href="../contents/exercise_wrangle.html" rel="prev">
+<link href="../contents/sol1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -323,12 +323,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">Exercises</span></a>
+ <span class="menu-text">Solutions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/sol1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transform 1 Sol</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Exercises</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/billboard.html" class="sidebar-item-text sidebar-link active">
@@ -346,13 +363,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -554,7 +571,7 @@ Note
 <ul>
 <li>5.1 먼저, 위 곡들만을 포함하도록 4번의 데이터와 원래 데이터(<code>billboard_long</code>)를 <code>merge()</code>를 이용해 추린 후, 50주 이상 머문 곡으로 필터링하세요.
 <ul>
-<li>4번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/s/fo1ous1xmsqiqj9/wks_50.csv?dl=1">파일</a>을 받아 이용하세요.</li>
+<li>4번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/ucgi267nn2vjkoyquur77/wks_50.csv?rlkey=ma8yiz06y47kdy6olhmtdd1zc&amp;dl=1">파일</a>을 받아 이용하세요.</li>
 </ul></li>
 <li>5.2 <code>seaborn.objects</code>를 이용해 <strong>대략</strong> 다음과 같이 주에 따른 순위의 변화를 그려보세요. <img src="images/plot_ex1.png" class="img-fluid" width="540"></li>
 </ul>
@@ -590,7 +607,7 @@ Note
 <li>빠르게 1위가 된 곡일 수록 빠르게 차트에서 사라졌을까를 알아보기 위해, 7번의 결과를 이용해 다음과 같이 변형해보세요.</li>
 </ol>
 <ul>
-<li><p>7번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/s/8lrl7c2u5t34jiv/wk_rank.csv?dl=1">파일</a>을 받아 이용하세요.</p></li>
+<li><p>7번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/l9fm5cqzrr1vyzgnx31xj/wk_rank.csv?rlkey=tokg1kv9ecqevesfep1ysy2sg&amp;dl=1">파일</a>을 받아 이용하세요.</p></li>
 <li><p>즉, 차트 진입시의 순위 정보와, 1위가 된 week의 정보만을 취해, 그 비율(<code>rate</code>)를 구하면, 얼마나 빠르게 1위가 되었는지 알 수 있습니다.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                 artist                    track  wk  rank   rate</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              Aaliyah                Try Again  14 59.00   4.21</span></span>
@@ -856,8 +873,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/exercise_wrangle.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercises</span>
+      <a href="../contents/sol1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transform 1 Sol</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
