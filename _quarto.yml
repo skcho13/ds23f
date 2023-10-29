@@ -8,8 +8,8 @@ project:
     #- "!exercise*.ipynb"
     - "!contents/*.py"
     - "!final*.ipynb"
-    - "model*.ipynb"
-    - "statistic.ipynb"
+    - "!model*.ipynb"
+    - "!statistic.ipynb"
   resources: CNAME
 
 website:
@@ -36,7 +36,7 @@ website:
     #     href: 
     #     text: "GitHub organization"
     style: "docked"
-    search: false
+    search: true
     collapse-level: 2
     
     contents:
