@@ -1514,38 +1514,38 @@ N956AT  47.65     34</code></pre>
 </section>
 <section id="section-9" class="level3">
 <h3 class="anchored" data-anchor-id="section-9">5.</h3>
-<div class="cell" data-execution_count="371">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. For each plane, count the number of flights before the first delay of greater than 1 hour.</span></span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>flights_first_delay <span class="op">=</span> (</span>
-<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    flights[flights.arr_delay.notna()][[<span class="st">"tailnum"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"arr_delay"</span>]]</span>
-<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>    .assign(delay_1h<span class="op">=</span><span class="kw">lambda</span> x: (x.arr_delay <span class="op">&gt;</span> <span class="dv">60</span>))</span>
-<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>    .sort_values([<span class="st">"tailnum"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>])</span>
-<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>flights_first_delay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="371">
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    flights</span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"arr_delay.notna()"</span>)</span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>    .loc[:, [<span class="st">"tailnum"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"arr_delay"</span>]]</span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>    .assign(delay_1h<span class="op">=</span><span class="kw">lambda</span> x: x.arr_delay <span class="op">&gt;</span> <span class="dv">60</span>)</span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>    .sort_values([<span class="st">"tailnum"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>])</span>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a>flights_first_delay.head(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>       tailnum  year  month  day  arr_delay  delay_1h
 120316  D942DN  2013      2   11      91.00      True
 157233  D942DN  2013      3   23      44.00     False
 157799  D942DN  2013      3   24       2.00     False
-...        ...   ...    ...  ...        ...       ...
-107510  N9EAMQ  2013     12   27     -18.00     False
-109161  N9EAMQ  2013     12   29      48.00     False
-109420  N9EAMQ  2013     12   29      53.00     False
-
-[327346 rows x 6 columns]</code></pre>
+254418  D942DN  2013      7    5     -11.00     False
+523     N0EGMQ  2013      1    1      67.00      True
+792     N0EGMQ  2013      1    1      17.00     False
+1025    N0EGMQ  2013      1    2      -6.00     False</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="373">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    flights_first_delay.groupby(<span class="st">"tailnum"</span>)</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.delay_1h.cumsum())</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    flights_first_delay.groupby(<span class="st">"tailnum"</span>)[<span class="st">"delay_1h"</span>]</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(np.cumsum)</span>
 <span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>    .reset_index(level<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"tailnum"</span>)</span>
 <span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.<span class="bu">sum</span>(x.delay_1h <span class="op">&lt;</span> <span class="dv">1</span>))</span>
 <span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>    .sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="373">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tailnum
 N717TW    119
 N765US     97
@@ -1555,6 +1555,43 @@ N376AA      0
 N378AA      0
 D942DN      0
 Length: 4037, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>flights_first_delay[<span class="st">"cumulative_sum"</span>] <span class="op">=</span> (</span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>    flights_first_delay.groupby(<span class="st">"tailnum"</span>)[<span class="st">"delay_1h"</span>]</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>    .transform(<span class="st">"cumsum"</span>)</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>flights_first_delay.iloc[<span class="dv">353</span>:<span class="dv">377</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>       tailnum  year  month  day  arr_delay  delay_1h  cumulative_sum
+109925  N0EGMQ  2013     12   30      32.00     False              29
+110289  N0EGMQ  2013     12   30      27.00     False              29
+111144  N0EGMQ  2013     12   31     122.00      True              30
+7956    N10156  2013      1   10       2.00     False               0
+8238    N10156  2013      1   10      40.00     False               0
+8513    N10156  2013      1   10      47.00     False               0
+8898    N10156  2013      1   11     -12.00     False               0
+9174    N10156  2013      1   11      -8.00     False               0
+9594    N10156  2013      1   11      27.00     False               0
+9907    N10156  2013      1   12     -20.00     False               0
+10127   N10156  2013      1   12      -5.00     False               0
+10926   N10156  2013      1   13      20.00     False               0
+11240   N10156  2013      1   13     123.00      True               1
+11444   N10156  2013      1   14      20.00     False               1
+12973   N10156  2013      1   15      12.00     False               1
+13536   N10156  2013      1   16      37.00     False               1
+13902   N10156  2013      1   16     112.00      True               2
+14385   N10156  2013      1   17       7.00     False               2
+14734   N10156  2013      1   17     123.00      True               3
+14910   N10156  2013      1   17      15.00     False               3
+15106   N10156  2013      1   18      15.00     False               3
+18286   N10156  2013      1   22      13.00     False               3
+18540   N10156  2013      1   22     101.00      True               4
+18950   N10156  2013      1   22      78.00      True               5</code></pre>
 </div>
 </div>
 
