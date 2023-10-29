@@ -8,6 +8,8 @@ project:
     #- "!exercise*.ipynb"
     - "!contents/*.py"
     - "!final*.ipynb"
+    - "model*.ipynb"
+    - "statistic.ipynb"
   resources: CNAME
 
 website:
@@ -102,7 +104,7 @@ website:
       # - text: ---
       # - section: Modelling
       #   contents:
-      #     - href: contents/modelbasic.ipynb
+      #     - href: contents/model-basic.ipynb
       #     - href: contents/modelling1.ipynb
       #     - href: contents/modelling2.ipynb
       #     - href: contents/logistic.ipynb
