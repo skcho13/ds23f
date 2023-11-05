@@ -371,6 +371,13 @@
     "text": "Box plot\n\npenguins = sns.load_dataset(\"penguins\")\n\n\nimport plotly.express as px\n\npx.box(penguins.dropna(subset=[\"sex\"]), x=\"species\", y=\"bill_length_mm\", color=\"island\",  facet_col=\"sex\")\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\npenguins = sns.load_dataset(\"penguins\")\n\nsns.catplot(\n    data=penguins, x=\"species\", y=\"bill_length_mm\", hue=\"sex\", col=\"island\",\n    kind=\"box\", height=4, aspect=.6,\n)\nplt.show()"
   },
   {
+    "objectID": "contents/vote.html",
+    "href": "contents/vote.html",
+    "title": "설문",
+    "section": "",
+    "text": "중간 점검!\n여기를 눌러 설문조사에 참여해주세요!"
+  },
+  {
     "objectID": "contents/notice.html",
     "href": "contents/notice.html",
     "title": "Notice",
@@ -474,6 +481,13 @@
     "title": "데이터 분석 및 시각화",
     "section": "데이터 시각화",
     "text": "데이터 시각화\nData Visualization \n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\nInteractive"
+  },
+  {
+    "objectID": "contents/vote-result.html",
+    "href": "contents/vote-result.html",
+    "title": "Vote",
+    "section": "",
+    "text": "중간 점검!"
   },
   {
     "objectID": "index.html",
