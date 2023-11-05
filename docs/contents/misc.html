@@ -116,15 +116,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
           if (password === correctPassword) {
               document.getElementById("password-form").style.display = "none";
-              document.getElementById("quarto-content").style.display = "block";
-              document.getElementById("quarto-search-results").style.display = "block";
+              document.getElementById("quarto-content").style.display = "";
+              document.getElementById("quarto-search-results").style.display = "";
           } else {
               alert("패스워드가 올바르지 않습니다. 다시 시도하세요.");
           }
       }
   </script>
 
-<div id="quarto-search-results" style="display: none;"></div>
+<div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <!-- content -->
-<div id="quarto-content"  class="quarto-container page-columns page-rows-contents page-layout-article" style="display: none;">
+<div id="quarto-content"  class="quarto-container page-columns page-rows-contents page-layout-article" style="display:">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
