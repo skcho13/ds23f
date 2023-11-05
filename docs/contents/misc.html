@@ -118,11 +118,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         function checkPassword() {
             const password = document.getElementById("password-input").value;
-            const correctPassword = "your_password_here"; // 여기에 실제 패스워드를 입력하세요
+            const correctPassword = "abc"; // 여기에 실제 패스워드를 입력하세요
 
             if (password === correctPassword) {
                 document.getElementById("password-form").style.display = "none";
-                document.getElementById("content").style.display = "block";
+                document.getElementById("quarto-content").style.display = "";
+                document.getElementById("quarto-search-results").style.display = "";
             } else {
                 alert("패스워드가 올바르지 않습니다. 다시 시도하세요.");
             }
