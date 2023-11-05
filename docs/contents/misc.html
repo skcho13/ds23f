@@ -59,33 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script type="text/javascript">
-  function checkPassword() {
-    var password = document.getElementById('password').value;
-    if (password === 'your_password') {
-      document.getElementById('content').style.display = 'block';
-    } else {
-      alert('Incorrect password');
-    }
-  }
-</script>
-</head>
-<body>
-  <form onsubmit="event.preventDefault(); checkPassword();">
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br>
-    <input type="submit" value="Login">
-  </form>
-  <div id="content" style="display: none;">
-    <!-- ...existing body content... -->
-  </div>
-</body>
-</html>
-
-
-
-
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -129,6 +102,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
+  <script>
+    function checkPassword() {
+        const password = document.getElementById("passwordInput").value;
+        const correctPassword = "abc"; // 여기에 실제 패스워드를 입력하세요
+
+        if (password === correctPassword) {
+            document.getElementById("passwordInput").style.display = "none";
+            document.getElementById("quarto-content").style.display = "block";
+        } else {
+            alert("패스워드가 올바르지 않습니다. 다시 시도하세요.");
+        }
+    } 
+
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -146,8 +133,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav>
 </header>
+
+<div id="passwordPage">
+        <h2>패스워드를 입력하세요</h2>
+        <input type="password" id="passwordInput">
+        <button onclick="checkPassword()">확인</button>
+</div>
+
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content"  class="quarto-container page-columns page-rows-contents page-layout-article" style="display: none;">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
