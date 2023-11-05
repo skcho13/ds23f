@@ -102,73 +102,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
-  <div id="password-form">
-        <h2>패스워드를 입력하세요</h2>
-        <input type="password" id="password-input" placeholder="패스워드" onkeydown="checkEnter(event)">
-        <button onclick="checkPassword()">확인</button>
-    </div>
 
-
-  <script>
-        function checkEnter(event) {
-            if (event.key === "Enter") {
-                checkPassword();
-            }
-        }
-
-        function checkPassword() {
-            const password = document.getElementById("password-input").value;
-            const correctPassword = "abc"; // 여기에 실제 패스워드를 입력하세요
-
-            if (password === correctPassword) {
-                document.getElementById("password-form").style.display = "none";
-                document.getElementById("quarto-content").style.display = "";
-                document.getElementById("quarto-search-results").style.display = "";
-            } else {
-                alert("패스워드가 올바르지 않습니다. 다시 시도하세요.");
-            }
-        }
-    </script>
-
-<style>
-    /* 패스워드 입력 폼 스타일 */
-    #password-form {
-        text-align: center;
-        margin-top: 50px;
-    }
-
-    #password-input {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    button {
-        padding: 10px 20px;
-        background-color: #3498db;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #2980b9;
-    }
-
-    /* 보호된 컨텐츠 스타일 */
-    #content {
-        margin-top: 20px;
-        text-align: center;
-        padding: 20px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-</style>
-
-
-<div id="quarto-search-results" style="display: none;"></div>
+<div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
@@ -184,9 +119,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav>
 </header>
-
 <!-- content -->
-<div id="quarto-content"  class="quarto-container page-columns page-rows-contents page-layout-article" style="display: none;">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
@@ -928,7 +862,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer" style="display: none;">
+<footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
     <div class="nav-footer-center">
