@@ -42,8 +42,8 @@ website:
     contents:
       - href: index.qmd
       - href: contents/notice.qmd
-      # - href: contents/vote.qmd
-      #   text: 설문!
+      - href: contents/vote.qmd
+        text: 설문!
       - text: ---
       - section: Introduction
         contents:
@@ -94,12 +94,12 @@ website:
         contents:
           - href: contents/billboard.ipynb
             text: Billboard
-      #       # contents:
-      #       #   - href: contents/exercise1_sol.ipynb
+          - href: contents/billboard_sol.ipynb
+            text: "> solutions"
           - href: contents/movielens.ipynb
             text: MovieLens
-      #       # contents:
-      #       #   - href: contents/exercise2_sol.ipynb
+          - href: contents/movielens_sol.ipynb
+            text: "> solutions"
       - text: ---
       - section: contents/eda.ipynb
         contents:
