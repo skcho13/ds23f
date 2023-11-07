@@ -149,8 +149,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/vote.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">설문!</span></a>
+  <a href="https://docs.google.com/document/d/1XEjucC-iVVXiyppnp2hpL9Zn0ZGQbOeD9V-4jWFB3vk/edit?usp=sharing" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">==== 중간고사 ====</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -902,6 +902,18 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><p>13.2 구현된 코드로 실행한 결과를 표시해보세요.</p>
 <p>예를 들어, 유저별로 장르마다 몇 %씩을 평가했는지와 전체 유저의 장르별 평가 비율을 구해 상대적으로 유저들이 얼마나 치우쳐 장르를 소비하는 지를 알아보는 방식도 좋겠습니다.</p></li>
 </ul>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tips.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>   total_bill  tip     sex smoker  day    time  size
+0       16.99 1.01  Female     No  Sun  Dinner     2
+1       10.34 1.66    Male     No  Sun  Dinner     3
+2       21.01 3.50    Male     No  Sun  Dinner     3
+3       23.68 3.31    Male     No  Sun  Dinner     2
+4       24.59 3.61  Female     No  Sun  Dinner     4</code></pre>
+</div>
+</div>
 
 
 </section>

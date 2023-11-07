@@ -8,6 +8,7 @@ project:
     #- "!exercise*.ipynb"
     - "!contents/*.py"
     - "!final*.ipynb"
+    - "!midterm*.ipynb"
     - "!model*.ipynb"
     - "!statistic.ipynb"
   resources: CNAME
@@ -42,8 +43,10 @@ website:
     contents:
       - href: index.qmd
       - href: contents/notice.qmd
-      - href: contents/vote.qmd
-        text: 설문!
+      # - href: contents/vote.qmd
+      #   text: 설문!
+      - href: https://docs.google.com/document/d/1XEjucC-iVVXiyppnp2hpL9Zn0ZGQbOeD9V-4jWFB3vk/edit?usp=sharing
+        text: "==== 중간고사 ===="
       - text: ---
       - section: Introduction
         contents:

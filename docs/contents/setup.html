@@ -149,8 +149,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/vote.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">설문!</span></a>
+  <a href="https://docs.google.com/document/d/1XEjucC-iVVXiyppnp2hpL9Zn0ZGQbOeD9V-4jWFB3vk/edit?usp=sharing" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">==== 중간고사 ====</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -571,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>환경 activate/deactivate</p>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; conda activate myenv</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; conda deactivate  # activated 환경 내에서</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; conda deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>특정 환경 안의 파이썬 버전 확인</p>
 <div class="cell">
@@ -587,9 +587,9 @@ Jupyter notebook을 쓰는 경우
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>새로 만든 가상환경을 등록해줘야 함.</p>
+<p>새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; ipython kernel install --user --name=myenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>가상환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.</p>
+<p>환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.</p>
 <p>등록된 커널 리스트를 확인</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; jupyter kernelspec list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>커널 삭제</p>
@@ -615,7 +615,7 @@ Jupyter notebook을 쓰는 경우
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; conda list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 환경 밖에서 특정 환경 안에 설치하려면 환경이름 추가</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#(base)&gt; conda install --name myenv &lt;package name1&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="14">
