@@ -147,8 +147,8 @@ format:
         highlight-style: Ayu-light
         link-external-newwindow: true
         header-includes: <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css2?family=Sometype+Mono">
-        grid:
-          sidebar-width: 270px
+        # grid:
+        #   sidebar-width: 270px
         # css: styles.css
 
 
