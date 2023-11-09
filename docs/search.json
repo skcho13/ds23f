@@ -364,46 +364,11 @@
     "text": "중간 점검!\n여기를 눌러 설문조사에 참여해주세요!"
   },
   {
-    "objectID": "contents/notice.html",
-    "href": "contents/notice.html",
-    "title": "Notice",
+    "objectID": "contents/shortcuts.html",
+    "href": "contents/shortcuts.html",
+    "title": "오늘의 숏컷",
     "section": "",
-    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens"
-  },
-  {
-    "objectID": "contents/notice.html#과제",
-    "href": "contents/notice.html#과제",
-    "title": "Notice",
-    "section": "",
-    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens"
-  },
-  {
-    "objectID": "contents/notice.html#중간고사-11월-8일-수",
-    "href": "contents/notice.html#중간고사-11월-8일-수",
-    "title": "Notice",
-    "section": "중간고사 11월 8일 (수)",
-    "text": "중간고사 11월 8일 (수)"
-  },
-  {
-    "objectID": "contents/notice.html#기말고사",
-    "href": "contents/notice.html#기말고사",
-    "title": "Notice",
-    "section": "기말고사",
-    "text": "기말고사"
-  },
-  {
-    "objectID": "contents/notice.html#개별-프로젝트",
-    "href": "contents/notice.html#개별-프로젝트",
-    "title": "Notice",
-    "section": "개별 프로젝트",
-    "text": "개별 프로젝트"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "text": "ctrl/cmd + /"
   },
   {
     "objectID": "contents/intro.html#미래-데이터의-중요성",
@@ -467,6 +432,48 @@
     "title": "데이터 분석 및 시각화",
     "section": "데이터 시각화",
     "text": "데이터 시각화\nData Visualization \n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\nInteractive"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "contents/notice.html",
+    "href": "contents/notice.html",
+    "title": "Notice",
+    "section": "",
+    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens"
+  },
+  {
+    "objectID": "contents/notice.html#과제",
+    "href": "contents/notice.html#과제",
+    "title": "Notice",
+    "section": "",
+    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens"
+  },
+  {
+    "objectID": "contents/notice.html#중간고사-11월-8일-수",
+    "href": "contents/notice.html#중간고사-11월-8일-수",
+    "title": "Notice",
+    "section": "중간고사 11월 8일 (수)",
+    "text": "중간고사 11월 8일 (수)"
+  },
+  {
+    "objectID": "contents/notice.html#기말고사",
+    "href": "contents/notice.html#기말고사",
+    "title": "Notice",
+    "section": "기말고사",
+    "text": "기말고사"
+  },
+  {
+    "objectID": "contents/notice.html#개별-프로젝트",
+    "href": "contents/notice.html#개별-프로젝트",
+    "title": "Notice",
+    "section": "개별 프로젝트",
+    "text": "개별 프로젝트"
   },
   {
     "objectID": "contents/vote-result.html",
@@ -606,28 +613,35 @@
     "href": "contents/customizing.html#scales-and-layouts",
     "title": "Customizing",
     "section": "Scales and layouts",
-    "text": "Scales and layouts\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(.5))\n    .scale(color=\"Set2\")  # color palettes: \"Set2\"\n    .layout(size=(8, 5))  # plot size\n)\n\n\n\n\n\ndiamonds = sns.load_dataset(\"diamonds\")\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\", marker=\"cut\")\n    .add(so.Dots())\n    .scale(\n        color=so.Continuous(\"crest\", norm=(0, 3), trans=\"sqrt\"),\n    )\n)\n\n\n\n\nChoosing color palettes"
+    "text": "Scales and layouts\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(0.5))\n    .scale(color=\"Set2\")  # color palettes: \"Set2\"\n    .layout(size=(8, 5))  # plot size\n)\n\n\n\n\n\n\n\n\n\ndiamonds = sns.load_dataset(\"diamonds\")\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\", marker=\"cut\")\n    .add(so.Dots())\n    .scale(\n        color=so.Continuous(\"crest\", norm=(0, 3), trans=\"sqrt\"),\n    )\n)\n\n\n\n\n\n\n\n\nChoosing color palettes"
   },
   {
     "objectID": "contents/customizing.html#legends-and-ticks",
     "href": "contents/customizing.html#legends-and-ticks",
     "title": "Customizing",
     "section": "Legends and ticks",
-    "text": "Legends and ticks\n\n(\n    so.Plot(penguins, x=\"species\")\n    .add(so.Bar(), so.Count())\n    .scale(x=so.Nominal(order=[\"Adelie\", \"Gentoo\", \"Chinstrap\"])) # x축의 카테고리 순서를 변경\n)\n\n\n\n\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\")\n    .add(so.Dots())\n    .scale(\n        x=so.Continuous().tick(every=0.5),\n        y=so.Continuous().label(like=\"${x:.0f}\"), # %표시: like=\"{x:.1f%}\" \n        color=so.Continuous().tick(at=[1, 2, 3, 4]),\n    )\n)"
+    "text": "Legends and ticks\n\n(\n    so.Plot(penguins, x=\"species\")\n    .add(so.Bar(), so.Count())\n    .scale(x=so.Nominal(order=[\"Adelie\", \"Gentoo\", \"Chinstrap\"]))  # x축의 카테고리 순서를 변경\n)\n\n\n\n\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"carat\", y=\"price\", color=\"carat\")\n    .add(so.Dots())\n    .scale(\n        x=so.Continuous().tick(every=0.5),\n        y=so.Continuous().label(like=\"${x:.0f}\"),  # %표시: like=\"{x:.1f%}\"\n        color=so.Continuous().tick(at=[1, 2, 3, 4]),\n    )\n)"
   },
   {
     "objectID": "contents/customizing.html#limits-labels-and-titles",
     "href": "contents/customizing.html#limits-labels-and-titles",
     "title": "Customizing",
     "section": "Limits, labels, and titles",
-    "text": "Limits, labels, and titles\nPlot has a number of methods for simple customization, including Plot.label(), Plot.limit(), and Plot.share():\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(.5))\n    .share(x=False)\n    .limit(y=(2.5, -.5))\n    .label(\n        x=\"Body mass (g)\", y=\"\",\n        color=str.capitalize,\n        title=\"{} penguins\".format,\n    )\n)"
+    "text": "Limits, labels, and titles\nPlot has a number of methods for simple customization, including Plot.label(), Plot.limit(), and Plot.share():\n\npenguins = sns.load_dataset(\"penguins\")\n\n(\n    so.Plot(penguins, x=\"body_mass_g\", y=\"species\", color=\"island\")\n    .facet(col=\"sex\")\n    .add(so.Dot(), so.Jitter(0.5))\n    .share(x=False)\n    .limit(y=(2.5, -0.5))\n    .label(\n        x=\"Body mass (g)\",\n        y=\"\",\n        color=str.capitalize,\n        title=\"{} penguins\".format,\n    )\n)"
   },
   {
     "objectID": "contents/customizing.html#themes",
     "href": "contents/customizing.html#themes",
     "title": "Customizing",
     "section": "Themes",
-    "text": "Themes\nmatplotlib rc parameters을 dictionary로 받음.\n\ntips = sns.load_dataset(\"tips\")\np = (\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\")\n    .add(so.Dot())\n)\np.theme({\"axes.facecolor\": \"white\", \n         \"axes.edgecolor\": \"0.8\", \n         'axes.spines.top': False,\n         'axes.spines.right': False})\n\n\n\n\n\n\n\n\nseaborn.axes_style\n\nfrom seaborn import axes_style\np.theme({**axes_style(\"whitegrid\"), \"grid.linestyle\": \":\"})\n\n\n\n\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\np.theme({**style.library[\"fivethirtyeight\"]})\n\n\n\n\n\n\n\n\n플랏 단위가 아닌 전체 플랏에 대해 적용하려면,\nPlot.config.theme.update()을 사용\n\ntheme_dict = {**sns.axes_style(\"whitegrid\"), \"grid.linestyle\": \":\"}\nso.Plot.config.theme.update(theme_dict)"
+    "text": "Themes\nmatplotlib rc parameters을 dictionary로 받음.\n\ntips = sns.load_dataset(\"tips\")\np = so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"time\").add(so.Dot())\np.theme(\n    {\n        \"axes.facecolor\": \"white\",\n        \"axes.edgecolor\": \"0.8\",\n        \"axes.spines.top\": False,\n        \"axes.spines.right\": False,\n    }\n)\n\n\n\n\n\n\n\n\n\n현재 style 속성값 확인print\n\n\nsns.axes_style()\nseaborn.axes_style\nseaborn.set_theme\n\n\nsns.axes_style()\n\n# {'axes.facecolor': 'white',\n#  'axes.edgecolor': 'black',\n#  'axes.grid': False,\n#  'axes.axisbelow': 'line',\n#  'axes.labelcolor': 'black',\n#  'figure.facecolor': 'white',\n#  'grid.color': '#b0b0b0',\n#  'grid.linestyle': '-',\n#  'text.color': 'black',\n#  'xtick.color': 'black',\n#  'ytick.color': 'black',\n#  'xtick.direction': 'out',\n#  'ytick.direction': 'out',\n#  'lines.solid_capstyle': &lt;CapStyle.projecting: 'projecting'&gt;,\n#  'patch.edgecolor': 'black',\n#  'patch.force_edgecolor': False,\n#  'image.cmap': 'viridis',\n#  'font.family': ['NanumGothic'],\n#  'font.sans-serif': ['DejaVu Sans',\n#   'Bitstream Vera Sans',\n#   'Computer Modern Sans Serif',\n#   'Lucida Grande',\n#   'Verdana',\n#   'Geneva',\n#   'Lucid',\n#   'Arial',\n#   'Helvetica',\n#   'Avant Garde',\n#   'sans-serif'],\n#  'xtick.bottom': True,\n#  'xtick.top': False,\n#  'ytick.left': True,\n#  'ytick.right': False,\n#  'axes.spines.left': True,\n#  'axes.spines.bottom': True,\n#  'axes.spines.right': True,\n#  'axes.spines.top': True}\n\n\n\n\nfrom seaborn import axes_style\n\np.theme({**axes_style(\"whitegrid\"), \"grid.linestyle\": \":\"})\n\n\n\n\n\n\n\n\nSeaborn: controlling figure aesthetics\n\nfrom matplotlib import style\n\np.theme({**style.library[\"fivethirtyeight\"]})\n\n\n\n\n\n\n\n\n플랏 단위가 아닌 전체 플랏에 대해 적용하려면,\nPlot.config.theme.update()을 사용\n\ntheme_dict = {**sns.axes_style(\"whitegrid\"), \"grid.linestyle\": \":\"}\nso.Plot.config.theme.update(theme_dict)"
+  },
+  {
+    "objectID": "contents/customizing.html#한글-폰트-설정",
+    "href": "contents/customizing.html#한글-폰트-설정",
+    "title": "Customizing",
+    "section": "한글 폰트 설정",
+    "text": "한글 폰트 설정\n\n플랏 별로 적용시: p.theme({\"font.family\": [\"AppleGothic\"]})\n전체에 적용시: so.Plot.config.theme.update({\"font.family\": [\"AppleGothic\"]})\n\n\n\n설치 폰트 확인\n# matplotlib에 설치된 폰트 확인\nimport matplotlib.font_manager as fm\nimport matplotlib.pyplot as plt\n\n# 폰트 위치/이름 확인\nfm.fontManager.ttflist\n\n# 폰트 이름만 추출\n[f.name for f in fm.fontManager.ttflist]\n\n# 폰트 이름 중 'Nanum'이 들어간 폰트 확인\n[f.name for f in fm.fontManager.ttflist if \"Nanum\" in f.name]\n\n\n\n\n폰트 추가 설치\n# List에 없는 폰트를 추가하는 방법\nfont_entry = fm.FontEntry(\n    fname=\"/Users/skcho/Library/Fonts/NanumGothic.ttf\",  # 폰트 저장 경로\n    name=\"NanumGothic\",  # 폰트 이름 설정\n)\nfm.fontManager.ttflist.insert(0, font_entry)  # Matplotlib에 폰트 추가\nplt.rcParams.update({\"font.family\": \"NanumGothic\"})  # 폰트 설정\n\n# 폰트 이름 중 'Nanum'이 들어간 폰트 확인\n[f.name for f in fm.fontManager.ttflist if \"Nanum\" in f.name]\n\n\n\n# 플랏 별로 한글 폰트 설정\ntips = sns.load_dataset(\"tips\")\n\ntips.rename(columns={\"day\": \"요일\"}, inplace=True)\ntips[\"요일\"] = tips[\"요일\"].map({\"Sun\": \"일요일\", \"Sat\": \"토요일\", \"Thur\": \"목요일\", \"Fri\": \"금요일\"})\n\np = so.Plot(tips, x=\"요일\", y=\"tip\").add(so.Dots()).label(title=\"요일별 받은 팁 금액\", y=\"팁 금액\")\n\np.theme({\"font.family\": [\"AppleGothic\"]})\n\n\n\n\n\n\n\n\n\n# 또는 전체에 적용하려면,\nso.Plot.config.theme.update({\"font.family\": [\"AppleGothic\"]})"
   },
   {
     "objectID": "contents/eda.html",

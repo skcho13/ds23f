@@ -15,7 +15,7 @@ project:
 
 website:
   page-navigation: true
-  title: "DG Data Analysis & Vis"
+  title: "DG Data Analysis & Visualization"
   description: "Data Analysis and Visualization, Dongguk University, 2023-2"
 
   # site-url:
@@ -45,8 +45,7 @@ website:
       - href: contents/notice.qmd
       # - href: contents/vote.qmd
       #   text: 설문!
-      # - href: https://docs.google.com/document/d/1XEjucC-iVVXiyppnp2hpL9Zn0ZGQbOeD9V-4jWFB3vk/edit?usp=sharing
-      #   text: "==== 중간고사 ===="
+      - href: contents/shortcuts.qmd
       - text: ---
       - section: Introduction
         contents:
@@ -147,6 +146,9 @@ format:
         code-copy: true
         highlight-style: Ayu-light
         link-external-newwindow: true
+        header-includes: <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css2?family=Sometype+Mono">
+        grid:
+          sidebar-width: 270px
         # css: styles.css
 
 

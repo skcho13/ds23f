@@ -1,3 +1,6 @@
 {
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "[quarto]": {
+        "editor.defaultFormatter": "quarto.quarto"
+    }
 }
