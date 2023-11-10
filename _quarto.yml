@@ -11,10 +11,12 @@ project:
     - "!midterm*.ipynb"
     - "!model*.ipynb"
     - "!statistic.ipynb"
+    - "!overview*.ipynb"
   resources: CNAME
 
 website:
   page-navigation: true
+  # navbar: true
   title: "DG Data Analysis & Visualization"
   description: "Data Analysis and Visualization, Dongguk University, 2023-2"
 
@@ -43,8 +45,8 @@ website:
     contents:
       - href: index.qmd
       - href: contents/notice.qmd
-      # - href: contents/vote.qmd
-      #   text: 설문!
+      - href: contents/vote.qmd
+        text: 설문!
       - href: contents/shortcuts.qmd
       - text: ---
       - section: Introduction
@@ -106,18 +108,19 @@ website:
       - section: contents/eda.ipynb
         contents:
           - href: contents/discretize.ipynb
-      # - text: ---
-      # - section: Modelling
-      #   contents:
-      #     - href: contents/model-basic.ipynb
-      #     - href: contents/modelling1.ipynb
-      #     - href: contents/modelling2.ipynb
-      #     - href: contents/logistic.ipynb
-      #       # contents:
-      #       #   - href: contents/modelling3_ex.ipynb
-      #     #- href: contents/misc4.ipynb
-      # - text: ---
-      # - href: contents/statistics.ipynb
+        # contents:
+        # - text: ---
+        # - section: Modelling
+        #   contents:
+        #     - href: contents/model-basic.ipynb
+        #     - href: contents/modelling1.ipynb
+        #     - href: contents/modelling2.ipynb
+        #     - href: contents/logistic.ipynb
+        #       # contents:
+        #       #   - href: contents/modelling3_ex.ipynb
+        #     #- href: contents/misc4.ipynb
+        # - text: ---
+        # - href: contents/statistics.ipynb
       - text: ---
       - section: Communicate
         contents:
@@ -141,12 +144,12 @@ format:
         code-overflow: scroll
         code-summary: "Show the code"
         theme: [sandstone, theme-light.scss]
-        fontsize: .95em
-        linestretch: 1.7
+        fontsize: 1em
+        linestretch: 1.8
         code-copy: true
-        highlight-style: Ayu-light
+        highlight-style: ayu-light
         link-external-newwindow: true
-        header-includes: <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css2?family=Sometype+Mono">
+        bread-crumbs: false
         # grid:
         #   sidebar-width: 270px
         # css: styles.css

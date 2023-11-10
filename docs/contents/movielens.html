@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.489">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,24 +102,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css2?family=Sometype+Mono">
 
 
 </head>
 
 <body class="nav-sidebar docked">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/billboard.html">Exercises</a></li><li class="breadcrumb-item"><a href="../contents/movielens.html">MovieLens</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/billboard.html">Exercises</a></li><li class="breadcrumb-item"><a href="../contents/movielens.html">MovieLens</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -123,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">DG Data Analysis &amp; Visualization</a> 
@@ -146,6 +150,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/vote.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">설문!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -444,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -458,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/billboard.html">Exercises</a></li><li class="breadcrumb-item"><a href="../contents/movielens.html">MovieLens</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Exercises</h1>
 <p class="subtitle lead">Mixed</p>
@@ -486,10 +496,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="1">
-<details>
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<details class="code-fold">
 <summary>Load Packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -504,8 +516,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="3">
-<details>
+<div id="cell-3" class="cell" data-execution_count="3">
+<details class="code-fold">
 <summary>Options</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
@@ -530,7 +542,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 <p><img src="images/movielens.png" class="img-fluid" width="650"></p>
 <p>아래 데이터 링크가 원활하지 않을 시, 위의 MovieLens 1M movie ratings 사이트에서 직접 다운받으세요.<br>
 ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code>, <code>movies.dat</code> 세 파일을 아래 방식으로 읽어옵니다.</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>unames <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span>, <span class="st">"occupation"</span>, <span class="st">"zip"</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> pd.read_table(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/users.dat"</span>,</span>
@@ -553,7 +565,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 [6040 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="cell-6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rnames <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"movie_id"</span>, <span class="st">"rating"</span>, <span class="st">"timestamp"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> pd.read_table(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/ratings.dat"</span>,</span>
@@ -576,7 +588,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 [1000209 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="cell-7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mnames <span class="op">=</span> [<span class="st">"movie_id"</span>, <span class="st">"title"</span>, <span class="st">"genres"</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_table(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/movies.dat"</span>,</span>
@@ -626,7 +638,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>또한, 남녀의 평가에 차이가 벌어지는 현상을 설명할 수 있을까요?</li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="61">
+<div id="cell-10" class="cell" data-execution_count="61">
 <div class="cell-output cell-output-display" data-execution_count="61">
 <p><img src="movielens_files/figure-html/cell-8-output-1.png" width="676" height="445"></p>
 </div>
@@ -634,7 +646,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ol start="4" type="1">
 <li>3번에서 플랏에 <code>.limit(x=(0, 500), y=(2.5, 4.5))</code>을 추가하여 평가 개수(<code>count</code>)가 0에서 500사이이고, 평균 rating이 2.5에서 4.5 사이인 것으로 확대해서 보고, 평가 개수가 몇 개 정도부터 남녀의 평가의 차이가 대략 일정하게 되는지 살펴보세요.</li>
 </ol>
-<div class="cell" data-execution_count="62">
+<div id="cell-12" class="cell" data-execution_count="62">
 <div class="cell-output cell-output-display" data-execution_count="62">
 <p><img src="movielens_files/figure-html/cell-9-output-1.png" width="676" height="445"></p>
 </div>
@@ -670,7 +682,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>남성 유저와 여성 유저의 비율에 큰 차이 (4331:1709)가 있는 것을 고려했을 때, 어떻게 이 현상을 설명할 수 있을까요?</li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="63">
+<div id="cell-15" class="cell" data-execution_count="63">
 <div class="cell-output cell-output-display" data-execution_count="63">
 <p><img src="movielens_files/figure-html/cell-10-output-1.png" width="545" height="561"></p>
 </div>
@@ -703,7 +715,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 </ul></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="64">
+<div id="cell-18" class="cell" data-execution_count="64">
 <div class="cell-output cell-output-display" data-execution_count="64">
 <p><img src="movielens_files/figure-html/cell-11-output-1.png" width="753" height="753"></p>
 </div>
@@ -734,7 +746,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ul>
 <li><code>so.Hist("proportion", common_norm=False)</code>이 필요할 수 있음</li>
 </ul>
-<div class="cell" data-execution_count="87">
+<div id="cell-20" class="cell" data-execution_count="87">
 <div class="cell-output cell-output-display" data-execution_count="87">
 <p><img src="movielens_files/figure-html/cell-12-output-1.png" width="676" height="445"></p>
 </div>
@@ -744,7 +756,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><code>so.Agg()</code>를 활용하고,</li>
 <li><code>.limit(x=(3, 4.2))</code>를 써서 확대해서 살펴보세요.</li>
 </ul>
-<div class="cell" data-execution_count="93">
+<div id="cell-22" class="cell" data-execution_count="93">
 <div class="cell-output cell-output-display" data-execution_count="93">
 <p><img src="movielens_files/figure-html/cell-13-output-1.png" width="676" height="445"></p>
 </div>
@@ -763,7 +775,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ul>
 <li>Customizing할 때, <code>.limit(x=(3, 4.2))</code>과 <code>.scale(y=so.Nominal(order=[]))</code>이 필요할 수 있습니다.</li>
 </ul>
-<div class="cell" data-execution_count="104">
+<div id="cell-24" class="cell" data-execution_count="104">
 <div class="cell-output cell-output-display" data-execution_count="104">
 <p><img src="movielens_files/figure-html/cell-14-output-1.png" width="676" height="445"></p>
 </div>
@@ -773,7 +785,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>range는 <code>.add(so.Range(), so.Est("mean", errorbar="sd"))</code>를 활용하고</li>
 <li>평균은 <code>Agg()</code>을 이용해 표시합니다.</li>
 </ul>
-<div class="cell" data-execution_count="107">
+<div id="cell-26" class="cell" data-execution_count="107">
 <div class="cell-output cell-output-display" data-execution_count="107">
 <p><img src="movielens_files/figure-html/cell-15-output-1.png" width="676" height="445"></p>
 </div>
@@ -802,7 +814,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 </ul></li>
 <li>어떤 점을 파악할 수 있나요?</li>
 </ul>
-<div class="cell" data-execution_count="56">
+<div id="cell-28" class="cell" data-execution_count="56">
 <div class="cell-output cell-output-display" data-execution_count="56">
 <p><img src="movielens_files/figure-html/cell-16-output-1.png" width="545" height="321"></p>
 </div>
@@ -813,7 +825,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>이를 확인하기 위해 다음과 같은 테이블을 구해보세요.</li>
 <li>예를 들어, 18:18-24세 남성의 14%와 여성의 14%가 평점을 남겼으며, 45:45-49세 남성의 15%와 여성의 9%가 평점을 남겼습니다.</li>
 </ul>
-<div class="cell" data-execution_count="59">
+<div id="cell-30" class="cell" data-execution_count="59">
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>    age gender  mean  size  total  ratio
 0     1      F  3.60    91   3477   0.03
@@ -833,13 +845,13 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 </div>
 </div>
 <p>10.3 이 테이블을 다음과 같이 비율을 <code>pointsize</code>에 mapping하여 시각화해보고, 동일한 나이대에서 남녀의 평점 개수 비율에 차이가 크게 나는지 살펴보세요.</p>
-<div class="cell" data-execution_count="63">
+<div id="cell-32" class="cell" data-execution_count="63">
 <div class="cell-output cell-output-display" data-execution_count="63">
 <p><img src="movielens_files/figure-html/cell-18-output-1.png" width="685" height="445"></p>
 </div>
 </div>
 <p>10.4 이제 모든 장르를 한눈에 살펴보기 위해 <code>facet</code>을 이용해 다음과 같이 시각화해보세요.</p>
-<div class="cell" data-execution_count="64">
+<div id="cell-34" class="cell" data-execution_count="64">
 <div class="cell-output cell-output-display" data-execution_count="64">
 <p><img src="movielens_files/figure-html/cell-19-output-1.png" width="1015" height="753"></p>
 </div>
@@ -847,7 +859,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ol start="11" type="1">
 <li>영화 제목에 있는 출시년도를 추출해 이용하기 위해 다음 코드를 활용하세요.</li>
 </ol>
-<div class="cell" data-execution_count="69">
+<div id="cell-37" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">"year"</span>] <span class="op">=</span> movies[<span class="st">"title"</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="st">"int"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>movies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
@@ -890,7 +902,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><code>pd.crosstab()</code>의 파라미터를 확인해서 <strong>비율</strong>을 구하세요.</li>
 </ul></li>
 </ul>
-<div class="cell" data-execution_count="162">
+<div id="cell-40" class="cell" data-execution_count="162">
 <div class="cell-output cell-output-display" data-execution_count="162">
 <p><img src="movielens_files/figure-html/cell-22-output-1.png" width="369" height="273"></p>
 </div>
@@ -903,7 +915,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><p>13.2 구현된 코드로 실행한 결과를 표시해보세요.</p>
 <p>예를 들어, 유저별로 장르마다 몇 %씩을 평가했는지와 전체 유저의 장르별 평가 비율을 구해 상대적으로 유저들이 얼마나 치우쳐 장르를 소비하는 지를 알아보는 방식도 좋겠습니다.</p></li>
 </ul>
-<div class="cell" data-execution_count="7">
+<div id="cell-42" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tips.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -999,10 +1011,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1012,8 +1041,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1026,6 +1064,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1069,6 +1229,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1094,6 +1255,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1151,30 +1338,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/billboard_sol.html" class="pagination-link">
+      <a href="../contents/billboard_sol.html" class="pagination-link  aria-label=" &gt;="" solutions"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">&gt; solutions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/movielens_sol.html" class="pagination-link">
+      <a href="../contents/movielens_sol.html" class="pagination-link" aria-label="> solutions">
         <span class="nav-page-text">&gt; solutions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1182,7 +1355,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
+    <div class="nav-footer-left">
+<p>This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1191,6 +1366,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

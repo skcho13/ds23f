@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.489">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,24 +101,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css2?family=Sometype+Mono">
 
 
 </head>
 
 <body class="nav-sidebar docked">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/billboard.html">Exercises</a></li><li class="breadcrumb-item"><a href="../contents/movielens_sol.html">&gt; solutions</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/billboard.html">Exercises</a></li><li class="breadcrumb-item"><a href="../contents/movielens_sol.html">&gt; solutions</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">DG Data Analysis &amp; Visualization</a> 
@@ -145,6 +149,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/vote.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">설문!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -443,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -457,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/billboard.html">Exercises</a></li><li class="breadcrumb-item"><a href="../contents/movielens_sol.html">&gt; solutions</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Movielens Solutions</h1>
 </div>
@@ -484,10 +494,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="1">
-<details>
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<details class="code-fold">
 <summary>Load Packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -502,8 +514,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="3">
-<details>
+<div id="cell-3" class="cell" data-execution_count="3">
+<details class="code-fold">
 <summary>Options</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
@@ -530,7 +542,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 <ol type="1">
 <li><code>ratings</code>과 <code>users</code> 데이터를 merge한 후 <code>user_rating</code> 데이터셋을 만드세요.</li>
 </ol>
-<div class="cell" data-execution_count="9">
+<div id="cell-10" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>user_rating <span class="op">=</span> pd.merge(users, ratings)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>user_rating</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -551,7 +563,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 <ol start="2" type="1">
 <li>다음과 같이 영화(<code>movie_id</code>)별로 남녀(<code>gender</code>)에 따른 <code>rating</code>의 평균과 그 개수(<code>count</code>)을 구해보세요.</li>
 </ol>
-<div class="cell" data-execution_count="10">
+<div id="cell-12" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mean_ratings <span class="op">=</span> (</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    user_rating</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">"movie_id"</span>, <span class="st">"gender"</span>])[<span class="st">"rating"</span>]</span>
@@ -572,7 +584,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 <ol start="3" type="1">
 <li>다음과 같이 평가의 수가 적을수록 그 편차가 커지는 현상을 확인해보세요. 평가의 수가 많은 영화일수록 평가가 높아지는 현상에 대해 설명할 수 있을까요? 또한, 남녀의 평가에 차이가 벌어지는 현상을 설명할 수 있을까요?</li>
 </ol>
-<div class="cell" data-execution_count="11">
+<div id="cell-14" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(mean_ratings, x<span class="op">=</span><span class="st">"count"</span>, y<span class="op">=</span><span class="st">"mean"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
@@ -584,14 +596,14 @@ McKinney’s: 13. Data Analysis Examples</p>
 </div>
 </div>
 <p>유명한/잘 만든 영화를 더 많이 봐서? 좋게 본 영화는 더 평점을 내리는 경향이 있어서?</p>
-<div class="cell" data-execution_count="12">
+<div id="cell-16" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 남녀 총 평점 수를 고려해서 비율로 보면</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mean_ratings[<span class="st">"total"</span>] <span class="op">=</span> mean_ratings.groupby(<span class="st">"gender"</span>)[<span class="st">"count"</span>].transform(<span class="st">"sum"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mean_ratings <span class="op">=</span> mean_ratings.assign(</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    prop <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">"count"</span>] <span class="op">/</span> x[<span class="st">"total"</span>]</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="cell-17" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mean_ratings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>      movie_id gender  mean  count   total  prop
@@ -608,7 +620,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 [7152 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="cell-18" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(mean_ratings, x<span class="op">=</span><span class="st">"prop"</span>, y<span class="op">=</span><span class="st">"mean"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
@@ -623,7 +635,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 <ol start="4" type="1">
 <li>3번에서 <code>seaborn.objects</code>에 <code>.limit(x=(0, 500), y=(2.5, 4.5))</code>을 추가하여 평가 개수(<code>count</code>)가 0에서 500사이이고, 평균 <code>rating</code>이 2.5에서 4.5 사이인 것으로 확대해서 보고, 평가 개수가 몇 개 정도부터 남녀의 평가의 차이가 대략 일정하게 되는지 살펴보세요.</li>
 </ol>
-<div class="cell" data-execution_count="13">
+<div id="cell-20" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(mean_ratings, x<span class="op">=</span><span class="st">"count"</span>, y<span class="op">=</span><span class="st">"mean"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
@@ -654,7 +666,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 </ul></li>
 </ol>
 <p>5.1 2번에서 구한 데이터에서 <strong>남녀 모두</strong> rating이 300개 이상 있는 영화로만 간추려보세요.</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-23" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mean_ratings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>      movie_id gender  mean  count   total  prop
@@ -671,7 +683,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 [7152 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="17">
+<div id="cell-24" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># groupby .filter()를 이용</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>popular_movies <span class="op">=</span> (</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    mean_ratings</span>
@@ -694,7 +706,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 [262 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="cell-25" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>popular_movies <span class="op">=</span> (</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    mean_ratings</span>
@@ -716,7 +728,7 @@ McKinney’s: 13. Data Analysis Examples</p>
 <p>5.2 이 데이터를 <code>popular_movies</code>라고 명명하고,<br>
 이 데이터를 <code>gender</code>에 관해 wide format으로 변환한 후; <code>pivot()</code>을 이용<br>
 여자의 평균 rating에서 남자의 평균 rating의 차이를 구해 데이터에 추가한 후; <code>assign()</code>을 이용</p>
-<div class="cell" data-execution_count="17">
+<div id="cell-27" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>diffs_fm <span class="op">=</span> (</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    popular_movies</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    .pivot(index<span class="op">=</span><span class="st">"movie_id"</span>, columns<span class="op">=</span><span class="st">"gender"</span>, values<span class="op">=</span><span class="st">"mean"</span>)</span>
@@ -741,12 +753,12 @@ movie_id
 </div>
 </div>
 <p>5.3 여자의 선호가 더 큰 영화 5편과 남자의 선호가 더 큰 영화 5편 (선호 차이의 크기 순서로)을 구해보세요. 이를 위해서 <code>movies</code> 테이블에서 영화제목을 <code>merge()</code>를 이용해 구하세요.</p>
-<div class="cell" data-execution_count="18">
+<div id="cell-29" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>diffs_fm <span class="op">=</span> diffs_fm.merge(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    movies[[<span class="st">"movie_id"</span>, <span class="st">"title"</span>]], left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">"movie_id"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># left_index: index를 키로 사용할 때; diffs_fm의 movie_id가 index!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="cell-30" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>diffs_fm.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>        F    M  diffs  movie_id                              title
@@ -757,7 +769,7 @@ movie_id
 1220 3.90 4.21  -0.31      1240             Terminator, The (1984)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-31" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>diffs_fm.tail(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>        F    M  diffs  movie_id                                  title
@@ -782,7 +794,7 @@ movie_id
 <li>이제, 다음과 같이 <code>popularity</code>에 따라 평점이 높아지는 현상을 성별을 고려한 후 본 결과를 플랏을 통해 확인해봅니다.</li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="28">
+<div id="cell-34" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> popular(g):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    g[<span class="st">"popularity"</span>] <span class="op">=</span> pd.qcut(g[<span class="st">"count"</span>], q<span class="op">=</span><span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span>
@@ -804,7 +816,7 @@ movie_id
 [7152 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div id="cell-35" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(popularity, x<span class="op">=</span><span class="st">"popularity"</span>, y<span class="op">=</span><span class="st">"mean"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">0.01</span>), so.Jitter(width<span class="op">=</span><span class="fl">.5</span>))</span>
@@ -824,7 +836,7 @@ movie_id
 <li>영화제목을 <code>movies</code> 데이터와 merge하여 표시합니다.</li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="23">
+<div id="cell-37" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>popular_movies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>      movie_id gender  mean  count   total  prop
@@ -841,7 +853,7 @@ movie_id
 [262 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="cell-38" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ratings_std <span class="op">=</span> (</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    user_rating</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">"gender"</span>, <span class="st">"movie_id"</span>])[<span class="st">"rating"</span>]</span>
@@ -864,7 +876,7 @@ M      3949     0.92    224
 [7152 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="cell-39" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top(g, n<span class="op">=</span><span class="dv">3</span>):</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g.nlargest(n, <span class="st">"std"</span>, keep<span class="op">=</span><span class="st">"all"</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -875,7 +887,7 @@ M      3949     0.92    224
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(top, n<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="cell-40" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ratings_top</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>                 std  count
@@ -886,7 +898,7 @@ M      1924     1.47    208
        3864     1.35    115</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
+<div id="cell-41" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ratings_top.reset_index().merge(movies).drop(columns<span class="op">=</span><span class="st">"movie_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>  gender  std  count                                           title  \
@@ -910,7 +922,7 @@ M      1924     1.47    208
 </ul></li>
 </ol>
 <p>8.1 우선 개인별(성별로 나눠)로 몇 개정도나 평점을 주었는지 분포를 살펴봅니다.</p>
-<div class="cell" data-execution_count="42">
+<div id="cell-44" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>rate_n <span class="op">=</span> user_rating.groupby([<span class="st">"user_id"</span>, <span class="st">"gender"</span>]).size().reset_index(name<span class="op">=</span><span class="st">"n"</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>rate_n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -928,7 +940,7 @@ M      1924     1.47    208
 [6040 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="43">
+<div id="cell-45" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(rate_n, x<span class="op">=</span><span class="st">"n"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.Hist())</span>
@@ -938,14 +950,14 @@ M      1924     1.47    208
 <p><img src="movielens_sol_files/figure-html/cell-30-output-1.png" width="676" height="445"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div id="cell-46" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>p.scale(x<span class="op">=</span><span class="st">"log"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <p><img src="movielens_sol_files/figure-html/cell-31-output-1.png" width="676" height="445"></p>
 </div>
 </div>
 <p>8.2 유저 개인별로 평점(<code>rating</code>)의 평균과 표준편차, 개수를 구합니다.</p>
-<div class="cell" data-execution_count="44">
+<div id="cell-48" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>user_stats <span class="op">=</span> (</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    user_rating</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"user_id"</span>)[<span class="st">"rating"</span>]</span>
@@ -976,7 +988,7 @@ user_id
 <li>이 현상을 설명할 수 있을까요?</li>
 <li>평균적으로 낮은 평점을 준 소위 짠 유저들이 더 비판적이고 고민끝에 평점을 준 것이라고 추측할 수 있을까요?</li>
 </ul>
-<div class="cell" data-execution_count="45">
+<div id="cell-50" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>user_stats[<span class="st">"lcount"</span>] <span class="op">=</span> np.log(user_stats[<span class="st">"count"</span>])</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>user_stats[<span class="st">"lcount_cat"</span>] <span class="op">=</span> pd.cut(user_stats[<span class="st">"lcount"</span>], <span class="dv">10</span>, labels<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -990,7 +1002,7 @@ user_id
 <p><img src="movielens_sol_files/figure-html/cell-33-output-1.png" width="1425" height="1137"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="cell-51" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(user_stats.query(<span class="st">'mean &gt; 2 &amp; lcount_cat &lt; 9'</span>), x<span class="op">=</span><span class="st">"mean"</span>, y<span class="op">=</span><span class="st">"std"</span>)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">1</span>), color<span class="op">=</span><span class="st">"lcount_cat"</span>)</span>
@@ -1005,13 +1017,13 @@ user_id
 <li><code>movies</code> 데이터는 <code>genres</code>가 | 기호로 나누어 표기되어 있어서 분석을 위해서는 가공할 필요가 있는데, 다음 코드를 이용해 long format으로 바꾸세요.</li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="47">
+<div id="cell-53" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>movies_long <span class="op">=</span> movies.copy()</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>movies_long[<span class="st">"genres"</span>] <span class="op">=</span> movies_long[<span class="st">"genres"</span>].<span class="bu">str</span>.split(<span class="st">"|"</span>)</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>movies_long <span class="op">=</span> movies_long.explode(<span class="st">"genres"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="48">
+<div id="cell-54" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>movies_long.head(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>   movie_id                    title      genres
@@ -1025,7 +1037,7 @@ user_id
 2         3  Grumpier Old Men (1995)     Romance</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
+<div id="cell-55" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>movies_long_all <span class="op">=</span> movies_long.merge(user_rating)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>movies_long_all </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
@@ -1055,7 +1067,7 @@ user_id
 </div>
 </div>
 <p>9.1 장르별로 평점의 개수를 간단히 플랏으로 살펴보는데 남녀 별로 따로 비율이 나오도록 해보고, 남녀 차이가 특히 많이 나는 장르를 살펴보세요.</p>
-<div class="cell" data-execution_count="53">
+<div id="cell-57" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(movies_long_all, y<span class="op">=</span><span class="st">"genres"</span>, color<span class="op">=</span><span class="st">"gender"</span>)  <span class="co"># y에 genres가 나오도록!</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Hist(<span class="st">"proportion"</span>, common_norm<span class="op">=</span><span class="va">False</span>), so.Dodge(gap<span class="op">=</span><span class="fl">.2</span>))  <span class="co"># gap: bar 사이의 간격</span></span>
@@ -1065,7 +1077,7 @@ user_id
 </div>
 </div>
 <p>9.2 이번에는 장르별로 평점의 <strong>평균</strong>를 남녀별로 간단히 플랏으로 확인해보세요.</p>
-<div class="cell" data-execution_count="54">
+<div id="cell-59" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(movies_long_all, y<span class="op">=</span><span class="st">"genres"</span>, x<span class="op">=</span><span class="st">"rating"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Agg(), so.Dodge())</span>
@@ -1076,7 +1088,7 @@ user_id
 </div>
 </div>
 <p>9.3 위의 플랏에서 살펴본 <strong>평균</strong> 평점의 값을 직접 구해봅니다. 장르별, 남녀로 그룹핑을 하여 <strong>평균</strong> 평점을 다음과 같이 나오도록 구해보세요.</p>
-<div class="cell" data-execution_count="55">
+<div id="cell-61" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>genre_gender_wide <span class="op">=</span> (</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    movies_long_all.groupby([<span class="st">"genres"</span>, <span class="st">"gender"</span>])[<span class="st">"rating"</span>]</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
@@ -1099,7 +1111,7 @@ user_id
 [18 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
+<div id="cell-62" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot_table을 이용하면,</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>movies_long_all.pivot_table(index<span class="op">=</span><span class="st">"genres"</span>, columns<span class="op">=</span><span class="st">"gender"</span>, values<span class="op">=</span><span class="st">"rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
@@ -1119,7 +1131,7 @@ Western    3.55 3.66
 </div>
 </div>
 <p>9.4 영화별 남녀의 평균 평점의 차이(Female - Male) 순으로 <strong>정렬된</strong> 플랏을 대략적으로 다음과 같이 그려봅니다.</p>
-<div class="cell" data-execution_count="57">
+<div id="cell-64" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>genre_gender_diff <span class="op">=</span> genre_gender_wide.assign(</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> <span class="kw">lambda</span> x: x.F <span class="op">-</span> x.M</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>).sort_values(<span class="st">"diff"</span>)</span>
@@ -1139,7 +1151,7 @@ Western    3.55 3.66
 [18 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="58">
+<div id="cell-65" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>genre_gender_mean <span class="op">=</span> (</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    movies_long_all.groupby([<span class="st">"genres"</span>, <span class="st">"gender"</span>])[<span class="st">"rating"</span>]</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
@@ -1161,7 +1173,7 @@ Western    3.55 3.66
 [36 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="59">
+<div id="cell-66" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(genre_gender_mean, y<span class="op">=</span><span class="st">"genres"</span>, x<span class="op">=</span><span class="st">"rating"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Dodge())</span>
@@ -1174,7 +1186,7 @@ Western    3.55 3.66
 <p><img src="movielens_sol_files/figure-html/cell-44-output-1.png" width="676" height="445"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="60">
+<div id="cell-67" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 평균과 표준편차를 error bar를 이용해 볼 수도 있음.</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(movies_long_all, x<span class="op">=</span><span class="st">"rating"</span>, y<span class="op">=</span><span class="st">"genres"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
@@ -1192,10 +1204,10 @@ Western    3.55 3.66
 <li>장르별로 나이대에 따른 영화시청에 차이가 있는지 살펴봅니다.</li>
 </ol>
 <p>10.1 우선, 위에서 western 장르가 남녀의 평점 차이가 가장 크게 나타나 남성이 선호하는 것으로 보이는데 western 장르만 따로 떼어 나이대 별로 rating에 차이가 있는지 살펴봅니다.</p>
-<div class="cell" data-execution_count="61">
+<div id="cell-69" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>western <span class="op">=</span> movies_long_all.query(<span class="st">'genres == "Western"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="62">
+<div id="cell-70" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(western, x<span class="op">=</span><span class="st">"age"</span>, y<span class="op">=</span><span class="st">"rating"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
@@ -1204,7 +1216,7 @@ Western    3.55 3.66
 <p><img src="movielens_sol_files/figure-html/cell-47-output-1.png" width="676" height="445"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="63">
+<div id="cell-71" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>western_age_gender <span class="op">=</span> western.groupby([<span class="st">"age"</span>, <span class="st">"gender"</span>])[<span class="st">"rating"</span>].agg([<span class="st">"mean"</span>, <span class="st">"size"</span>]).reset_index()</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>western_age_gender</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
@@ -1222,10 +1234,10 @@ Western    3.55 3.66
 [14 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="64">
+<div id="cell-72" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>western_age_gender[<span class="st">"total"</span>] <span class="op">=</span> western_age_gender.groupby(<span class="st">"gender"</span>)[<span class="st">"size"</span>].transform(<span class="st">"sum"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="65">
+<div id="cell-73" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>western_age_gender <span class="op">=</span> western_age_gender.assign(</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    ratio <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">"size"</span>] <span class="op">/</span> x[<span class="st">"total"</span>]</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -1245,7 +1257,7 @@ Western    3.55 3.66
 [14 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="66">
+<div id="cell-74" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(western_age_gender, x<span class="op">=</span><span class="st">"age"</span>, y<span class="op">=</span><span class="st">"mean"</span>, pointsize<span class="op">=</span><span class="st">"ratio"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
@@ -1256,7 +1268,7 @@ Western    3.55 3.66
 <p><img src="movielens_sol_files/figure-html/cell-51-output-1.png" width="685" height="445"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="67">
+<div id="cell-75" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(movies_long_all, x<span class="op">=</span><span class="st">"age"</span>, y<span class="op">=</span><span class="st">"rating"</span>, color<span class="op">=</span><span class="st">"gender"</span>)</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
@@ -1272,7 +1284,7 @@ Western    3.55 3.66
 <ol start="11" type="1">
 <li>영화 제목에 있는 출시년도를 추출해 이용하기 위해 다음 코드를 활용하세요.</li>
 </ol>
-<div class="cell" data-execution_count="68">
+<div id="cell-77" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">"year"</span>] <span class="op">=</span> movies[<span class="st">"title"</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="st">"int"</span>)</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>movies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
@@ -1291,7 +1303,7 @@ Western    3.55 3.66
 </div>
 </div>
 <p>11.1 먼저 출시년도별로 얼마나 영화가 있는지 분포를 살펴보세요.</p>
-<div class="cell" data-execution_count="69">
+<div id="cell-79" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(movies, x<span class="op">=</span><span class="st">"year"</span>)</span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist())</span>
@@ -1301,7 +1313,7 @@ Western    3.55 3.66
 </div>
 </div>
 <p>11.2 출시년도가 없는 영화가 있는가요?</p>
-<div class="cell" data-execution_count="70">
+<div id="cell-81" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>movies.year.value_counts(dropna<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>year
@@ -1318,7 +1330,7 @@ Name: count, Length: 81, dtype: int64</code></pre>
 </div>
 </div>
 <p>11.3 오래된 영화일 수록 나이든 사람들의 시청 비율이 높을지에 대해 분포를 살펴보세요.</p>
-<div class="cell" data-execution_count="72">
+<div id="cell-83" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>year_movies <span class="op">=</span> pd.merge(user_rating[[<span class="st">"user_id"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span>, <span class="st">"movie_id"</span>, <span class="st">"rating"</span>]], movies)</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>year_movies.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
@@ -1333,12 +1345,12 @@ Name: count, Length: 81, dtype: int64</code></pre>
 2  One Flew Over the Cuckoo's Nest (1975)  Drama  1975  </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="73">
+<div id="cell-85" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>year_movies <span class="op">=</span> year_movies.assign(</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    age <span class="op">=</span> <span class="kw">lambda</span> x: pd.Categorical(x.age.astype(<span class="st">"string"</span>), categories<span class="op">=</span>[<span class="st">"1"</span>, <span class="st">"18"</span>, <span class="st">"25"</span>, <span class="st">"35"</span>, <span class="st">"45"</span>, <span class="st">"50"</span>, <span class="st">"56"</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="74">
+<div id="cell-86" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(year_movies, x<span class="op">=</span><span class="st">"year"</span>, color<span class="op">=</span><span class="st">"age"</span>)</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(<span class="st">"proportion"</span>, common_norm<span class="op">=</span><span class="va">False</span>, discrete<span class="op">=</span><span class="va">True</span>))</span>
@@ -1350,7 +1362,7 @@ Name: count, Length: 81, dtype: int64</code></pre>
 <p><img src="movielens_sol_files/figure-html/cell-59-output-1.png" width="831" height="1137"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="75">
+<div id="cell-87" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 성별에 따라서도 나누어 보면,</span></span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(year_movies, x<span class="op">=</span><span class="st">"year"</span>, color<span class="op">=</span><span class="st">"age"</span>)</span>
@@ -1366,7 +1378,7 @@ Name: count, Length: 81, dtype: int64</code></pre>
 <ol start="11" type="1">
 <li>10년 기준으로 년대를 정했을 때, 코미디 장르의 영화 비율의 년대별 변화를 살펴봅니다.</li>
 </ol>
-<div class="cell" data-execution_count="77">
+<div id="cell-89" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>movies_long[<span class="st">"year"</span>] <span class="op">=</span> movies_long[<span class="st">"title"</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="st">"int64"</span>)</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>movies_long_10 <span class="op">=</span> movies_long.assign(</span>
@@ -1388,7 +1400,7 @@ Name: count, Length: 81, dtype: int64</code></pre>
 [6408 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="78">
+<div id="cell-90" class="cell" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.crosstab의 비율을 이용하면,</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>decade_perc <span class="op">=</span> pd.crosstab(</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>    movies_long_10[<span class="st">"decade"</span>], movies_long_10[<span class="st">"genres"</span>], normalize<span class="op">=</span><span class="st">"index"</span></span>
@@ -1409,7 +1421,7 @@ Name: count, Length: 81, dtype: int64</code></pre>
 Length: 180, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="79">
+<div id="cell-91" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(decade_perc.reset_index(name<span class="op">=</span><span class="st">"perc"</span>), x<span class="op">=</span><span class="st">"decade"</span>, y<span class="op">=</span><span class="st">"perc"</span>, color<span class="op">=</span><span class="st">"genres"</span>)</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line())</span>
@@ -1421,7 +1433,7 @@ Length: 180, dtype: float64</code></pre>
 <p><img src="movielens_sol_files/figure-html/cell-63-output-1.png" width="1278" height="753"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="80">
+<div id="cell-92" class="cell" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(decade_perc.reset_index(name<span class="op">=</span><span class="st">"perc"</span>).query(<span class="st">'genres == "Comedy"'</span>), x<span class="op">=</span><span class="st">"decade"</span>, y<span class="op">=</span><span class="st">"perc"</span>)</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line())</span>
@@ -1514,10 +1526,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1527,8 +1556,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1541,6 +1579,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1584,6 +1744,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1609,6 +1770,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1666,25 +1853,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/movielens.html" class="pagination-link">
+      <a href="../contents/movielens.html" class="pagination-link  aria-label=" movielens"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">MovieLens</span>
       </a>          
   </div>
@@ -1694,7 +1867,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
+    <div class="nav-footer-left">
+<p>This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1703,6 +1878,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
