@@ -9,7 +9,7 @@ project:
     - "!contents/*.py"
     - "!final*.ipynb"
     - "!midterm*.ipynb"
-    - "!model*.ipynb"
+    #- "!model*.ipynb"
     - "!statistic.ipynb"
     - "!overview*.ipynb"
   resources: CNAME
@@ -17,7 +17,7 @@ project:
 website:
   page-navigation: true
   # navbar: true
-  title: "DG Data Analysis & Visualization"
+  title: "{{< fa chart-simple >}} Data Analysis & Visualization"
   description: "Data Analysis and Visualization, Dongguk University, 2023-2"
 
   # site-url:
@@ -40,14 +40,17 @@ website:
     #     text: "GitHub organization"
     style: "docked"
     search: true
-    collapse-level: 2
+    collapse-level: 1
     
     contents:
       - href: index.qmd
+        text: "{{< fa angles-right size=xs >}} Welcome"
       - href: contents/notice.qmd
+        text: "{{< fa check size=xs >}} Notice"
       - href: contents/vote.qmd
-        text: 설문!
+        text: "{{< fa magnifying-glass size=xs >}} 설문"
       - href: contents/shortcuts.qmd
+        text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
       - text: ---
       - section: Introduction
         contents:
@@ -90,29 +93,29 @@ website:
                 text: Pivot Table
               - href: contents/exercise_wrangle.ipynb
           - href: contents/misc.ipynb
-      - section: Solutions
-        contents:
-          - href: contents/sol1.ipynb
-          - href: contents/sol2.ipynb
+          - section: Solutions
+            contents:
+              - href: contents/sol1.ipynb
+              - href: contents/sol2.ipynb
       - section: Exercises
         contents:
           - href: contents/billboard.ipynb
             text: Billboard
-          - href: contents/billboard_sol.ipynb
-            text: "> solutions"
           - href: contents/movielens.ipynb
             text: MovieLens
-          - href: contents/movielens_sol.ipynb
-            text: "> solutions"
+          - section: Solutions
+            contents:
+              - href: contents/billboard_sol.ipynb
+              - href: contents/movielens_sol.ipynb
       - text: ---
       - section: contents/eda.ipynb
         contents:
           - href: contents/discretize.ipynb
-        # contents:
-        # - text: ---
-        # - section: Modelling
-        #   contents:
-        #     - href: contents/model-basic.ipynb
+      - text: ---
+      - section: Modelling
+        contents:
+          # - href: contents/model-basic.ipynb
+          #   text: Model Basics
         #     - href: contents/modelling1.ipynb
         #     - href: contents/modelling2.ipynb
         #     - href: contents/logistic.ipynb

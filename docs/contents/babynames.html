@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.489">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
 <meta name="dcterms.date" content="2023-09-17">
 
-<title>DG Data Analysis &amp; Visualization - Baby Names</title>
+<title> Data Analysis &amp; Visualization - Baby Names</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -76,19 +76,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -108,16 +104,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/subsetting.html">Transform</a></li><li class="breadcrumb-item"><a href="../contents/transform.html">Transforming I</a></li><li class="breadcrumb-item"><a href="../contents/babynames.html">Case Study 2</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/subsetting.html">Transform</a></li><li class="breadcrumb-item"><a href="../contents/transform.html">Transforming I</a></li><li class="breadcrumb-item"><a href="../contents/babynames.html">Case Study 2</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -127,10 +124,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">DG Data Analysis &amp; Visualization</a> 
+      <a href="../"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> Data Analysis &amp; Visualization</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -143,37 +140,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
+ <span class="menu-text"><i class="fa-solid fa-angles-right fa-xs" aria-label="angles-right"></i> Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Notice</span></a>
+ <span class="menu-text"><i class="fa-solid fa-check fa-xs" aria-label="check"></i> Notice</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/vote.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">설문!</span></a>
+ <span class="menu-text"><i class="fa-solid fa-magnifying-glass fa-xs" aria-label="magnifying-glass"></i> 설문</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/shortcuts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">오늘의 숏컷</span></a>
+ <span class="menu-text"><i class="fa-solid fa-hourglass fa-xs" aria-label="hourglass"></i> 오늘의 숏컷</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/intro.html" class="sidebar-item-text sidebar-link">
@@ -214,13 +211,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Visualize</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/seaborn.html" class="sidebar-item-text sidebar-link">
@@ -349,17 +346,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Misc.</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/sol1.html" class="sidebar-item-text sidebar-link">
@@ -374,15 +369,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Exercises</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/billboard.html" class="sidebar-item-text sidebar-link">
@@ -391,22 +388,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/billboard_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">&gt; solutions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../contents/movielens.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MovieLens</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Solutions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/billboard_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Billboard Solutions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/movielens_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">&gt; solutions</span></a>
+ <span class="menu-text">Movielens Solutions</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -414,11 +422,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../contents/eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploratory Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/discretize.html" class="sidebar-item-text sidebar-link">
@@ -429,14 +437,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Modelling</span></span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -454,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -495,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/subsetting.html">Transform</a></li><li class="breadcrumb-item"><a href="../contents/transform.html">Transforming I</a></li><li class="breadcrumb-item"><a href="../contents/babynames.html">Case Study 2</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Baby Names</h1>
 <p class="subtitle lead">Python for Data Analysis (3e) by Wes McKinney</p>
@@ -523,12 +536,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
-<div id="cell-1" class="cell" data-execution_count="265">
-<details class="code-fold">
+<div class="cell" data-execution_count="265">
+<details>
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -543,8 +554,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="267">
-<details class="code-fold">
+<div class="cell" data-execution_count="267">
+<details>
 <summary>Options</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.options.mode.copy_on_write <span class="op">=</span> <span class="va">True</span></span>
@@ -560,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>2021년 업데이트된 버전으로 1880년부터 2021년까지의 데이터가 있으며,</li>
 <li>각 연도별로 남자아이와 여자아이의 이름별 출생아 수를 나타내고 있습니다.</li>
 </ul>
-<div id="cell-6" class="cell" data-execution_count="269">
+<div class="cell" data-execution_count="269">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> pd.read_csv(<span class="st">"data/babynames.csv"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="269">
@@ -583,13 +594,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>groupby</code>와 <code>sum</code>을 사용하세요.</li>
 </ul>
-<div id="cell-8" class="cell" data-execution_count="270">
-<details class="code-fold">
+<div class="cell" data-execution_count="270">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>names_sex_year <span class="op">=</span> names.groupby([<span class="st">"year"</span>, <span class="st">"sex"</span>])[<span class="st">"births"</span>].<span class="bu">sum</span>().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-9" class="cell" data-execution_count="271">
+<div class="cell" data-execution_count="271">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>names_sex_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="271">
 <pre><code>     year sex   births
@@ -609,8 +620,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="이를-이용해-다음과-같이-연도에-따른-출생아-수의-변화를-성별에-따라-그려보세요." class="level3">
 <h3 class="anchored" data-anchor-id="이를-이용해-다음과-같이-연도에-따른-출생아-수의-변화를-성별에-따라-그려보세요.">2. 이를 이용해 다음과 같이 연도에 따른 출생아 수의 변화를 성별에 따라 그려보세요.</h3>
-<div id="cell-11" class="cell" data-execution_count="272">
-<details class="code-fold">
+<div class="cell" data-execution_count="272">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(names_sex_year, x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'births'</span>, color<span class="op">=</span><span class="st">"sex"</span>)</span>
@@ -630,8 +641,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>year</code>, <code>sex</code>로 그룹핑을 한 후</li>
 <li>이 비율을 계산하는 함수를 세워서 <code>apply</code> method를 이용하여 <code>prop</code> 컬럼을 추가해 보세요.</li>
 </ul>
-<div id="cell-13" class="cell" data-execution_count="273">
-<details class="code-fold">
+<div class="cell" data-execution_count="273">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_prop(group):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> group.assign(prop <span class="op">=</span> <span class="kw">lambda</span> x: x.births <span class="op">/</span> x.births.<span class="bu">sum</span>())</span>
@@ -645,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> names.groupby([<span class="st">"year"</span>, <span class="st">"sex"</span>], group_keys<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(add_prop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-14" class="cell" data-execution_count="274">
+<div class="cell" data-execution_count="274">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="274">
 <pre><code>              name sex  births  year    prop
@@ -671,8 +682,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>3번과 마찬가지로, <code>year</code>, <code>sex</code>로 그룹핑을 한 후</li>
 <li>grouped object에 <code>sort_values</code> method를 적용하여 상위 1000개를 추출하는 함수 세워 <code>apply</code>로 적용해 보세요.</li>
 </ul>
-<div id="cell-16" class="cell" data-execution_count="275">
-<details class="code-fold">
+<div class="cell" data-execution_count="275">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_top1000(group):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group.sort_values(<span class="st">"births"</span>, ascending<span class="op">=</span><span class="va">False</span>)[:<span class="dv">1000</span>]</span>
@@ -682,7 +693,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># group_keys=False: 그룹핑 한 변수들을 인덱스로 사용하지 않음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-17" class="cell" data-execution_count="276">
+<div class="cell" data-execution_count="276">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>top1000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="276">
 <pre><code>              name sex  births  year    prop
@@ -712,13 +723,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>각 년도별, 이름별 총 출생아 수를 구한 후; <code>total_birth</code></li>
 <li>몇 개의 이름 (<code>John</code>, <code>Harry</code>, <code>Mary</code>, <code>Marilyn</code>)에 대해서, 시간에 따른 이름의 변화를 살펴봅니다.</li>
 </ul>
-<div id="cell-20" class="cell" data-execution_count="297">
-<details class="code-fold">
+<div class="cell" data-execution_count="297">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>total_births <span class="op">=</span> top1000.groupby([<span class="st">"year"</span>, <span class="st">"name"</span>])[<span class="st">"births"</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-21" class="cell" data-execution_count="298">
+<div class="cell" data-execution_count="298">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>total_births</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="298">
 <pre><code>year  name  
@@ -734,8 +745,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Name: births, Length: 269016, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="278">
-<details class="code-fold">
+<div class="cell" data-execution_count="278">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># total_births의 MultiIndex를 직접 이용해 subsetting을 하려면</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> total_births.loc[:, [<span class="st">"John"</span>, <span class="st">"Harry"</span>, <span class="st">"Mary"</span>, <span class="st">"Marilyn"</span>]]  <span class="co"># .loc[첫번째 인덱스, 두번째 인덱스]</span></span>
@@ -769,7 +780,7 @@ Name: births, Length: 269016, dtype: int64</code></pre>
 <li>이 비율이 적다는 것은 더 다양한 이름이 사용되고 있다는 것을 의미합니다.</li>
 <li>아래 시각화에서 나타나듯이, 이름의 다양성은 시간이 지남에 따라 증가하며, 특히 여자 이름이 더욱 그러한 것을 알 수 있습니다.</li>
 </ul>
-<div id="cell-25" class="cell" data-execution_count="279">
+<div class="cell" data-execution_count="279">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>top1000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="279">
 <pre><code>              name sex  births  year    prop
@@ -786,8 +797,8 @@ Name: births, Length: 269016, dtype: int64</code></pre>
 [283876 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="280">
-<details class="code-fold">
+<div class="cell" data-execution_count="280">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> top1000.groupby([<span class="st">"year"</span>, <span class="st">"sex"</span>])[<span class="st">"prop"</span>].<span class="bu">sum</span>().reset_index()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -810,7 +821,7 @@ Name: births, Length: 269016, dtype: int64</code></pre>
 <li>인기 상위 50%의 이름이 몇 개나 되는지 알 수 있습니다.</li>
 <li>이 개수를 지표로 이용하면, 이름의 다양성이 어떻게 변화하는지를 살펴볼 수 있습니다.</li>
 </ul>
-<div id="cell-28" class="cell" data-execution_count="281">
+<div class="cell" data-execution_count="281">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> top1000.query(<span class="st">'sex == "M" and year == 2010'</span>)  <span class="co"># 2010년도에 태어난 남자아이들의 이름</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>prop_cumsum <span class="op">=</span> df[<span class="st">"prop"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>).cumsum()  <span class="co"># 인기순서로 비율의 누적합</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>prop_cumsum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -827,7 +838,7 @@ Name: births, Length: 269016, dtype: int64</code></pre>
 Name: prop, Length: 1000, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="282">
+<div class="cell" data-execution_count="282">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적 비율 50%까지의 이름의 개수</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>prop_cumsum[prop_cumsum <span class="op">&lt;=</span> <span class="fl">0.5</span>].size <span class="op">+</span> <span class="dv">1</span>  <span class="co"># .size: Series의 열의 개수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="282">
@@ -841,8 +852,8 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <li>이를 <code>diversity</code>라는 이름의 데이터프레임으로 저장하면, 다음과 같고,</li>
 <li>이를 이용해 아래와 같은 시각화를 해보세요.</li>
 </ul>
-<div id="cell-31" class="cell" data-execution_count="415">
-<details class="code-fold">
+<div class="cell" data-execution_count="415">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_quantile_count(group, q<span class="op">=</span><span class="fl">0.5</span>):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    prop_cumsum <span class="op">=</span> group[<span class="st">"prop"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>).cumsum()</span>
@@ -852,7 +863,7 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>diversity <span class="op">=</span> diversity.reset_index(name<span class="op">=</span><span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-32" class="cell" data-execution_count="416">
+<div class="cell" data-execution_count="416">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>diversity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="416">
 <pre><code>     year sex  count
@@ -869,8 +880,8 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 [284 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="417">
-<details class="code-fold">
+<div class="cell" data-execution_count="417">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diversity, x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'count'</span>, color<span class="op">=</span><span class="st">"sex"</span>)</span>
@@ -897,8 +908,8 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <li>문자열의 마지막 철자를 구하는 함수를 구한 후,</li>
 <li><code>names</code>데이터의 <code>name</code> 칼럼을 Series로 추출 후 <code>.map</code> Series method를 이용하여 적용합니다.</li>
 </ul>
-<div id="cell-36" class="cell" data-execution_count="286">
-<details class="code-fold">
+<div class="cell" data-execution_count="286">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 함수를 이용해 이름의 마지막 글자를 추출</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_last_letter(x):</span>
@@ -913,7 +924,7 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>names[<span class="st">"last_letter"</span>] <span class="op">=</span> last_letters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-37" class="cell" data-execution_count="287">
+<div class="cell" data-execution_count="287">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="287">
 <pre><code>              name sex  births  year    prop last_letter
@@ -933,13 +944,13 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 </section>
 <section id="이제-아래와-같이-각-연도별-성별에-따른-last_letter로-끝나는-이름을-가진-출생아-수를-구해보세요." class="level3">
 <h3 class="anchored" data-anchor-id="이제-아래와-같이-각-연도별-성별에-따른-last_letter로-끝나는-이름을-가진-출생아-수를-구해보세요.">9. 이제 아래와 같이 각 연도별, 성별에 따른 <code>last_letter</code>로 끝나는 이름을 가진 출생아 수를 구해보세요.</h3>
-<div id="cell-39" class="cell" data-execution_count="288">
-<details class="code-fold">
+<div class="cell" data-execution_count="288">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> names.groupby([<span class="st">"year"</span>, <span class="st">"sex"</span>, <span class="st">"last_letter"</span>])[<span class="st">"births"</span>].<span class="bu">sum</span>().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-40" class="cell" data-execution_count="289">
+<div class="cell" data-execution_count="289">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="289">
 <pre><code>      year sex last_letter  births
@@ -965,8 +976,8 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <li>이를 이용해 다음과 같이 시각화 해보세요.</li>
 <li>이 플랏에서 남자 이름의 경우, “d”, “n”, “y”로 끝나는 이름이 많고 변화가 크다는 것을 볼 수 있습니다.</li>
 </ul>
-<div id="cell-42" class="cell" data-execution_count="290">
-<details class="code-fold">
+<div class="cell" data-execution_count="290">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>subtable <span class="op">=</span> table.query(<span class="st">'year in [1910, 1960, 2010]'</span>)</span>
@@ -1017,8 +1028,8 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <li>위에 <code>table</code> 데이터를 이용해 모든 년도에 대해 <code>last_letter</code>의 비율을 구해보세요.</li>
 <li>남자아이이고 ‘d’, ‘n’, ’y’로 끝나는 이름으로 필터링 한 후 시각화 합니다.</li>
 </ul>
-<div id="cell-44" class="cell" data-execution_count="291">
-<details class="code-fold">
+<div class="cell" data-execution_count="291">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 앞서 정의한 `add_prop` 함수를 이용해서 비율을 구함</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> table.groupby([<span class="st">"year"</span>, <span class="st">"sex"</span>], group_keys<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(add_prop)</span>
@@ -1047,14 +1058,14 @@ Name: prop, Length: 1000, dtype: float64</code></pre>
 <ul>
 <li>아래와 같이 Leslie와 비슷한 철자를 가진 발음이 비슷한 이름들을 살펴보면,</li>
 </ul>
-<div id="cell-51" class="cell" data-execution_count="292">
+<div class="cell" data-execution_count="292">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 유닉크한 이름을 Series로 추출</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>all_names <span class="op">=</span> pd.Series(top1000[<span class="st">"name"</span>].unique())  <span class="co"># .unique(): numpy array로 반환됨</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># `Lesl` 문자열을 포함하는 이름들 추출</span></span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>lesley_like <span class="op">=</span> all_names[all_names.<span class="bu">str</span>.contains(<span class="st">"Lesl"</span>)]  <span class="co"># Series의 method로 .str.contains()는 문자열 포함 여부를 판단</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-52" class="cell" data-execution_count="293">
+<div class="cell" data-execution_count="293">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>lesley_like</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="293">
 <pre><code>632     Leslie
@@ -1067,8 +1078,8 @@ dtype: object</code></pre>
 </div>
 <section id="이-lesley_like에-해당하는-이름들로-top1000-데이터를-필터링하여-filtered에-저장하세요." class="level3">
 <h3 class="anchored" data-anchor-id="이-lesley_like에-해당하는-이름들로-top1000-데이터를-필터링하여-filtered에-저장하세요.">12. 이 <code>lesley_like</code>에 해당하는 이름들로 <code>top1000</code> 데이터를 필터링하여 <code>filtered</code>에 저장하세요.</h3>
-<div id="cell-54" class="cell" data-execution_count="294">
-<details class="code-fold">
+<div class="cell" data-execution_count="294">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># query를 이용하거나</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> top1000.query(<span class="st">'name in @lesley_like'</span>)  <span class="co"># @: 외부 변수를 참조할 때 사용</span></span>
@@ -1077,7 +1088,7 @@ dtype: object</code></pre>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> top1000[top1000[<span class="st">"name"</span>].isin(lesley_like)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-55" class="cell" data-execution_count="295">
+<div class="cell" data-execution_count="295">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>filtered</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="295">
 <pre><code>           name sex  births  year    prop
@@ -1102,8 +1113,8 @@ dtype: object</code></pre>
 <li>이를 연도에 따른 비율을 계산하면, 각 연도에서 <code>Leslie</code>와 같은 이름들이 남자로 쓰인 비율과 여자로 쓰인 비율을 구할 수 있습니다.</li>
 <li>즉, 아래 플랏에서 보면 각 연도에서 남자로 쓰인 비율과 여자로 쓰인 비율의 합이 1이 됩니다.</li>
 </ul>
-<div id="cell-57" class="cell" data-execution_count="296">
-<details class="code-fold">
+<div class="cell" data-execution_count="296">
+<details>
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연도별, 성별에 따른 출생아수의 합</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> filtered.groupby([<span class="st">"year"</span>, <span class="st">"sex"</span>])[<span class="st">"births"</span>].<span class="bu">sum</span>().reset_index()</span>
@@ -1208,27 +1219,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1238,17 +1232,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1261,128 +1246,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        typesetMath(container);
-        return container.innerHTML
-      } else {
-        typesetMath(note);
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      typesetMath(note);
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1426,7 +1289,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1452,32 +1314,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1535,16 +1371,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/case1.html" class="pagination-link  aria-label=" case="" study="" 1"="">
+      <a href="../contents/case1.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Case Study 1</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/exercise_transform.html" class="pagination-link" aria-label="Exercises">
+      <a href="../contents/exercise_transform.html" class="pagination-link">
         <span class="nav-page-text">Exercises</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1552,9 +1402,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
-</div>   
+    <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1563,7 +1411,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 
