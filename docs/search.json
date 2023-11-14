@@ -497,11 +497,11 @@
     "text": "중간고사 11월 8일 (수)"
   },
   {
-    "objectID": "contents/notice.html#기말고사",
-    "href": "contents/notice.html#기말고사",
+    "objectID": "contents/notice.html#기말고사-12월-13일-수",
+    "href": "contents/notice.html#기말고사-12월-13일-수",
     "title": "Notice",
-    "section": "기말고사",
-    "text": "기말고사"
+    "section": "기말고사 12월 13일 (수)",
+    "text": "기말고사 12월 13일 (수)"
   },
   {
     "objectID": "contents/notice.html#개별-프로젝트",
@@ -1055,12 +1055,5 @@
     "title": "Views and Copies",
     "section": "pandas",
     "text": "pandas\n훨씬 복잡함…\n데이터 타입도 데이터가 어떻게 만들어졌는지도 관계가 있음.\n\ndf = pd.DataFrame(np.arange(8).reshape(4, 2), columns=[\"one\", \"two\"])\ndf\n\n   one  two\n0    0    1\n1    2    3\n2    4    5\n3    6    7\n\n\n\nsub_df = df.iloc[1:3]  # view\nsub_df\n\n   one  two\n1    2    3\n2    4    5\n\n\n\ndf.iloc[1, 1] = 99\n\n\nprint(df)\nprint(sub_df)\n\n   one  two\n0    0    1\n1    2   99\n2    4    5\n3    6    7\n   one  two\n1    2   99\n2    4    5\n\n\n\n\n\n\n\n\nNote\n\n\n\ncopy_on_write = True (v2.0) 일 때는 copy가 되어\nprint(sub_df)\n#    one  two\n# 1    2    3\n# 2    4    5\n\n\n\ndf.iloc[1, 0] = 0.9  # copy; 컬럼의 데이터 타입이 int에서 float로 바뀌면서 copy됨)\n\n\nprint(df)\nprint(sub_df)\n\n   one  two\n0  0.0    1\n1  0.9   99\n2  4.0    5\n3  6.0    7\n   one  two\n1    2   99\n2    4    5\n\n\n\ndf.iloc[2, 1] = -99  # view\n\n\nprint(df)\nprint(sub_df)\n\n   one  two\n0  0.0    1\n1  0.9   99\n2  4.0  -99\n3  6.0    7\n   one  two\n1    2   99\n2    4  -99\n\n\n\nSettingWithCopyWarning\nSubsetting된 DataFrame을 수정하려할 때 경고를 내어주지만, 항상 믿을만 한 것은 아님.\n경고가 발생할 시, 앞 어디에선가 view나 copy가 이루어진 곳을 찾아 .copy()로 수정\n\ndf = pd.DataFrame(np.arange(12).reshape(4, 3), columns=[\"one\", \"two\", \"three\"])\ndf\n\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf_cols = df[[\"two\", \"three\"]]  # copy\ndf_cols\n\n   two  three\n0    1      2\n1    4      5\n2    7      8\n3   10     11\n\n\n\ndf.iloc[0, 1] = -55\n\n\nprint(df)\nprint(df_cols)\n\n   one  two  three\n0    0  -55      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n   two  three\n0    1      2\n1    4      5\n2    7      8\n3   10     11\n\n\nSubset을 수정하려하면 warning message!\ncopy_on_save가 True일 때는 copy가 되면서 경고가 발생하지 않음 (v2.0)\n\ndf_cols.iloc[0, 1] = -99\n\n/var/folders/tv/fwb_421x50z8bj5v37vw680r0000gn/T/ipykernel_1691/2609376290.py:1: SettingWithCopyWarning: \nA value is trying to be set on a copy of a slice from a DataFrame\n\nSee the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n  df_cols.iloc[0, 1] = -99\n\n\n\nprint(df_cols)\nprint(df)\n\n   two  three\n0    1    -99\n1    4      5\n2    7      8\n3   10     11\n   one  two  three\n0    0  -55      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n다음과 비교\n\ndf = pd.DataFrame(np.arange(12).reshape(4, 3), columns=[\"one\", \"two\", \"three\"])\ndf\n\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf_cols_3 = df.loc[:, [\"two\", \"three\"]]  # copy\ndf_cols_3.iloc[0, 1] = -99\n\n# No warning\n\n\nprint(df_cols_3)\nprint(df)\n\n   two  three\n0    1    -99\n1    4      5\n2    7      8\n3   10     11\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf = pd.DataFrame(np.arange(12).reshape(4, 3), columns=[\"one\", \"two\", \"three\"])\ndf\n\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf_cols_2 = df.loc[:, \"two\":\"three\"]  # view\ndf_cols_2.iloc[0, 1] = -99\n\n/var/folders/tv/fwb_421x50z8bj5v37vw680r0000gn/T/ipykernel_1691/4245876664.py:2: SettingWithCopyWarning: \nA value is trying to be set on a copy of a slice from a DataFrame\n\nSee the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n  df_cols_2.iloc[0, 1] = -99\n\n\n\nprint(df_cols_2)\nprint(df)\n\n   two  three\n0    1    -99\n1    4      5\n2    7      8\n3   10     11\n   one  two  three\n0    0    1    -99\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\n\n\n\n\n\nNote\n\n\n\ncopy_on_save가 True일 때는 copy가 되면서 경고가 발생하지 않음 (v2.0)\nprint(df)\n#    one  two  three\n# 0    0    1      2\n# 1    3    4      5\n# 2    6    7      8\n# 3    9   10     11\n\n\n강제로 copy: df_cols.copy()\n\ndf_cols_4 = df[[\"two\", \"three\"]].copy()\ndf_cols_4.iloc[0, 1] = -99\n\n\n\n\n\n\n\nTip\n\n\n\nSubset을 만들고 바로 분석을 할 것이 아니라면, 안전하게 .copy()를 쓰는 것을 추천"
-  },
-  {
-    "objectID": "contents/notice.html#기말고사-12월-13일-수",
-    "href": "contents/notice.html#기말고사-12월-13일-수",
-    "title": "Notice",
-    "section": "기말고사 12월 13일 (수)",
-    "text": "기말고사 12월 13일 (수)"
   }
 ]
