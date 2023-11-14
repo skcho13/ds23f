@@ -2,5 +2,7 @@
     "editor.defaultFormatter": "ms-python.autopep8",
     "[quarto]": {
         "editor.defaultFormatter": "quarto.quarto"
-    }
+    },
+    "git.timeline.showUncommitted": false,
+    "git.timeline.date": "committed"
 }

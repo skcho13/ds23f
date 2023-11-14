@@ -13,6 +13,8 @@ project:
     - "!statistic.ipynb"
     - "!overview*.ipynb"
   resources: CNAME
+  preview:
+    port: 5452
 
 website:
   page-navigation: true
@@ -114,8 +116,8 @@ website:
       - text: ---
       - section: Modelling
         contents:
-          # - href: contents/model-basic.ipynb
-          #   text: Model Basics
+          - href: contents/model-basic.ipynb
+            text: Model Basics
         #     - href: contents/modelling1.ipynb
         #     - href: contents/modelling2.ipynb
         #     - href: contents/logistic.ipynb
