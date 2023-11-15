@@ -59,7 +59,7 @@ website:
         contents:
           - href: contents/intro.qmd
             text: Data Analysis Intro
-          - href: contents/setup.ipynb
+          - href: contents/setup.qmd
             text: Setup
           - section: contents/pandas.ipynb
             contents: 
