@@ -193,7 +193,7 @@
     "href": "contents/model-basic.html#a-simple-model",
     "title": "Model Basics",
     "section": "A simple model",
-    "text": "A simple model\nData: sim1.csv\n\nsim1 = pd.read_csv(\"data/sim1.csv\")\n\n\n\n\n     x     y\n0    1  4.20\n1    1  7.51\n2    1  2.13\n3    2  8.99\n..  ..   ...\n26   9 21.13\n27  10 24.97\n28  10 23.35\n29  10 21.98\n\n[30 rows x 2 columns]\n\n\n\n\n\n\n\n패턴: 강한 선형 관계\n선형 모델 family인 \\(y = a_2 x + a_1\\)을 세운 후\n무수히 많은 \\(a_1, a_2\\)의 값들 중 위 데이터에 가장 가까운 값을 찾음\n그 예로, 임의로 250개의 선형 모델을 그려보면,\n\n\n\n\n\n\n\n\n이 선형모델 중 데이터에 가장 가까운 모델을 찾고자 하는데, 데이터와 모델과의 거리를 정의해야 함.\n\\(d =|~data - model~|\\)\n예) 모델과 데이터의 수직 거리(residuals)의 총체\n\nModel 1.1: \\(y = 1.5x+7\\)의 경우, 이 모델이 예측하는 값들\n\n\narray([ 8.5,  8.5,  8.5, 10. , 10. , 10. , 11.5, 11.5, 11.5, 13. , 13. ,\n       13. , 14.5, 14.5, 14.5, 16. , 16. , 16. , 17.5, 17.5, 17.5, 19. ,\n       19. , 19. , 20.5, 20.5, 20.5, 22. , 22. , 22. ])\n\n\n\n\n     x     y  pred  resid | e\n0    1  4.20  8.50      -4.30\n1    1  7.51  8.50      -0.99\n2    1  2.13  8.50      -6.37\n3    2  8.99 10.00      -1.01\n..  ..   ...   ...        ...\n26   9 21.13 20.50       0.63\n27  10 24.97 22.00       2.97\n28  10 23.35 22.00       1.35\n29  10 21.98 22.00      -0.02\n\n[30 rows x 4 columns]\n\n\n\n\n\nRMSE = \\(\\displaystyle\\sqrt{\\frac{1}{n} \\sum_{i=1}^{n}{e^2}}\\) = 2.67\n\n\nMAE = \\(\\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}|~e~|\\) = 1.43\n\n\n\n\n\n\n\n\n\nModel evaluation: RMSE, MAE\n\n\n\nThe prediction accuracy of the models\n\nRoot-mean-squared deviation/error: \\(RMSE = \\displaystyle\\sqrt{\\frac{1}{n} \\sum_{i=1}^{n}{(y_i -\\hat y_i)^2}}\\)\nMean absolute error: \\(MAE = \\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}{|~y_i -\\hat y_i~|}\\) : 이상치에 덜 민감함\n\n\n\n즉, 데이터셋 sim1과 model 1.1 과의 거리를 RMSE로 정의하면, \\(d=|~sim1 -model1~| = 2.67\\)\n위의 250개의 모델에 대해 각각 거리를 구하면\n\n\n       a1    a2  dist\n0   21.79 -2.92 17.42\n1   -2.83 -0.57 22.83\n2   -6.39  2.16 10.26\n3   13.08 -0.89 11.41\n..    ...   ...   ...\n246 37.78  3.83 43.68\n247  0.51  4.19 10.38\n248 27.94 -0.84 11.59\n249 27.93  2.45 25.99\n\n[250 rows x 3 columns]\n\n\n이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,\n\n\n\n\n\n\n\n250개의 모델 중 10개의 모델을 다음과 같은 \\((a1, a2)\\) 평면으로 살펴보면, 즉, model space에서 살펴보면\n\n오렌지 색은 위에서 구한 10 best models\n\n\n\n\n\n\n\n\n점차 촘촘한 간격으로 grid search를 하면서 거리를 최소로 하는 모델을 찾아가는 것이고, 실제로는 Newton-Raphson search를 통해 최소값을 구하는 알고리즘을 통해 구할 수 있음.\n즉, 거리를 최소로 하는 a1, a2를 찾으면,\n\nfrom scipy.optimize import minimize\nminimize(measure_distance, [0, 0], args=(sim1)).x\n\narray([4.22, 2.05])"
+    "text": "A simple model\nData: sim1.csv\n\nsim1 = pd.read_csv(\"data/sim1.csv\")\n\n\n\n\n     x     y\n0    1  4.20\n1    1  7.51\n2    1  2.13\n3    2  8.99\n..  ..   ...\n26   9 21.13\n27  10 24.97\n28  10 23.35\n29  10 21.98\n\n[30 rows x 2 columns]\n\n\n\n\n\n\n\n패턴: 강한 선형 관계\n선형 모델 family인 \\(y = a_2 x + a_1\\)을 세운 후\n무수히 많은 \\(a_1, a_2\\)의 값들 중 위 데이터에 가장 가까운 값을 찾음\n그 예로, 임의로 250개의 선형 모델을 그려보면,\n\n\n\n\n\n\n\n\n이 선형모델 중 데이터에 가장 가까운 모델을 찾고자 하는데, 데이터와 모델과의 거리를 정의해야 함.\n\\(d =|~data - model~|\\)\n예) 모델과 데이터의 수직 거리(residuals)의 총체\n\nModel 1.1: \\(y = 1.5x+7\\)의 경우, 이 모델이 예측하는 값들\n\n\narray([ 8.5,  8.5,  8.5, 10. , 10. , 10. , 11.5, 11.5, 11.5, 13. , 13. ,\n       13. , 14.5, 14.5, 14.5, 16. , 16. , 16. , 17.5, 17.5, 17.5, 19. ,\n       19. , 19. , 20.5, 20.5, 20.5, 22. , 22. , 22. ])\n\n\n\n\n     x     y  pred  resid | e\n0    1  4.20  8.50      -4.30\n1    1  7.51  8.50      -0.99\n2    1  2.13  8.50      -6.37\n3    2  8.99 10.00      -1.01\n..  ..   ...   ...        ...\n26   9 21.13 20.50       0.63\n27  10 24.97 22.00       2.97\n28  10 23.35 22.00       1.35\n29  10 21.98 22.00      -0.02\n\n[30 rows x 4 columns]\n\n\n\n\n\nRMSE = \\(\\displaystyle\\sqrt{\\frac{1}{n} \\sum_{i=1}^{n}{e^2}}\\) = 2.67\n\n\nMAE = \\(\\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}|~e~|\\) = 1.43\n\n\n\n\n\n\n\n\n\nModel evaluation: RMSE, MAE\n\n\n\nThe prediction accuracy of the models\n\nRoot-mean-squared deviation/error: \\(RMSE = \\displaystyle\\sqrt{\\frac{1}{n} \\sum_{i=1}^{n}{(y_i -\\hat y_i)^2}}\\)\nMean absolute error: \\(MAE = \\displaystyle\\frac{1}{n} \\sum_{i=1}^{n}{|~y_i -\\hat y_i~|}\\) : 극단값들에 덜 민감함\n\n\n\n즉, 데이터셋 sim1과 model 1.1 과의 거리를 RMSE로 정의하면, \\(d=|~sim1 -model1~| = 2.67\\)\n위의 250개의 모델에 대해 각각 거리를 구하면\n\n\n       a1    a2  dist\n0   21.79 -2.92 17.42\n1   -2.83 -0.57 22.83\n2   -6.39  2.16 10.26\n3   13.08 -0.89 11.41\n..    ...   ...   ...\n246 37.78  3.83 43.68\n247  0.51  4.19 10.38\n248 27.94 -0.84 11.59\n249 27.93  2.45 25.99\n\n[250 rows x 3 columns]\n\n\n이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,\n\n\n\n\n\n\n\n250개의 모델 중 10개의 모델을 다음과 같은 \\((a1, a2)\\) 평면으로 살펴보면, 즉, model space에서 살펴보면\n\n오렌지 색은 위에서 구한 10 best models\n\n\n\n\n\n\n\n\n점차 촘촘한 간격으로 grid search를 하면서 거리를 최소로 하는 모델을 찾아가는 것이고, 실제로는 Newton-Raphson search를 통해 최소값을 구하는 알고리즘을 통해 구할 수 있음.\n즉, 거리를 최소로 하는 a1, a2를 찾으면,\n\nfrom scipy.optimize import minimize\nminimize(measure_distance, [0, 0], args=(sim1)).x\n\narray([4.22, 2.05])"
   },
   {
     "objectID": "contents/model-basic.html#summary",
@@ -399,11 +399,67 @@
     "text": "중간 점검!\n여기를 눌러 설문조사에 참여해주세요!"
   },
   {
-    "objectID": "contents/shortcuts.html",
-    "href": "contents/shortcuts.html",
-    "title": "오늘의 숏컷",
+    "objectID": "contents/slides2/slides2.html#example-slide",
+    "href": "contents/slides2/slides2.html#example-slide",
+    "title": "A title",
+    "section": "Example slide",
+    "text": "Example slide\nThis is a subtitle\nHere we have some text that may run over several lines of the slide frame, depending on how long it is.\n\nfirst item\n\nA sub item\n\n\nNext, we’ll brief review some theme-specific components.\n\nNote that all of the standard Reveal.js features can be used with this theme, even if we don’t highlight them here."
+  },
+  {
+    "objectID": "contents/slides2/slides2.html#additional-theme-classes",
+    "href": "contents/slides2/slides2.html#additional-theme-classes",
+    "title": "A title",
+    "section": "Additional theme classes",
+    "text": "Additional theme classes\nSome extra things you can do with the clean theme\nSpecial classes for emphasis\n\n.alert class for default emphasis, e.g. important note.\n.fg class for custom colour, e.g. important note.\n.bg class for custom background, e.g. important note.\n\nCross-references\n\n.button class provides a Beamer-like button, e.g. Summary"
+  },
+  {
+    "objectID": "contents/slides2/slides2.html#want-more",
+    "href": "contents/slides2/slides2.html#want-more",
+    "title": "A title",
+    "section": "Want more?",
+    "text": "Want more?\nSee our longer demo slides\nWe’ve deliberarely kept this template lean, to get you up and running as fast as possible.\nWe provide a separate demo template, with more examples for integrating code, tables, figures, etc.\n\nSee the live demo slides here."
+  },
+  {
+    "objectID": "contents/slides2/slides2.html#sec-summary",
+    "href": "contents/slides2/slides2.html#sec-summary",
+    "title": "A title",
+    "section": "Summary",
+    "text": "Summary\nA minimal and elegant presentation theme\nThe Quarto reveal.js clean theme aims to be a minimal and elegant presention theme.\nInstall the theme.\nquarto install extension grantmcdermott/quarto-revealjs-clean\nUse this lean template.\nquarto use template grantmcdermott/quarto-revealjs-clean\nUse the longer demo template.\nquarto use template grantmcdermott/quarto-revealjs-clean-demo"
+  },
+  {
+    "objectID": "contents/notice.html",
+    "href": "contents/notice.html",
+    "title": "Notice",
     "section": "",
-    "text": "ctrl/cmd + /"
+    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens\n\n11.20(월) 수업 전까지\n\nExploratory Data Analysis 마지막에 있는 과제"
+  },
+  {
+    "objectID": "contents/notice.html#과제",
+    "href": "contents/notice.html#과제",
+    "title": "Notice",
+    "section": "",
+    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens\n\n11.20(월) 수업 전까지\n\nExploratory Data Analysis 마지막에 있는 과제"
+  },
+  {
+    "objectID": "contents/notice.html#중간고사-11월-8일-수",
+    "href": "contents/notice.html#중간고사-11월-8일-수",
+    "title": "Notice",
+    "section": "중간고사 11월 8일 (수)",
+    "text": "중간고사 11월 8일 (수)"
+  },
+  {
+    "objectID": "contents/notice.html#기말고사-12월-13일-수",
+    "href": "contents/notice.html#기말고사-12월-13일-수",
+    "title": "Notice",
+    "section": "기말고사 12월 13일 (수)",
+    "text": "기말고사 12월 13일 (수)"
+  },
+  {
+    "objectID": "contents/notice.html#개별-프로젝트",
+    "href": "contents/notice.html#개별-프로젝트",
+    "title": "Notice",
+    "section": "개별 프로젝트",
+    "text": "개별 프로젝트"
   },
   {
     "objectID": "contents/intro.html#미래-데이터의-중요성",
@@ -476,39 +532,18 @@
     "text": "About this site"
   },
   {
-    "objectID": "contents/notice.html",
-    "href": "contents/notice.html",
-    "title": "Notice",
+    "objectID": "contents/misc2.html",
+    "href": "contents/misc2.html",
+    "title": "Misc. 2",
     "section": "",
-    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens\n\n11.20(월) 수업 전까지\n\nExploratory Data Analysis 마지막에 있는 과제"
+    "text": "#| code-fold: true\n#| code-summary: Load packages\n\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.options.mode.copy_on_write = True\npd.options.display.float_format = '{:.5f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7\n#| echo: False\npd.options.display.notebook_repr_html = False\ntips = sns.load_dataset('tips')\ntips\n(\n    so.Plot(tips, x=\"total_bill\", y=\"tip\", color=\"smoker\")\n    .add(so.Dots())\n)"
   },
   {
-    "objectID": "contents/notice.html#과제",
-    "href": "contents/notice.html#과제",
-    "title": "Notice",
+    "objectID": "contents/shortcuts.html",
+    "href": "contents/shortcuts.html",
+    "title": "오늘의 숏컷",
     "section": "",
-    "text": "10.9(월) 수업전까지\n\nPlots 섹션 마지막에 있는 연습문제에서 tips나 houses 데이터 중 하나 혹은 섞어서 Plots 단원에서 다뤘던 시각화를 적용해보기\n.ipynb 파일로 eclass에 제출\n\n10.23(월) 수업 전까지\n\nTransforming I 연습문제\nA, B 파트 전부와 C 파트는 할 수 있는 만큼\n\n10.30(월) 수업 전까지\n\nTransforming II 연습문제\n\n11.6(월) 수업 전까지\n\n연습문제 Billboard & MovieLens\n\n11.20(월) 수업 전까지\n\nExploratory Data Analysis 마지막에 있는 과제"
-  },
-  {
-    "objectID": "contents/notice.html#중간고사-11월-8일-수",
-    "href": "contents/notice.html#중간고사-11월-8일-수",
-    "title": "Notice",
-    "section": "중간고사 11월 8일 (수)",
-    "text": "중간고사 11월 8일 (수)"
-  },
-  {
-    "objectID": "contents/notice.html#기말고사-12월-13일-수",
-    "href": "contents/notice.html#기말고사-12월-13일-수",
-    "title": "Notice",
-    "section": "기말고사 12월 13일 (수)",
-    "text": "기말고사 12월 13일 (수)"
-  },
-  {
-    "objectID": "contents/notice.html#개별-프로젝트",
-    "href": "contents/notice.html#개별-프로젝트",
-    "title": "Notice",
-    "section": "개별 프로젝트",
-    "text": "개별 프로젝트"
+    "text": "ctrl/cmd + /"
   },
   {
     "objectID": "contents/vote-result.html",
@@ -900,7 +935,7 @@
     "href": "contents/setup.html",
     "title": "환경설정",
     "section": "",
-    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#(myenv)&gt; conda deactivate\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서\n#(myenv)&gt; ipython kernel install --user --name=myenv\n환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
+    "text": "Conda Cheatsheet: 기본적인 conda 명령어 요약\n\n\nAnaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: miniconda install page\n\nWindows 경우: 설치시 물어보는 “add Miniconda to your PATH variable” 옵션을 켜고 설치할 것\n\nShell 사용에 대해서는 아래 2. Command Line Tool 참고\n\n# Terminal (Mac) or Miniconda Powershell Prompt (Windows)\n\n#(base)&gt; conda info # 콘다 정보 \n#(base)&gt; conda update conda # 콘다 업데이트\n\n\n\n\nconda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n\n#(base)&gt; conda config --add channels conda-forge\n#(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n\n\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n#(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n#(base)&gt; conda search scipy\n\nconda base에 있는 Python을 update하려면, 가령 3.10으로 업데이트하려면\n\n#(base)&gt; conda install python=3.10  # python update\n\n\n\n\nconda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬과 함께 설치시\n#&gt; conda create --name myenv python=3.12\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#(myenv)&gt; conda deactivate\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서\n#(myenv)&gt; ipython kernel install --user --name=myenv\n환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv\n\n\n\n\n\n\n# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
   },
   {
     "objectID": "contents/setup.html#miniconda-설치",
@@ -921,7 +956,7 @@
     "href": "contents/setup.html#conda-environment",
     "title": "환경설정",
     "section": "",
-    "text": "conda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬 설치시\n#&gt; conda create --name myenv python=3.9\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#(myenv)&gt; conda deactivate\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서\n#(myenv)&gt; ipython kernel install --user --name=myenv\n환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv"
+    "text": "conda/user guide\n환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 pyenv나 venv 사용하지 않음\n\n#&gt; conda create --name myenv\n\n# 특정 버전의 파이썬과 함께 설치시\n#&gt; conda create --name myenv python=3.12\n\n환경 확인\n\n#&gt; conda env list\n\n#&gt; conda environments:\n#&gt;  base         */.../miniconda3\n#&gt;                /.../miniconda3/envs/myenv\n\n환경 제거\n\n#&gt; conda env remove --name myenv\n\n환경 activate/deactivate\n\n#&gt; conda activate myenv\n#(myenv)&gt; conda deactivate\n\n특정 환경 안의 파이썬 버전 확인\n\n#(myenv)&gt; python --version\n\n\n\n\n\n\n\nJupyter notebook을 쓰는 경우\n\n\n\n새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서\n#(myenv)&gt; ipython kernel install --user --name=myenv\n환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.\n등록된 커널 리스트를 확인\n#(myenv)&gt; jupyter kernelspec list\n커널 삭제\n#(myenv)&gt; jupyter kernelspec remove myenv"
   },
   {
     "objectID": "contents/setup.html#activated-환경-내에서-패키지-설치-및-제거",
@@ -931,11 +966,11 @@
     "text": "# 특정 환경을 activate한 후\n#(myenv)&gt; conda install &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda install --channel conda-forge &lt;package name&gt; # 특정 conda-forge 채널을 통한 설치\n\n# 제거\n#(myenv)&gt; conda remove &lt;package name1&gt; &lt;package name2&gt; ...\n\n# 업데이트\n#(myenv)&gt; conda update &lt;package name1&gt; &lt;package name2&gt; ...\n#(myenv)&gt; conda update --all # all packages\n\n# 패키지 리스트\n#(myenv)&gt; conda list\n\n\n# 환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가\n#(base)&gt; conda install --name myenv &lt;package name1&gt;\n\n\n# pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음\n#(myenv)&gt; pip install &lt;package name1&gt; &lt;package name2&gt; ...\n\n\n# 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면\n#(myenv)&gt; conda install python=3.9\n\n수업에 필요한 기본 패키지 설치\n\n# 수업에 필요한 기본 패키지 설치\n#(myenv)&gt; conda install jupyter numpy pandas matplotlib seaborn"
   },
   {
-    "objectID": "contents/setup.html#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천",
-    "href": "contents/setup.html#mac의-경우-기본-bash-shell인-terminal-대신-다음-zsh을-추천",
+    "objectID": "contents/setup.html#mac의-경우-기본-terminal을-이용하되-기본-zsh-shell-대신-다음-oh-my-zsh을-추천",
+    "href": "contents/setup.html#mac의-경우-기본-terminal을-이용하되-기본-zsh-shell-대신-다음-oh-my-zsh을-추천",
     "title": "환경설정",
-    "section": "Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천",
-    "text": "Mac의 경우: 기본 bash shell인 terminal 대신 다음 zsh을 추천\nOh-My-Zsh!: 링크\n\n이 경우 miniconda 설치시 bash의 추가된 conda setup을 zsh로 가져와야 함: minconda를 zsh 설치 후에 설치하는 경우는 miniconda가 추가시키니 신경쓸 필요 없음\n\nhome directory에 있는 .bash_profile 을 열면 # &gt;&gt;&gt; conda initialize &gt;&gt;&gt; 로 시작해서 # &lt;&lt;&lt; conda initialize &lt;&lt;&lt; 부분까지를 복사한 후 .zshrc 파일을 열어 맨 뒤에 붙여넣음\n위 파일을 VS Code에서 쉽게 열어보려면 아래 그림처럼 VS Code에서 Sehll Command: Install 'Code' command in PATH 실행하고 나면\nshell 환경에서 code .zshrc를 실행하면 VS Code에서 편집할 수 있음"
+    "section": "Mac의 경우: 기본 terminal을 이용하되 기본 zsh shell 대신 다음 Oh-My-Zsh을 추천",
+    "text": "Mac의 경우: 기본 terminal을 이용하되 기본 zsh shell 대신 다음 Oh-My-Zsh을 추천\nOh-My-Zsh!: 링크\n\n이 경우 miniconda 설치시 bash의 추가된 conda setup을 zsh로 가져와야 함: minconda를 zsh 설치 후에 설치하는 경우는 miniconda가 추가시키니 신경쓸 필요 없음\n\nhome directory에 있는 .bash_profile 을 열면 # &gt;&gt;&gt; conda initialize &gt;&gt;&gt; 로 시작해서 # &lt;&lt;&lt; conda initialize &lt;&lt;&lt; 부분까지를 복사한 후 .zshrc 파일을 열어 맨 뒤에 붙여넣음\n위 파일을 VS Code에서 쉽게 열어보려면 아래 그림처럼 VS Code에서 Sehll Command: Install 'Code' command in PATH 실행하고 나면\nshell 환경에서 code .zshrc를 실행하면 VS Code에서 편집할 수 있음"
   },
   {
     "objectID": "contents/setup.html#windows의-경우-windows-terminal-추천",
@@ -956,7 +991,7 @@
     "href": "contents/setup.html#extensions",
     "title": "환경설정",
     "section": "Extensions",
-    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…"
+    "text": "Extensions\n\nPython\nPython Extension Pack 중\n\nIntelliCode\nPython Environment Manager\n\nPylance: 문법 체크, 자동완성, …\nDocs View\n\n안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결\n\nCopilot…"
   },
   {
     "objectID": "contents/setup.html#preferences",

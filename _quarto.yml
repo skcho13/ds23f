@@ -12,6 +12,7 @@ project:
     #- "!model*.ipynb"
     - "!statistic.ipynb"
     - "!overview*.ipynb"
+    - "!slides/"
   resources: CNAME
   preview:
     port: 5452
@@ -95,6 +96,7 @@ website:
                 text: Pivot Table
               - href: contents/exercise_wrangle.ipynb
           - href: contents/misc.ipynb
+          - href: contents/misc2.qmd
           - section: Solutions
             contents:
               - href: contents/sol1.ipynb
