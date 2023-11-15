@@ -1,8 +1,8 @@
 /.quarto/
-
-# any files except docs directory
-/contents/
 theme-light.scss
 styles.css
 _quarto.yml
+
+# any files except docs directory
+/contents/
 
