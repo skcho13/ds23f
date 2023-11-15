@@ -96,7 +96,7 @@ website:
                 text: Pivot Table
               - href: contents/exercise_wrangle.ipynb
           - href: contents/misc.ipynb
-          - href: contents/misc2.qmd
+          # - href: contents/misc2.qmd
           - section: Solutions
             contents:
               - href: contents/sol1.ipynb
