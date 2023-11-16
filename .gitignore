@@ -1,5 +1,6 @@
 /.quarto/
 /styles.css
+/theme-light.scss
 
 # any files except docs directory
 /contents/
