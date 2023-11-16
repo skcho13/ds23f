@@ -492,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#miniconda-설치" id="toc-miniconda-설치" class="nav-link" data-scroll-target="#miniconda-설치">Miniconda 설치</a></li>
   <li><a href="#패키지-repositorychannel-선택" id="toc-패키지-repositorychannel-선택" class="nav-link" data-scroll-target="#패키지-repositorychannel-선택">패키지 repository(channel) 선택</a></li>
   <li><a href="#conda-environment" id="toc-conda-environment" class="nav-link" data-scroll-target="#conda-environment">Conda Environment</a></li>
-  <li><a href="#activated-환경-내에서-패키지-설치-및-제거" id="toc-activated-환경-내에서-패키지-설치-및-제거" class="nav-link" data-scroll-target="#activated-환경-내에서-패키지-설치-및-제거">(activated) 환경 내에서 패키지 설치 및 제거</a></li>
+  <li><a href="#환경activated-내에서-패키지-설치-및-제거" id="toc-환경activated-내에서-패키지-설치-및-제거" class="nav-link" data-scroll-target="#환경activated-내에서-패키지-설치-및-제거">환경(activated) 내에서 패키지 설치 및 제거</a></li>
   </ul></li>
   <li><a href="#command-line-tool" id="toc-command-line-tool" class="nav-link" data-scroll-target="#command-line-tool">2. Command Line Tool</a>
   <ul>
@@ -506,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preferences" id="toc-preferences" class="nav-link" data-scroll-target="#preferences">Preferences</a></li>
   <li><a href="#shortcuts" id="toc-shortcuts" class="nav-link" data-scroll-target="#shortcuts">Shortcuts</a></li>
   <li><a href="#그-외" id="toc-그-외" class="nav-link" data-scroll-target="#그-외">그 외</a></li>
-  <li><a href="#vs-code내에서-terminal-사용" id="toc-vs-code내에서-terminal-사용" class="nav-link" data-scroll-target="#vs-code내에서-terminal-사용">VS Code내에서 Terminal 사용</a></li>
+  <li><a href="#vs-code내에서-terminal-사용" id="toc-vs-code내에서-terminal-사용" class="nav-link" data-scroll-target="#vs-code내에서-terminal-사용">VS Code내에서 terminal 사용</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -595,14 +595,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>특정 환경 안의 파이썬 버전 확인</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> python <span class="ex">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Jupyter notebook을 쓰는 경우
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> ipython <span class="ex">kernel</span> install <span class="at">--user</span> <span class="at">--name</span><span class="op">=</span>myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -613,31 +615,33 @@ Jupyter notebook을 쓰는 경우
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> jupyter <span class="ex">kernelspec</span> remove myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
 </section>
-<section id="activated-환경-내에서-패키지-설치-및-제거" class="level2">
-<h2 class="anchored" data-anchor-id="activated-환경-내에서-패키지-설치-및-제거">(activated) 환경 내에서 패키지 설치 및 제거</h2>
+<section id="환경activated-내에서-패키지-설치-및-제거" class="level2">
+<h2 class="anchored" data-anchor-id="환경activated-내에서-패키지-설치-및-제거">환경(activated) 내에서 패키지 설치 및 제거</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 환경을 activate한 후</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="at">--channel</span> conda-forge <span class="op">&lt;</span>package name<span class="op">&gt;</span> # 특정 conda-forge 채널을 통한 설치</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="at">--channel</span> conda-forge <span class="op">&lt;</span>package name<span class="op">&gt;</span>  # 특정 conda-forge 채널을 통한 설치</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 제거</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">remove</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 다른 버전의 Python 설치하려면, 가령 python 3.9라면</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> python=3.9</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 업데이트</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">update</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">update</span> <span class="at">--all</span> <span class="co"># all packages</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 패키지 리스트</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="at">--name</span> myenv <span class="op">&lt;</span>package name1<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> pip <span class="fu">install</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 환경 안에 다른 버전의 Python 설치하려면, 가령 python 3.9라면</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> python=3.9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 제거</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">remove</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 업데이트</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">update</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">update</span> <span class="at">--all</span>  <span class="co"># all packages</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 패키지 리스트</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="at">--name</span> myenv <span class="op">&lt;</span>package name1<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>pip을 이용한 패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> pip <span class="fu">install</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>수업에 필요한 기본 패키지 설치</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수업에 필요한 기본 패키지 설치</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> jupyter numpy pandas matplotlib seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수업에 필요한 기본 패키지 설치</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> jupyter numpy pandas matplotlib seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="command-line-tool" class="level1">
@@ -692,12 +696,12 @@ Jupyter notebook을 쓰는 경우
 <p>Show Command Palette: ctrl(cmd) + shift + p, 또는 F1</p>
 <p><strong>Cell 안과 밖에서 다르게 작동</strong></p>
 <ul>
-<li>undo/redo : ctrl(cmd) + z / ctrl(cmd) + shift + z</li>
-<li>alt(option) + arrow up/down : move</li>
-<li>alt(option) + shift + arrow up/down : copy</li>
+<li><strong>undo / redo</strong> : ctrl(cmd) + z / ctrl(cmd) + shift + z</li>
+<li><strong>move</strong>: alt(option) + arrow up/down</li>
+<li><strong>copy</strong> : alt(option) + shift + arrow up/down</li>
 </ul>
-<p>실행 방식 3가지: ctrl/shift/alt(option) + enter</p>
-<p>Help:Keyboard shortcuts reference의 <strong>Basic editing</strong> 참고</p>
+<p>코드 실행 방식 3가지: ctrl/shift/alt(option) + enter</p>
+<p>Help: Keyboard shortcuts reference의 <strong>Basic editing</strong> 참고</p>
 </section>
 <section id="그-외" class="level2">
 <h2 class="anchored" data-anchor-id="그-외">그 외</h2>
@@ -711,7 +715,7 @@ Jupyter notebook을 쓰는 경우
 </ul>
 </section>
 <section id="vs-code내에서-terminal-사용" class="level2">
-<h2 class="anchored" data-anchor-id="vs-code내에서-terminal-사용">VS Code내에서 Terminal 사용</h2>
+<h2 class="anchored" data-anchor-id="vs-code내에서-terminal-사용">VS Code내에서 terminal 사용</h2>
 <p>Terminal: Select Default Profile에서 선택</p>
 <ul>
 <li>Mac: zsh</li>
