@@ -1,4 +1,5 @@
 /.quarto/
+styles.css
 
 # any files except docs directory
 /contents/
