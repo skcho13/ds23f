@@ -151,12 +151,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/vote.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-magnifying-glass fa-xs" aria-label="magnifying-glass"></i> 설문</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../contents/shortcuts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><i class="fa-solid fa-hourglass fa-xs" aria-label="hourglass"></i> 오늘의 숏컷</span></a>
   </div>
@@ -454,6 +448,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
@@ -491,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#vectorised-operation의-효율성" id="toc-vectorised-operation의-효율성" class="nav-link" data-scroll-target="#vectorised-operation의-효율성">Vectorised operation의 효율성</a>
   <ul>
   <li><a href="#vectorised-operation-vs.-apply" id="toc-vectorised-operation-vs.-apply" class="nav-link" data-scroll-target="#vectorised-operation-vs.-apply">vectorised operation vs.&nbsp;apply()</a></li>
-  <li><a href="#fa-bars-vectorised-vs.-apply" id="toc-fa-bars-vectorised-vs.-apply" class="nav-link" data-scroll-target="#fa-bars-vectorised-vs.-apply"><i class="fa-solid fa-bars" aria-label="bars"></i> vectorised vs.&nbsp;apply()</a></li>
+  <li><a href="#vectorised-vs.-apply" id="toc-vectorised-vs.-apply" class="nav-link" data-scroll-target="#vectorised-vs.-apply">vectorised vs.&nbsp;apply()</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -624,9 +625,9 @@ ratio: 39.368784378437844</code></pre>
 </div>
 </div>
 </section>
-<section id="fa-bars-vectorised-vs.-apply" class="level3">
-<h3 class="anchored" data-anchor-id="fa-bars-vectorised-vs.-apply"><i class="fa-solid fa-bars" aria-label="bars"></i> vectorised vs.&nbsp;apply()</h3>
-<p><i class="fa-solid fa-angles-right" aria-label="angles-right"></i> 비율을 구할 때</p>
+<section id="vectorised-vs.-apply" class="level3">
+<h3 class="anchored" data-anchor-id="vectorised-vs.-apply">vectorised vs.&nbsp;apply()</h3>
+<p>비율을 구할 때</p>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>

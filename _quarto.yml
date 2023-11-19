@@ -10,7 +10,6 @@ project:
     - "!final*.ipynb"
     - "!midterm*.ipynb"
     #- "!model*.ipynb"
-    - "!statistic.ipynb"
     - "!overview*.ipynb"
     - "!slides/"
   resources: CNAME
@@ -50,8 +49,8 @@ website:
         text: "{{< fa angles-right size=xs >}} Welcome"
       - href: contents/notice.qmd
         text: "{{< fa check size=xs >}} Notice"
-      - href: contents/vote.qmd
-        text: "{{< fa magnifying-glass size=xs >}} 설문"
+      # - href: contents/vote.qmd
+      #   text: "{{< fa magnifying-glass size=xs >}} 설문"
       - href: contents/shortcuts.qmd
         text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
       - text: ---
@@ -96,7 +95,6 @@ website:
                 text: Pivot Table
               - href: contents/exercise_wrangle.ipynb
           - href: contents/misc.ipynb
-          # - href: contents/misc2.qmd
           - section: Solutions
             contents:
               - href: contents/sol1.ipynb
@@ -126,8 +124,8 @@ website:
         #       # contents:
         #       #   - href: contents/modelling3_ex.ipynb
         #     #- href: contents/misc4.ipynb
-        # - text: ---
-        # - href: contents/statistics.ipynb
+      - text: ---
+      - href: contents/statistics.ipynb
       - text: ---
       - section: Communicate
         contents:
