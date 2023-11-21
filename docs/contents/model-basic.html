@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-11-20">
+<meta name="dcterms.date" content="2023-11-22">
 
 <title> Data Analysis &amp; Visualization - Model Basics</title>
 <style>
@@ -542,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 20, 2023</p>
+      <p class="date">November 22, 2023</p>
     </div>
   </div>
   
@@ -1863,10 +1863,24 @@ Non-linear 형태의 모형을 linear 모형으로 분석할 수 있음.</p>
 <p>지금까지 선형모델에 대해 다루었고, 선형모델을 확장한 다양한 모델들이 존재<br>
 선형모델에 대한 원리를 충분히 이해하고 나면, 데이터 분석가로서 다른 변형된 모델을 이해하고 마스터하는 것은 어렵지 않음</p>
 <ul>
-<li><strong>Generalised linear models</strong>: Linear models assume that the response is continuous and the error has a normal distribution. Generalised linear models extend linear models to include <em>non-continuous responses</em> (e.g.&nbsp;<strong>binary data or counts</strong>). They work by defining a distance metric based on the statistical idea of likelihood. (Binomial or Poisson distribution의 확률 모형을 결합)</li>
-<li><strong>Generalised additive models</strong>, extend generalised linear models to incorporate arbitrary <em>smooth functions</em>. That means you can write a formula like&nbsp;<code>y ~ s(x)</code>&nbsp;which becomes an equation like&nbsp;<code>y = f(x)</code>&nbsp;and let&nbsp;<code>gam()</code>&nbsp;estimate what that function is (subject to some smoothness constraints to make the problem tractable).</li>
-<li><strong>Penalised linear models</strong>, add a penalty term to the distance that penalises complex models (as defined by the distance between the parameter vector and the origin). This tends to make models that generalise better to new datasets from the same population.</li>
+<li><strong>Generalised linear models</strong>: Linear models assume that the response is continuous and the error has a normal distribution. Generalised linear models extend linear models to include <em>non-continuous responses</em> (e.g.&nbsp;<strong>binary data or counts</strong>). They work by defining a distance metric based on the statistical idea of likelihood. (Binomial or Poisson distribution의 확률 모형을 결합)
+<ul>
+<li><span class="math inline">\((Y_i | X = x_i)\)</span>의 분포가 exponential family distribution을 따름</li>
+<li>Link function을 통해 <span class="math inline">\(Y_i\)</span>의 평균을 예측함. 즉, <span class="math inline">\(g(E(Y | X=x_i)) = \beta_0 + \beta_1 \cdot x_i\)</span></li>
+</ul></li>
+<li><strong>Generalised additive models</strong>, extend generalised linear models to incorporate arbitrary <em>smooth functions</em>. That means you can write a formula like&nbsp;<code>y ~ s(x)</code>&nbsp;which becomes an equation like&nbsp;<code>y = f(x)</code>&nbsp;and let&nbsp;<code>gam()</code>&nbsp;estimate what that function is (subject to some smoothness constraints to make the problem tractable).
+<ul>
+<li><span class="math inline">\(g(E(Y | X)) = \beta_0 + f_1(X_1) + f_2(X_2) + f_3(X_1, X_2)\)</span></li>
+</ul></li>
+<li><strong>Penalised linear models</strong>, add a penalty term to the distance that penalises complex models (as defined by the distance between the parameter vector and the origin). This tends to make models that generalise better to new datasets from the same population.
+<ul>
+<li>잔차의 총체를 최소화하는 대신; <span class="math inline">\(\displaystyle\sum{e^2} = \sum_{i=1}^{n}{(y_i - \beta_0 + \beta_1 \cdot x_i + \beta_2 \cdot x_i^2)^2}\)</span></li>
+<li>잔차의 총체에 penalty term을 추가한 총체를 최소화; <span class="math inline">\(\displaystyle\sum{e^2} + \lambda \cdot (\beta_1^2 + \beta_2^2),\)</span> &nbsp; <span class="math inline">\(\lambda\)</span> is fixed.</li>
+</ul></li>
 <li><strong>Robust linear models</strong>, tweak the distance to downweight points that are very far away. This makes them less sensitive to the presence of outliers, at the cost of being not quite as good when there are no outliers.</li>
+<li><strong>Neural network</strong><br>
+<img src="images/neural-network.png" class="img-fluid"><br>
+Source: <em>An Introduction to Statistical Learning (2e)</em></li>
 <li><strong>Trees</strong>, attack the problem in a completely different way than linear models. They fit a piece-wise constant model, splitting the data into progressively smaller and smaller pieces. Trees aren’t terribly effective by themselves, but they are very powerful when used in aggregate by models like&nbsp;<strong>random forests</strong> or&nbsp;<strong>gradient boosting machines</strong></li>
 </ul>
 </section>
