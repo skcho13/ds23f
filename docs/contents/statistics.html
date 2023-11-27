@@ -445,6 +445,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Model Basics</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/modelling1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Building I</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -705,10 +711,10 @@ Warning
 <p>교수의 연봉(<code>salary</code>)이 학위를 받은 후 지난 시간(<code>time</code> since Ph.D.)과 출판물의 수(<code>pubs</code>)에 의해 어떻게 영향을 받는가?</p>
 <p><img src="images/diagram2.png" class="img-fluid" width="800"></p>
 <p>Data: <a href="https://www.dropbox.com/s/c5gb1lme5crkql5/C0301DT.csv?dl=1">c0301dt.csv</a></p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>acad0 <span class="op">=</span> pd.read_csv(<span class="st">"data/c0301dt.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>acad0.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>   time  pubs  salary
 0     3    18   51876
 1     6     3   54511
@@ -717,12 +723,32 @@ Warning
 4     9    11   52926</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"salary ~ time"</span>, data <span class="op">=</span> acad0).fit()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"salary ~ pubs"</span>, data <span class="op">=</span> acad0).fit()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>mod3 <span class="op">=</span> ols(<span class="st">"salary ~ time + pubs"</span>, data <span class="op">=</span> acad0).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> smf.ols(<span class="st">"salary ~ time"</span>, data<span class="op">=</span>acad0).fit()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> smf.ols(<span class="st">"salary ~ pubs"</span>, data<span class="op">=</span>acad0).fit()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>mod3 <span class="op">=</span> smf.ols(<span class="st">"salary ~ time + pubs"</span>, data<span class="op">=</span>acad0).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-panel" data-execution_count="6">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<pre><code>Intercept   43658.59
+time         1224.39
+dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<pre><code>Intercept   46357.45
+pubs          335.53
+dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<pre><code>Intercept   43082.39
+time          982.87
+pubs          121.80
+dtype: float64</code></pre>
+</div>
+</div>
 </div>
 <p>세 모형을 비교하면,</p>
 <p>Model 1: <span class="math inline">\(\widehat{salary} = \$1,224\:time + \$43,659\)</span><br>

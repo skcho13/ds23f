@@ -118,7 +118,7 @@ website:
         contents:
           - href: contents/model-basic.ipynb
             text: Model Basics
-        #     - href: contents/modelling1.ipynb
+          - href: contents/modelling1.ipynb
         #     - href: contents/modelling2.ipynb
         #     - href: contents/logistic.ipynb
         #       # contents:
