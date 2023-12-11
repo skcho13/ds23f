@@ -120,11 +120,13 @@ website:
             text: Model Basics
           - href: contents/modelling1.ipynb
           - href: contents/modelling2.ipynb
+          - href: contents/logistic.ipynb
           - section: Solutions
             contents:
               - href: contents/modelling1_ex.ipynb
                 text: Modelling 1 Ex.
-        #     - href: contents/logistic.ipynb
+              - href: contents/modelling2_ex.ipynb
+                text: Modelling 2 Ex.
         #       # contents:
         #       #   - href: contents/modelling3_ex.ipynb
         #     #- href: contents/misc4.ipynb
