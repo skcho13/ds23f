@@ -53,6 +53,8 @@ website:
       #   text: "{{< fa magnifying-glass size=xs >}} 설문"
       - href: contents/shortcuts.qmd
         text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
+      # - href: contents/final3125a.ipynb
+        # text: "{{< bi stopwatch >}} 기말고사"
       - text: ---
       - section: Introduction
         contents:
