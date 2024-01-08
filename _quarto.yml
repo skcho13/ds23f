@@ -17,6 +17,7 @@ project:
     port: 5452
 
 website:
+  google-analytics: "G-5R1D200E6D"
   page-navigation: true
   # navbar: true
   title: "{{< fa chart-simple >}} Data Analysis & Visualization"
