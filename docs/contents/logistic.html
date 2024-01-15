@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/modelling1_ex.html" rel="next">
 <link href="../contents/modelling2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -111,21 +117,47 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar docked">
-
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/model-basic.html">Modelling</a></li><li class="breadcrumb-item"><a href="../contents/logistic.html">Model building III</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/model-basic.html">Modelling</a></li><li class="breadcrumb-item"><a href="../contents/logistic.html">Model building III</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -135,7 +167,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> Data Analysis &amp; Visualization</a> 
@@ -151,19 +183,19 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-angles-right fa-xs" aria-label="angles-right"></i> Welcome</span></a>
+ <span class="menu-text"> Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-check fa-xs" aria-label="check"></i> Notice</span></a>
+ <span class="menu-text"> Notice</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/shortcuts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-hourglass fa-xs" aria-label="hourglass"></i> 오늘의 숏컷</span></a>
+ <span class="menu-text"> 오늘의 숏컷</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -351,40 +383,17 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Misc.</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/sol1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform 1 Sol</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/sol2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform 2 Sol</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Exercises</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/billboard.html" class="sidebar-item-text sidebar-link">
@@ -397,29 +406,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">MovieLens</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/billboard_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Billboard Solutions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/movielens_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Movielens Solutions</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -427,11 +413,11 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../contents/eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploratory Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/discretize.html" class="sidebar-item-text sidebar-link">
@@ -443,13 +429,13 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
  <span class="menu-text">Modelling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/model-basic.html" class="sidebar-item-text sidebar-link">
@@ -474,29 +460,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Model building III</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/modelling1_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modelling 1 Ex.</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/modelling2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modelling 2 Ex.</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -509,13 +472,13 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -533,7 +496,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -564,7 +527,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/model-basic.html">Modelling</a></li><li class="breadcrumb-item"><a href="../contents/logistic.html">Model building III</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Model building III</h1>
 <p class="subtitle lead">Mixed</p>
@@ -592,10 +555,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="152">
-<details>
+
+<div id="5ef883ab" class="cell" data-execution_count="152">
+<details class="code-fold">
 <summary>Load Packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -611,8 +576,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="154">
-<details>
+<div id="cell-3" class="cell" data-execution_count="154">
+<details class="code-fold">
 <summary>Options</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
@@ -648,7 +613,7 @@ Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Beha
 <code>y</code>: 1 if the tree is dead, 0 otherwise<br>
 <code>spp</code>: species of the tree<br>
 <code>s</code>: severity of the storm in particular areas</p>
-<div class="cell" data-execution_count="157">
+<div id="6d92b5e8" class="cell" data-execution_count="157">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>blowdown <span class="op">=</span> pd.read_csv(<span class="st">'data/blowdown.csv'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>blowdown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="157">
@@ -666,13 +631,13 @@ Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Beha
 [3666 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="158">
+<div id="7dad6db6" class="cell" data-execution_count="158">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># black spruce에 제한하고, diameter d를 log2로 변환</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>blowbs <span class="op">=</span> blowdown.query(<span class="st">'spp == "black spruce"'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>blowbs[<span class="st">"d"</span>] <span class="op">=</span> np.floor(blowbs[<span class="st">"d"</span>])</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>blowbs[<span class="st">"log2d"</span>] <span class="op">=</span> np.log2(blowbs[<span class="st">"d"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="159">
+<div id="54eb3fb9" class="cell" data-execution_count="159">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blowbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="159">
 <pre><code>         d    s  y           spp  log2d
@@ -694,8 +659,8 @@ Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Beha
 <li>Y를 0, 1로 coding하면; 1: event, 0: non-event</li>
 <li>Mean funtion <span class="math inline">\(E(Y | X = x_i)\)</span>을 생각하면 각 나무의 두께에 해당하는 쓰러진 나무의 비율, 즉 확률값으로 해석할 수 있음.</li>
 </ul>
-<div class="cell" data-execution_count="160">
-<details>
+<div id="9708bb61" class="cell" data-execution_count="160">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs, x<span class="op">=</span><span class="st">'d'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
@@ -707,10 +672,14 @@ Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Beha
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="160">
-<p><img src="logistic_files/figure-html/cell-10-output-1.png" width="753" height="465"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-10-output-1.png" width="753" height="465" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="210">
+</div>
+<div id="4102037b" class="cell" data-execution_count="210">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mod_ols <span class="op">=</span> smf.ols(<span class="st">'y ~ d'</span>, data <span class="op">=</span> blowbs).fit()</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mod_ols.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -720,8 +689,8 @@ d            0.05
 dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="162">
-<details>
+<div id="2ce52cdd" class="cell" data-execution_count="162">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>blowbs_plot <span class="op">=</span> blowbs.assign(resid <span class="op">=</span> mod_ols.resid)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,12 +701,16 @@ dtype: float64</code></pre>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="162">
-<p><img src="logistic_files/figure-html/cell-12-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-12-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Distributions for d</p>
-<div class="cell" data-execution_count="163">
-<details>
+<div id="448e7ed0" class="cell" data-execution_count="163">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs_plot.query(<span class="st">'d &lt; 15'</span>), x<span class="op">=</span><span class="st">'resid'</span>)</span>
@@ -748,7 +721,11 @@ dtype: float64</code></pre>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="163">
-<p><img src="logistic_files/figure-html/cell-13-output-1.png" width="753" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-13-output-1.png" width="753" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="emperical-probability-odds" class="level2">
@@ -761,7 +738,7 @@ dtype: float64</code></pre>
 <li>사실, 이 <code>p</code>는 binary response (0, 1)의 conditional mean(평균)인데,</li>
 <li>통계적으로 표현하면 <span class="math inline">\(E(Y|d=d_i)\)</span>이며 선형모형의 mean function를 제공. (모형은 variance function과 함께 설정됨)</li>
 </ul>
-<div class="cell" data-execution_count="214">
+<div id="3b5055de" class="cell" data-execution_count="214">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs.groupby(<span class="st">"d"</span>)[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># blowbs_bn = blowbs_bn.assign(</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     p = (blowbs_bn.died + 0.1)/ (blowbs_bn.m + 0.2),  # 확률이 0이거나 1이 되는 것을 피하기 위해 작은 값을 추가할 수 있음.</span></span>
@@ -782,8 +759,8 @@ dtype: float64</code></pre>
 [25 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="165">
-<details>
+<div id="d6fbd6f2" class="cell" data-execution_count="165">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs_bn, x<span class="op">=</span><span class="st">'d'</span>, y<span class="op">=</span><span class="st">'p'</span>)</span>
@@ -797,7 +774,11 @@ dtype: float64</code></pre>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="165">
-<p><img src="logistic_files/figure-html/cell-15-output-1.png" width="831" height="465"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-15-output-1.png" width="831" height="465" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -805,8 +786,8 @@ dtype: float64</code></pre>
 <li>1차보다는 고차 다항함수로 fit한다면?</li>
 </ul>
 <p>우선 d를 log2 변환해서 살펴보면,</p>
-<div class="cell" data-execution_count="166">
-<details>
+<div id="6dad2803" class="cell" data-execution_count="166">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn[<span class="st">"log2d"</span>] <span class="op">=</span> np.log2(blowbs_bn[<span class="st">"d"</span>])</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -821,12 +802,16 @@ dtype: float64</code></pre>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="166">
-<p><img src="logistic_files/figure-html/cell-16-output-1.png" width="831" height="465"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-16-output-1.png" width="831" height="465" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>만약, 이 proportion p (= died/m)를 log2d로 예측하는 모형을 만들어, 그 잔차를 살펴보면,</p>
-<div class="cell" data-execution_count="167">
-<details>
+<div id="31ac02f2" class="cell" data-execution_count="167">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mod_prob <span class="op">=</span> ols(<span class="st">'p ~ log2d'</span>, data <span class="op">=</span> blowbs_bn).fit()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mod_prob_plot <span class="op">=</span> blowbs_bn.assign(resid <span class="op">=</span> mod_prob.resid)</span>
@@ -839,7 +824,11 @@ dtype: float64</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="167">
-<p><img src="logistic_files/figure-html/cell-17-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-17-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>위에서 살펴본 OLS의 문제들 즉,</p>
@@ -874,7 +863,7 @@ Important
 <p><img src="images/odds.png" class="img-fluid" width="400"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="168">
+<div id="612f4d4b" class="cell" data-execution_count="168">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(odds <span class="op">=</span> <span class="kw">lambda</span> x: x.p <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> x.p))</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p = 1인 경우 odds가 무한대가 되므로 편의상 inf 값을 50으로 대체</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>blowbs_bn[<span class="st">"odds"</span>] <span class="op">=</span> blowbs_bn[<span class="st">"odds"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">50</span> <span class="cf">if</span> x <span class="op">==</span> np.inf <span class="cf">else</span> x)</span>
@@ -901,13 +890,17 @@ Important
 <p><span class="math inline">\(\displaystyle logit(p):= log(odds) = log\left(\frac{p}{1-p}\right)\)</span><br>
 이 때, 예측모형은 <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1-\hat{p}}\right) = b_0 + b_1 \cdot log_{2}(d)\)</span></p>
 <p>즉, logit은 예측변수 <span class="math inline">\(x\)</span> 와 선형적으로 연결되는데 반해, 확률 <span class="math inline">\(p\)</span> 는 예측변수 <span class="math inline">\(x\)</span> 와 비선형적 관계를 맺음</p>
-<div class="cell" data-execution_count="169">
+<div id="fa280612" class="cell" data-execution_count="169">
 <div class="cell-output cell-output-display" data-execution_count="169">
-<p><img src="logistic_files/figure-html/cell-19-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-19-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>log odds값을 구해보면,</p>
-<div class="cell" data-execution_count="170">
+<div id="5afe94e6" class="cell" data-execution_count="170">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn <span class="op">=</span> blowbs_bn.assign(log_odds <span class="op">=</span> <span class="kw">lambda</span> x: np.log(x.odds))</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>blowbs_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="170">
@@ -926,8 +919,8 @@ Important
 </div>
 </div>
 <p>정리하면, 아래와 같은 관측값들과 <strong>emperical probability/log odds</strong>을 함께 살펴보면,</p>
-<div class="cell" data-execution_count="171">
-<details>
+<div id="8d91902a" class="cell" data-execution_count="171">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -948,12 +941,16 @@ Important
 <span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>ax.legend_.remove()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="logistic_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Logit 값(red)을 추가해서 그리면,</p>
-<div class="cell" data-execution_count="172">
-<details>
+<div id="a4f966e4" class="cell" data-execution_count="172">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -986,7 +983,11 @@ Important
 <span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lineplot(x=x, y=y, ax=ax, color=".6")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>위의 logit값을 선형모형으로 예측하는 모형: <span class="math inline">\(\displaystyle log\left(\frac{\hat{p}}{1-\hat{p}}\right) = b_0 + b_1 \cdot log_{2}(d)\)</span></p>
@@ -1000,7 +1001,7 @@ Important
 </ul>
 <p>참고: 이항분포 (Y: 사건의 횟수)<br>
 <img src="images/binomial.png" class="img-fluid" width="750"></p>
-<div class="cell" data-execution_count="173">
+<div id="417761cc" class="cell" data-execution_count="173">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="173">
 <pre><code>     d  died   m    p  log2d  odds  log_odds
@@ -1017,7 +1018,7 @@ Lik = <span class="math inline">\(_{90}C_7 \cdot p_1^7 \cdot (1-p_1)^{83} \cdot 
 변형하면 &nbsp; <span class="math inline">\(\displaystyle p = \frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot x)}}\)</span></p>
 <p>Lik <span class="math inline">\(\propto\)</span> <span class="math inline">\(\displaystyle \left(\frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.32)}}\right)^7 \cdot \left(1 - \frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.32)}}\right)^{83} \cdot \left(\frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.58)}}\right)^7 \cdot \left(\frac{1}{1+e^{-(\beta_0 + \beta_1 \cdot 2.58)}}\right)^{85} \cdots\)</span></p>
 <p>이 Likelihood를 최대가 되도록 <span class="math inline">\(\beta_0, \beta_1\)</span>의 추정치를 찾는 것이 Maximum Likelihood Estimation임.</p>
-<div class="cell" data-execution_count="174">
+<div id="65a795b7" class="cell" data-execution_count="174">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Binomial response</span></span>
@@ -1055,7 +1056,7 @@ log2d          2.2408      0.190     11.773      0.000       1.868       2.614
 <ul>
 <li>Perfect model의 likelihood: 1</li>
 </ul>
-<div class="cell" data-execution_count="175">
+<div id="ff408ce6" class="cell" data-execution_count="175">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deviance for an intercept only model</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mod.null_deviance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="175">
@@ -1068,8 +1069,8 @@ log2d          2.2408      0.190     11.773      0.000       1.868       2.614
 <li>Nagelkerke’s Pseudo R-squared</li>
 </ul>
 <p>위 fitted model의 예측값들: fitted line</p>
-<div class="cell" data-execution_count="176">
-<details>
+<div id="a8234351" class="cell" data-execution_count="176">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1094,7 +1095,11 @@ log2d          2.2408      0.190     11.773      0.000       1.868       2.614
 <span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="logistic_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1106,8 +1111,8 @@ log2d          2.2408      0.190     11.773      0.000       1.868       2.614
 <li>Odds: &nbsp; <span class="math inline">\(\displaystyle odds = \frac{\hat{p}}{1 - \hat{p}} = e^{b_0 + b_1 \cdot x}\)</span></li>
 <li>Log odds: &nbsp; <span class="math inline">\(\displaystyle logit = b_0 + b_1 \cdot x\)</span></li>
 </ul>
-<div class="cell" data-execution_count="177">
-<details>
+<div id="e1010a35" class="cell" data-execution_count="177">
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn_pred <span class="op">=</span> blowbs_bn.assign(</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    pred_prob <span class="op">=</span> mod_bn.fittedvalues,</span>
@@ -1148,7 +1153,7 @@ log2d          2.2408      0.190     11.773      0.000       1.868       2.614
 <p><strong>Odds의 비율 (odds ratio, OR)</strong>을 통해 해석</p>
 <ul>
 <li><p><span class="math inline">\(\displaystyle odds: \frac{\hat{p}}{1 - \hat{p}} = e^{b_0 + b_1 \cdot x}=e^{b_0}\cdot e^{b_1 \cdot x}\)</span> &nbsp;로부터</p></li>
-<li><p><span class="math inline">\(x\)</span>가 1 증가할 때 odds의 비율: <span class="math inline">\(\displaystyle odds ~ratio: \frac{\frac{\hat{p_2}}{1 - \hat{p_2}}}{\frac{\hat{p_1}}{1 - \hat{p_1}}} = e^{b_1 \cdot (x+1) - b_1 \cdot x} = e^{b_1}\)</span></p></li>
+<li><p><span class="math inline">\(x\)</span>가 1 증가할 때 odds의 비율: <span class="math inline">\(\displaystyle odds ~ratio: \frac{\frac{\hat{p_2}}{1 - \hat{p_2}}}{\frac{\hat{p_1}}{1 - \hat{p_1}}}  = e^{b_1 \cdot (x+1) - b_1 \cdot x} = e^{b_1}\)</span></p></li>
 <li><p>즉, <span class="math inline">\(x\)</span>가 1 증가하면, odds가 “몇 배”로 증가하는지를 나타냄.</p></li>
 <li><p>따라서, odds ratio가 1보다 크면 (<span class="math inline">\(b_1\)</span>이 양수) <span class="math inline">\(x\)</span>가 1 증가할 때, event의 odds가 커지며,</p></li>
 <li><p>odds ratio가 1보다 작으면 (<span class="math inline">\(b_1\)</span>이 음수) event의 odds가 줄어듬.</p></li>
@@ -1200,7 +1205,7 @@ Important
 </div>
 <p><strong>Binomial response</strong>에 대해 residual들을 살펴보면,<br>
 <code>smf.glm('died + I(m-died) ~ log2d', data=blowbs_bn, family=sm.families.Binomial())</code></p>
-<div class="cell" data-execution_count="178">
+<div id="21c39757" class="cell" data-execution_count="178">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>blowbs_bn_resid <span class="op">=</span> blowbs_bn.assign(</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    prob_pred <span class="op">=</span> mod_bn.fittedvalues,</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    died_pred <span class="op">=</span> <span class="kw">lambda</span> x: x.prob_pred <span class="op">*</span> x.m,</span>
@@ -1235,7 +1240,7 @@ Important
 [25 rows x 12 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="179">
+<div id="fa282517" class="cell" data-execution_count="179">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs_bn_resid, x<span class="op">=</span><span class="st">'log2d'</span>, y<span class="op">=</span><span class="st">'pearson_resid'</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
@@ -1243,10 +1248,14 @@ Important
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    .label(y<span class="op">=</span><span class="st">"Pearson / Deviance Residuals"</span>)</span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="179">
-<p><img src="logistic_files/figure-html/cell-29-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-29-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="180">
+</div>
+<div id="e0830194" class="cell" data-execution_count="180">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs_bn_resid, x<span class="op">=</span><span class="st">'prob_pred'</span>, y<span class="op">=</span><span class="st">'p'</span>,)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
@@ -1254,12 +1263,16 @@ Important
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    .label(x<span class="op">=</span><span class="st">"Predicted Probability"</span>, y<span class="op">=</span><span class="st">"Emperical Probability"</span>)</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="180">
-<p><img src="logistic_files/figure-html/cell-30-output-1.png" width="598" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-30-output-1.png" width="598" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>Binary response</strong>에 대해 residual들을 살펴보면,<br>
 <code>smf.glm('y ~ log2d', data=blowbs, family=sm.families.Binomial())</code></p>
-<div class="cell" data-execution_count="181">
+<div id="f0fc283e" class="cell" data-execution_count="181">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>blowbs_resid <span class="op">=</span> blowbs.assign(</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    prob_pred <span class="op">=</span> mod.fittedvalues,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    prob_resid <span class="op">=</span> mod.resid_response,</span>
@@ -1293,7 +1306,7 @@ Important
 [659 rows x 9 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="182">
+<div id="a10aa824" class="cell" data-execution_count="182">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(blowbs_resid, x<span class="op">=</span><span class="st">'log2d'</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    .pair(y<span class="op">=</span>[<span class="st">"prob_resid"</span>, <span class="st">"pearson_resid"</span>, <span class="st">"deviance_resid"</span>])</span>
@@ -1302,7 +1315,11 @@ Important
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">8</span>))</span>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="182">
-<p><img src="logistic_files/figure-html/cell-32-output-1.png" width="477" height="753"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-32-output-1.png" width="477" height="753" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Emperical probability vs.&nbsp;predicted probability</p>
@@ -1328,9 +1345,13 @@ code
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="183">
+<div id="0103760d" class="cell" data-execution_count="183">
 <div class="cell-output cell-output-display" data-execution_count="183">
-<p><img src="logistic_files/figure-html/cell-33-output-1.png" width="656" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-33-output-1.png" width="656" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1380,9 +1401,13 @@ code
 </div>
 </div>
 <p>Calibration plot</p>
-<div class="cell" data-execution_count="184">
+<div id="bd7a1188" class="cell" data-execution_count="184">
 <div class="cell-output cell-output-display" data-execution_count="184">
-<p><img src="logistic_files/figure-html/cell-34-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-34-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1407,13 +1432,20 @@ Important
 </ul>
 </div>
 </div>
-<div class="cell" data-execution_count="185">
+<div id="32ce8e11" class="cell" data-execution_count="185">
 <div class="cell-output cell-output-display">
-<p><img src="logistic_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[30, 50, 20]">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <table class="table">
 <thead>
@@ -1472,7 +1504,7 @@ Important
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="186">
+<div id="367217ed" class="cell" data-execution_count="186">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>mod_lg <span class="op">=</span> smf.logit(<span class="st">'y ~ log2d'</span>, data<span class="op">=</span>blowbs).fit() <span class="co"># logit has .pred_table() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimization terminated successfully.
@@ -1480,7 +1512,7 @@ Important
          Iterations 6</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="187">
+<div id="c6d33437" class="cell" data-execution_count="187">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accuracy rate with threshold 0.3</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> mod_lg.pred_table(<span class="fl">0.3</span>) <span class="co"># confusion matrix</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
@@ -1493,7 +1525,7 @@ Important
 <pre><code>0.7374810318664643</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="188">
+<div id="806819b3" class="cell" data-execution_count="188">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accuracy rate with threshold 1: no information</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> mod_lg.pred_table(<span class="dv">1</span>) <span class="co"># confusion matrix</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>display(cm)</span>
@@ -1548,7 +1580,7 @@ code
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="192">
+<div id="27f1a469" class="cell" data-execution_count="192">
 <div class="cell-output cell-output-display" data-execution_count="192">
 <pre><code>    thresholds  False Pos  sensitivity(True Pos)  specificity(True Neg)
 25        0.07       1.00                   1.00                   0.00
@@ -1563,9 +1595,13 @@ code
 16        0.67       0.08                   0.38                   0.92</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="218">
+<div id="8ca3673b" class="cell" data-execution_count="218">
 <div class="cell-output cell-output-display" data-execution_count="218">
-<p><img src="logistic_files/figure-html/cell-45-output-1.png" width="561" height="465"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-45-output-1.png" width="561" height="465" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>AUC: Area Under the Curve = concordance index</p>
@@ -1574,7 +1610,7 @@ code
 <li>Concordance index(c): 모든 Y의 쌍, 예를 들어 <span class="math inline">\((0_i, 1_j)\)</span>에 대해서 해당하는 예측된 확률의 크기가 <span class="math inline">\(p_i &lt; p_j\)</span> 인 비율, 즉 순서가 맞는(concordance) 비율</li>
 <li><strong>잘못된 예측에 대한 비용이 다르다면, 특정 임계치를 선택</strong></li>
 </ul>
-<div class="cell" data-execution_count="196">
+<div id="64e340f1" class="cell" data-execution_count="196">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score, auc</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(blowbs_resid.y, blowbs_resid.prob_pred)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>roc_auc  <span class="co"># auc(fpr, tpr)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1622,9 +1658,13 @@ code
 <li><span class="math inline">\(\Phi\)</span>: cumulative standard normal distribution function</li>
 </ul></li>
 </ul>
-<div class="cell" data-execution_count="200">
+<div id="459c43fb" class="cell" data-execution_count="200">
 <div class="cell-output cell-output-display" data-execution_count="200">
-<p><img src="logistic_files/figure-html/cell-57-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-57-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>위의 아이디어는 generalized linear model (GLM)로 확장되는데,</p>
@@ -1652,7 +1692,7 @@ code
 <li>모형의 예측력에 대해서도 1) 확률 측면, 2) binary class 측면에서 살펴보세요.</li>
 </ul></li>
 </ul>
-<div class="cell" data-execution_count="201">
+<div id="f3d70a89" class="cell" data-execution_count="201">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>blow2 <span class="op">=</span> blowdown.query(<span class="st">'spp in ["black spruce", "aspen"]'</span>)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>blow2[<span class="st">"d"</span>] <span class="op">=</span> np.floor(blow2[<span class="st">"d"</span>])</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>blow2[<span class="st">"log2d"</span>] <span class="op">=</span> np.log2(blow2[<span class="st">"d"</span>])</span>
@@ -1672,7 +1712,7 @@ code
 [1095 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="202">
+<div id="4d02e180" class="cell" data-execution_count="202">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>blow2_bn <span class="op">=</span> blow2.groupby([<span class="st">"log2d"</span>, <span class="st">"spp"</span>])[<span class="st">"y"</span>].agg([(<span class="st">"died"</span>, <span class="st">"sum"</span>), (<span class="st">"m"</span>, <span class="st">"count"</span>), (<span class="st">"p"</span>, <span class="st">"mean"</span>)]).reset_index()</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>blow2_bn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="202">
@@ -1721,7 +1761,7 @@ F. 4 hours per day (4)<br>
 G. 5 or more hours per day (5)</p>
 <p><code>bmipct</code></p>
 <p>The percentile for a given BMI for members of the same sex.</p>
-<div class="cell" data-execution_count="203">
+<div id="344f0854" class="cell" data-execution_count="203">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>diet <span class="op">=</span> pd.read_csv(<span class="st">"data/diet.csv"</span>)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>diet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="203">
@@ -1745,9 +1785,13 @@ G. 5 or more hours per day (5)</p>
 <li>모형의 파라미터를 해석한 후</li>
 <li>모형의 예측력을 파악하기 위해 위에서 다룬 몇 가지 방식으로 평가하세요.</li>
 </ul>
-<div class="cell" data-execution_count="204">
+<div id="26aa95f5" class="cell" data-execution_count="204">
 <div class="cell-output cell-output-display" data-execution_count="204">
-<p><img src="logistic_files/figure-html/cell-61-output-1.png" width="760" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-61-output-1.png" width="760" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1755,22 +1799,34 @@ G. 5 or more hours per day (5)</p>
 <li><code>pd.qcut</code>을 이용</li>
 <li>Log가 0이 안되도록 적당히 조정하거나 값을 제거할 것.</li>
 </ul>
-<div class="cell" data-execution_count="206">
+<div id="f678a902" class="cell" data-execution_count="206">
 <div class="cell-output cell-output-display" data-execution_count="206">
-<p><img src="logistic_files/figure-html/cell-63-output-1.png" width="713" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-63-output-1.png" width="713" height="445" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="207">
+</div>
+<div id="612aef72" class="cell" data-execution_count="207">
 <div class="cell-output cell-output-display" data-execution_count="207">
-<p><img src="logistic_files/figure-html/cell-64-output-1.png" width="760" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-64-output-1.png" width="760" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>티비 시청시간(<code>media</code>)을 discrete하게 보고 각 시간 구간에서 emperical logit을 구해 살펴볼 것</li>
 </ul>
-<div class="cell" data-execution_count="209">
+<div id="d6299bab" class="cell" data-execution_count="209">
 <div class="cell-output cell-output-display" data-execution_count="209">
-<p><img src="logistic_files/figure-html/cell-66-output-1.png" width="713" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="logistic_files/figure-html/cell-66-output-1.png" width="713" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>다음 모형에 대해</p>
@@ -1864,10 +1920,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1877,8 +1950,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1891,6 +1973,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1934,6 +2130,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1959,6 +2156,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2016,38 +2239,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/modelling2.html" class="pagination-link">
+      <a href="../contents/modelling2.html" class="pagination-link  aria-label=" model="" building="" ii"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Model building II</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/modelling1_ex.html" class="pagination-link">
-        <span class="nav-page-text">Modelling 1 Ex.</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
+    <div class="nav-footer-left">
+<p>This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -2056,6 +2264,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -107,27 +114,53 @@ gtag('js', new Date());
 gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar docked">
-
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/eda.html">Exploratory Data Analysis</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/eda.html">Exploratory Data Analysis</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -137,7 +170,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> Data Analysis &amp; Visualization</a> 
@@ -153,19 +186,19 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-angles-right fa-xs" aria-label="angles-right"></i> Welcome</span></a>
+ <span class="menu-text"> Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-check fa-xs" aria-label="check"></i> Notice</span></a>
+ <span class="menu-text"> Notice</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/shortcuts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-hourglass fa-xs" aria-label="hourglass"></i> 오늘의 숏컷</span></a>
+ <span class="menu-text"> 오늘의 숏컷</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -353,40 +386,17 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Misc.</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/sol1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform 1 Sol</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/sol2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform 2 Sol</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Exercises</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/billboard.html" class="sidebar-item-text sidebar-link">
@@ -399,29 +409,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">MovieLens</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/billboard_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Billboard Solutions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/movielens_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Movielens Solutions</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -429,11 +416,11 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../contents/eda.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exploratory Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/discretize.html" class="sidebar-item-text sidebar-link">
@@ -445,13 +432,13 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
  <span class="menu-text">Modelling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/model-basic.html" class="sidebar-item-text sidebar-link">
@@ -476,29 +463,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Model building III</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/modelling1_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modelling 1 Ex.</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/modelling2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modelling 2 Ex.</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -511,13 +475,13 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -535,7 +499,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -603,10 +567,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="1">
-<details>
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<details class="code-fold">
 <summary>Load Packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -621,8 +587,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="3">
-<details>
+<div id="cell-3" class="cell" data-execution_count="3">
+<details class="code-fold">
 <summary>Options</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
@@ -633,22 +599,22 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/process.png" class="img-fluid" data-fig-align="center" width="500"> <br> source: <a href="https://r4ds.had.co.nz/explore-intro.html">R for Data Science</a></p>
+<p><img src="images/process.png" class="img-fluid quarto-figure quarto-figure-center" width="500"> <br> source: <a href="https://r4ds.had.co.nz/explore-intro.html">R for Data Science</a></p>
 <p>Visualising, transforming, modelling을 통해 <strong>질문들을 개선하거나 새로운 질문들을 생성</strong>하면서 데이터에 대한 이해를 늘리면서 질문들에 답을 구하는 반복순환 과정</p>
 <p>크게 다음 2가지 타입의 질문을 기본으로 시작</p>
 <ol type="1">
 <li>각 변수들 내에 <strong>변동성 (variation)</strong>은 어떠한가?</li>
 <li>두 변수들간에 <strong>공변성 (covariation)</strong>은 어떠한가?</li>
 </ol>
-<div class="cell" data-execution_count="28">
+<div id="cell-5" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import a dataset</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>diamonds_data <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"diamonds"</span>, <span class="st">"ggplot2"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> diamonds_data.data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="cell-6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diamonds_data.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="cell-7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>       carat        cut color clarity  depth  table  price    x    y    z
@@ -664,7 +630,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </div>
 </div>
 <p><img src="images/diamonds.png" class="img-fluid" width="600"></p>
-<div class="cell" data-execution_count="29">
+<div id="cell-9" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cut, color, clarity 모두 Categorical type으로 변형</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>] <span class="op">=</span> pd.Categorical(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    diamonds[<span class="st">"cut"</span>], </span>
@@ -695,16 +661,20 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <li>호기심에 따라 다양한 질문이나 의심을 품게 되면서 탐색을 진행.</li>
 </ul>
 <p>먼저 diamonds 데이터에서 54,000개 정도되는 다이아몬드의 무게(캐럿, <code>carat</code>)의 분포를 다이어그램으로 살펴보는 것으로 시작하면,</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-12" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(binwidth<span class="op">=</span><span class="fl">.5</span>))</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<p><img src="eda_files/figure-html/cell-9-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-9-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+</div>
+<div id="cell-13" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zoom-in</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>)</span>
@@ -712,7 +682,11 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    .limit(y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<p><img src="eda_files/figure-html/cell-10-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-10-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="전형적인-값들" class="level3">
@@ -723,16 +697,20 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <li>어떤 특이한 패턴들이 있다면, 왜 그런가?</li>
 </ul>
 <p>극단값들을 제거하고 확대해서 살펴보면</p>
-<div class="cell" data-execution_count="13">
+<div id="cell-15" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds.query(<span class="st">'carat &lt; 3'</span>), x<span class="op">=</span><span class="st">"carat"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(binwidth<span class="op">=</span><span class="fl">.01</span>))</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<p><img src="eda_files/figure-html/cell-11-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-11-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+</div>
+<div id="cell-16" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>diamonds.value_counts(<span class="st">"carat"</span>).head(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -786,21 +764,24 @@ Name: count, dtype: int64</code></pre>
 </ul>
 <p>Diamonds 치수(x, y, z) 중 y(width in mm)값</p>
 <p><img src="images/diamonds.png" class="img-fluid" width="600"></p>
-<div class="cell" data-execution_count="19">
+<div id="cell-19" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> so.Plot(diamonds, x<span class="op">=</span><span class="st">"y"</span>).add(so.Bars(), so.Hist(binwidth<span class="op">=</span><span class="fl">.5</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> so.Plot(diamonds, x<span class="op">=</span><span class="st">"y"</span>).add(so.Bars(), so.Hist(binwidth<span class="op">=</span><span class="fl">.5</span>)).limit(y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="20">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-14-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-14-output-2.png" class="img-fluid" width="599"></p>
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="20" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-14-output-1.png" width="599" height="445"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-14-output-2.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="cell-21" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>unusual <span class="op">=</span> (</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    diamonds[[<span class="st">"price"</span>, <span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>]]</span>
@@ -836,7 +817,7 @@ Name: count, dtype: int64</code></pre>
 <p>특이한 값들이 있는 행을 다 제거하는 방식은 금물!<br>
 예를 들어, <code>diamonds.query('y &gt;= 3 &amp; y &lt;= 20')</code></p>
 <p>만약 NA로 바꾸기로 했다면, <code>.where()</code>, <code>.mask()</code>를 활용</p>
-<div class="cell" data-execution_count="22">
+<div id="cell-24" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>diamonds2 <span class="op">=</span> diamonds.assign(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="kw">lambda</span> x: np.where((x.y <span class="op">&lt;</span> <span class="dv">3</span>) <span class="op">|</span> (x.y <span class="op">&gt;</span> <span class="dv">20</span>), np.nan, x.y)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -856,24 +837,28 @@ Tip
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"y"</span>] <span class="op">=</span> diamonds[<span class="st">"y"</span>].mask((diamonds[<span class="st">"y"</span>] <span class="op">&lt;</span> <span class="dv">3</span>) <span class="op">|</span> (diamonds[<span class="st">"y"</span>] <span class="op">&gt;</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="cell-26" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA의 제거에 대해 경고 없음!</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds2, x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"y"</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="dv">1</span>))</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-<p><img src="eda_files/figure-html/cell-17-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-17-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>결측치들을 포함한 경우와 제거한 경우를 비교해 보고자 할 때,</p>
 <ul>
 <li>결측치인지 아닌지를 나타내는 명목변수를 이용</li>
 </ul>
-<div class="cell" data-execution_count="30">
+<div id="cell-28" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"flights"</span>, <span class="st">"nycflights13"</span>).data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="cell-29" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> flights.assign(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    cancelled <span class="op">=</span> <span class="kw">lambda</span> x: x.dep_time.isna(),  <span class="co"># True/False</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    sched_hour <span class="op">=</span> <span class="kw">lambda</span> x: x.sched_dep_time <span class="op">//</span> <span class="dv">100</span>,  <span class="co"># 몫</span></span>
@@ -881,7 +866,7 @@ Tip
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    sched_dep_time <span class="op">=</span> <span class="kw">lambda</span> x: x.sched_hour <span class="op">+</span> x.sched_min <span class="op">/</span> <span class="dv">60</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="cell-30" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>flights.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>   year  month  day  dep_time  sched_dep_time  dep_delay  arr_time  \
@@ -902,13 +887,17 @@ Tip
 [3 rows x 22 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="cell-31" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(flights, x<span class="op">=</span><span class="st">"sched_dep_time"</span>, color<span class="op">=</span><span class="st">"cancelled"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">4</span>))</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
-<p><img src="eda_files/figure-html/cell-21-output-1.png" width="700" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-21-output-1.png" width="700" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -927,16 +916,20 @@ Tip
 <li><strong>frequency polygon</strong> 이나 <strong>boxplot</strong>을 이용</li>
 <li>One dimensional scatter plot으로 겹치지 않게 그리려면, jitter를 활용</li>
 </ul>
-<div class="cell" data-execution_count="38">
+<div id="cell-34" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">"price"</span>, color<span class="op">=</span><span class="st">"cut"</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="dv">500</span>))</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-<p><img src="eda_files/figure-html/cell-22-output-1.png" width="734" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-22-output-1.png" width="734" height="445" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="39">
+</div>
+<div id="cell-35" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 cut 내에서의 분포가 cut마다 어떻게 다른가 확인</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">"price"</span>, color<span class="op">=</span><span class="st">"cut"</span>)</span>
@@ -945,28 +938,34 @@ Tip
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># so.Hist(binwidth=500, stat="proportion", common_norm=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
-<p><img src="eda_files/figure-html/cell-23-output-1.png" width="734" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-23-output-1.png" width="734" height="445" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="41">
+</div>
+<div id="cell-36" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">"price"</span>, color<span class="op">=</span><span class="st">"cut"</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(binwidth<span class="op">=</span><span class="dv">500</span>, stat<span class="op">=</span><span class="st">"density"</span>))</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"cut"</span>)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
-<p><img src="eda_files/figure-html/cell-24-output-1.png" width="734" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-24-output-1.png" width="734" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Q: 왜 fair 컷의 평균 가격이 가장 높은가???</p>
-<div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="51">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="51" data-layout="[[2, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
-</div>
 </div>
 </div>
 </div>
@@ -987,51 +986,55 @@ Note
 </div>
 </div>
 <p><a href="https://dgdavs.modellings.art/contents/customizing.html#custom-plots">Use custom plots</a></p>
-<div class="cell" data-execution_count="42">
+<div id="cell-42" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom plots</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sbcustom <span class="im">import</span> rangeplot</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>rangeplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>).layout(size<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
-<p><img src="eda_files/figure-html/cell-26-output-1.png" width="561" height="369"></p>
-</div>
-</div>
 <div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-26-output-1.png" width="561" height="369" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Violin plot</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="52">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<div id="cell-43" class="cell quarto-layout-panel" data-execution_count="52" data-layout="[[2, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
-</div>
 </div>
 </div>
 </div>
 <p>다이아몬드 컷의 질이 낮을수록 평균 가격이 높은, 직관적으로 반대되는 패턴을 보임.</p>
 <p>한편, 카테고리의 순서가 존재하지 않는 경우: 의미있는 순서로 재정렬하여 패턴 파악을 용이하게 할 수 있음<br>
 예를 들어, 자동차의 class를 고속도로 연비의 중앙값 순으로 정렬하고자 하면,</p>
-<div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"mpg"</span>, <span class="st">"ggplot2"</span>).data</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>hwy_order <span class="op">=</span> mpg.groupby(<span class="st">"class"</span>)[<span class="st">"hwy"</span>].median().sort_values().index</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>sns.boxplot(mpg, y<span class="op">=</span><span class="st">"class"</span>, x<span class="op">=</span><span class="st">"hwy"</span>, fill<span class="op">=</span><span class="va">False</span>, order<span class="op">=</span>hwy_order)</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="55">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<div id="cell-45" class="cell quarto-layout-panel" data-execution_count="55" data-layout="[[3, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-</div>
-<div class="cell" data-execution_count="53">
+<div id="cell-46" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    rangeplot(mpg, y<span class="op">=</span><span class="st">"class"</span>, x<span class="op">=</span><span class="st">"hwy"</span>, marker<span class="op">=</span><span class="st">"v"</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    .scale(y<span class="op">=</span>so.Nominal(order<span class="op">=</span>hwy_order))</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
-<p><img src="eda_files/figure-html/cell-29-output-1.png" width="561" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-29-output-1.png" width="561" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="연습문제-1" class="level3">
@@ -1048,7 +1051,7 @@ Note
 <ul>
 <li>두 범주형 변수 사이의 covariation을 파악하려면, 두 변수 값의 모든 조합에 대한 count를 표시</li>
 </ul>
-<div class="cell" data-execution_count="15">
+<div id="cell-50" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>table_cut <span class="op">=</span> diamonds.groupby([<span class="st">"cut"</span>, <span class="st">"clarity"</span>]).size().reset_index(name<span class="op">=</span><span class="st">"n"</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>table_cut</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -1068,7 +1071,7 @@ Note
 <li>각 조합에 해당하는 관측값의 양에 비례하여 원의 크기를 표시하면,</li>
 <li>cut와 clarity 사이에 약한 상관관계를 맺는 것으로 보임</li>
 </ul>
-<div class="cell" data-execution_count="33">
+<div id="cell-52" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> (</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(table_cut, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"clarity"</span>, pointsize<span class="op">=</span><span class="st">"n"</span>, color<span class="op">=</span><span class="st">"n"</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
@@ -1079,18 +1082,21 @@ Note
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">3</span>))</span>
 <span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="36">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 53.8%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-33-output-1.png" class="img-fluid" width="697"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 46.2%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-33-output-2.png" class="img-fluid" width="599"></p>
+<div id="cell-53" class="cell quarto-layout-panel" data-execution_count="36" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-33-output-1.png" width="697" height="445"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-33-output-2.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
 <p>순서가 없는 범주형 변수인 경우, 행과 열을 유사한 정도에 따라 순서를 매기는 알고리즘을 통해 재정렬하여 패턴을 볼 수도 있음</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-55" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"gapminder"</span>, <span class="st">"gapminder"</span>).data</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -1106,7 +1112,7 @@ Note
 [1704 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="132">
+<div id="cell-57" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plotdata <span class="op">=</span> (</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'continent == "Asia"'</span>)</span>
@@ -1263,16 +1269,20 @@ Note
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
+<div id="cell-58" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hierarchical clustering in scipy</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>sns.clustermap(plotdata, col_cluster<span class="op">=</span><span class="va">False</span>, method<span class="op">=</span><span class="st">"ward"</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="eda_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="133">
-<details>
+</div>
+<div id="cell-59" class="cell" data-execution_count="133">
+<details class="code-fold">
 <summary>Hierarchical Clustering</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster.hierarchy <span class="im">as</span> sch</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1292,7 +1302,11 @@ Note
 <span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="133">
-<p><img src="eda_files/figure-html/cell-38-output-1.png" width="455" height="657"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-38-output-1.png" width="455" height="657" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="연습문제-2" class="level3">
@@ -1319,65 +1333,67 @@ Note
 <li>Scatterplot, 2d-histogram</li>
 <li>Discretize: <code>pd.cut()</code>, <code>pd.qcut()</code></li>
 </ul>
-<div class="cell" data-execution_count="12">
+<div id="cell-63" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds.query(<span class="st">'carat &lt; 3'</span>), x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, color<span class="op">=</span><span class="st">".6"</span>))</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<p><img src="eda_files/figure-html/cell-40-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-40-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>2d-histogram: x, y축 모두 binning</p>
-<div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="45">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<div id="cell-65" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[[3, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-</div>
 <p>Discretize: 연속 변수를 카테고리화</p>
-<div class="cell" data-execution_count="135">
+<div id="cell-67" class="cell" data-execution_count="135">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>diamonds_cat <span class="op">=</span> diamonds.query(<span class="st">"carat &lt; 3"</span>).assign(</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    carat_cat<span class="op">=</span><span class="kw">lambda</span> x: pd.cut(x.carat, <span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>),</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    carat_qcat<span class="op">=</span><span class="kw">lambda</span> x: pd.qcut(x.carat, <span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>),</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="137">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="137" data-layout="[[2, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-</div>
-<div class="cell" data-execution_count="65">
+<div id="cell-69" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>rangeplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
-<p><img src="eda_files/figure-html/cell-44-output-1.png" width="599" height="445"></p>
-</div>
-</div>
 <div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-44-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_qcat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="138">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<div id="cell-70" class="cell quarto-layout-panel" data-execution_count="138" data-layout="[[2, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-</div>
-<div class="cell" data-execution_count="150">
-<details>
+<div id="cell-71" class="cell" data-execution_count="150">
+<details class="code-fold">
 <summary>2d-histogram</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2d-histogram: x, y축 모두 binning</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -1394,7 +1410,11 @@ Note
 <span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="150">
-<p><img src="eda_files/figure-html/cell-46-output-1.png" width="705" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-46-output-1.png" width="705" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="연습문제-3" class="level3">
@@ -1410,14 +1430,18 @@ Note
 <li>Two dimensional plots reveal outliers that are not visible in one dimensional plots. For example, some points in the plot below have an unusual combination of&nbsp;<code>x</code>&nbsp;and&nbsp;<code>y</code>&nbsp;values, which makes the points outliers even though their&nbsp;<code>x</code>&nbsp;and&nbsp;<code>y</code>&nbsp;values appear normal when examined separately.<br>
 Why is a scatterplot a better display than a binned plot for this case?</li>
 </ol>
-<div class="cell" data-execution_count="67">
+<div id="cell-73" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    .limit(x<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">11</span>), y<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">11</span>))</span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
-<p><img src="eda_files/figure-html/cell-47-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-47-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1438,9 +1462,12 @@ Why is a scatterplot a better display than a binned plot for this case?</li>
 <li>어떤 다른 변수들이 이 관계에 영향을 줄 수 있는가? ex) 운동의 효과가 어느 때 하는가에 달라지는가?</li>
 <li>데이터의 하위그룹별로 봤을 때, 이 관계가 변하는가? ex) 남녀에게 효과가 다른가?</li>
 </ul>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><strong>Example: Old Faithful eruption (간헐천)</strong><br>
 <br> eruption duration (mins) vs.<br>
 wait time (mins) between eruptions</p>
@@ -1450,7 +1477,7 @@ wait time (mins) between eruptions</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="142">
+<div id="cell-75" class="cell" data-execution_count="142">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>faithful <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"faithful"</span>, <span class="st">"datasets"</span>).data</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>faithful.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="142">
@@ -1460,13 +1487,17 @@ wait time (mins) between eruptions</p>
 2       3.33       74</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="149">
+<div id="cell-76" class="cell" data-execution_count="149">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(faithful, x<span class="op">=</span><span class="st">'eruptions'</span>, y<span class="op">=</span><span class="st">'waiting'</span>)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="149">
-<p><img src="eda_files/figure-html/cell-49-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-49-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>패턴:</p>
@@ -1482,18 +1513,21 @@ wait time (mins) between eruptions</p>
 <h2 class="anchored" data-anchor-id="buliding-models">Buliding models</h2>
 <p>Diamonds 데이터셋에서,<br>
 컷(cut)과 가격(price)의 관계는 예상과 달랐는데, 이는 컷(cut)과 무게(carat), 무게(carat)와 가격(price) 사이에 깊은 관계가 있었기 때문임.</p>
-<div class="cell quarto-layout-panel" data-execution_count="31">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-51-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-51-output-2.png" class="img-fluid" width="599"></p>
+<div id="cell-80" class="cell quarto-layout-panel" data-execution_count="31" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-51-output-1.png" width="599" height="445"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-51-output-2.png" width="599" height="445"></p>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-51-output-3.png" class="img-fluid" width="599"></p>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-51-output-3.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -1505,13 +1539,16 @@ wait time (mins) between eruptions</p>
 <p>Build a model!</p>
 <ul>
 <li>Linear model, 선형(직선) 모형을 여기서는 특히, <span class="math inline">\(y = b_1x + b_0\)</span>인 1차 함수꼴의 모형으로 세움</li>
-<li><span class="math inline">\(price = b_1 * carat + b_0 + e\)</span> (<strong>residual, 잔차</strong>)의 모형을 세운 후 데이터에 가장 부합(<strong>fit</strong>)하는 파라미터 <span class="math inline">\(b_1, b_0\)</span> 값을 구하는 과정: <strong>fitted model</strong></li>
+<li><span class="math inline">\(price =  b_1 * carat + b_0 + e\)</span> (<strong>residual, 잔차</strong>)의 모형을 세운 후 데이터에 가장 부합(<strong>fit</strong>)하는 파라미터 <span class="math inline">\(b_1, b_0\)</span> 값을 구하는 과정: <strong>fitted model</strong></li>
 </ul>
 <p><img src="images/model3.png" class="img-fluid" width="500"></p>
-<div class="cell quarto-layout-panel" data-execution_count="7">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="7" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-52-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
+</div>
+<div id="cell-83" class="cell quarto-layout-panel" data-execution_count="7" data-layout="[[3, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-52-output-1.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -1542,7 +1579,7 @@ Residual samples
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="41">
+<div id="cell-85" class="cell" data-execution_count="41">
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>             cut  carat  price     pred    resid
 32609      Ideal   0.31    802   117.54   684.46
@@ -1554,17 +1591,15 @@ Residual samples
 47809  Very Good   0.71   1902  3250.49 -1348.49</code></pre>
 </div>
 </div>
-<div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diamonds_fit.params)  <span class="co"># print coefficients</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R2 = </span><span class="sc">{</span>diamonds_fit<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)  <span class="co"># print R-squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="33">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="cell-86" class="cell quarto-layout-panel" data-execution_count="33" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>Intercept   -2310.50
 carat        7832.37
 dtype: float64
 R2 = 0.853</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -1595,9 +1630,13 @@ Code
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="42">
+<div id="cell-89" class="cell" data-execution_count="42">
 <div class="cell-output cell-output-display" data-execution_count="42">
-<p><img src="eda_files/figure-html/cell-55-output-1.png" width="599" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-55-output-1.png" width="599" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>캐럿(<code>carat</code>)으로 설명되지 않는 가격의 값들로만 추가 분석을 실시하면,<br>
@@ -1622,10 +1661,13 @@ Code
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="45">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="45" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-56-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
+</div>
+<div id="cell-92" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[[3, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<p><img src="eda_files/figure-html/cell-56-output-1.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -1655,9 +1697,13 @@ Code
 <span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div class="cell" data-execution_count="48">
+<div id="cell-95" class="cell" data-execution_count="48">
 <div class="cell-output cell-output-display" data-execution_count="48">
-<p><img src="eda_files/figure-html/cell-57-output-1.png" width="849" height="753"></p>
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-57-output-1.png" width="849" height="753" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1666,7 +1712,7 @@ Code
 <h1>과제</h1>
 <p>Data on houses in Saratoga County, New York, USA in 2006</p>
 <p>더 큰 데이터셋은 다음을 참고: <a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview">The Ames Housing dataset in Kaggle</a></p>
-<div class="cell" data-execution_count="49">
+<div id="cell-97" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>houses_data <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> houses_data.data     <span class="co"># data</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(houses_data.__doc__)  # documents</span></span>
@@ -1793,10 +1839,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1806,8 +1869,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1820,6 +1892,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1863,6 +2049,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1888,6 +2075,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1945,27 +2158,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/discretize.html" class="pagination-link">
+      <a href="../contents/discretize.html" class="pagination-link" aria-label="Discretize">
         <span class="nav-page-text">Discretize</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1973,7 +2172,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
+    <div class="nav-footer-left">
+<p>This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1982,6 +2183,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

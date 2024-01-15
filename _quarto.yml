@@ -98,20 +98,20 @@ website:
                 text: Pivot Table
               - href: contents/exercise_wrangle.ipynb
           - href: contents/misc.ipynb
-          - section: Solutions
-            contents:
-              - href: contents/sol1.ipynb
-              - href: contents/sol2.ipynb
+          # - section: Solutions
+          #   contents:
+          #     - href: contents/sol1.ipynb
+          #     - href: contents/sol2.ipynb
       - section: Exercises
         contents:
           - href: contents/billboard.ipynb
             text: Billboard
           - href: contents/movielens.ipynb
             text: MovieLens
-          - section: Solutions
-            contents:
-              - href: contents/billboard_sol.ipynb
-              - href: contents/movielens_sol.ipynb
+          # - section: Solutions
+          #   contents:
+          #     - href: contents/billboard_sol.ipynb
+          #     - href: contents/movielens_sol.ipynb
       - text: ---
       - section: contents/eda.ipynb
         contents:
@@ -124,13 +124,13 @@ website:
           - href: contents/modelling1.ipynb
           - href: contents/modelling2.ipynb
           - href: contents/logistic.ipynb
-          - section: Solutions
-            contents:
-              - href: contents/modelling1_ex.ipynb
-                text: Modelling 1 Ex.
-              - href: contents/modelling2_ex.ipynb
-                text: Modelling 2 Ex.
-        #       # contents:
+        #   - section: Solutions
+        #     contents:
+        #       - href: contents/modelling1_ex.ipynb
+        #         text: Modelling 1 Ex.
+        #       - href: contents/modelling2_ex.ipynb
+        #         text: Modelling 2 Ex.
+        # #       # contents:
         #       #   - href: contents/modelling3_ex.ipynb
         #     #- href: contents/misc4.ipynb
       - text: ---

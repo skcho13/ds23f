@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -111,21 +118,47 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar docked">
-
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/model-basic.html">Modelling</a></li><li class="breadcrumb-item"><a href="../contents/model-basic.html">Model Basics</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/model-basic.html">Modelling</a></li><li class="breadcrumb-item"><a href="../contents/model-basic.html">Model Basics</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -135,7 +168,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> Data Analysis &amp; Visualization</a> 
@@ -151,19 +184,19 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-angles-right fa-xs" aria-label="angles-right"></i> Welcome</span></a>
+ <span class="menu-text"> Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-check fa-xs" aria-label="check"></i> Notice</span></a>
+ <span class="menu-text"> Notice</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/shortcuts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="fa-solid fa-hourglass fa-xs" aria-label="hourglass"></i> 오늘의 숏컷</span></a>
+ <span class="menu-text"> 오늘의 숏컷</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -351,40 +384,17 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Misc.</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/sol1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform 1 Sol</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/sol2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform 2 Sol</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Exercises</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/billboard.html" class="sidebar-item-text sidebar-link">
@@ -397,29 +407,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">MovieLens</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/billboard_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Billboard Solutions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/movielens_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Movielens Solutions</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -427,11 +414,11 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../contents/eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploratory Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/discretize.html" class="sidebar-item-text sidebar-link">
@@ -443,13 +430,13 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
  <span class="menu-text">Modelling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/model-basic.html" class="sidebar-item-text sidebar-link active">
@@ -474,29 +461,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Model building III</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">Solutions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/modelling1_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modelling 1 Ex.</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/modelling2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modelling 2 Ex.</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -509,13 +473,13 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
  <span class="menu-text">Communicate</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing" class="sidebar-item-text sidebar-link">
@@ -533,14 +497,14 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bi-alarm-introduction" id="toc-bi-alarm-introduction" class="nav-link active" data-scroll-target="#bi-alarm-introduction"><i class="bi-alarm " style="" role="img" aria-hidden="true"></i> Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><i class="bi-alarm " style="" role="img" aria-hidden="true"></i> Introduction</a>
   <ul>
   <li><a href="#statistical-learning-vs.-machine-learning" id="toc-statistical-learning-vs.-machine-learning" class="nav-link" data-scroll-target="#statistical-learning-vs.-machine-learning">Statistical Learning vs.&nbsp;Machine Learning</a></li>
   <li><a href="#hypothesis-generation-vs.-hypothesis-confirmation" id="toc-hypothesis-generation-vs.-hypothesis-confirmation" class="nav-link" data-scroll-target="#hypothesis-generation-vs.-hypothesis-confirmation">Hypothesis generation vs.&nbsp;hypothesis confirmation</a></li>
@@ -573,7 +537,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contents/model-basic.html">Modelling</a></li><li class="breadcrumb-item"><a href="../contents/model-basic.html">Model Basics</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Model Basics</h1>
 <p class="subtitle lead">R for Data Science by Wickham &amp; Grolemund</p>
@@ -601,9 +565,11 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
 
-<section id="bi-alarm-introduction" class="level1">
+
+<section id="introduction" class="level1">
 <h1><i class="bi-alarm " style="" role="img" aria-hidden="true"></i> Introduction</h1>
 <p><img src="images/model.png" class="img-fluid" width="500"></p>
 <blockquote class="blockquote">
@@ -611,23 +577,29 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 * physics: models for the physical world</p>
 </blockquote>
 <p>이상적으로, 모형(model)이 현상으로부터 <strong>노이즈</strong>가 제거된 진정한 <strong>신호</strong>를 잡아내 주기를 기대.</p>
-<div class="cell quarto-layout-panel" data-execution_count="237">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-7-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-7-output-2.png" class="img-fluid" width="599"></p>
+<div id="cell-7" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="237">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-7-output-1.png" width="599" height="445"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-7-output-2.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="105">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 49.7%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-10-output-1.png" class="img-fluid" width="778"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.3%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-10-output-2.png" class="img-fluid" width="788"></p>
+<div id="cell-10" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="105">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-10-output-1.png" width="778" height="369"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-10-output-2.png" width="788" height="369"></p>
 </div>
 </div>
 </div>
@@ -648,9 +620,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <li>그 외에 자연스럽게 나타나는 분포들이 있음; Binomial, Poisson, Exponential, Gamma, Beta, …</li>
 </ul></li>
 </ul>
-<div>
-<details>
-<summary>Gaussian Distribution</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">126</span>)</span>
@@ -669,10 +638,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>), x<span class="op">=</span>x, y<span class="op">=</span>y)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="fl">5.5</span>, <span class="dv">4</span>))</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="231">
+<div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Gaussian Distribution</summary>
 </details>
-<div class="cell quarto-layout-panel" data-execution_count="231">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: center;">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
  [[-1  1 -1 ... -1  1 -1]
  [ 1 -1 -1 ... -1  1  1]
@@ -682,9 +653,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  [-1  1 -1 ... -1  1 -1]
  [-1 -1  1 ... -1 -1 -1]]</code></pre>
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="231" style="flex-basis: 41.7%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-11-output-2.png" class="img-fluid" width="513"></p>
-</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-11-output-2.png" width="513" height="369"></p>
 </div>
 </div>
 </div>
@@ -770,12 +740,15 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <section id="a-simple-model" class="level2">
 <h2 class="anchored" data-anchor-id="a-simple-model">A simple model</h2>
 <p>Data: <a href="https://www.dropbox.com/s/z37caxcbr0xbutt/sim1.csv?dl=1">sim1.csv</a></p>
-<div class="cell" data-execution_count="5">
+<div id="cell-17" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="207">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 28.6%;justify-content: center;">
+<div>
+
+</div>
+<div id="cell-18" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="207">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
 0    1  4.20
 1    1  7.51
@@ -789,8 +762,8 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 
 [30 rows x 2 columns]</code></pre>
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="207" style="flex-basis: 57.1%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-13-output-2.png" class="img-fluid" width="599"></p>
+<div class="quarto-layout-cell" style="flex-basis: 57.1%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-13-output-2.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -800,10 +773,13 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <li>무수히 많은 <span class="math inline">\(a_1, a_2\)</span>의 값들 중 위 데이터에 가장 가까운 값을 찾음</li>
 <li>그 예로, 임의로 250개의 선형 모델을 그려보면,</li>
 </ul>
-<div class="cell quarto-layout-panel" data-execution_count="210">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="210" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-16-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
+</div>
+<div id="cell-22" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="210">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-16-output-1.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -812,14 +788,14 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <p>예) 모델과 데이터의 수직 거리(residuals)의 총체</p>
 <p><img src="images/residual.png" class="img-fluid" width="600"></p>
 <p>Model 1.1: <span class="math inline">\(y = 1.5x+7\)</span>의 경우, 이 모델이 예측하는 값들</p>
-<div class="cell" data-execution_count="34">
+<div id="cell-24" class="cell" data-execution_count="34">
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>array([ 8.5,  8.5,  8.5, 10. , 10. , 10. , 11.5, 11.5, 11.5, 13. , 13. ,
        13. , 14.5, 14.5, 14.5, 16. , 16. , 16. , 17.5, 17.5, 17.5, 19. ,
        19. , 19. , 20.5, 20.5, 20.5, 22. , 22. , 22. ])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="191">
+<div id="cell-26" class="cell" data-execution_count="191">
 <div class="cell-output cell-output-display">
 <pre><code>     x     y  pred  resid | e
 0    1  4.20  8.50      -4.30
@@ -835,12 +811,15 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 [30 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="192">
+<div>
+
+</div>
+<div id="cell-27" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="192">
 <div class="quarto-layout-row quarto-layout-valign-center">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: flex-start;">
 <p>MAE = <span class="math inline">\(\displaystyle\frac{1}{n} \sum_{i=1}^{n}|~e~|\)</span> = 1.43</p>
 </div>
 </div>
@@ -864,7 +843,7 @@ Model evaluation: RMSE, MAE
 </div>
 <p>즉, 데이터셋 sim1과 model 1.1 과의 거리를 RMSE로 정의하면, <span class="math inline">\(d=|~sim1 -model1~| = 2.67\)</span></p>
 <p>위의 250개의 모델에 대해 각각 거리를 구하면</p>
-<div class="cell" data-execution_count="199">
+<div id="cell-31" class="cell" data-execution_count="199">
 <div class="cell-output cell-output-display" data-execution_count="199">
 <pre><code>       a1    a2  dist
 0   21.79 -2.92 17.42
@@ -881,10 +860,13 @@ Model evaluation: RMSE, MAE
 </div>
 </div>
 <p>이 중 제일 좋은 모델(dist가 최소) 10개의 모델을 그리면,</p>
-<div class="cell quarto-layout-panel" data-execution_count="200">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="200" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-22-output-1.png" class="img-fluid" width="672"></p>
+<div>
+
+</div>
+<div id="cell-33" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="200">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-22-output-1.png" width="672" height="445"></p>
 </div>
 </div>
 </div>
@@ -892,26 +874,32 @@ Model evaluation: RMSE, MAE
 <ul>
 <li>오렌지 색은 위에서 구한 10 best models</li>
 </ul>
-<div class="cell quarto-layout-panel" data-execution_count="201">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="201" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-23-output-1.png" class="img-fluid" width="681"></p>
+<div>
+
+</div>
+<div id="cell-35" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="201">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-23-output-1.png" width="681" height="445"></p>
 </div>
 </div>
 </div>
 <p>점차 촘촘한 간격으로 grid search를 하면서 거리를 최소로 하는 모델을 찾아가는 것이고, 실제로는 Newton-Raphson search를 통해 최소값을 구하는 알고리즘을 통해 구할 수 있음.</p>
 <p>즉, 거리를 최소로 하는 a1, a2를 찾으면,</p>
-<div class="cell" data-execution_count="202">
+<div id="cell-37" class="cell" data-execution_count="202">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>minimize(measure_distance, [<span class="dv">0</span>, <span class="dv">0</span>], args<span class="op">=</span>(sim1)).x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="202">
 <pre><code>array([4.22, 2.05])</code></pre>
 </div>
 </div>
-<div class="cell quarto-layout-panel" data-execution_count="203">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" data-execution_count="203" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-25-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
+</div>
+<div id="cell-38" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="203">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-25-output-1.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -963,7 +951,6 @@ Model evaluation: RMSE, MAE
 </li>
 <li><code>sklearn</code>은 formula notation을 직접 지원하지 않지만, <a href="https://patsy.readthedocs.io/en/latest/index.html"><code>patsy</code></a> 패키지를 이용하여 design matrix를 직접 얻어 적용할 수 있음: <a href="https://learn-scikit.oneoffcoder.com/patsy.html">patsy in scikit-learn</a> 또는 <a href="https://scikit-lego.netlify.app/api/preprocessing.html#sklego.preprocessing.PatsyTransformer">PatsyTransformer</a></li>
 </ul>
-<div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># patsy</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices <span class="co"># design matrix</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -971,9 +958,9 @@ Model evaluation: RMSE, MAE
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(formula, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-execution_count="111">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div id="cell-42" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="111">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: flex-start;">
 <pre><code>         price
 0    132500.00
 1    181115.00
@@ -987,7 +974,9 @@ Model evaluation: RMSE, MAE
 
 [1728 rows x 1 columns]</code></pre>
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>      Intercept  livingArea  bedrooms
 0          1.00      906.00      2.00
 1          1.00     1953.00      3.00
@@ -1003,8 +992,7 @@ Model evaluation: RMSE, MAE
 </div>
 </div>
 </div>
-</div>
-<div class="cell" data-execution_count="112">
+<div id="cell-43" class="cell" data-execution_count="112">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scikit-learn: conda install scikit-learn</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1031,7 +1019,7 @@ intercept: 36667.89513634294</code></pre>
 <section id="predictions-the-pattern-that-the-model-has-captured" class="level2">
 <h2 class="anchored" data-anchor-id="predictions-the-pattern-that-the-model-has-captured">Predictions: the pattern that the model has captured</h2>
 <p>우선, 예측 변수들의 데이터 값을 커버하는 grid를 구성</p>
-<div class="cell" data-execution_count="14">
+<div id="cell-45" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>     x     y
@@ -1046,12 +1034,12 @@ intercept: 36667.89513634294</code></pre>
 [30 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="cell-46" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid for the range of x sim1</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(x<span class="op">=</span>np.linspace(sim1.x.<span class="bu">min</span>(), sim1.x.<span class="bu">max</span>(), <span class="dv">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>모델에 grid를 입력하여 prediction값을 추가</p>
-<div class="cell" data-execution_count="9">
+<div id="cell-48" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a model for sim1</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sim1_mod <span class="op">=</span> smf.ols(<span class="st">"y ~ x"</span>, data<span class="op">=</span>sim1).fit()</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1101,7 +1089,7 @@ fitted values
 </div>
 </div>
 <p>prediction을 시각화</p>
-<div class="cell" data-execution_count="18">
+<div id="cell-51" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim1, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(color<span class="op">=</span><span class="st">".8"</span>))</span>
@@ -1110,17 +1098,21 @@ fitted values
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    .scale(x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>grid.x))</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<p><img src="model-basic_files/figure-html/cell-31-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-31-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="residuals-what-the-model-has-missed." class="level2">
 <h2 class="anchored" data-anchor-id="residuals-what-the-model-has-missed.">Residuals: what the model has missed.</h2>
 <p><span class="math inline">\(e = Y - \hat{Y}\)</span> : 관측값 - 예측값</p>
-<div class="cell" data-execution_count="118">
+<div id="cell-54" class="cell" data-execution_count="118">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"resid"</span>] <span class="op">=</span> sim1_mod.resid  <span class="co"># Y - Y_hat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="119">
+<div id="cell-55" class="cell" data-execution_count="119">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="119">
 <pre><code>     x     y  fitted  resid
@@ -1138,18 +1130,22 @@ fitted values
 </div>
 </div>
 <p>우선, residuals의 분포를 시각화해서 살펴보면,</p>
-<div class="cell" data-execution_count="123">
+<div id="cell-57" class="cell" data-execution_count="123">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim1, x<span class="op">=</span><span class="st">'resid'</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="fl">.5</span>))</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="123">
-<p><img src="model-basic_files/figure-html/cell-35-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-35-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>예측 변수와 residuals의 관계를 시각화해서 보면,</p>
-<div class="cell" data-execution_count="124">
+<div id="cell-59" class="cell" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim1, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
@@ -1157,29 +1153,40 @@ fitted values
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="124">
-<p><img src="model-basic_files/figure-html/cell-36-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-36-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>위의 residuals은 특별한 패턴을 보이지 않아야 모델이 데이터의 패턴을 잘 잡아낸 것으로 판단할 수 있음.<br>
 아래는 원래 데이터와 일차 선형 모형에 대한 예측값의 관계를 시각화한 것</p>
-<div class="cell" data-execution_count="125">
+<div id="cell-61" class="cell" data-execution_count="125">
 <div class="cell-output cell-output-display" data-execution_count="125">
-<p><img src="model-basic_files/figure-html/cell-37-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-37-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Residuals에 패턴이 보이는 경우</p>
-<div class="cell quarto-layout-panel" data-execution_count="128">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-40-output-1.png" class="img-fluid" width="599"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-40-output-2.png" class="img-fluid" width="599"></p>
+<div id="cell-65" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="128">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-40-output-1.png" width="599" height="445"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-40-output-2.png" width="599" height="445"></p>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-40-output-3.png" class="img-fluid" width="599"></p>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-40-output-3.png" width="599" height="445"></p>
 </div>
 </div>
 </div>
@@ -1201,7 +1208,7 @@ fitted values
 </ul>
 <p>Patsy의 formula는 편리하게 범주형 변수를 알아서 처리해 주기 때문에 범주형 변수의 복잡한 처리과정을 걱정할 필요가 없음.</p>
 <p>다른 방식으로는 pandas의 <code>pd.get_dummies()</code>나 scikit-learn의 <code>OneHotEncoder</code>를 이용할 수 있음</p>
-<div class="cell" data-execution_count="42">
+<div id="cell-67" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"sex"</span>: [<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>], <span class="st">"response"</span>: [<span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">13</span>]})</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -1211,7 +1218,7 @@ fitted values
 2    male        13</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="cell-68" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Design matrix</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'response ~ sex'</span>, data<span class="op">=</span>df, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
@@ -1255,7 +1262,7 @@ Note
 <li>세 개의 범주인 경우: 가령, 아래와 같이 3개의 범주를 가졌다면, 두 개의 변수 <code>sex[T.male]</code>, <code>sex[T.neutral]</code>가 생성</li>
 <li>일반적으로 <code>n</code>개의 범주를 가진 변수인 경우 <code>n-1</code>개의 변수가 생성</li>
 </ul>
-<div class="cell" data-execution_count="129">
+<div id="cell-71" class="cell" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"sex"</span>: [<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"neutral"</span>], <span class="st">"response"</span>: [<span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">5</span>]})</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="129">
@@ -1266,7 +1273,7 @@ Note
 3  neutral         5</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="130">
+<div id="cell-72" class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"response ~ sex"</span>, data<span class="op">=</span>df, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="130">
@@ -1278,7 +1285,7 @@ Note
 </div>
 </div>
 <p>pandas의 <code>get_dummies</code>를 이용하면,</p>
-<div class="cell" data-execution_count="131">
+<div id="cell-74" class="cell" data-execution_count="131">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(df[<span class="st">"sex"</span>], drop_first<span class="op">=</span><span class="va">True</span>, prefix<span class="op">=</span><span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="131">
 <pre><code>   sex_male  sex_neutral
@@ -1289,7 +1296,7 @@ Note
 </div>
 </div>
 <p>scikit-learn의 <code>OneHotEncoder</code>를 이용하면,</p>
-<div class="cell" data-execution_count="132">
+<div id="cell-76" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># one-hot encoding for sex in df</span></span>
@@ -1302,7 +1309,7 @@ Note
        [0., 1.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="133">
+<div id="cell-77" class="cell" data-execution_count="133">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>enc.get_feature_names_out()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="133">
 <pre><code>array(['sex_male', 'sex_neutral'], dtype=object)</code></pre>
@@ -1311,7 +1318,7 @@ Note
 <hr>
 <p>실제 예를 들어서 살펴보면,<br>
 Data: <a href="https://www.dropbox.com/s/4001aduta6qrnky/sim2.csv?dl=1">sim2.csv</a></p>
-<div class="cell" data-execution_count="4">
+<div id="cell-79" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sim2 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim2.csv"</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>sim2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -1329,18 +1336,22 @@ Data: <a href="https://www.dropbox.com/s/4001aduta6qrnky/sim2.csv?dl=1">sim2.csv
 [40 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="135">
+<div id="cell-80" class="cell" data-execution_count="135">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim2, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="135">
-<p><img src="model-basic_files/figure-html/cell-49-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-49-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Fit a model to it, and generate predictions:</p>
-<div class="cell" data-execution_count="136">
+<div id="cell-82" class="cell" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> smf.ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim2).fit()</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="136">
@@ -1351,7 +1362,7 @@ x[T.d]      0.76
 dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="137">
+<div id="cell-83" class="cell" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: <span class="bu">list</span>(<span class="st">"abcd"</span>)})</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> mod2.predict(grid)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1365,7 +1376,7 @@ dtype: float64</code></pre>
 </div>
 <p>예측값을 시각화하면,<br>
 각 카테고리 별로 평균값으로 예측… why?</p>
-<div class="cell" data-execution_count="138">
+<div id="cell-85" class="cell" data-execution_count="138">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim2, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
@@ -1373,12 +1384,16 @@ dtype: float64</code></pre>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
 <span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="138">
-<p><img src="model-basic_files/figure-html/cell-52-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-52-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>fitted model의 파라미터를 보면,<br>
 formula <code>y ~ x</code>는 실제 <span class="math inline">\(\hat{y} = a_0 + a_1x[T.b] + a_2 x[T.c] + a_3 x[T.d]\)</span> 으로 해석</p>
-<div class="cell" data-execution_count="139">
+<div id="cell-87" class="cell" data-execution_count="139">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ x"</span>, data<span class="op">=</span>sim2, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>pd.concat([X, sim2[<span class="st">"x"</span>]], axis<span class="op">=</span><span class="dv">1</span>).sample(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="139">
@@ -1394,7 +1409,7 @@ formula <code>y ~ x</code>는 실제 <span class="math inline">\(\hat{y} = a_0 +
 </div>
 </div>
 <p>diamonds 데이터셋에 적용해 보면,</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-89" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"diamonds"</span>, <span class="st">"ggplot2"</span>).data</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>] <span class="op">=</span> pd.Categorical(</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    diamonds[<span class="st">"cut"</span>], </span>
@@ -1402,7 +1417,7 @@ formula <code>y ~ x</code>는 실제 <span class="math inline">\(\hat{y} = a_0 +
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    ordered<span class="op">=</span><span class="va">True</span></span>
 <span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="cell-90" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> smf.ols(<span class="st">'price ~ cut'</span>, data<span class="op">=</span>diamonds).fit()</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1421,7 +1436,7 @@ dtype: float64</code></pre>
 <li>즉, 각 기울기는 Fair cut과 해당 cut의 평균 가격의 차이를 의미</li>
 </ul>
 <p>예측치는 아래에서 보이듯 평균값으로 예측</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-93" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame({<span class="st">"cut"</span>: [<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>]})</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> mod2.predict(grid)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1434,7 +1449,7 @@ dtype: float64</code></pre>
 4      Ideal 3457.54</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+<div id="cell-94" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>diamonds.groupby(<span class="st">"cut"</span>)[<span class="st">"price"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>cut
@@ -1447,7 +1462,7 @@ Name: price, dtype: float64</code></pre>
 </div>
 </div>
 <p>플랏으로 그려보면,</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-96" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">'cut'</span>, y<span class="op">=</span><span class="st">'price'</span>)</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Range(), so.Est(<span class="st">"mean"</span>, errorbar<span class="op">=</span>(<span class="st">"pi"</span>, <span class="dv">50</span>)), so.Dodge())</span>
@@ -1457,7 +1472,11 @@ Name: price, dtype: float64</code></pre>
 <span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>p.scale(x<span class="op">=</span>so.Nominal(order<span class="op">=</span>[<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>])).layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
-<p><img src="model-basic_files/figure-html/cell-58-output-1.png" width="465" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-58-output-1.png" width="465" height="369" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>Exercises</strong></p>
@@ -1521,7 +1540,7 @@ Statsmodels &amp; scikit-learn
 <h3 class="anchored" data-anchor-id="continuous-and-categorical">Continuous and Categorical</h3>
 <p>연속변수와 범주형 변수가 서로 상호작용하는 경우: ex. 운동량이 건강(지표)에 미치는 효과: 혼자 vs.&nbsp;단체</p>
 <p>Data: <a href="https://www.dropbox.com/s/1ezcgjcmj6ibp5u/sim3.csv?dl=1">sim3.csv</a></p>
-<div class="cell" data-execution_count="17">
+<div id="cell-100" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>sim3 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim3.csv"</span>)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>sim3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -1539,8 +1558,8 @@ Statsmodels &amp; scikit-learn
 [120 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
-<details>
+<div id="cell-101" class="cell" data-execution_count="19">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim3, x<span class="op">=</span><span class="st">'x1'</span>, y<span class="op">=</span><span class="st">'y'</span>, color<span class="op">=</span><span class="st">'x2'</span>)</span>
@@ -1550,11 +1569,15 @@ Statsmodels &amp; scikit-learn
 <span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="19">
-<p><img src="model-basic_files/figure-html/cell-60-output-1.png" width="672" height="445"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-60-output-1.png" width="672" height="445" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>두 가지 모델로 fit할 수 있음</p>
-<div class="cell" data-execution_count="20">
+<div id="cell-103" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> smf.ols(<span class="st">'y ~ x1 + x2'</span>, data<span class="op">=</span>sim3).fit()</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> smf.ols(<span class="st">'y ~ x1 * x2'</span>, data<span class="op">=</span>sim3).fit() <span class="co"># 같은 의미 'y ~ x1 + x2 + x1:x2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1562,7 +1585,7 @@ Statsmodels &amp; scikit-learn
 <p><img src="images/plot3d2.png" class="img-fluid" width="380"></p>
 <p>하지만, 여기서는 x2가 범주형 변수라 dummy-coding후 적용됨.<br>
 Design matrix를 확인해 보면,</p>
-<div class="cell" data-execution_count="23">
+<div id="cell-105" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ x1 + x2"</span>, data<span class="op">=</span>sim3, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>X.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
@@ -1580,7 +1603,7 @@ Design matrix를 확인해 보면,</p>
 [120 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="cell-106" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ x1 * x2"</span>, data<span class="op">=</span>sim3, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>X.iloc[:, <span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -1598,14 +1621,14 @@ Design matrix를 확인해 보면,</p>
 [120 rows x 7 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="cell-107" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> sim3.value_counts([<span class="st">"x1"</span>, <span class="st">"x2"</span>]).reset_index().drop(columns<span class="op">=</span><span class="st">"count"</span>)</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"mod1"</span>] <span class="op">=</span>  mod1.predict(grid)</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"mod2"</span>] <span class="op">=</span>  mod2.predict(grid)</span>
 <span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>grid_long <span class="op">=</span> grid.melt(id_vars<span class="op">=</span>[<span class="st">"x1"</span>, <span class="st">"x2"</span>], var_name<span class="op">=</span><span class="st">"model"</span>, value_name<span class="op">=</span><span class="st">"pred"</span>)</span>
 <span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>grid_full <span class="op">=</span> grid_long.merge(sim3[[<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"y"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="cell-108" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>grid_full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>     x1 x2 model  pred     y
@@ -1622,8 +1645,8 @@ Design matrix를 확인해 보면,</p>
 [240 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
-<details>
+<div id="cell-109" class="cell" data-execution_count="27">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(grid_full, x<span class="op">=</span><span class="st">"x1"</span>, y<span class="op">=</span><span class="st">"y"</span>, color<span class="op">=</span><span class="st">"x2"</span>)</span>
@@ -1635,7 +1658,11 @@ Design matrix를 확인해 보면,</p>
 <span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="27">
-<p><img src="model-basic_files/figure-html/cell-66-output-1.png" width="823" height="465"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-66-output-1.png" width="823" height="465" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1679,7 +1706,7 @@ Fitted models
 </div>
 </div>
 <p>두 모형을 비교하여 중 더 나은 모형을 선택하기 위해, residuals을 차이를 살펴보면,</p>
-<div class="cell" data-execution_count="28">
+<div id="cell-113" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>sim3[<span class="st">"mod1"</span>] <span class="op">=</span> mod1.resid</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>sim3[<span class="st">"mod2"</span>] <span class="op">=</span> mod2.resid</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1705,8 +1732,8 @@ Fitted models
 [240 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
-<details>
+<div id="cell-114" class="cell" data-execution_count="30">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim3_long, x<span class="op">=</span><span class="st">"x1"</span>, y<span class="op">=</span><span class="st">"resid"</span>, color<span class="op">=</span><span class="st">"x2"</span>)</span>
@@ -1718,7 +1745,11 @@ Fitted models
 <span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="30">
-<p><img src="model-basic_files/figure-html/cell-68-output-1.png" width="917" height="561"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-68-output-1.png" width="917" height="561" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1728,7 +1759,7 @@ Fitted models
 <li>interaction 항이 있는 모형이 더 나은 모형</li>
 </ul>
 <p>SaratogaHouses 데이터에서 가령, <code>livingArea</code>와 <code>centralAir</code>의 interaction을 살펴보면,</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-117" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>).data</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(houses, x<span class="op">=</span><span class="st">'livingArea'</span>, y<span class="op">=</span><span class="st">'price'</span>)</span>
@@ -1739,10 +1770,14 @@ Fitted models
 <span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<p><img src="model-basic_files/figure-html/cell-69-output-1.png" width="753" height="369"></p>
+<div>
+<figure class="figure">
+<p><img src="model-basic_files/figure-html/cell-69-output-1.png" width="753" height="369" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="157">
+</div>
+<div id="cell-118" class="cell" data-execution_count="157">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.ols(<span class="st">'price ~ livingArea * centralAir'</span>, data<span class="op">=</span>houses).fit()</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>mod.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="157">
@@ -1758,7 +1793,7 @@ dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="two-continuous">Two continuous</h3>
 <p>두 연속변수가 서로 상호작용하는 경우: ex. 강수량과 풍속이 항공편의 지연을 가중시킬 때</p>
 <p>Data: <a href="https://www.dropbox.com/s/k4vxozzhqfvrcmn/sim4.csv?dl=1">sim4.csv</a></p>
-<div class="cell" data-execution_count="31">
+<div id="cell-120" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>sim4 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim4.csv"</span>)</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>sim4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -1776,7 +1811,7 @@ dtype: float64</code></pre>
 [300 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="cell-121" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a grid of x1 and x2</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1805,19 +1840,19 @@ dtype: float64</code></pre>
 [25 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="cell-122" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> smf.ols(<span class="st">'y ~ x1 + x2'</span>, data<span class="op">=</span>sim4).fit()</span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> smf.ols(<span class="st">'y ~ x1 * x2'</span>, data<span class="op">=</span>sim4).fit() <span class="co"># 같은 의미 'y ~ x1 + x2 + x1:x2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>mod2: <code>y ~ x1 * x2</code>는 <span class="math inline">\(\hat{y} = a_0 + a_1x_1 + a_2x_2 + a_3x_1x_2\)</span> 로 변환되고,<br>
 변형하면, <span class="math inline">\(\hat{y} = a_0 + a_1x_1 + (a_2 + a_3x_1)x_2\)</span></p>
-<div class="cell" data-execution_count="34">
+<div id="cell-124" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"mod1"</span>] <span class="op">=</span>  mod1.predict(grid)</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"mod2"</span>] <span class="op">=</span>  mod2.predict(grid)</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>grid_long <span class="op">=</span> grid.melt(id_vars<span class="op">=</span>[<span class="st">"x1"</span>, <span class="st">"x2"</span>], var_name<span class="op">=</span><span class="st">"model"</span>, value_name<span class="op">=</span><span class="st">"pred"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="35">
+<div id="cell-125" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>grid_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>      x1    x2 model  pred
@@ -1836,17 +1871,20 @@ dtype: float64</code></pre>
 </div>
 <p>Regression plane for the model with interaction:<br>
 <img src="images/plot3d2.png" class="img-fluid" width="380"></p>
-<div class="cell quarto-layout-panel" data-execution_count="36">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-76-output-1.png" class="img-fluid" width="693"></p>
+<div>
+
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-76-output-2.png" class="img-fluid" width="693"></p>
+<div id="cell-127" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="36">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-76-output-1.png" width="693" height="445"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-76-output-2.png" width="693" height="445"></p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="cell-128" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>sim4[<span class="st">"mod1"</span>] <span class="op">=</span> mod1.resid</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>sim4[<span class="st">"mod2"</span>] <span class="op">=</span> mod2.resid</span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1872,23 +1910,23 @@ dtype: float64</code></pre>
 [600 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div>
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> so.Plot(sim4_long, x<span class="op">=</span><span class="st">"resid"</span>, color<span class="op">=</span><span class="st">"model"</span>).add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="fl">0.5</span>))</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> so.Plot(</span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>    sim4_long.assign(resid_abs<span class="op">=</span><span class="kw">lambda</span> x: np.<span class="bu">abs</span>(x.resid)), x<span class="op">=</span><span class="st">"resid_abs"</span>, color<span class="op">=</span><span class="st">"model"</span></span>
 <span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>).add(so.Line(), so.Hist(binwidth<span class="op">=</span><span class="fl">0.5</span>))</span>
 <span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>display(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-129" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="38">
+<div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
 </details>
-<div class="cell quarto-layout-panel" data-execution_count="38">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-78-output-1.png" class="img-fluid" width="701"></p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-78-output-1.png" width="701" height="445"></p>
 </div>
-<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="model-basic_files/figure-html/cell-78-output-2.png" class="img-fluid" width="701"></p>
 </div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="model-basic_files/figure-html/cell-78-output-2.png" width="701" height="445"></p>
 </div>
 </div>
 </div>
@@ -2030,10 +2068,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2043,8 +2098,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2057,6 +2121,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2100,6 +2278,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2125,6 +2304,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2182,27 +2387,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/modelling1.html" class="pagination-link">
+      <a href="../contents/modelling1.html" class="pagination-link" aria-label="Model Building I">
         <span class="nav-page-text">Model Building I</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2210,7 +2401,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</div>   
+    <div class="nav-footer-left">
+<p>This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -2219,6 +2412,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
