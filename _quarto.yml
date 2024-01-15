@@ -43,7 +43,7 @@ website:
     #     text: "GitHub organization"
     style: "docked"
     search: true
-    collapse-level: 1
+    collapse-level: 2
     
     contents:
       - href: index.qmd
@@ -135,13 +135,13 @@ website:
         #     #- href: contents/misc4.ipynb
       - text: ---
       - href: contents/statistics.ipynb
-      - text: ---
-      - section: Communicate
-        contents:
-          - href: https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing
-            text: Ask
-          - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
-            text: Personal Project
+      # - text: ---
+      # - section: Communicate
+      #   contents:
+      #     - href: https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing
+      #       text: Ask
+      #     - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
+      #       text: Personal Project
 
   # navbar:
   #   left:
