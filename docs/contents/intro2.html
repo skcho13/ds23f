@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-09-17">
+<meta name="dcterms.date" content="2024-03-04">
 
-<title> Data Analysis &amp; Visualization - The seaborn.objects interface</title>
+<title> Data Analysis &amp; Visualization - 개관</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,6 +31,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contents/setup.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,7 +93,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">The seaborn.objects interface</h1>
+          <h1 class="quarto-secondary-nav-title">개관</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -174,7 +141,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/intro2.html" class="sidebar-item-text sidebar-link">
+  <a href="../contents/intro2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Analysis Intro</span></a>
   </div>
 </li>
@@ -240,7 +207,22 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-seaborn.objects-interface" id="toc-the-seaborn.objects-interface" class="nav-link active" data-scroll-target="#the-seaborn.objects-interface">The seaborn.objects interface</a></li>
+  <li><a href="#미래-데이터의-중요성" id="toc-미래-데이터의-중요성" class="nav-link active" data-scroll-target="#미래-데이터의-중요성">미래 데이터의 중요성</a>
+  <ul>
+  <li><a href="#차-산업혁명의-원유" id="toc-차-산업혁명의-원유" class="nav-link" data-scroll-target="#차-산업혁명의-원유">4차 산업혁명의 ‘원유’</a></li>
+  </ul></li>
+  <li><a href="#데이터-사이언스의-응용-예시" id="toc-데이터-사이언스의-응용-예시" class="nav-link" data-scroll-target="#데이터-사이언스의-응용-예시">데이터 사이언스의 응용 예시</a>
+  <ul>
+  <li><a href="#영업-및-마케팅" id="toc-영업-및-마케팅" class="nav-link" data-scroll-target="#영업-및-마케팅">영업 및 마케팅</a></li>
+  <li><a href="#공공기관" id="toc-공공기관" class="nav-link" data-scroll-target="#공공기관">공공기관</a></li>
+  <li><a href="#스포츠" id="toc-스포츠" class="nav-link" data-scroll-target="#스포츠">스포츠</a></li>
+  </ul></li>
+  <li><a href="#사회적-파장" id="toc-사회적-파장" class="nav-link" data-scroll-target="#사회적-파장">사회적 파장</a>
+  <ul>
+  <li><a href="#유토피아-vs.-디스토피아" id="toc-유토피아-vs.-디스토피아" class="nav-link" data-scroll-target="#유토피아-vs.-디스토피아">유토피아 vs.&nbsp;디스토피아</a></li>
+  </ul></li>
+  <li><a href="#data-science" id="toc-data-science" class="nav-link" data-scroll-target="#data-science">Data Science</a></li>
+  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
   </ul>
 </nav>
     </div>
@@ -249,8 +231,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">The seaborn.objects interface</h1>
-<p class="subtitle lead">mixed</p>
+<h1 class="title d-none d-lg-block">개관</h1>
 </div>
 
 
@@ -267,7 +248,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 17, 2023</p>
+      <p class="date">March 4, 2024</p>
     </div>
   </div>
   
@@ -279,52 +260,263 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </header>
 
 
-<section id="the-seaborn.objects-interface" class="level1">
-<h1>The seaborn.objects interface</h1>
-<p>The grammer of graphics의 데이터 시각화 이론을 잘 반영하고 있으며 아직 발전 중</p>
-<p>기존 seaborn modules을 완전히 대체하지는 못하므로 필요시 병행하여 사용</p>
-<blockquote class="blockquote">
-<p>v0.12.0 (September 2022)</p>
-<p>Introduction of the objects interface</p>
-<p>This release debuts the seaborn.objects interface, an entirely new approach to making plots with seaborn. It is the product of <strong>several years of design and 16 months of implementation work</strong>. The interface aims to provide a more declarative, composable, and extensible API for making statistical graphics. It is inspired by <strong>Wilkinson’s grammar of graphics</strong>, offering a Pythonic API that is informed by the design of libraries such as <strong>ggplot2 and vega-lite</strong> along with lessons from the past 10 years of seaborn’s development.</p>
-</blockquote>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The objects interface is currently <strong>experimental and incomplete</strong>. It is stable enough for serious use, but there certainly are some rough edges and missing features.</p>
-</div>
-</div>
+<section id="미래-데이터의-중요성" class="level2">
+<h2 class="anchored" data-anchor-id="미래-데이터의-중요성">미래 데이터의 중요성</h2>
+<section id="차-산업혁명의-원유" class="level3">
+<h3 class="anchored" data-anchor-id="차-산업혁명의-원유">4차 산업혁명의 ‘원유’</h3>
 <ul>
-<li><p><a href="https://seaborn.pydata.org/tutorial/objects_interface.html">The seaborn.objects interface tutorial</a></p></li>
-<li><p><a href="https://seaborn.pydata.org/api.html">API reference</a></p></li>
+<li>다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생</li>
+<li>인터넷 &amp; 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)</li>
+<li>사물인터넷 (IoT), CCTV</li>
+<li>스마트 팩토리, 파밍</li>
+<li>게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간
+<ul>
+<li><a href="https://www.23andme.com/">23andMe</a>, <a href="https://youtu.be/_CnW12v-HKE?si=ykUsbr26EVzZe1BS&amp;t=64">Theranos</a></li>
+</ul></li>
+<li>과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명</li>
+<li>자율주행차량: 내부, 외부</li>
+<li>금융정보 및 흐름</li>
+<li>사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울</li>
+<li>생성형 인공지능: 기계의 정보 생산</li>
+<li>AI companion: 개인 내면에 대한 정보
+<ul>
+<li><a href="https://www.youtube.com/watch?v=4If1bduSw9k">영화 Her (2013)</a>, <a href="https://www.youtube.com/watch?v=JKeZVuLEqhg">Sony’s robotics dog ‘Aibo’</a></li>
+</ul></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</section>
+</section>
+<section id="데이터-사이언스의-응용-예시" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-사이언스의-응용-예시">데이터 사이언스의 응용 예시</h2>
+<section id="영업-및-마케팅" class="level3">
+<h3 class="anchored" data-anchor-id="영업-및-마케팅">영업 및 마케팅</h3>
+<ul>
+<li>웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악</li>
+<li>월마트의 경우,
+<ul>
+<li>10년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고</li>
+<li>소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화</li>
+</ul></li>
+<li>추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진</li>
+</ul>
+</section>
+<section id="공공기관" class="level3">
+<h3 class="anchored" data-anchor-id="공공기관">공공기관</h3>
+<ul>
+<li>미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자
+<ul>
+<li>Precision Medicine Initiative (2015)
+<ul>
+<li>인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계</li>
+<li>백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축<br>
+<img src="images/precision-medicine.png" class="img-fluid" width="250"></li>
+</ul></li>
+</ul></li>
+<li>도시 운영 및 설계
+<ul>
+<li>스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어</li>
+<li>장기적 도시 계획 수립에 정보를 축적</li>
+</ul></li>
+<li>치안 및 범죄 예측
+<ul>
+<li>Police Data Initiative
+<ul>
+<li>범죄 다발 지역과 재범률을 예측</li>
+<li>시민 단체들의 비판도 존재</li>
+</ul></li>
+<li><a href="https://biologicalsciences.uchicago.edu/news/algorithm-predicts-crime-police-bias">시카고 경찰; 1주일 이내의 범죄 예측</a></li>
+<li><a href="https://www.nature.com/articles/s41562-022-01372-0">비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour</a></li>
+</ul></li>
+<li>각종 보험료 산정
+<ul>
+<li>과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정</li>
+</ul></li>
+</ul>
+</section>
+<section id="스포츠" class="level3">
+<h3 class="anchored" data-anchor-id="스포츠">스포츠</h3>
+<ul>
+<li>Moneyball: The Art of Winning an Unfair Game
+<ul>
+<li>야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음</li>
+<li>“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입</li>
+</ul></li>
+<li>Sabermetrics: sciecne of baseball</li>
+<li>데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시</li>
+<li>적절한 속성을 찾는 것의 중요성</li>
+</ul>
+<!-- ### 개인정보의 가치
+
+- 정보의 주권
+- 매매
+- 웹3(Web3) -->
+</section>
+</section>
+<section id="사회적-파장" class="level2">
+<h2 class="anchored" data-anchor-id="사회적-파장">사회적 파장</h2>
+<section id="유토피아-vs.-디스토피아" class="level3">
+<h3 class="anchored" data-anchor-id="유토피아-vs.-디스토피아">유토피아 vs.&nbsp;디스토피아</h3>
+<ul>
+<li>초연결성, 투명성 vs.&nbsp;완전한 감시와 통제</li>
+<li>개인화된 서비스 vs.&nbsp;설득/유혹/조작</li>
+<li>개별성/자율성 vs.&nbsp;피동적/비주체적</li>
+<li>기계와의 교감 vs.&nbsp;인간관계의 소외, 현실과의 단절</li>
+<li>정보와 인간에 대한 신뢰 vs.&nbsp;사회적 연대, 문명 붕괴</li>
+<li>자연과의 조화 vs.&nbsp;생태계의 파괴</li>
+</ul>
+<p><br></p>
+<div>
+
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/en/6/62/BraveNewWorld_FirstEdition.jpg" class="quarto-figure quarto-figure-left figure-img" height="250"></p>
+<figcaption>Brave New World, 1932</figcaption>
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>현재 pandas 2.1.0 (Aug 30, 2023)에서 seaborn 실행시 경고메세지가 많이 발생하므로, 수업에서는 pandas 2.0.3 버전을 사용</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 버전 확인</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pd.__version__</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; '2.0.3'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>다운그레이드 하려면, 쉘 환경에서</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(myenv)&gt; conda install pandas=2.0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/en/c/cb/TheTechnologicalSocietyCover.jpg" class="quarto-figure quarto-figure-left figure-img" height="250"></p>
+<figcaption>The Technological Society, 1954</figcaption>
+</figure>
 </div>
 </div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/sapiens.jpg" class="quarto-figure quarto-figure-left figure-img" height="250"></p>
+<figcaption>Sapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Yuval Noah Harari: An Urgent Warning They Hope You Ignore.<br>
+<iframe width="300" height="130" src="https://www.youtube.com/embed/UzOJiqN_DpM?si=Ri7ncgf_YSaTzTLH" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></p>
+<!-- https://youtu.be/UzOJiqN_DpM?si=riA3COID7hQBM72V -->
+</section>
+</section>
+<section id="data-science" class="level2">
+<h2 class="anchored" data-anchor-id="data-science">Data Science</h2>
+<ul>
+<li>Artificial intelligence (인공 지능)</li>
+<li>Machine learning (기계 학습)</li>
+<li>Deep learning (심층 학습)</li>
+<li>Data mining (데이터 마이닝)</li>
+<li>Statistical Learning (통계적 학습)</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="소프트웨어-개발" class="level3">
+<h3 class="anchored" data-anchor-id="소프트웨어-개발">소프트웨어 개발</h3>
+<p>데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일<br>
+주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝</p>
+<ul>
+<li>유튜브의 영상 추천</li>
+<li>페이스북의 친구 매칭</li>
+<li>스팸메일 필터링</li>
+<li>자율주행</li>
+</ul>
+</section>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<section id="데이터-분석" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-분석">데이터 분석</h3>
+<p>하나의 구체적인 질문에 답하고자 함<br>
+다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구</p>
+<ul>
+<li>DNA의 분석을 통해 특정 질병의 발병 인자를 탐색</li>
+<li>유동인구와 매출을 분석해 상권을 분석</li>
+<li>어떤 정책의 유효성을 분석에 정책결정에 공헌</li>
+<li>교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시</li>
+</ul>
+</section>
+</div>
+</div>
+</section>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<p><img src="images/data-science-diagram.png" class="img-fluid" width="850"></p>
+<ul>
+<li><strong>Domain knowledge</strong>
+<ul>
+<li>해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 <strong>“one size fits all”</strong>은 효과적이지 않음</li>
+<li>추상화된 현실에 대한 모형은 수많은 <strong>가정/사전 지식(prior knowledge)</strong>을 전제하고 있음.</li>
+<li>각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적</li>
+</ul></li>
+<li><strong>Ethics</strong>
+<ul>
+<li>데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요
+<ul>
+<li>배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물
+<ul>
+<li>소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움
+<ul>
+<li>공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터</li>
+<li>누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집</li>
+</ul></li>
+<li>아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움
+<ul>
+<li>사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집</li>
+</ul></li>
+<li>메타데이터(metadata)</li>
+<li>통화 내역만으로 많은 민감한 정보을 유추할 수 있음
+<ul>
+<li>알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등</li>
+</ul></li>
+</ul></li>
+<li>한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력</li>
+</ul></li>
+</ul></li>
+<li><strong>Wrangling</strong>
+<ul>
+<li>데이터 소스는 다양한 형식으로 존재</li>
+<li>통합, 정리, 변환, 정규화 등의 작업이 요구</li>
+<li>data munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림</li>
+</ul></li>
+<li><strong>Database &amp; computer science</strong>
+<ul>
+<li>수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술</li>
+<li>다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용</li>
+<li>ML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등</li>
+</ul></li>
+<li><strong>Visualisation</strong>
+<ul>
+<li>작업 프로세스의 모든 과정에 관여
+<ul>
+<li>데이터를 탐색하거나,</li>
+<li>데이터의 의미를 효과적으로 전달</li>
+</ul></li>
+</ul></li>
+<li><strong>Statistics &amp; Probability</strong>
+<ul>
+<li>데이터 과학 프로세스 전반에 걸쳐 사용됨
+<ul>
+<li>초기 수집과 조사</li>
+<li>다양한 모델과 분석의 결과를 해석</li>
+<li>의사결정에 활용</li>
+</ul></li>
+</ul></li>
+<li><strong>Machine Learning</strong>
+<ul>
+<li>데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용</li>
+<li>응용 측면에서는
+<ul>
+<li>수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등</li>
+<li>해결할 문제와 데이터에 가장 적합한 알고리즘을 파악</li>
+</ul></li>
+</ul></li>
+<li><strong>Communication</strong>
+<ul>
+<li>데이터에 담긴 스토리를 효과적으로 전달하는 능력</li>
+<li>분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등</li>
+</ul></li>
+</ul>
 
 
 </section>
@@ -735,6 +927,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contents/setup.html" class="pagination-link" aria-label="Setup">
+        <span class="nav-page-text">Setup</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

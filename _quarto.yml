@@ -19,9 +19,10 @@ project:
 website:
   google-analytics: "G-5R1D200E6D"
   page-navigation: true
+  bread-crumbs: false
   # navbar: true
   title: "{{< fa chart-simple >}} Data Analysis & Visualization"
-  description: "Data Analysis and Visualization, Dongguk University, 2023-2"
+  description: "Data Analysis and Visualization, Dongguk University, 2024-1"
 
   # site-url:
   # repo-url:
@@ -29,19 +30,19 @@ website:
 
   page-footer:
     # right: "This page is built with [Quarto](https://quarto.org/)."
-    left: This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
+    left: This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
     # background: 
 
   sidebar:
     # background: "#F6F6FF"
     # logo: 
     pinned: true
-    align: center
+    alignment: left
     # tools:
     #   - icon: github
     #     href: 
     #     text: "GitHub organization"
-    style: "docked"
+    style: "floating"
     search: true
     collapse-level: 2
     
@@ -52,14 +53,14 @@ website:
         text: "{{< fa check size=xs >}} Notice"
       # - href: contents/vote.qmd
       #   text: "{{< fa magnifying-glass size=xs >}} 설문"
-      - href: contents/shortcuts.qmd
-        text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
+      # - href: contents/shortcuts.qmd
+        # text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
       # - href: https://docs.google.com/document/d/1Yv78iYpRFfpEtPjSN6YRtX9iVAMhF_FgMgZRl2p88Bc/edit?usp=sharing
         # text: "{{< bi stopwatch >}} 기말고사 <<<<<<<<<<"
       - text: ---
       - section: Introduction
         contents:
-          - href: contents/intro.qmd
+          - href: contents/intro2.qmd
             text: Data Analysis Intro
           - href: contents/setup.qmd
             text: Setup
@@ -68,80 +69,80 @@ website:
             - href: contents/inspection.ipynb
           - href: contents/vis.ipynb
             text: Data visualization
-      - text: ---
-      - section: Visualize
-        contents:
-          - href: contents/seaborn.ipynb
-            text: Seaborn.objects
-          - section: contents/plots.ipynb
-            contents: 
-              - href: contents/alt_plots.ipynb
-          - href: contents/customizing.ipynb
-      - text: ---
-      - section: Transform
-        contents:
-          - href: contents/subsetting.ipynb
-            contents:
-              - href: contents/views.ipynb
-          - href: contents/transform.ipynb
-            contents:
-              - href: contents/case1.ipynb
-                text: Case Study 1
-              - href: contents/babynames.ipynb
-                text: Case Study 2
-              - href: contents/exercise_transform.ipynb
-          - section: Transforming II
-            contents:
-              - href: contents/combine.ipynb
-              - href: contents/pivot.ipynb
-              - href: contents/crosstab.ipynb
-                text: Pivot Table
-              - href: contents/exercise_wrangle.ipynb
-          - href: contents/misc.ipynb
-          # - section: Solutions
-          #   contents:
-          #     - href: contents/sol1.ipynb
-          #     - href: contents/sol2.ipynb
-      - section: Exercises
-        contents:
-          - href: contents/billboard.ipynb
-            text: Billboard
-          - href: contents/movielens.ipynb
-            text: MovieLens
-          # - section: Solutions
-          #   contents:
-          #     - href: contents/billboard_sol.ipynb
-          #     - href: contents/movielens_sol.ipynb
-      - text: ---
-      - section: contents/eda.ipynb
-        contents:
-          - href: contents/discretize.ipynb
-      - text: ---
-      - section: Modelling
-        contents:
-          - href: contents/model-basic.ipynb
-            text: Model Basics
-          - href: contents/modelling1.ipynb
-          - href: contents/modelling2.ipynb
-          - href: contents/logistic.ipynb
-        #   - section: Solutions
-        #     contents:
-        #       - href: contents/modelling1_ex.ipynb
-        #         text: Modelling 1 Ex.
-        #       - href: contents/modelling2_ex.ipynb
-        #         text: Modelling 2 Ex.
-        # #       # contents:
-        #       #   - href: contents/modelling3_ex.ipynb
-        #     #- href: contents/misc4.ipynb
-      - text: ---
-      - href: contents/statistics.ipynb
       # - text: ---
-      # - section: Communicate
+      # - section: Visualize
       #   contents:
-      #     - href: https://docs.google.com/document/d/124YaRWnLf9ROgaGmepeU4tQvLpCIHFcdp4Ojocwrhmc/edit?usp=sharing
-      #       text: Ask
-      #     - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
-      #       text: Personal Project
+      #     - href: contents/seaborn.ipynb
+      #       text: Seaborn.objects
+      #     - section: contents/plots.ipynb
+      #       contents: 
+      #         - href: contents/alt_plots.ipynb
+      #     - href: contents/customizing.ipynb
+      # - text: ---
+      # - section: Transform
+      #   contents:
+      #     - href: contents/subsetting.ipynb
+      #       contents:
+      #         - href: contents/views.ipynb
+      #     - href: contents/transform.ipynb
+      #       contents:
+      #         - href: contents/case1.ipynb
+      #           text: Case Study 1
+      #         - href: contents/babynames.ipynb
+      #           text: Case Study 2
+      #         - href: contents/exercise_transform.ipynb
+      #     - section: Transforming II
+      #       contents:
+      #         - href: contents/combine.ipynb
+      #         - href: contents/pivot.ipynb
+      #         - href: contents/crosstab.ipynb
+      #           text: Pivot Table
+      #         - href: contents/exercise_wrangle.ipynb
+      #     - href: contents/misc.ipynb
+      #     # - section: Solutions
+      #     #   contents:
+      #     #     - href: contents/sol1.ipynb
+      #     #     - href: contents/sol2.ipynb
+      # - section: Exercises
+      #   contents:
+      #     - href: contents/billboard.ipynb
+      #       text: Billboard
+      #     - href: contents/movielens.ipynb
+      #       text: MovieLens
+      #     # - section: Solutions
+      #     #   contents:
+      #     #     - href: contents/billboard_sol.ipynb
+      #     #     - href: contents/movielens_sol.ipynb
+      # - text: ---
+      # - section: contents/eda.ipynb
+      #   contents:
+      #     - href: contents/discretize.ipynb
+      # # - text: ---
+      # # - section: Modelling
+      # #   contents:
+      # #     - href: contents/model-basic.ipynb
+      # #       text: Model Basics
+      # #     - href: contents/modelling1.ipynb
+      # #     - href: contents/modelling2.ipynb
+      # #     - href: contents/logistic.ipynb
+      # #   #   - section: Solutions
+      # #   #     contents:
+      # #   #       - href: contents/modelling1_ex.ipynb
+      # #   #         text: Modelling 1 Ex.
+      # #   #       - href: contents/modelling2_ex.ipynb
+      # #   #         text: Modelling 2 Ex.
+      # #   # #       # contents:
+      # #   #       #   - href: contents/modelling3_ex.ipynb
+      # #   #     #- href: contents/misc4.ipynb
+      # # - text: ---
+      # # - href: contents/statistics.ipynb
+      - text: ---
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1g57REsUnvtSa1Yxr9WWP63yQivs4DO_0wVDHS9A3bO4/edit?usp=sharing
+            text: Ask
+          # - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
+          - text: Personal Project
 
   # navbar:
   #   left:
@@ -158,12 +159,15 @@ format:
         code-overflow: scroll
         code-summary: "Show the code"
         theme: [sandstone, theme-light.scss]
-        fontsize: 1em
-        linestretch: 1.8
+        fontsize: 1.1em
+        linestretch: 2
         code-copy: true
         highlight-style: ayu-light
         link-external-newwindow: true
         bread-crumbs: false
+        grid:
+          body-width: 900px
+          margin-width: 200px
         # grid:
         #   sidebar-width: 270px
         # css: styles.css
