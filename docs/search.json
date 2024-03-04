@@ -1383,5 +1383,16 @@
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
+  },
+  {
+    "objectID": "contents/intro2.html#데이터-사이언스의-응용-사례",
+    "href": "contents/intro2.html#데이터-사이언스의-응용-사례",
+    "title": "개관",
+    "section": "데이터 사이언스의 응용 사례",
+    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
   }
 ]
