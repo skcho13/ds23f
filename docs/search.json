@@ -37,7 +37,7 @@
     "href": "contents/vis.html#탐색적-exploratory-vs.-정보전달-communicative",
     "title": "Data Visualization",
     "section": "탐색적 (Exploratory) vs. 정보전달 (Communicative)",
-    "text": "탐색적 (Exploratory) vs. 정보전달 (Communicative)",
+    "text": "탐색적 (Exploratory) vs. 정보전달 (Communicative)\n\n분석도구: 현미경, 연장도구\n강점이자 약점",
     "crumbs": [
       "Introduction",
       "Data visualization"
@@ -593,34 +593,121 @@
     "text": "move : alt(option) + arrow up/down\ncopy : alt(option) + shift + arrow up/down\nctrl(cmd) + /\n셀 밖에서 a / b (esc, enter)\n셀 밖에서 c / x / v\ncmd + enter, cmd+ shift + enter (Mac)\nctrl + shift + -\nctrl(cmd) + d\nctrl(cmd) + [, ]\n\n\nctrl -\npandas=2.1.3, seaborn=0.13 update!"
   },
   {
-    "objectID": "contents/notice.html#중간고사",
-    "href": "contents/notice.html#중간고사",
-    "title": "Notice",
-    "section": "중간고사",
-    "text": "중간고사",
+    "objectID": "contents/rethinking.html",
+    "href": "contents/rethinking.html",
+    "title": "Statistical thinking",
+    "section": "",
+    "text": "Data is a window, not a mirror to reality!\n\n수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요\n분석 결과는 주어진 가정에 대한 분명한 제시(transparency)와\n그 가정을 기반으로 한 적절한 해석이 요구됨\n\n\nSource: The Book of Why by Judea Pearl, Dana Mackenzie (2018)\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n이미지/사물 인식\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리, ChatGPT의 답변\n비즈니스 분석\n이상치 탐지\n\n\n\n\n관계/원인 분석\n현상/실재에 대한 이해과 매커니즘 파악\nStatistical Models 강점\nParametric\n\n음식/운동의 효능\n광고의 효과\n복지/치안 정책의 효과\n\n\n\n\n\n\n\n전형적인 인과적 질문들\n\n\n\nHow effective is a given treatment in preventing a disease?\nWas it the new tax break that caused our sales to go up? Or our marketing campaign?\nWhat is the annual health-care costs attributed to obesity?\nCan hiring records prove an employer guilty of sex discrimination?\nI am about to quit my job, will I regret it?\n\n\n번역 by DeepL\n\n특정 치료법이 질병 예방에 얼마나 효과적일까요?\n새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?\n비만으로 인한 연간 의료 비용은 얼마인가요?\n채용 기록으로 고용주의 성차별을 입증할 수 있나요?\n직장을 그만두려고 하는데 후회하게 될까요?\n\n\n\n예를 들어,\n\n닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n임금 차별\n\n가난, 인종, 범죄\n출산율의 감소\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지 접근법(예측과 이해)는 서로 상보 관계!",
     "crumbs": [
-      "{{< fa check size=xs >}} Notice"
+      "Introduction",
+      "Statistical Thinking"
     ]
   },
   {
-    "objectID": "contents/notice.html#기말고사",
-    "href": "contents/notice.html#기말고사",
-    "title": "Notice",
-    "section": "기말고사",
-    "text": "기말고사",
+    "objectID": "contents/rethinking.html#데이터를-분석한다는-것은",
+    "href": "contents/rethinking.html#데이터를-분석한다는-것은",
+    "title": "Statistical thinking",
+    "section": "",
+    "text": "Data is a window, not a mirror to reality!\n\n수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요\n분석 결과는 주어진 가정에 대한 분명한 제시(transparency)와\n그 가정을 기반으로 한 적절한 해석이 요구됨\n\n\nSource: The Book of Why by Judea Pearl, Dana Mackenzie (2018)\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n이미지/사물 인식\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리, ChatGPT의 답변\n비즈니스 분석\n이상치 탐지\n\n\n\n\n관계/원인 분석\n현상/실재에 대한 이해과 매커니즘 파악\nStatistical Models 강점\nParametric\n\n음식/운동의 효능\n광고의 효과\n복지/치안 정책의 효과\n\n\n\n\n\n\n\n전형적인 인과적 질문들\n\n\n\nHow effective is a given treatment in preventing a disease?\nWas it the new tax break that caused our sales to go up? Or our marketing campaign?\nWhat is the annual health-care costs attributed to obesity?\nCan hiring records prove an employer guilty of sex discrimination?\nI am about to quit my job, will I regret it?\n\n\n번역 by DeepL\n\n특정 치료법이 질병 예방에 얼마나 효과적일까요?\n새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?\n비만으로 인한 연간 의료 비용은 얼마인가요?\n채용 기록으로 고용주의 성차별을 입증할 수 있나요?\n직장을 그만두려고 하는데 후회하게 될까요?\n\n\n\n예를 들어,\n\n닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n임금 차별\n\n가난, 인종, 범죄\n출산율의 감소\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지 접근법(예측과 이해)는 서로 상보 관계!",
     "crumbs": [
-      "{{< fa check size=xs >}} Notice"
+      "Introduction",
+      "Statistical Thinking"
     ]
   },
   {
-    "objectID": "contents/notice.html#개별-프로젝트",
-    "href": "contents/notice.html#개별-프로젝트",
-    "title": "Notice",
-    "section": "개별 프로젝트",
-    "text": "개별 프로젝트",
+    "objectID": "contents/rethinking.html#데이터-분석에-관한-전통적인-분류",
+    "href": "contents/rethinking.html#데이터-분석에-관한-전통적인-분류",
+    "title": "Statistical thinking",
+    "section": "데이터 분석에 관한 전통적인 분류",
+    "text": "데이터 분석에 관한 전통적인 분류\n\n\n\n탐색적 분석 vs. 가설 검증\nexploratory vs. confirmatory\n\n탐색적 분석\n\n통찰 혹은 가설의 기초 제공\n끼워 맞추기? 오류에 빠지기 쉬움\n\n가설 검증\n\n진위의 확률을 높임\n탐색적 분석으로부터 온 가설은 재테스트\n\n\n\n\n\n관찰 vs. 실험 데이터\nobservational vs. experimental\n\n당근과 시력?\n커피의 효과?\n남녀의 임금 차별?\n\n\n\n\n표본 vs. 모집단\nsample vs. population\n\nParameter(모수), uncertainty(불확실성)\n내일 태양이 뜰 확률?\n연봉과 삶의 만족도와 관계\n성별과 임금과의 관계\n두통약의 효능: “effect size”",
     "crumbs": [
-      "{{< fa check size=xs >}} Notice"
+      "Introduction",
+      "Statistical Thinking"
     ]
+  },
+  {
+    "objectID": "contents/rethinking.html#통계적-사고",
+    "href": "contents/rethinking.html#통계적-사고",
+    "title": "Statistical thinking",
+    "section": "통계적 사고",
+    "text": "통계적 사고\nDistribution\n\n남녀 임금의 차이\n \n\n\nConfounding\nCommon Cause\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\nAnswers!\n\n\n\n\n\nSpurious relations\n \n\n\n\n앞서 든 예도 마찬가지로\n  \n올바른 관계를 파악하려면, 동일한 나이에 대해 그 관계를 파악한 후 각 나이에서의 효과를 (weighted) 평균해서 살펴봐야함\n통계에서는 이를 나이를 통제 (control for age)한다고 표현하며, 같은 의미로 다음과 같은 표현을 씀\n\n나이를 고려했을 때; account for age\n\n나이를 조정했을 때; adjust for age\n\n나이와 무관/독립인; independent of age\n\nSimpson’s paradox\n\nSource: The book of why by Judea Pearl\n예를 들어, 은퇴한 노인들을 대상으로 규칙적인 걷기가 사망율을 감소시킬 것이라는 가설을 확인하기 위해 1965년 이후 8000명 가량의 남성들을 추적조사한 데이터의 일부를 이용했는데,\n\n12년 후 사망율에서 casual walker(하루 1마일 이하)와 intense walker(하루 2마일 이상)가 각각 43%, 21.5%로 나타났음.\n이 걷기의 효과를 의심케 하는 요소들(confounding)은 무엇인가?\n\n\n\n\n\n\n\nAnswers!\n\n\n\n\n\n\n건강이 나빠 많이 걷지 못했을 수도…\n많이 걷는 사람은 상대적으로 젊을 수도…\n많이 먹는 사람이 덜 걸을 수도…\n술을 많이 먹는 사람이 덜 걸을 수도…\n\n\n\n\n남녀 연봉 차이의 원인을 찾으려면?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\nColider bias\n운동능력이 뛰어나면 지능이 떨어지는가?\n\nSource: Statistical Modeling by Daniel T. Kaplan\nMechanisms/Mediation\n\n레몬과 괴혈병\n\n\n만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되었을 때, 나이가 많은 선원들에게서 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 관계를 추론해서는 안됨. 하지만 예측은 여전히 유효함.\n\n\n\n수집된 데이터의 성격\nSelection Bias\n수집된 데이터의 성격에 따라 인과추론을 방해하거나(confounding)\n일반화할 수 있는 대상의 범위가 제한됨(external validity)\n\n노인에 관한 데이터: 누가 사망했는가?\n관찰 할 수 없는 대상\n과거 기록을 이용?\n누가 참여했는가?\n회사 내에서의 만족도 조사: 근속년수에 따른 샘플 속성의 변화\n코호트/특정세대의 특성: 그들의 특성인가?\n\n\n\n실험\nExperiment\nRCT (randomized controlled trial)\n\n개념적으로는 물리적 통제라고 볼 수 있으며,\n두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당)",
+    "crumbs": [
+      "Introduction",
+      "Statistical Thinking"
+    ]
+  },
+  {
+    "objectID": "contents/intro2.html",
+    "href": "contents/intro2.html",
+    "title": "개관",
+    "section": "",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "contents/intro2.html#미래-데이터의-중요성",
+    "href": "contents/intro2.html#미래-데이터의-중요성",
+    "title": "개관",
+    "section": "",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "contents/intro2.html#데이터-사이언스의-응용-사례",
+    "href": "contents/intro2.html#데이터-사이언스의-응용-사례",
+    "title": "개관",
+    "section": "데이터 사이언스의 응용 사례",
+    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "contents/intro2.html#사회적-파장",
+    "href": "contents/intro2.html#사회적-파장",
+    "title": "개관",
+    "section": "사회적 파장",
+    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계/디지털과의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "contents/intro2.html#data-science",
+    "href": "contents/intro2.html#data-science",
+    "title": "개관",
+    "section": "Data Science",
+    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "contents/intro2.html#skills",
+    "href": "contents/intro2.html#skills",
+    "title": "개관",
+    "section": "Skills",
+    "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   },
   {
     "objectID": "contents/intro.html#data-analysis",
@@ -672,76 +759,33 @@
     "text": "데이터 시각화\nData Visualization \n\n\n분석도구: 현미경, 연장도구\n강점이자 약점\n\n\n\n\n\n\n\n효과적/미적인 정보 전달 수단\n효과적이고 임팩트있도록 infographics \n\n\nInteractive"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "contents/intro2.html",
-    "href": "contents/intro2.html",
-    "title": "개관",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
+    "objectID": "contents/notice.html#중간고사",
+    "href": "contents/notice.html#중간고사",
+    "title": "Notice",
+    "section": "중간고사",
+    "text": "중간고사",
     "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
+      "{{< fa check size=xs >}} Notice"
     ]
   },
   {
-    "objectID": "contents/intro2.html#미래-데이터의-중요성",
-    "href": "contents/intro2.html#미래-데이터의-중요성",
-    "title": "개관",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
+    "objectID": "contents/notice.html#기말고사",
+    "href": "contents/notice.html#기말고사",
+    "title": "Notice",
+    "section": "기말고사",
+    "text": "기말고사",
     "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
+      "{{< fa check size=xs >}} Notice"
     ]
   },
   {
-    "objectID": "contents/intro2.html#데이터-사이언스의-응용-예시",
-    "href": "contents/intro2.html#데이터-사이언스의-응용-예시",
-    "title": "개관",
-    "section": "데이터 사이언스의 응용 예시",
-    "text": "데이터 사이언스의 응용 예시\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n10년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
+    "objectID": "contents/notice.html#개별-프로젝트",
+    "href": "contents/notice.html#개별-프로젝트",
+    "title": "Notice",
+    "section": "개별 프로젝트",
+    "text": "개별 프로젝트",
     "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/intro2.html#사회적-파장",
-    "href": "contents/intro2.html#사회적-파장",
-    "title": "개관",
-    "section": "사회적 파장",
-    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계/디지털과의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/intro2.html#data-science",
-    "href": "contents/intro2.html#data-science",
-    "title": "개관",
-    "section": "Data Science",
-    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/intro2.html#skills",
-    "href": "contents/intro2.html#skills",
-    "title": "개관",
-    "section": "Skills",
-    "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
+      "{{< fa check size=xs >}} Notice"
     ]
   },
   {
@@ -908,6 +952,16 @@
     "title": "Welcome",
     "section": "수업 활동",
     "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)",
+    "crumbs": [
+      "{{< fa angles-right size=xs >}} Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#수업-계획",
+    "href": "index.html#수업-계획",
+    "title": "Welcome",
+    "section": "수업 계획",
+    "text": "수업 계획\n1주. 강의 개요 및 데이터 분석의 의미 소개\n2주. 넘파이와 판다스 라이브러리의 기본\n3주. 탐색적 분석을 위한 시각화 라이브러리\n4주. 시각화의 활용1\n5주. 시각화의 활용2\n6주. 판다스를 이용한 데이터의 변형 및 가공 1\n7주. 판다스를 이용한 데이터의 변형 및 가공 2\n8주. 기술적(descriptive) 분석 1\n9주. 기술적(descriptive) 분석 2\n10주. 탐색적 분석 & 및 중간고사\n11주. 데이터 모델링 기초 & 통계의 기초 개념\n12주. 데이터 모델링 1\n13주. 데이터 모델링 2\n14주. Binary 명목 변수에 대한 분석: 로지스틱 회귀분석 및 GLM 소개\n15주. 기말고사",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
@@ -1373,26 +1427,5 @@
     "title": "Views and Copies",
     "section": "pandas",
     "text": "pandas\n훨씬 복잡함…\n데이터 타입도 데이터가 어떻게 만들어졌는지도 관계가 있음.\n\ndf = pd.DataFrame(np.arange(8).reshape(4, 2), columns=[\"one\", \"two\"])\ndf\n\n   one  two\n0    0    1\n1    2    3\n2    4    5\n3    6    7\n\n\n\nsub_df = df.iloc[1:3]  # view\nsub_df\n\n   one  two\n1    2    3\n2    4    5\n\n\n\ndf.iloc[1, 1] = 99\n\n\nprint(df)\nprint(sub_df)\n\n   one  two\n0    0    1\n1    2   99\n2    4    5\n3    6    7\n   one  two\n1    2   99\n2    4    5\n\n\n\n\n\n\n\n\nNote\n\n\n\ncopy_on_write = True (v2.0) 일 때는 copy가 되어\nprint(sub_df)\n#    one  two\n# 1    2    3\n# 2    4    5\n\n\n\ndf.iloc[1, 0] = 0.9  # copy; 컬럼의 데이터 타입이 int에서 float로 바뀌면서 copy됨)\n\n\nprint(df)\nprint(sub_df)\n\n   one  two\n0  0.0    1\n1  0.9   99\n2  4.0    5\n3  6.0    7\n   one  two\n1    2   99\n2    4    5\n\n\n\ndf.iloc[2, 1] = -99  # view\n\n\nprint(df)\nprint(sub_df)\n\n   one  two\n0  0.0    1\n1  0.9   99\n2  4.0  -99\n3  6.0    7\n   one  two\n1    2   99\n2    4  -99\n\n\n\nSettingWithCopyWarning\nSubsetting된 DataFrame을 수정하려할 때 경고를 내어주지만, 항상 믿을만 한 것은 아님.\n경고가 발생할 시, 앞 어디에선가 view나 copy가 이루어진 곳을 찾아 .copy()로 수정\n\ndf = pd.DataFrame(np.arange(12).reshape(4, 3), columns=[\"one\", \"two\", \"three\"])\ndf\n\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf_cols = df[[\"two\", \"three\"]]  # copy\ndf_cols\n\n   two  three\n0    1      2\n1    4      5\n2    7      8\n3   10     11\n\n\n\ndf.iloc[0, 1] = -55\n\n\nprint(df)\nprint(df_cols)\n\n   one  two  three\n0    0  -55      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n   two  three\n0    1      2\n1    4      5\n2    7      8\n3   10     11\n\n\nSubset을 수정하려하면 warning message!\ncopy_on_save가 True일 때는 copy가 되면서 경고가 발생하지 않음 (v2.0)\n\ndf_cols.iloc[0, 1] = -99\n\n/var/folders/tv/fwb_421x50z8bj5v37vw680r0000gn/T/ipykernel_1691/2609376290.py:1: SettingWithCopyWarning: \nA value is trying to be set on a copy of a slice from a DataFrame\n\nSee the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n  df_cols.iloc[0, 1] = -99\n\n\n\nprint(df_cols)\nprint(df)\n\n   two  three\n0    1    -99\n1    4      5\n2    7      8\n3   10     11\n   one  two  three\n0    0  -55      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n다음과 비교\n\ndf = pd.DataFrame(np.arange(12).reshape(4, 3), columns=[\"one\", \"two\", \"three\"])\ndf\n\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf_cols_3 = df.loc[:, [\"two\", \"three\"]]  # copy\ndf_cols_3.iloc[0, 1] = -99\n\n# No warning\n\n\nprint(df_cols_3)\nprint(df)\n\n   two  three\n0    1    -99\n1    4      5\n2    7      8\n3   10     11\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf = pd.DataFrame(np.arange(12).reshape(4, 3), columns=[\"one\", \"two\", \"three\"])\ndf\n\n   one  two  three\n0    0    1      2\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\ndf_cols_2 = df.loc[:, \"two\":\"three\"]  # view\ndf_cols_2.iloc[0, 1] = -99\n\n/var/folders/tv/fwb_421x50z8bj5v37vw680r0000gn/T/ipykernel_1691/4245876664.py:2: SettingWithCopyWarning: \nA value is trying to be set on a copy of a slice from a DataFrame\n\nSee the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n  df_cols_2.iloc[0, 1] = -99\n\n\n\nprint(df_cols_2)\nprint(df)\n\n   two  three\n0    1    -99\n1    4      5\n2    7      8\n3   10     11\n   one  two  three\n0    0    1    -99\n1    3    4      5\n2    6    7      8\n3    9   10     11\n\n\n\n\n\n\n\n\nNote\n\n\n\ncopy_on_save가 True일 때는 copy가 되면서 경고가 발생하지 않음 (v2.0)\nprint(df)\n#    one  two  three\n# 0    0    1      2\n# 1    3    4      5\n# 2    6    7      8\n# 3    9   10     11\n\n\n강제로 copy: df_cols.copy()\n\ndf_cols_4 = df[[\"two\", \"three\"]].copy()\ndf_cols_4.iloc[0, 1] = -99\n\n\n\n\n\n\n\nTip\n\n\n\nSubset을 만들고 바로 분석을 할 것이 아니라면, 안전하게 .copy()를 쓰는 것을 추천"
-  },
-  {
-    "objectID": "index.html#수업-계획",
-    "href": "index.html#수업-계획",
-    "title": "Welcome",
-    "section": "수업 계획",
-    "text": "수업 계획\n1주. 강의 개요 및 데이터 분석의 의미 소개\n2주. 넘파이와 판다스 라이브러리의 기본\n3주. 탐색적 분석을 위한 시각화 라이브러리\n4주. 시각화의 활용1\n5주. 시각화의 활용2\n6주. 판다스를 이용한 데이터의 변형 및 가공 1\n7주. 판다스를 이용한 데이터의 변형 및 가공 2\n8주. 기술적(descriptive) 분석 1\n9주. 기술적(descriptive) 분석 2\n10주. 탐색적 분석 & 및 중간고사\n11주. 데이터 모델링 기초 & 통계의 기초 개념\n12주. 데이터 모델링 1\n13주. 데이터 모델링 2\n14주. Binary 명목 변수에 대한 분석: 로지스틱 회귀분석 및 GLM 소개\n15주. 기말고사",
-    "crumbs": [
-      "{{< fa angles-right size=xs >}} Welcome"
-    ]
-  },
-  {
-    "objectID": "contents/intro2.html#데이터-사이언스의-응용-사례",
-    "href": "contents/intro2.html#데이터-사이언스의-응용-사례",
-    "title": "개관",
-    "section": "데이터 사이언스의 응용 사례",
-    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
   }
 ]
