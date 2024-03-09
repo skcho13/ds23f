@@ -5,13 +5,21 @@ project:
     - "*.qmd"
     - "*.ipynb"
     - "!contents/ignore/"
-    #- "!exercise*.ipynb"
-    - "!contents/*.py"
+    - "!contents/Exams/"
+    - "!contents/old/"
+    - "!contents/EDA/"
+    - "!contents/Exercises/"
+    - "!contents/Modelling/"
+    - "!contents/Statisitcs/"
+    - "!contents/Transform/"
+    - "!contents/Visualize/"
+    - "!*.py"
     - "!final*.ipynb"
     - "!midterm*.ipynb"
-    #- "!model*.ipynb"
     - "!overview*.ipynb"
     - "!slides/"
+    - "!*-temp.ipynb"
+    - "!*-temp.qmd"
   resources: CNAME
   preview:
     port: 5452
@@ -23,8 +31,8 @@ website:
   # navbar: true
   title: "{{< fa chart-simple >}} Data Analysis & Visualization"
   description: "Data Analysis and Visualization, Dongguk University, 2024-1"
-
-  # site-url:
+  site-url: "https://dgdavs.modellings.art"
+  site-path: "/"
   # repo-url:
   # repo-actions: [edit, issue]
 
@@ -60,16 +68,16 @@ website:
       - text: ---
       - section: Introduction
         contents:
-          - href: contents/intro2.qmd
+          - href: contents/Introduction/intro2.qmd
             text: Data Analysis Intro
-          - href: contents/rethinking.qmd
+          - href: contents/Introduction/rethinking.qmd
             text: Statistical Thinking
-          - href: contents/setup.qmd
+          - href: contents/Introduction/setup.qmd
             text: Setup
-          - section: contents/pandas.ipynb
+          - section: contents/Introduction/pandas.ipynb
             contents: 
-            - href: contents/inspection.ipynb
-          - href: contents/vis.ipynb
+            - href: contents/Introduction/inspection.ipynb
+          - href: contents/Introduction/vis.ipynb
             text: Data visualization
       # - text: ---
       # - section: Visualize
