@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-09">
+<meta name="dcterms.date" content="2024-03-11">
 
 <title> Data Analysis &amp; Visualization - Statistical thinking</title>
 <style>
@@ -44,6 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -252,7 +255,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 9, 2024</p>
+      <p class="date">March 11, 2024</p>
     </div>
   </div>
   
@@ -333,10 +336,13 @@ Parametric</p>
 <ul>
 <li>닭의 울음이 태양을 솟게 하는가?</li>
 <li>돈과 행복: 패턴 vs.&nbsp;예외<br>
-<img src="../images/plot_ls2.png" class="img-fluid" width="400"></li>
+<a href="../images/plot_ls2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../images/plot_ls2.png" class="img-fluid" width="400"></a></li>
 <li>임금 차별<br>
-<img src="../images/plot_wage.png" class="img-fluid" width="750"></li>
-<li>가난, 인종, 범죄</li>
+<a href="../images/plot_wage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../images/plot_wage.png" class="img-fluid" width="750"></a></li>
+<li>가난, 인종, 범죄
+<ul>
+<li><a href="https://randomcriticalanalysis.com/2015/11/16/racial-differences-in-homicide-rates-are-poorly-explained-by-economics/">Racial differences in homicide rates are poorly explained by economics</a></li>
+</ul></li>
 <li>출산율의 감소<br>
 <iframe src="https://ourworldindata.org/grapher/children-per-woman-fertility-rate-vs-level-of-prosperity" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe></li>
 </ul>
@@ -378,6 +384,7 @@ Parametric</p>
 <li>당근과 시력?</li>
 <li>커피의 효과?</li>
 <li>남녀의 임금 차별?</li>
+<li>심리치료의 효과?</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:100%;">
@@ -392,8 +399,8 @@ Parametric</p>
 <li>두통약의 효능: “effect size”</li>
 </ul></li>
 </ul>
-<p><img src="../images/sampling.png" class="img-fluid" width="700"><br>
-<img src="../images/sampling3.png" class="img-fluid" width="400"></p>
+<p><a href="../images/sampling.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="../images/sampling.png" class="img-fluid" width="700"></a><br>
+<a href="../images/sampling3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="../images/sampling3.png" class="img-fluid" width="400"></a></p>
 </div>
 </div>
 </section>
@@ -402,7 +409,7 @@ Parametric</p>
 <p><strong>Distribution</strong></p>
 <ul>
 <li>남녀 임금의 차이<br>
- <img src="../images/wage.png" class="img-fluid" width="300"></li>
+ <a href="../images/wage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="../images/wage.png" class="img-fluid" width="300"></a></li>
 </ul>
 <section id="confounding" class="level3">
 <h3 class="anchored" data-anchor-id="confounding">Confounding</h3>
@@ -471,7 +478,7 @@ Answers!
 <p>남녀 연봉 차이의 원인을 찾으려면?</p>
 <ul>
 <li>직업 특성, 부서, 직급, 연령, 출산, 출세욕<br>
-<img src="../images/moderation.png" class="img-fluid" width="800"><br>
+<a href="../images/moderation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="../images/moderation.png" class="img-fluid" width="800"></a><br>
 <img src="../images/slices.png" class="img-fluid" width="200"></li>
 </ul>
 <p><strong>Colider bias</strong></p>
@@ -493,10 +500,10 @@ Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
 일반화할 수 있는 대상의 범위가 제한됨(external validity)</p>
 <ul>
 <li>노인에 관한 데이터: 누가 사망했는가?</li>
-<li>관찰 할 수 없는 대상</li>
 <li>과거 기록을 이용?</li>
-<li>누가 참여했는가?</li>
 <li>회사 내에서의 만족도 조사: 근속년수에 따른 샘플 속성의 변화</li>
+<li>누가 참여했는가? 어떤 방식으로 참여했는가?</li>
+<li>어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?</li>
 <li>코호트/특정세대의 특성: 그들의 특성인가?</li>
 </ul>
 </section>
@@ -946,6 +953,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
