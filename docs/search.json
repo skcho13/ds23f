@@ -108,17 +108,6 @@
     ]
   },
   {
-    "objectID": "contents/Introduction/setup.html#패키지-repositorychannel-선택",
-    "href": "contents/Introduction/setup.html#패키지-repositorychannel-선택",
-    "title": "환경설정",
-    "section": "",
-    "text": "conda/managing channels\n다음을 통해 .condarc 환경파일에 configuration 추가\n(base)&gt; conda config --add channels conda-forge\n(base)&gt; conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고\n# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)\n(base)&gt; conda install scipy --channel conda-forge\n\n# pakcage가 있는 채널들\n(base)&gt; conda search scipy\nconda base에 있는 Python을 update하려면, 가령 3.12으로 업데이트하려면\n(base)&gt; conda install python=3.12  # python update",
-    "crumbs": [
-      "Introduction",
-      "Setup"
-    ]
-  },
-  {
     "objectID": "contents/Introduction/setup.html#conda-environment",
     "href": "contents/Introduction/setup.html#conda-environment",
     "title": "환경설정",
