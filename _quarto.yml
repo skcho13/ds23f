@@ -45,7 +45,7 @@ website:
   sidebar:
     # background: "#F6F6FF"
     # logo: 
-    pinned: true
+    # pinned: true
     alignment: left
     # tools:
     #   - icon: github

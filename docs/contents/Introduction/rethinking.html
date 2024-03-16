@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-11">
+<meta name="dcterms.date" content="2024-03-12">
 
 <title> Data Analysis &amp; Visualization - Statistical thinking</title>
 <style>
@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -255,7 +256,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 11, 2024</p>
+      <p class="date">March 12, 2024</p>
     </div>
   </div>
   
@@ -501,8 +502,11 @@ Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
 <ul>
 <li>노인에 관한 데이터: 누가 사망했는가?</li>
 <li>과거 기록을 이용?</li>
-<li>회사 내에서의 만족도 조사: 근속년수에 따른 샘플 속성의 변화</li>
-<li>누가 참여했는가? 어떤 방식으로 참여했는가?</li>
+<li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
+<li>누가 참여했는가? 어떤 방식으로 참여했는가?
+<ul>
+<li>관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?</li>
+</ul></li>
 <li>어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?</li>
 <li>코호트/특정세대의 특성: 그들의 특성인가?</li>
 </ul>
@@ -953,7 +957,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

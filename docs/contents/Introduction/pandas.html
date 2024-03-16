@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-09-03">
+<meta name="dcterms.date" content="2024-03-16">
 
 <title> Data Analysis &amp; Visualization - NumPy and pandas</title>
 <style>
@@ -60,6 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -325,7 +326,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 3, 2023</p>
+      <p class="date">March 16, 2024</p>
     </div>
   </div>
   
@@ -366,24 +367,23 @@ window.Quarto = {
 </div>
 <p><strong>Numpy &amp; pandas</strong></p>
 <p>Python 언어는 수치 계산을 위해 디자인되지 않았기 때문에, 데이터 분석에 대한 효율적이고 빠른 계산이 요구되면서 C/C++이라는 언어로 구현된 NumPy (Numerical Python)가 탄생하였고, Python 생태계 안에 통합되었음. 기본적으로 Python 언어 안에 새로운 언어라고 볼 수 있음. 데이터 사이언스에서의 대부분의 계산은 NumPy의 ndarray (n-dimensioal array)와 수학적 operator들을 통해 계산됨.</p>
-<p>데이터 사이언스가 발전함에 따라 단일한 floating-point number들을 성분으로하는 array들의 계산에서 벗어나 칼럼별로 다른 데이터 타입(string, integer, object..)을 포함하는 tabular형태의 데이터를 효율적으로 처리해야 할 필요성이 나타났고, 이를 다룰 수 있는 새로운 언어를 NumPy 위에 개발한 것이 pandas임. 이는 기본적으로 Wes Mckinney에 의해 독자적으로 개발이 시작되었으며, 디자인적으로 불만족스러운 점이 지적되고는 있으나 데이터 사이언스의 기본적인 언어가 되었음.</p>
+<p>데이터 사이언스가 발전함에 따라 단일한 floating-point number들을 성분으로하는 array들의 계산에서 벗어나 칼럼별로 다른 데이터 타입(string, integer, object..)을 포함하는 tabular 형태의 데이터를 효율적으로 처리해야 할 필요성이 나타났고, 이를 다룰 수 있는 새로운 언어를 NumPy 위에 개발한 것이 pandas임. 이는 기본적으로 Wes Mckinney에 의해 독자적으로 개발이 시작되었으며, 디자인적으로 불만족스러운 점이 지적되고는 있으나 데이터 사이언스의 기본적인 언어가 되었음.</p>
 <p>NumPy와 pandas에 대한 자세한 내용은 Python for Data Analysis by Wes MacKinney 참고<br>
 특히, NumPy는 Ch.4 &amp; appendices</p>
 <section id="numpy" class="level2">
 <h2 class="anchored" data-anchor-id="numpy">NumPy</h2>
 <ul>
-<li><p>수학적 symbolic 연산에 대한 구현이라고 볼 수 있으며,</p></li>
-<li><p>행렬(matrix) 또는 벡터(vector)를 <strong>ndarray</strong> (n-dimensional array)이라는 이름으로 구현함.</p>
+<li>수학적 symbolic 연산에 대한 구현이라고 볼 수 있으며,</li>
+<li>행렬(matrix) 또는 벡터(vector)를 <strong>ndarray</strong> (n-dimensional array)이라는 이름으로 구현함.
 <ul>
-<li><p>사실상 정수(<code>int</code>)나 실수(<code>float</code>)의 한가지 타입으로 이루어짐.<br>
-</p></li>
-<li><p>고차원의 arrays 가능</p>
-<p><img src="images/numpy_arrays.png" class="img-fluid" width="400"></p>
-<p>Source: <a href="https://medium.com/hackernoon/10-machine-learning-data-science-and-deep-learning-courses-for-programmers-7edc56078cde">Medium.com</a></p>
-<p><br></p></li>
+<li>사실상 정수(<code>int</code>)나 실수(<code>float</code>)의 한가지 타입으로 이루어짐.<br>
+</li>
+<li>고차원의 arrays 가능<br>
+<img src="images/numpy_arrays.png" class="img-fluid" width="400"><br>
+Source: <a href="https://medium.com/hackernoon/10-machine-learning-data-science-and-deep-learning-courses-for-programmers-7edc56078cde">Medium.com</a></li>
 </ul></li>
-<li><p>가령, 다음과 같은 행렬 연산이 있다면,</p>
-<p><span class="math inline">\(\begin{bmatrix}1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{bmatrix} \begin{bmatrix}2 \\ -1 \end{bmatrix} = \begin{bmatrix}0 \\ 2 \\ 4 \end{bmatrix}\)</span></p></li>
+<li>가령, 다음과 같은 행렬 연산이 있다면,<br>
+<span class="math inline">\(\begin{bmatrix}1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{bmatrix} \begin{bmatrix}2 \\ -1 \end{bmatrix} = \begin{bmatrix}0 \\ 2 \\ 4 \end{bmatrix}\)</span></li>
 </ul>
 <div id="cell-6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
@@ -588,7 +588,6 @@ A DataFrame with a single column
 </div>
 </div>
 <hr>
-<p><br></p>
 </section>
 </section>
 <section id="sec-pandas-index" class="level3">
@@ -629,7 +628,8 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>“number”: columns의 이름 “state”: index의 이름</p>
+<p>“number”: columns의 이름<br>
+“state”: index의 이름</p>
 <p><code>frame.columns.name</code> #&gt; ‘number’<br>
 <code>frame.index.name</code> #&gt; ‘state’</p>
 </div>
@@ -695,9 +695,8 @@ date
 </div>
 </div>
 <p>index없이 분석 가능?</p>
-<p>index의 활용은 강의 후반부에…</p>
 <p>Index를 column으로 전환시켜 분석할 수 있음: <code>.reset_index()</code></p>
-<div id="cell-44" class="cell" data-execution_count="28">
+<div id="cell-43" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fb.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>          date   open   high    low  close    volume
@@ -713,7 +712,7 @@ date
 </div>
 </div>
 <p>반대로 column을 index로 전환: <code>.set_index("column")</code></p>
-<div id="cell-46" class="cell" data-execution_count="39">
+<div id="cell-45" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fb.reset_index().set_index(<span class="st">"date"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>             open   high    low  close    volume
@@ -735,7 +734,7 @@ date
 <section id="dataframe의-연산" class="level3">
 <h3 class="anchored" data-anchor-id="dataframe의-연산">DataFrame의 연산</h3>
 <p>NumPy의 ndarray들이 연산되는 방식과 동일하게 series나 DataFrame들의 연산 가능함</p>
-<div id="cell-49" class="cell" data-execution_count="29">
+<div id="cell-48" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>   A1  A2
@@ -744,7 +743,7 @@ date
 2  15  18</code></pre>
 </div>
 </div>
-<div id="cell-50" class="cell" data-execution_count="30">
+<div id="cell-49" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>np.log(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>    A1   A2
@@ -757,7 +756,7 @@ date
 <div>
 
 </div>
-<div id="cell-52" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="31" data-tbl-cap="[&quot;frame1&quot;,&quot;frame2&quot;]">
+<div id="cell-51" class="cell quarto-layout-panel" data-tbl-cap="[&quot;frame1&quot;,&quot;frame2&quot;]" data-layout-ncol="3" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>number    one  two  three
@@ -774,7 +773,7 @@ Floria    6    8     10</code></pre>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>frame1 <span class="op">+</span> frame2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-53" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="32">
+<div id="cell-52" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="32">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>number    one  two  three
@@ -787,16 +786,16 @@ Ohio     0.00 3.00   6.00</code></pre>
 </div>
 <hr>
 <p>(참고) Mixed Data Type</p>
-<div id="cell-56" class="cell" data-execution_count="33">
+<div id="cell-55" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"3"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-57" class="cell" data-execution_count="34">
+<div id="cell-56" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>s.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>dtype('O')</code></pre>
 </div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="35">
+<div id="cell-57" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">+</span> s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>0     2
@@ -805,7 +804,7 @@ Ohio     0.00 3.00   6.00</code></pre>
 dtype: object</code></pre>
 </div>
 </div>
-<div id="cell-59" class="cell" data-execution_count="36">
+<div id="cell-58" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>s_int <span class="op">=</span> s.astype(<span class="st">"int"</span>)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>s_int <span class="op">+</span> s_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
@@ -815,14 +814,14 @@ dtype: object</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-60" class="cell" data-execution_count="37">
+<div id="cell-59" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">3.1</span>])</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>s2.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>dtype('float64')</code></pre>
 </div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="38">
+<div id="cell-60" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>s2.astype(<span class="st">"int"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>0    1
@@ -836,72 +835,79 @@ dtype: int64</code></pre>
 <section id="missing" class="level2">
 <h2 class="anchored" data-anchor-id="missing">Missing</h2>
 <p><code>NaN</code>, <code>NA</code>, <code>None</code></p>
-<p>pandas에서는 missing을 명명하는데 R의 컨벤션을 따라 NA (not available)라 부름.<br>
-대부분의 경우에서 NumPy object <code>NaN</code>(<code>np.nan</code>)을 NA을 나타내는데 사용됨.<br>
-<code>np.nan</code>은 실제로 <strong>floating-point</strong>의 특정 값으로 float64 데이터 타입임. Integer 또는 string type에서 약간 이상하게 작동될 수 있음.<br>
-Python object인 <code>None</code>은 pandas에서 NA로 인식함.<br>
-현재 <code>NA</code>라는 새로운 pandas object 실험중임</p>
-<p>NA의 handling에 대해서는 교재 참고<br>
+<ul>
+<li>pandas에서는 missing을 명명하는데 R의 컨벤션을 따라 <code>NA</code> (not available)라 부름.<br>
+</li>
+<li>대부분의 경우에서 NumPy object <code>NaN</code>(<code>np.nan</code>)을 <code>NA</code>을 나타내는데 사용됨.<br>
+</li>
+<li><code>np.nan</code>은 실제로 <strong>floating-point</strong>의 특정 값으로 float64 데이터 타입임. Integer 또는 string type에서 약간 이상하게 작동될 수 있음.<br>
+</li>
+<li>Python object인 <code>None</code>은 pandas에서 <code>NA</code>로 인식함.<br>
+</li>
+<li>현재 <code>NA</code>라는 새로운 pandas object 실험 중임</li>
+</ul>
+<p><code>NA</code>의 handling에 대해서는 교재 참고<br>
 <code>.dropna()</code>, <code>.fillna()</code>, <code>.isna()</code>, <code>.notna()</code></p>
 <ul>
-<li>Mckinney’s: 7.1 Handling Missing Data,<br>
-</li>
-<li>Mollin’s: 3.5 Handling duplicate, missing, or invalid data<br>
-</li>
+<li>Mckinney’s: 7.1 Handling Missing Data,</li>
 <li><a href="https://pandas.pydata.org/docs/user_guide/missing_data.html">Working with missing data</a></li>
 </ul>
-<div id="cell-64" class="cell" data-execution_count="65">
+<div id="cell-63" class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, np.nan])</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
+<div class="cell-output cell-output-display">
 <pre><code>0   1.00
 1   2.00
 2    NaN
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>s.astype(<span class="st">"Int64"</span>) <span class="co"># &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
+<div id="cell-64" class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># type을 변환: float -&gt; int</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>s.astype(<span class="st">"Int64"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
 <pre><code>0       1
 1       2
 2    &lt;NA&gt;
 dtype: Int64</code></pre>
 </div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="68">
+<div id="cell-65" class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="st">"a"</span>, <span class="st">"b"</span>, np.nan])</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
+<div class="cell-output cell-output-display">
 <pre><code>0      a
 1      b
 2    NaN
 dtype: object</code></pre>
 </div>
 </div>
-<div id="cell-67" class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>s.astype(<span class="st">"string"</span>) <span class="co"># &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div id="cell-66" class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># type을 변환: object -&gt; string</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>s.astype(<span class="st">"string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
 <pre><code>0       a
 1       b
 2    &lt;NA&gt;
 dtype: string</code></pre>
 </div>
 </div>
-<div id="cell-68" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, np.nan, <span class="va">None</span>])</span>
+<div id="cell-67" class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, np.nan, <span class="va">None</span>, pd.NA])</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
-<pre><code>0   1.00
-1   2.00
-2    NaN
-3    NaN
-dtype: float64</code></pre>
+<div class="cell-output cell-output-display">
+<pre><code>0       1
+1       2
+2     NaN
+3    None
+4    &lt;NA&gt;
+dtype: object</code></pre>
 </div>
 </div>
-<div id="cell-69" class="cell" data-execution_count="61">
+<p>Missing인지를 확인: <code>.isna()</code>, <code>.notna()</code></p>
+<div id="cell-69" class="cell">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>s.isna() <span class="co"># or s.isnull()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display">
 <pre><code>0    False
 1    False
 2     True
@@ -909,9 +915,9 @@ dtype: float64</code></pre>
 dtype: bool</code></pre>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="62">
+<div id="cell-70" class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>s.notna() <span class="co"># or s.notnull()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
+<div class="cell-output cell-output-display">
 <pre><code>0     True
 1     True
 2    False
@@ -919,6 +925,23 @@ dtype: bool</code></pre>
 dtype: bool</code></pre>
 </div>
 </div>
+<p>pandas에서는 ExtensionDtype이라는 새로운 데이터 타입이 도입되었음.</p>
+<div id="cell-72" class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">2</span>, pd.NA], dtype<span class="op">=</span>pd.Int8Dtype())</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>s2.dtype  <span class="co"># date type 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Int8Dtype()</code></pre>
+</div>
+</div>
+<div id="cell-73" class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow <span class="im">as</span> pa</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">2</span>, pd.NA], dtype<span class="op">=</span>pd.ArrowDtype(pa.uint16()))</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>s2.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>uint16[pyarrow]</code></pre>
+</div>
+</div>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#dtypes">pandas dtypes 참고</a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -930,11 +953,11 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Python object인 None의 경우</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="va">None</span> <span class="op">==</span> <span class="va">None</span></span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="va">None</span> <span class="op">==</span> <span class="va">None</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>NumPy object인 np.nan의 경우</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>np.nan <span class="op">==</span> np.nan</span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>np.nan <span class="op">==</span> np.nan</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
