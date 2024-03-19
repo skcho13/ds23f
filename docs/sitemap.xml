@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dgdavs.modellings.art/contents/Visualize/seaborn.html</loc>
-    <lastmod>2023-09-17T13:22:25.777Z</lastmod>
+    <lastmod>2024-03-19T15:52:47.651Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Visualize/customizing.html</loc>
-    <lastmod>2024-03-19T14:13:32.195Z</lastmod>
+    <lastmod>2024-03-19T15:59:17.853Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/vis.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/inspection.html</loc>
-    <lastmod>2024-03-14T17:44:02.238Z</lastmod>
+    <lastmod>2024-03-19T15:58:21.274Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/shortcuts.html</loc>
@@ -50,62 +50,10 @@
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Visualize/alt_plots.html</loc>
-    <lastmod>2023-09-17T11:38:56.614Z</lastmod>
+    <lastmod>2024-03-19T16:01:33.486Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Visualize/plots.html</loc>
-    <lastmod>2023-09-26T15:05:12.635Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/views.html</loc>
-    <lastmod>2023-10-03T23:30:48.433Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/subsetting.html</loc>
-    <lastmod>2023-10-03T23:28:57.447Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/misc.html</loc>
-    <lastmod>2023-11-19T16:39:13.743Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/exercise_transform.html</loc>
-    <lastmod>2023-10-10T23:02:09.738Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/combine.html</loc>
-    <lastmod>2023-10-22T18:59:01.719Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/babynames.html</loc>
-    <lastmod>2023-10-18T04:01:21.336Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/case1.html</loc>
-    <lastmod>2023-10-17T13:49:03.386Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/crosstab.html</loc>
-    <lastmod>2023-10-23T04:44:38.270Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/exercise_wrangle.html</loc>
-    <lastmod>2023-10-31T11:12:38.939Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/pivot.html</loc>
-    <lastmod>2023-10-23T03:55:42.915Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/transform.html</loc>
-    <lastmod>2023-10-28T12:57:57.789Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
-    <lastmod>2023-11-12T06:20:31.328Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard.html</loc>
-    <lastmod>2023-11-05T19:48:17.923Z</lastmod>
+    <lastmod>2024-03-19T16:01:02.142Z</lastmod>
   </url>
 </urlset>

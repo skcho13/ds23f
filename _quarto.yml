@@ -8,10 +8,10 @@ project:
     - "!contents/Exams/"
     - "!contents/old/"
     - "!contents/EDA/"
-    # - "!contents/Exercises/"
+    - "!contents/Exercises/"
     - "!contents/Modelling/"
     - "!contents/Statisitcs/"
-    # - "!contents/Transform/"
+    - "!contents/Transform/"
     - "!contents/Statistics/"
     - "!*.py"
     - "!final*.ipynb"
@@ -88,37 +88,37 @@ website:
             contents: 
               - href: contents/Visualize/alt_plots.ipynb
           - href: contents/Visualize/customizing.ipynb
-      - text: ---
-      - section: Transform
-        contents:
-          - href: contents/Transform/subsetting.ipynb
-            contents:
-              - href: contents/Transform/views.ipynb
-          - href: contents/Transform/transform.ipynb
-            contents:
-              - href: contents/Transform/case1.ipynb
-                text: Case Study 1
-              - href: contents/Transform/babynames.ipynb
-                text: Case Study 2
-              - href: contents/Transform/exercise_transform.ipynb
-          - section: Transforming II
-            contents:
-              - href: contents/Transform/combine.ipynb
-              - href: contents/Transform/pivot.ipynb
-              - href: contents/Transform/crosstab.ipynb
-                text: Pivot Table
-              - href: contents/Transform/exercise_wrangle.ipynb
-          - href: contents/Transform/misc.ipynb
+      # - text: ---
+      # - section: Transform
+      #   contents:
+      #     - href: contents/Transform/subsetting.ipynb
+      #       contents:
+      #         - href: contents/Transform/views.ipynb
+      #     - href: contents/Transform/transform.ipynb
+      #       contents:
+      #         - href: contents/Transform/case1.ipynb
+      #           text: Case Study 1
+      #         - href: contents/Transform/babynames.ipynb
+      #           text: Case Study 2
+      #         - href: contents/Transform/exercise_transform.ipynb
+      #     - section: Transforming II
+      #       contents:
+      #         - href: contents/Transform/combine.ipynb
+      #         - href: contents/Transform/pivot.ipynb
+      #         - href: contents/Transform/crosstab.ipynb
+      #           text: Pivot Table
+      #         - href: contents/Transform/exercise_wrangle.ipynb
+      #     - href: contents/Transform/misc.ipynb
       #     # - section: Solutions
       #     #   contents:
       #     #     - href: contents/sol1.ipynb
       #     #     - href: contents/sol2.ipynb
-      - section: Exercises
-        contents:
-          - href: contents/Exercises/billboard.ipynb
-            text: Billboard
-          - href: contents/Exercises/movielens.ipynb
-            text: MovieLens
+      # - section: Exercises
+      #   contents:
+      #     - href: contents/Exercises/billboard.ipynb
+      #       text: Billboard
+      #     - href: contents/Exercises/movielens.ipynb
+      #       text: MovieLens
       #     # - section: Solutions
       #     #   contents:
       #     #     - href: contents/billboard_sol.ipynb
