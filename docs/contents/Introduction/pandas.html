@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-17">
+<meta name="dcterms.date" content="2024-03-20">
 
 <title> Data Analysis &amp; Visualization - NumPy and pandas</title>
 <style>
@@ -367,7 +367,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 17, 2024</p>
+      <p class="date">March 20, 2024</p>
     </div>
   </div>
   
@@ -379,7 +379,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="2">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load Packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -395,7 +395,7 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="5">
+<div id="cell-3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Options</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
@@ -716,10 +716,10 @@ b    1        6   7        8
 <section id="time-series" class="level4">
 <h4 class="anchored" data-anchor-id="time-series">Time Series</h4>
 <p>Index는 times series에 특화</p>
-<div id="cell-40" class="cell" data-execution_count="7">
+<div id="cell-40" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>bike <span class="op">=</span> pd.read_csv(<span class="st">'../data/day.csv'</span>, index_col<span class="op">=</span><span class="st">'dteday'</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>bike.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>            instant  season  yr  mnth  holiday  weekday  workingday  \
 dteday                                                                
 2011-01-01        1       1   0     1        0        6           0   
@@ -733,7 +733,7 @@ dteday
 2011-01-03           1  0.20   0.19 0.44       0.25     120        1229  1349  </code></pre>
 </div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="8">
+<div id="cell-41" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>bike.plot(kind<span class="op">=</span><span class="st">'line'</span>, y<span class="op">=</span>[<span class="st">'casual'</span>, <span class="st">'registered'</span>], figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">'Bike Sharing'</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -746,36 +746,55 @@ dteday
 </div>
 <p>index없이 분석 가능?</p>
 <p>Index를 column으로 전환시켜 분석할 수 있음: <code>.reset_index()</code></p>
-<div id="cell-43" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fb.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>          date   open   high    low  close    volume
-0   2018-01-02 177.68 181.58 177.55 181.42  18151903
-1   2018-01-03 181.88 184.78 181.33 184.67  16886563
-2   2018-01-04 184.90 186.21 184.10 184.33  13880896
-..         ...    ...    ...    ...    ...       ...
-248 2018-12-27 132.44 134.99 129.67 134.52  31202509
-249 2018-12-28 135.34 135.92 132.20 133.20  22627569
-250 2018-12-31 134.45 134.64 129.95 131.09  24625308
+<div id="cell-43" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>bike.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>        dteday  instant  season  yr  mnth  holiday  weekday  workingday  \
+0   2011-01-01        1       1   0     1        0        6           0   
+1   2011-01-02        2       1   0     1        0        0           0   
+2   2011-01-03        3       1   0     1        0        1           1   
+..         ...      ...     ...  ..   ...      ...      ...         ...   
+728 2012-12-29      729       1   1    12        0        6           0   
+729 2012-12-30      730       1   1    12        0        0           0   
+730 2012-12-31      731       1   1    12        0        1           1   
 
-[251 rows x 6 columns]</code></pre>
+     weathersit  temp  atemp  hum  windspeed  casual  registered   cnt  
+0             2  0.34   0.36 0.81       0.16     331         654   985  
+1             2  0.36   0.35 0.70       0.25     131         670   801  
+2             1  0.20   0.19 0.44       0.25     120        1229  1349  
+..          ...   ...    ...  ...        ...     ...         ...   ...  
+728           2  0.25   0.24 0.75       0.12     159        1182  1341  
+729           1  0.26   0.23 0.48       0.35     364        1432  1796  
+730           2  0.22   0.22 0.58       0.15     439        2290  2729  
+
+[731 rows x 16 columns]</code></pre>
 </div>
 </div>
 <p>반대로 column을 index로 전환: <code>.set_index("column")</code></p>
-<div id="cell-45" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fb.reset_index().set_index(<span class="st">"date"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
-<pre><code>             open   high    low  close    volume
-date                                            
-2018-01-02 177.68 181.58 177.55 181.42  18151903
-2018-01-03 181.88 184.78 181.33 184.67  16886563
-2018-01-04 184.90 186.21 184.10 184.33  13880896
-...           ...    ...    ...    ...       ...
-2018-12-27 132.44 134.99 129.67 134.52  31202509
-2018-12-28 135.34 135.92 132.20 133.20  22627569
-2018-12-31 134.45 134.64 129.95 131.09  24625308
+<div id="cell-45" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>bike.reset_index().set_index(<span class="st">"dteday"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>            instant  season  yr  mnth  holiday  weekday  workingday  \
+dteday                                                                
+2011-01-01        1       1   0     1        0        6           0   
+2011-01-02        2       1   0     1        0        0           0   
+2011-01-03        3       1   0     1        0        1           1   
+...             ...     ...  ..   ...      ...      ...         ...   
+2012-12-29      729       1   1    12        0        6           0   
+2012-12-30      730       1   1    12        0        0           0   
+2012-12-31      731       1   1    12        0        1           1   
 
-[251 rows x 5 columns]</code></pre>
+            weathersit  temp  atemp  hum  windspeed  casual  registered   cnt  
+dteday                                                                         
+2011-01-01           2  0.34   0.36 0.81       0.16     331         654   985  
+2011-01-02           2  0.36   0.35 0.70       0.25     131         670   801  
+2011-01-03           1  0.20   0.19 0.44       0.25     120        1229  1349  
+...                ...   ...    ...  ...        ...     ...         ...   ...  
+2012-12-29           2  0.25   0.24 0.75       0.12     159        1182  1341  
+2012-12-30           1  0.26   0.23 0.48       0.35     364        1432  1796  
+2012-12-31           2  0.22   0.22 0.58       0.15     439        2290  2729  
+
+[731 rows x 15 columns]</code></pre>
 </div>
 </div>
 <hr>
@@ -806,7 +825,7 @@ date
 <div>
 
 </div>
-<div id="cell-51" class="cell quarto-layout-panel" data-tbl-cap="[&quot;frame1&quot;,&quot;frame2&quot;]" data-layout-ncol="3" data-execution_count="31">
+<div id="cell-51" class="cell quarto-layout-panel" data-execution_count="31" data-layout-ncol="3" data-tbl-cap="[&quot;frame1&quot;,&quot;frame2&quot;]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>number    one  two  three
@@ -942,10 +961,10 @@ dtype: object</code></pre>
 dtype: string</code></pre>
 </div>
 </div>
-<div id="cell-67" class="cell">
+<div id="cell-67" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, np.nan, <span class="va">None</span>, pd.NA])</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0       1
 1       2
 2     NaN
@@ -955,31 +974,33 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>Missing인지를 확인: <code>.isna()</code>, <code>.notna()</code></p>
-<div id="cell-69" class="cell">
+<div id="cell-69" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>s.isna() <span class="co"># or s.isnull()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0    False
 1    False
 2     True
 3     True
+4     True
 dtype: bool</code></pre>
 </div>
 </div>
-<div id="cell-70" class="cell">
+<div id="cell-70" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>s.notna() <span class="co"># or s.notnull()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0     True
 1     True
 2    False
 3    False
+4    False
 dtype: bool</code></pre>
 </div>
 </div>
 <p>pandas에서는 ExtensionDtype이라는 새로운 데이터 타입이 도입되었음.</p>
-<div id="cell-72" class="cell">
+<div id="cell-72" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">2</span>, pd.NA], dtype<span class="op">=</span>pd.Int8Dtype())</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>s2.dtype  <span class="co"># date type 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>Int8Dtype()</code></pre>
 </div>
 </div>
