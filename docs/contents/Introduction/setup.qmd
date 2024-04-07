@@ -1,0 +1,220 @@
+---
+title: 환경설정
+subtitle: Mixed
+date: last-modified
+author: Sungkyun Cho
+
+---
+
+# 1. Python과 Conda Package Manager
+
+[Conda Cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf): 기본적인 conda 명령어 요약
+
+## Miniconda 설치
+
+Anaconda보다는 기본 패키지들이 미리 설치되지 않는 miniconda를 추천: [miniconda install page](https://docs.conda.io/en/latest/miniconda.html)
+
+- Windows 경우: 설치시 물어보는 *"add Miniconda to your PATH variable"* 옵션을 켜고 설치할 것
+
+Shell 사용에 대해서는 아래 2. Command Line Tool 참고
+
+- Windows 경우: Anaconda의 응용 프로그램으로 등록된 `Anaconda Powershell Prompt`를 이용
+- Mac의 경우: 기본 terminal을 이용
+- 커서 앞에 `(base)`가 보이면 conda가 설치된 것
+
+```{.bash}
+# Terminal (Mac) or Miniconda Powershell Prompt (Windows)
+
+(base)> conda info # 콘다 정보 
+(base)> conda update conda # 콘다 업데이트
+```
+## Conda Environment
+
+[conda/user guide](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands)
+
+환경 생성: miniconda에서 자체 제공하는 가상환경으로 수업에서는 다른 가상환경 툴인 `pyenv`나 `venv` 사용하지 않음
+
+```{.bash}
+(base)> conda create --name myenv  # --name 대신 -n으로 축약 가능
+
+# 특정 버전의 파이썬과 함께 설치시
+(base)> conda create --name myenv python=3.12
+```
+
+환경 확인
+
+```{.bash}
+(base)> conda env list
+# conda environments:
+#
+# base         */.../miniconda3
+# myenv         /.../miniconda3/envs/myenv
+```
+
+환경 제거
+
+```{.bash}
+(base)> conda env remove --name myenv
+```
+
+환경 activate/deactivate
+
+```{.bash}
+(base)> conda activate myenv
+(myenv)> conda deactivate
+```
+
+특정 환경 안의 파이썬 버전 확인
+
+```{.bash}
+(myenv)> python --version
+```
+
+::: {.callout-tip collapse="true"}
+### Jupyter notebook/lab을 쓰는 경우 
+
+새로 만든 환경을 등록해줘야 함. 환경을 activate한 상태에서
+```{.bash}
+(myenv)> ipython kernel install --user --name=myenv
+```
+
+환경을 삭제해도 등록시킨 kernel 이름은 삭제되지 않으니 직접 삭제.
+
+등록된 커널 리스트를 확인
+```{.bash}
+(myenv)> jupyter kernelspec list
+```
+
+커널 삭제
+```{.bash}
+(myenv)> jupyter kernelspec remove myenv
+```
+:::
+
+## 환경(activated) 내에서 패키지 설치 및 제거
+
+::: {.callout-note collapse="true"}
+
+### 패키지 repository(channel) 선택
+
+[conda/managing channels](https://conda.io/projects/conda/en/latest/user-guide/tasks/)
+
+다음을 통해 `.condarc` [환경파일](https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html)에 configuration 추가
+
+```{.bash}
+(base)> conda config --add channels conda-forge
+(base)> conda config --set channel_priority strict  # 채널 순으로 검색, 버전 순이 아니고
+```
+
+```{.bash}
+# 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)
+(base)> conda install scipy --channel conda-forge
+
+# pakcage가 있는 채널들
+(base)> conda search scipy
+```
+:::
+
+
+```{.bash}
+# 특정 환경을 activate한 후
+
+# Python을 update하거나 다른 버전을 섦치하려면, 가령 3.12으로 업데이트 하려면
+(myenv)> conda install python=3.12  # python update
+
+# 패키지 설치
+(myenv)> conda install <package name1> <package name2> ...
+# 특정한 채널, conda-forge 통한 설치: --channel 대신 -c로 축약 가능
+(myenv)> conda install --channel conda-forge <package name>
+
+# 제거
+(myenv)> conda remove <package name1> <package name2> ...
+
+# 업데이트
+(myenv)> conda update <package name1> <package name2> ...
+(myenv)> conda update --all  # all packages
+
+# 패키지 리스트
+(myenv)> conda list
+```
+
+환경 밖에서 특정 환경 안에 설치하려면 환경 이름 추가
+```{.bash}
+(base)> conda install --name myenv <package name1>  # --name 대신 -n으로 축약 가능
+```
+
+pip을  이용한  패키지 설치: conda repository에 없는 패키지들을 설치하는 경우. 충돌의 우려 있음
+```{.bash}
+(myenv)> pip install <package name1> <package name2> ...
+```
+
+**수업에 필요한 기본 패키지 설치**
+
+```{.bash}
+# 수업에 필요한 기본 패키지 설치
+(myenv)> conda install jupyter numpy pandas matplotlib seaborn
+```
+
+# 2. Command Line Tool
+
+### Mac의 경우: 기본 terminal을 이용하되 기본 zsh shell 대신 다음 Oh-My-Zsh을 추천
+
+`Oh-My-Zsh!`: [링크](https://ohmyz.sh/)
+
+
+### Windows의 경우: `Windows Terminal` 추천
+
+- 설치 링크는 구글링...
+- 명령프롬프트(`CMD`) vs. `Powershell`
+- `Powershell`에서 conda를 사용하기 위해서는 몇 가지 설정 필요: [블로그 링크](https://velog.io/@d2h10s/Anaconda-Powershell%EC%97%90%EC%84%9C-Anaconda-%ED%99%98%EA%B2%BD-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+- 잘 안될 경우, conda 설치시 함께 설치되는 응용프로그램 콘다 powershell을 이용
+
+# 3. Visual Studio Code {#sec-vscode}
+
+## VS Code 설치
+
+- 개인마다 선호하는 text editor가 있으나 본 수업에서는 VS Code로 진행: [download and install here](https://code.visualstudio.com)
+- 클라우드 기반의 Colab에 AI assistant가 기본으로 제공되니 써보는 것도 추천
+
+## Extensions
+- Python
+- Python Extension Pack 중
+  - IntelliCode
+  - Python Environment Manager
+- Pylance: 문법 체크, 자동완성, ...
+- Docs View
+  - 안 보일시, 설정에서 language server를 default(Pylance)에서 Jedi로 바꾸면 해결
+- Copilot...
+
+## Preferences
+- Themes
+- Font, font size (notebook, markup, output)
+
+## Shortcuts
+Show Command Palette: ctrl(cmd) + shift + p, 또는 F1 
+
+**Cell 안과 밖에서 다르게 작동**
+
+- **undo / redo** : ctrl(cmd) + z / ctrl(cmd) + shift + z
+- **move**: alt(option) + arrow up/down
+- **copy** : alt(option) + shift + arrow up/down
+
+코드 실행 방식 3가지: ctrl/shift/alt(option) + enter
+
+Help: Keyboard shortcuts reference의 **Basic editing** 참고
+
+## 그 외
+
+- interactive mode
+- export
+- docs view: sticky mode
+- variables viewer, data viewer
+- formatter: "Black formatter"
+- snippets: 구글링...
+
+## VS Code내에서 terminal 사용
+
+Terminal: Select Default Profile에서 선택
+
+- Mac: zsh
+- Windows: powershell

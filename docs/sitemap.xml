@@ -1,59 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Visualize/seaborn.html</loc>
-    <lastmod>2024-03-20T19:55:22.744Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Visualize/customizing.html</loc>
-    <lastmod>2024-03-20T19:53:38.282Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/vis.html</loc>
-    <lastmod>2024-03-17T04:03:20.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/inspection.html</loc>
-    <lastmod>2024-03-19T15:58:21.274Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/shortcuts.html</loc>
-    <lastmod>2023-12-10T14:11:04.430Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/setup.html</loc>
-    <lastmod>2024-03-14T18:16:44.185Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/intro2.html</loc>
-    <lastmod>2024-03-09T08:50:24.390Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/about.html</loc>
-    <lastmod>2023-02-12T04:02:01.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/rethinking.html</loc>
-    <lastmod>2024-03-11T21:00:31.864Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/notice.html</loc>
-    <lastmod>2024-03-03T18:44:14.337Z</lastmod>
-  </url>
-  <url>
     <loc>https://dgdavs.modellings.art/index.html</loc>
     <lastmod>2024-03-18T13:18:57.410Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/pandas.html</loc>
-    <lastmod>2024-03-20T11:28:54.161Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Visualize/alt_plots.html</loc>
-    <lastmod>2024-03-24T12:02:50.710Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Visualize/plots.html</loc>
-    <lastmod>2024-03-20T19:59:23.307Z</lastmod>
+    <loc>https://dgdavs.modellings.art/about.html</loc>
+    <lastmod>2023-02-12T04:02:01.000Z</lastmod>
   </url>
 </urlset>

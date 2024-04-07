@@ -7,12 +7,11 @@ project:
     - "!contents/ignore/"
     - "!contents/Exams/"
     - "!contents/old/"
-    - "!contents/EDA/"
     - "!contents/Exercises/"
     - "!contents/Modelling/"
     - "!contents/Statisitcs/"
     - "!contents/Transform/"
-    - "!contents/Statistics/"
+    - "!contents//"
     - "!*.py"
     - "!final*.ipynb"
     - "!midterm*.ipynb"
@@ -88,12 +87,16 @@ website:
             contents: 
               - href: contents/Visualize/alt_plots.ipynb
           - href: contents/Visualize/customizing.ipynb
+      - text: ---
+      - section: contents/EDA/eda.ipynb
+        contents:
+          - href: contents/EDA/discretize.ipynb
       # - text: ---
       # - section: Transform
       #   contents:
       #     - href: contents/Transform/subsetting.ipynb
-      #       contents:
-      #         - href: contents/Transform/views.ipynb
+      #       # contents:
+      #       #   - href: contents/Transform/views.ipynb
       #     - href: contents/Transform/transform.ipynb
       #       contents:
       #         - href: contents/Transform/case1.ipynb
