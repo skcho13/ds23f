@@ -7,10 +7,8 @@ project:
     - "!contents/ignore/"
     - "!contents/Exams/"
     - "!contents/old/"
-    - "!contents/Exercises/"
     - "!contents/Modelling/"
     - "!contents/Statisitcs/"
-    - "!contents/Tranform/"
     - "!*.py"
     - "!final*.ipynb"
     - "!midterm*.ipynb"
@@ -90,37 +88,37 @@ website:
       - section: contents/EDA/eda.ipynb
         contents:
           - href: contents/EDA/discretize.ipynb
-      # - text: ---
-      # - section: Transform
-      #   contents:
-      #     - href: contents/Transform/subsetting.ipynb
-      #       # contents:
-      #       #   - href: contents/Transform/views.ipynb
-      #     - href: contents/Transform/transform.ipynb
-      #       contents:
-      #         - href: contents/Transform/case1.ipynb
-      #           text: Case Study 1
-      #         - href: contents/Transform/babynames.ipynb
-      #           text: Case Study 2
-      #         - href: contents/Transform/exercise_transform.ipynb
-      #     - section: Transforming II
-      #       contents:
-      #         - href: contents/Transform/combine.ipynb
-      #         - href: contents/Transform/pivot.ipynb
-      #         - href: contents/Transform/crosstab.ipynb
-      #           text: Pivot Table
-      #         - href: contents/Transform/exercise_wrangle.ipynb
-      #     - href: contents/Transform/misc.ipynb
-      #     # - section: Solutions
-      #     #   contents:
-      #     #     - href: contents/sol1.ipynb
-      #     #     - href: contents/sol2.ipynb
-      # - section: Exercises
-      #   contents:
-      #     - href: contents/Exercises/billboard.ipynb
-      #       text: Billboard
-      #     - href: contents/Exercises/movielens.ipynb
-      #       text: MovieLens
+      - text: ---
+      - section: Transform
+        contents:
+          - href: contents/Transform/subsetting.ipynb
+            # contents:
+            #   - href: contents/Transform/views.ipynb
+          - href: contents/Transform/transform.ipynb
+            contents:
+              - href: contents/Transform/case1.ipynb
+                text: Case 1
+              - href: contents/Transform/babynames.ipynb
+                text: Case 2
+              - href: contents/Transform/exercise_transform.ipynb
+          - section: Transforming II
+            contents:
+              - href: contents/Transform/combine.ipynb
+              - href: contents/Transform/pivot.ipynb
+              - href: contents/Transform/crosstab.ipynb
+                text: Pivot Table
+              - href: contents/Transform/exercise_wrangle.ipynb
+          - href: contents/Transform/misc.ipynb
+          # - section: Solutions
+          #   contents:
+          #     - href: contents/sol1.ipynb
+          #     - href: contents/sol2.ipynb
+      - section: Exercises
+        contents:
+          - href: contents/Exercises/billboard.ipynb
+            text: Billboard
+          - href: contents/Exercises/movielens.ipynb
+            text: MovieLens
       #     # - section: Solutions
       #     #   contents:
       #     #     - href: contents/billboard_sol.ipynb

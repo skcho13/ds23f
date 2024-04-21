@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-08">
+<meta name="dcterms.date" content="2023-10-04">
 
-<title> Data Analysis &amp; Visualization - Discretize</title>
+<title> Data Analysis &amp; Visualization - Exercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../contents/EDA/eda.html" rel="prev">
+<link href="../../contents/Exercises/movielens.html" rel="next">
+<link href="../../contents/Transform/misc.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -128,7 +129,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Discretize</h1>
+          <h1 class="quarto-secondary-nav-title">Exercises</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -270,7 +271,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/EDA/discretize.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../contents/EDA/discretize.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discretize</span></a>
   </div>
 </li>
@@ -375,7 +376,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/Exercises/billboard.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contents/Exercises/billboard.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Billboard</span></a>
   </div>
 </li>
@@ -418,12 +419,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#categorical-type-in-pandas" id="toc-categorical-type-in-pandas" class="nav-link active" data-scroll-target="#categorical-type-in-pandas"><code>Categorical</code> type in pandas</a>
-  <ul>
-  <li><a href="#카테고리의-순서를-지정" id="toc-카테고리의-순서를-지정" class="nav-link" data-scroll-target="#카테고리의-순서를-지정">카테고리의 순서를 지정</a></li>
-  <li><a href="#카테고리-순서의-적용" id="toc-카테고리-순서의-적용" class="nav-link" data-scroll-target="#카테고리-순서의-적용">카테고리 순서의 적용</a></li>
-  </ul></li>
-  <li><a href="#discretizebining" id="toc-discretizebining" class="nav-link" data-scroll-target="#discretizebining">Discretize/Bining</a></li>
+  <li><a href="#song-rankings-for-billboard-top-100-in-the-year-2000" id="toc-song-rankings-for-billboard-top-100-in-the-year-2000" class="nav-link active" data-scroll-target="#song-rankings-for-billboard-top-100-in-the-year-2000">Song rankings for Billboard top 100 in the year 2000</a></li>
   </ul>
 </nav>
     </div>
@@ -432,8 +428,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Discretize</h1>
-<p class="subtitle lead">R for Data Science by Wickham &amp; Grolemund</p>
+<h1 class="title d-none d-lg-block">Exercises</h1>
+<p class="subtitle lead">Mixed</p>
 </div>
 
 
@@ -450,7 +446,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 8, 2024</p>
+      <p class="date">October 4, 2023</p>
     </div>
   </div>
   
@@ -464,7 +460,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Load packages</summary>
+<summary>Load Packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -475,309 +471,35 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'mode.copy_on_write'</span>, <span class="va">True</span>)  <span class="co"># pandas 2.0</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span>  <span class="co"># max number of rows to display</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy options</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)  <span class="co"># suppress scientific notation</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-3" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import a dataset</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"diamonds"</span>, <span class="st">"ggplot2"</span>).data</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>diamonds2 <span class="op">=</span> diamonds.copy()  <span class="co"># unmodified copy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Options</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy options</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<section id="categorical-type-in-pandas" class="level2">
-<h2 class="anchored" data-anchor-id="categorical-type-in-pandas"><code>Categorical</code> type in pandas</h2>
+<section id="song-rankings-for-billboard-top-100-in-the-year-2000" class="level2">
+<h2 class="anchored" data-anchor-id="song-rankings-for-billboard-top-100-in-the-year-2000">Song rankings for Billboard top 100 in the year 2000</h2>
+<p>“billboard” in a package “tidyr”<br>
+Source: <a href="https://waxy.org/2008/05/the_whitburn_project/">The Whitburn Project</a></p>
+<p>다음 링크의 데이터는 빌보드차트에 관한 데이터입니다; <a href="https://www.dropbox.com/scl/fi/3mkq8ebr3ylhruiszy26p/billboard.csv?rlkey=vam8roaqts3dydnyexxzve9eh&amp;dl=1">링크</a></p>
 <ul>
-<li>일종의 데이터 압축 기술이며, 적은 levels로만 이루어진 데이터의 경우 메모리 절약</li>
-<li>순서가 부여되어, sorting을 하거나 min/max 함수가 알파벳 순서가 아닌 부여된 순서를 적용</li>
-<li>다른 Python library들 중에는 이 순서를 활용하는 것이 있음; 통계적 분석이나 플랏을 그릴 때</li>
-</ul>
-<p><a href="https://wesmckinney.com/book/data-cleaning.html#pandas-categorical">McKinney’s/Categorical data</a><br>
-<a href="https://pandas.pydata.org/docs/user_guide/categorical.html">pandas/Categorical data</a></p>
-<div id="cell-5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.Categorical(diamonds[<span class="st">"cut"</span>])  <span class="co"># defualt: alphabetical order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>['Ideal', 'Premium', 'Good', 'Premium', 'Good', ..., 'Ideal', 'Good', 'Very Good', 'Premium', 'Ideal']
-Length: 53940
-Categories (5, object): ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']</code></pre>
-</div>
-</div>
-<div id="cell-6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>diamonds2[<span class="st">"cut"</span>].astype(<span class="st">"category"</span>)  <span class="co"># defualt: alphabetical order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>0            Ideal
-1          Premium
-2             Good
-           ...    
-53937    Very Good
-53938      Premium
-53939        Ideal
-Name: cut, Length: 53940, dtype: category
-Categories (5, object): ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']</code></pre>
-</div>
-</div>
-<section id="카테고리의-순서를-지정" class="level3">
-<h3 class="anchored" data-anchor-id="카테고리의-순서를-지정">카테고리의 순서를 지정</h3>
-<div id="cell-8" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>] <span class="op">=</span> pd.Categorical(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    diamonds[<span class="st">"cut"</span>], </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    categories<span class="op">=</span>[<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>],</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    ordered<span class="op">=</span><span class="va">True</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-9" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .astype() method를 쓰려면,</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>] <span class="op">=</span> (</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    diamonds[<span class="st">"cut"</span>]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="st">"category"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    .cat.set_categories([<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas.api.types <span class="im">import</span> CategoricalDtype</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>cat_type <span class="op">=</span> CategoricalDtype(</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    categories<span class="op">=</span>[<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>], ordered<span class="op">=</span><span class="va">True</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut2"</span>] <span class="op">=</span> diamonds[<span class="st">"cut"</span>].astype(cat_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>0            Ideal
-1          Premium
-2             Good
-           ...    
-53937    Very Good
-53938      Premium
-53939        Ideal
-Name: cut, Length: 53940, dtype: category
-Categories (5, object): ['Fair' &lt; 'Good' &lt; 'Very Good' &lt; 'Premium' &lt; 'Ideal']</code></pre>
-</div>
-</div>
-<div id="cell-11" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>].cat.categories  <span class="co"># categories 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>Index(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], dtype='object')</code></pre>
-</div>
-</div>
-<div id="cell-12" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>].cat.codes  <span class="co"># codes 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>0        4
-1        3
-2        1
-        ..
-53937    2
-53938    3
-53939    4
-Length: 53940, dtype: int8</code></pre>
-</div>
-</div>
-<p>Category 타입의 변수는 데이터에 없는 level을 포함할 수 있음.</p>
-<div id="cell-14" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut2"</span>] <span class="op">=</span> pd.Categorical(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    diamonds[<span class="st">"cut"</span>], </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    categories<span class="op">=</span>[<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>, <span class="st">"Perfect"</span>],  <span class="co"># "Perfect" 추가</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    ordered<span class="op">=</span><span class="va">True</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>diamonds.value_counts(<span class="st">"cut2"</span>, sort<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>cut2
-Fair          1610
-Good          4906
-Very Good    12082
-Premium      13791
-Ideal        21551
-Perfect          0
-dtype: int64</code></pre>
-</div>
-</div>
-<div id="cell-16" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>diamonds.groupby(<span class="st">"cut2"</span>)[<span class="st">"price"</span>].mean()</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 경고: 관칠값이 없는 카테고리는 앞으로 보여지지 않을 것임</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 앞으로는 기본값이 diamonds.groupby("cut2", observed=True)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>cut2
-Fair        4358.76
-Good        3928.86
-Very Good   3981.76
-Premium     4584.26
-Ideal       3457.54
-Perfect         NaN
-Name: price, dtype: float64</code></pre>
-</div>
-</div>
-</section>
-<section id="카테고리-순서의-적용" class="level3">
-<h3 class="anchored" data-anchor-id="카테고리-순서의-적용">카테고리 순서의 적용</h3>
-<p><code>.value_count()</code>, <code>.groupby()</code>, <code>min()</code>, <code>max()</code><br>
-시각화 library: seaborn, pandas</p>
-<div id="cell-18" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>diamonds.value_counts(<span class="st">"cut"</span>, sort<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>cut
-Fair          1610
-Good          4906
-Very Good    12082
-Premium      13791
-Ideal        21551
-dtype: int64</code></pre>
-</div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과의 index는 CategoricalIndex object</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>diamonds.value_counts(<span class="st">"cut"</span>, sort<span class="op">=</span><span class="va">False</span>).index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>CategoricalIndex(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], categories=['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], ordered=True, dtype='category', name='cut')</code></pre>
-</div>
-</div>
-<div id="cell-20" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group keys</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>diamonds.groupby(<span class="st">"cut2"</span>)[<span class="st">"price"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>cut2
-Fair        4358.76
-Good        3928.86
-Very Good   3981.76
-Premium     4584.26
-Ideal       3457.54
-Perfect         NaN
-Name: price, dtype: float64</code></pre>
-</div>
-</div>
-<div id="cell-21" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min(), max() : 카테고리 순서대로 계산</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>'Fair'</code></pre>
-</div>
-</div>
-<div id="cell-22" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort_values()에서도 카테고리 순서대로 정렬</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>diamonds.sort_values(<span class="st">"cut"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>       carat    cut color clarity  depth  table  price    x    y    z   cut2
-4654    1.00   Fair     F     SI1  66.70  57.00   3669 6.07 5.99 4.02   Fair
-53338   1.20   Fair     G      I1  64.40  55.00   2655 6.77 6.61 4.31   Fair
-40890   0.50   Fair     E     SI1  65.00  58.00   1176 4.98 4.90 3.21   Fair
-...      ...    ...   ...     ...    ...    ...    ...  ...  ...  ...    ...
-29308   0.25  Ideal     G     VS1  62.70  54.00    438 4.05 4.08 2.55  Ideal
-29339   0.31  Ideal     G     VS2  59.10  57.00    698 4.48 4.45 2.64  Ideal
-53939   0.75  Ideal     D     SI2  62.20  55.00   2757 5.83 5.87 3.64  Ideal
-
-[53940 rows x 11 columns]</code></pre>
-</div>
-</div>
-<p>Seaborn도 <code>Categorical</code> type을 지원함.</p>
-<div id="cell-24" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> so.Plot(diamonds, x<span class="op">=</span><span class="st">"cut2"</span>).add(so.Bar(), so.Count())</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> so.Plot(diamonds2, x<span class="op">=</span><span class="st">"cut"</span>).add(so.Bar(), so.Count())  <span class="co"># catergorical type 아님</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div>
-
-</div>
-<div id="cell-25" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="23">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="discretize_files/figure-html/cell-21-output-1.png" width="605" height="451"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="discretize_files/figure-html/cell-21-output-2.png" width="605" height="451"></p>
-</div>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>diamonds, x<span class="op">=</span><span class="st">"cut2"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="24" data-layout="[[2, 1]]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<p><img src="discretize_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>diamonds.boxplot(<span class="st">"price"</span>, by<span class="op">=</span><span class="st">"cut2"</span>)  <span class="co"># pandas boxplot</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-27" class="cell quarto-layout-panel" data-execution_count="25" data-layout="[[2, 1]]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<p><img src="discretize_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="discretizebining" class="level2">
-<h2 class="anchored" data-anchor-id="discretizebining">Discretize/Bining</h2>
-<p>연속변수를 카테고리화하여 범주형 변수로 변환하여 분석<br>
-<code>pd.cut()</code>, <code>pd.qcut()</code></p>
+<li>각 곡이 차트에 진입한 날짜(<code>date_entered</code>)인 첫주(<code>wk1</code>)의 순위부터 78주(<code>wk78</code>)의 순위까지 기록되어 있습니다.</li>
+<li>차트에서 빠진 경우 missing (NA)으로 표시되어 있습니다.<br>
+</li>
+<li>빌보드의 정책과 데이터 추출에 대해서 분명하지 않기 때문에 정확한 분석은 아닐 수 있습니다.
 <ul>
-<li>parameters: <code>bins</code>, <code>precision</code>, <code>labels</code></li>
+<li>예를 들어, 20주 연속 차트에 있거나, 50위 밖으로 밀려난 경우 차트에서 제거된다고 합니다.</li>
+</ul></li>
 </ul>
-<div id="cell-29" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.cut: 동일한 길이의 10개 구간</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    diamonds</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    .assign(carat_cat <span class="op">=</span> <span class="kw">lambda</span> x: pd.cut(x.carat, <span class="dv">10</span>))</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    .value_counts(<span class="st">"carat_cat"</span>, sort<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>carat_cat
-(0.195, 0.681]    25155
-(0.681, 1.162]    18626
-(1.162, 1.643]     7129
-                  ...  
-(3.567, 4.048]        5
-(4.048, 4.529]        2
-(4.529, 5.01]         1
-Length: 10, dtype: int64</code></pre>
-</div>
-</div>
-<div id="cell-30" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 나누는 구간을 지정</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    diamonds</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    .assign(carat_cat <span class="op">=</span> <span class="kw">lambda</span> x: pd.cut(x.carat, [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]))</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    .value_counts(<span class="st">"carat_cat"</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>carat_cat
-(0, 1]    36438
-(1, 3]    17470
-(3, 5]       31
-dtype: int64</code></pre>
-</div>
-</div>
-<div id="cell-31" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.qcut: 동일한 갯수의 관측치를 포함하도록 하는 10개의 구간; 구간의 길이가 모두 다름</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    diamonds.assign(carat_cat <span class="op">=</span> <span class="kw">lambda</span> x: pd.qcut(x.carat, <span class="dv">10</span>))</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    .value_counts(<span class="st">"carat_cat"</span>, sort<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>carat_cat
-(0.199, 0.31]    6452
-(0.31, 0.35]     4606
-(0.35, 0.42]     5421
-                 ... 
-(1.01, 1.13]     4573
-(1.13, 1.51]     6052
-(1.51, 5.01]     4635
-Length: 10, dtype: int64</code></pre>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -788,14 +510,142 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>carat_cat <span class="op">=</span> pd.cut(diamonds[<span class="st">"carat"</span>], <span class="dv">3</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>carat_cat.dtype</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CategoricalDtype(categories=[(0.195, 1.803], (1.803, 3.407], (3.407, 5.01]], ordered=True)</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>carat_cat.cat.categories</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># IntervalIndex([(0.195, 1.803], (1.803, 3.407], (3.407, 5.01]], dtype='interval[float64, right]')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>데이터를 불러오는 여러 방식에 대해서는 교재 참고<br>
+<a href="https://wesmckinney.com/book/accessing-data.html">Chpter 6. Data Loading, Storage, and File Formats</a> in Python for Data Analysis by Wes McKinney</p>
 </div>
 </div>
+<div id="cell-6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="op">=</span> pd.read_csv(<span class="st">"data/billboard.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>billboard.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>         artist                    track date_entered  wk1   wk2   wk3   wk4   
+0         2 Pac  Baby Don't Cry (Keep...   2000-02-26   87 82.00 72.00 77.00  \
+1       2Ge+her  The Hardest Part Of ...   2000-09-02   91 87.00 92.00   NaN   
+2  3 Doors Down               Kryptonite   2000-04-08   81 70.00 68.00 67.00   
+3  3 Doors Down                    Loser   2000-10-21   76 76.00 72.00 69.00   
+4      504 Boyz            Wobble Wobble   2000-04-15   57 34.00 25.00 17.00   
+
+    wk5   wk6   wk7  ...  wk67  wk68  wk69  wk70  wk71  wk72  wk73  wk74   
+0 87.00 94.00 99.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN  \
+1   NaN   NaN   NaN  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+2 66.00 57.00 54.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+3 67.00 65.00 55.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+4 17.00 31.00 36.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
+
+   wk75  wk76  
+0   NaN   NaN  
+1   NaN   NaN  
+2   NaN   NaN  
+3   NaN   NaN  
+4   NaN   NaN  
+
+[5 rows x 79 columns]</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><p>총 몇 명의 가수(<code>artist</code>)가 차트에 있으며, 가수별로 몇 곡(<code>track</code>)이 차트에 들어있는지 알아보세요. (동명이인은 없다고 가정하고)</p></li>
+<li><p>곡명은 같지만, 가수가 다른 곡이 있는지 알아보고, 서로 다른 노래가 차트에 몇 개나 있는지 알아보세요.</p>
+<p>살펴보았다면, 이후 grouping시 <code>artist</code>와 <code>track</code>을 함께 사용해야함을 이해했을 겁니다.</p></li>
+<li><p>이 데이터를 주(week)에 대해서 아래처럼 long format으로 바꿉니다.</p></li>
+</ol>
+<ul>
+<li><code>wk</code> column에 <code>wk1</code>부터 missing이 없는 <code>wk*</code>까지 <strong>숫자</strong>로 표현되고,</li>
+<li><code>rank</code> column에는 해당하는 week의 순위가 나타납니다.</li>
+<li><code>melt()</code>를 이용하고, (<code>id_vars=["artist", "track", "date_entered"]</code>)</li>
+<li><code>.str.replace()</code>와 <code>.astype("int64")</code>를 사용해야 할 수 있습니다.</li>
+<li><code>.dropna(subset="rank", inplace=True)</code>를 사용하여 <code>rank</code> column의 missing을 처리하세요.</li>
+<li>결과를 <code>billboard_long</code> 변수에 할당하여 이후 문제를 이어가세요.
+<ul>
+<li>구하지 못한 경우, 정제된 다음 <a href="https://www.dropbox.com/s/fjepjyl0brr7tlw/billboard_long.csv?dl=1">파일</a>을 다운받아 사용하세요.</li>
+</ul></li>
+</ul>
+<div id="cell-10" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>billboard_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>                artist                    track date_entered  wk  rank
+0                2 Pac  Baby Don't Cry (Keep...   2000-02-26   1 87.00
+317              2 Pac  Baby Don't Cry (Keep...   2000-02-26   2 82.00
+634              2 Pac  Baby Don't Cry (Keep...   2000-02-26   3 72.00
+...                ...                      ...          ...  ..   ...
+11728  matchbox twenty                     Bent   2000-04-29  37 38.00
+12045  matchbox twenty                     Bent   2000-04-29  38 38.00
+12362  matchbox twenty                     Bent   2000-04-29  39 48.00
+
+[5307 rows x 5 columns]</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>50주 이상(포함) 머무른 곡들을 구해보세요.</li>
+</ol>
+<ul>
+<li>연속으로 머무를 필요없음; 차트에서 나갔다가 다시 들어오는 곡들이 있음</li>
+<li>머문 기간을 <code>.size()</code>를 이용해 구한 후</li>
+<li>오래 머무른 순서로 정렬 후</li>
+<li><code>query()</code>를 이용해 50주 이상으로 필터링</li>
+<li>결과가 <code>artist</code>와 <code>track</code>순으로 정렬되어 있는지 확인해 주세요!</li>
+<li>코드는 다음 예처럼 하나로 연결하여 간결하게 구성해보세요.</li>
+<li><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   billboard_long.groupby(...)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   .size()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>   ...</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   .query(...)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<strong>이후 코드도 최대한 이처럼 간결하게 구성해보도록 하세요.</strong></li>
+</ul>
+<ol start="5" type="1">
+<li>4번에서 구한 곡들 각각에 대해서 주에 따라 순위가 어떻게 변화했는지 시각화를 통해 살펴보기 위해서</li>
+</ol>
+<ul>
+<li>5.1 먼저, 위 곡들만을 포함하도록 4번의 데이터와 원래 데이터(<code>billboard_long</code>)를 <code>merge()</code>를 이용해 50주 이상 머문 곡으로 필터링하세요.
+<ul>
+<li>4번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/ucgi267nn2vjkoyquur77/wks_50.csv?rlkey=ma8yiz06y47kdy6olhmtdd1zc&amp;dl=1">파일</a>을 받아 이용하세요.</li>
+</ul></li>
+<li>5.2 <code>seaborn.objects</code>를 이용해 <strong>대략</strong> 다음과 같이 주에 따른 순위의 변화를 그려보세요. <img src="images/plot_ex1.png" class="img-fluid" width="540"></li>
+</ul>
+<ol start="6" type="1">
+<li>(가수별) 곡별로 차트에 머문 기간(weeks)과 가장 높이 올라간 순위를 구해서, 높은 순위를 달성한 곡일수록 차트에 더 오래 머물었는지 알아봅니다.</li>
+</ol>
+<ul>
+<li>6.1 곡별로 차트에 머문 기간을 DataFrame으로 구하고; <code>.reset_index(name=" ")</code> 이용</li>
+<li>6.2 곡별로 최상위 순위를 <code>min()</code>을 이용해 DataFrame으로 구한 후</li>
+<li>6.3 이 두 DataFrame을 <code>merge()</code>를 이용해 합친 후</li>
+<li>6.4 <code>seaborn.objects</code>를 이용해 머문 기간에 따른 최상위 순위에 대한 관계를 아래와 같이 scatterplot으로 살펴보세요.
+<ul>
+<li>눈에 띄는 점을 간단히 기술해보세요.</li>
+</ul>
+<img src="images/plot_ex3.png" class="img-fluid" width="540"></li>
+</ul>
+<ol start="7" type="1">
+<li>순위 1위를 달성한 곡들에 한해, 차트에 진입시 순위와 1위에 처음 도달한 주(week)의 정보가 다음과 같이 표시되도록 구해보세요.</li>
+</ol>
+<ul>
+<li><p>함수를 만들고; <code>min()</code>과 <code>argmin()</code>이 필요할 수 있음</p></li>
+<li><p><code>apply()</code>로 그 함수를 적용하여 구해보세요.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                 artist                    track  wk  rank</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              Aaliyah                Try Again   1 59.00</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1              Aaliyah                Try Again  14  1.00</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2  Aguilera, Christina  Come On Over Baby (A...   1 57.00</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3  Aguilera, Christina  Come On Over Baby (A...  11  1.00</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 4  Aguilera, Christina        What A Girl Wants   1 71.00</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5  Aguilera, Christina        What A Girl Wants   8  1.00</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<ol start="8" type="1">
+<li>빠르게 1위가 된 곡일 수록 빠르게 차트에서 사라졌을까를 알아보기 위해, 7번의 결과를 이용해 다음과 같이 변형해보세요.</li>
+</ol>
+<ul>
+<li><p>7번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/l9fm5cqzrr1vyzgnx31xj/wk_rank.csv?rlkey=tokg1kv9ecqevesfep1ysy2sg&amp;dl=1">파일</a>을 받아 이용하세요.</p></li>
+<li><p>즉, 차트 진입시의 순위 정보와, 1위가 된 week의 정보만을 취해, 그 비율(<code>rate</code>)를 구하면, 얼마나 빠르게 1위가 되었는지 알 수 있습니다.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                 artist                    track  wk  rank   rate</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              Aaliyah                Try Again  14 59.00   4.21</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1  Aguilera, Christina  Come On Over Baby (A...  11 57.00   5.18</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2  Aguilera, Christina        What A Girl Wants   8 71.00   8.88</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3        Carey, Mariah  Thank God I Found Yo...  11 82.00   7.45</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 4                Creed      With Arms Wide Open  27 84.00   3.11</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5      Destiny's Child  Independent Women Pa...   9 78.00   8.67</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>마지막으로, <code>seaborn.objects</code>를 이용해 다음과 같이 시각화해보세요. <img src="images/plot_ex2.png" class="img-fluid" width="540"></p></li>
+</ul>
 
 
 </section>
@@ -1208,11 +1058,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../contents/EDA/eda.html" class="pagination-link" aria-label="Exploratory Data Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exploratory Data Analysis</span>
+      <a href="../../contents/Transform/misc.html" class="pagination-link" aria-label="Misc.">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Misc.</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../contents/Exercises/movielens.html" class="pagination-link" aria-label="MovieLens">
+        <span class="nav-page-text">MovieLens</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

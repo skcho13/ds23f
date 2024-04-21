@@ -18,15 +18,15 @@
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/misc.html</loc>
-    <lastmod>2023-11-19T16:39:13.743Z</lastmod>
+    <lastmod>2024-04-21T19:48:15.090Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/exercise_transform.html</loc>
-    <lastmod>2023-10-10T23:02:09.738Z</lastmod>
+    <lastmod>2024-04-21T19:47:14.478Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/combine.html</loc>
-    <lastmod>2023-10-22T18:59:01.719Z</lastmod>
+    <lastmod>2024-04-21T19:47:29.800Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/babynames.html</loc>
@@ -39,6 +39,10 @@
   <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/inspection.html</loc>
     <lastmod>2024-03-19T15:58:21.274Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard.html</loc>
+    <lastmod>2023-11-05T19:48:17.923Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/EDA/discretize.html</loc>
@@ -77,6 +81,10 @@
     <lastmod>2024-04-16T17:49:23.924Z</lastmod>
   </url>
   <url>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
+    <lastmod>2023-11-12T06:20:31.328Z</lastmod>
+  </url>
+  <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/pandas.html</loc>
     <lastmod>2024-04-07T19:13:34.482Z</lastmod>
   </url>
@@ -86,19 +94,19 @@
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/case1.html</loc>
-    <lastmod>2024-04-07T19:17:57.465Z</lastmod>
+    <lastmod>2024-04-21T19:42:42.625Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/crosstab.html</loc>
-    <lastmod>2023-10-23T04:44:38.270Z</lastmod>
+    <lastmod>2024-04-21T19:47:42.301Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/exercise_wrangle.html</loc>
-    <lastmod>2023-10-31T11:12:38.939Z</lastmod>
+    <lastmod>2024-04-21T19:45:53.671Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/pivot.html</loc>
-    <lastmod>2023-10-23T03:55:42.915Z</lastmod>
+    <lastmod>2024-04-21T19:46:50.479Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/transform.html</loc>
