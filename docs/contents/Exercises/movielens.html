@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-10-04">
+<meta name="dcterms.date" content="2024-05-01">
 
 <title> Data Analysis &amp; Visualization - Exercises</title>
 <style>
@@ -445,7 +445,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 4, 2023</p>
+      <p class="date">May 1, 2024</p>
     </div>
   </div>
   
@@ -459,7 +459,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Load Packages</summary>
+<summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -470,19 +470,19 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># statistics</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-3" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Options</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"mode.copy_on_write"</span>, <span class="va">True</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy options</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas options</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'mode.copy_on_write'</span>, <span class="va">True</span>)  <span class="co"># pandas 2.0</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>  <span class="co"># pd.reset_option('display.float_format')</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">7</span>  <span class="co"># max number of rows to display</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy options</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision <span class="op">=</span> <span class="dv">2</span>, suppress<span class="op">=</span><span class="va">True</span>)  <span class="co"># suppress scientific notation</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For high resolution display</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="movielens-1m-dataset" class="level2">
@@ -499,17 +499,17 @@ McKinney’s: 13. Data Analysis Examples</p>
 <p><img src="images/movielens.png" class="img-fluid" width="650"></p>
 <p>아래 데이터 링크가 원활하지 않을 시, 위의 MovieLens 1M movie ratings 사이트에서 직접 다운받으세요.<br>
 ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code>, <code>movies.dat</code> 세 파일을 아래 방식으로 읽어옵니다.</p>
-<div id="cell-5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>unames <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span>, <span class="st">"occupation"</span>, <span class="st">"zip"</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> pd.read_table(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/users.dat"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">"::"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>unames,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"python"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>users</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>unames <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span>, <span class="st">"occupation"</span>, <span class="st">"zip"</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> pd.read_table(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/users.dat"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">"::"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>unames,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"python"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>users</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>      user_id gender  age  occupation    zip
 0           1      F    1          10  48067
 1           2      M   56          16  70072
@@ -522,17 +522,17 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 [6040 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rnames <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"movie_id"</span>, <span class="st">"rating"</span>, <span class="st">"timestamp"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> pd.read_table(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/ratings.dat"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">"::"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>rnames,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"python"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ratings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rnames <span class="op">=</span> [<span class="st">"user_id"</span>, <span class="st">"movie_id"</span>, <span class="st">"rating"</span>, <span class="st">"timestamp"</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> pd.read_table(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/ratings.dat"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">"::"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>rnames,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"python"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ratings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>         user_id  movie_id  rating  timestamp
 0              1      1193       5  978300760
 1              1       661       3  978302109
@@ -545,17 +545,17 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 [1000209 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mnames <span class="op">=</span> [<span class="st">"movie_id"</span>, <span class="st">"title"</span>, <span class="st">"genres"</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_table(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/movies.dat"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">"::"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>mnames,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"python"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>movies.head(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mnames <span class="op">=</span> [<span class="st">"movie_id"</span>, <span class="st">"title"</span>, <span class="st">"genres"</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_table(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/movies.dat"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">"::"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>mnames,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"python"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>movies.head(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>   movie_id                               title                        genres
 0         1                    Toy Story (1995)   Animation|Children's|Comedy
 1         2                      Jumanji (1995)  Adventure|Children's|Fantasy
@@ -569,25 +569,25 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ol type="1">
 <li><code>ratings</code>과 <code>users</code> 데이터를 merge한 후 다음과 같은 <code>user_rating</code> 데이터셋을 만드세요.</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#          user_id gender  age  occupation    zip  movie_id  rating  timestamp</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              1      F    1          10  48067      1193       5  978300760</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1              1      F    1          10  48067       661       3  978302109</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2              1      F    1          10  48067       914       3  978301968</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ...          ...    ...  ...         ...    ...       ...     ...        ...</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1000206     6040      M   25           6  11106       562       5  956704746</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1000207     6040      M   25           6  11106      1096       4  956715648</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1000208     6040      M   25           6  11106      1097       4  956715569</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#          user_id gender  age  occupation    zip  movie_id  rating  timestamp</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              1      F    1          10  48067      1193       5  978300760</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1              1      F    1          10  48067       661       3  978302109</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2              1      F    1          10  48067       914       3  978301968</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ...          ...    ...  ...         ...    ...       ...     ...        ...</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1000206     6040      M   25           6  11106       562       5  956704746</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1000207     6040      M   25           6  11106      1096       4  956715648</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1000208     6040      M   25           6  11106      1097       4  956715569</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>다음과 같이 영화(<code>movie_id</code>)별로 남녀(<code>gender</code>)에 따른 <code>rating</code>의 평균과 그 개수(<code>count</code>)을 구해보세요.</li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#    movie_id gender  mean  count</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1      F  4.19    591</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         1      M  4.13   1486</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2         2      F  3.28    176</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3         2      M  3.18    525</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 4         3      F  3.07    136</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5         3      M  2.99    342</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#    movie_id gender  mean  count</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1      F  4.19    591</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         1      M  4.13   1486</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2         2      F  3.28    176</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3         2      M  3.18    525</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 4         3      F  3.07    136</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5         3      M  2.99    342</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li><p>다음과 같은 플랏을 그려보고 평가의 수가 적을수록 그 편차가 커지는 현상을 확인해보세요.</p>
 <ul>
@@ -595,11 +595,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>또한, 남녀의 평가에 차이가 벌어지는 현상을 설명할 수 있을까요?</li>
 </ul></li>
 </ol>
-<div id="cell-10" class="cell" data-execution_count="61">
+<div id="cell-9" class="cell" data-execution_count="61">
 <div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-8-output-1.png" width="676" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-7-output-1.png" width="676" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -607,11 +607,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ol start="4" type="1">
 <li>3번에서 플랏에 <code>.limit(x=(0, 500), y=(2.5, 4.5))</code>을 추가하여 평가 개수(<code>count</code>)가 0에서 500사이이고, 평균 rating이 2.5에서 4.5 사이인 것으로 확대해서 보고, 평가 개수가 몇 개 정도부터 남녀의 평가의 차이가 대략 일정하게 되는지 살펴보세요.</li>
 </ol>
-<div id="cell-12" class="cell" data-execution_count="62">
+<div id="cell-11" class="cell" data-execution_count="62">
 <div class="cell-output cell-output-display" data-execution_count="62">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-9-output-1.png" width="676" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-8-output-1.png" width="676" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -638,20 +638,20 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>우선, 3번 플랏에서 평가수가 같다면 여성이 더 높은 평점을 주는 것으로 보이는데, 이 현상을 다음과 같이 자세히 들여다 봅니다.
 <ul>
 <li><p>다음과 같은 <code>count</code>를 20개의 구간으로 discretize해주는 함수를 <strong>성별로 grouping</strong>된 <code>user_rating</code> 데이터에 <code>apply()</code> 하세요.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> popular(g):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    g[<span class="st">"popularity"</span>] <span class="op">=</span> pd.qcut(g[<span class="st">"count"</span>], q<span class="op">=</span><span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> popular(g):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    g[<span class="st">"popularity"</span>] <span class="op">=</span> pd.qcut(g[<span class="st">"count"</span>], q<span class="op">=</span><span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li>이 함수의 의미를 파악하고, 20단계 (0, 1, 2, …, 19)의 popularity가 성별을 고려하여 각 영화에 부여되었음을 이해합니다. (각각은 평가 개수 5%에 해당)</li>
 <li>이제, 다음과 같이 <code>popularity</code>에 따라 평점이 높아지는 현상을 성별을 고려한 후 본 결과를 아래와 같이 플랏을 통해 확인해봅니다.</li>
 <li>남성 유저와 여성 유저의 비율에 큰 차이 (4331:1709)가 있는 것을 고려했을 때, 어떻게 이 현상을 설명할 수 있을까요?</li>
 </ul></li>
 </ol>
-<div id="cell-15" class="cell" data-execution_count="63">
+<div id="cell-14" class="cell" data-execution_count="63">
 <div class="cell-output cell-output-display" data-execution_count="63">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-10-output-1.png" width="545" height="561" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-9-output-1.png" width="545" height="561" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -666,7 +666,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>남녀별로 편차 상위 2개만 표시합니다. (동등한 순서 모두 포함)
 <ul>
 <li><p>다음 method를 이용하는 함수를 정의하고 <code>apply()</code>로 적용해 봅니다.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.nlargest(n, <span class="st">"variable name"</span>, keep<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.nlargest(n, <span class="st">"variable name"</span>, keep<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li>영화제목을 <code>movies</code> 데이터와 merge하여 표시합니다.</li>
 </ul></li>
@@ -684,11 +684,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 </ul></li>
 </ul></li>
 </ol>
-<div id="cell-18" class="cell" data-execution_count="64">
+<div id="cell-17" class="cell" data-execution_count="64">
 <div class="cell-output cell-output-display" data-execution_count="64">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-11-output-1.png" width="753" height="753" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-10-output-1.png" width="753" height="753" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -697,21 +697,21 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>장르별로 남녀의 선호 차이를 두 관점 1) 평점의 개수/비율, 2) 평점의 평균의 관점에서 따로 살펴봅니다.
 <ul>
 <li><p><code>movies</code> 데이터에서 장르(<code>genres</code>)는 여러 장르에 포함되는 것을 | 기호로 나누어 표기되어 있고, 분석을 위해서 다음 코드를 이용해 long format으로 각 장르가 열에 한번씩만 나오도록 다음과 같이 바꾸세요.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>movies_long <span class="op">=</span> movies.copy()</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>movies_long[<span class="st">"genres"</span>] <span class="op">=</span> movies_long[<span class="st">"genres"</span>].<span class="bu">str</span>.split(<span class="st">"|"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>movies_long <span class="op">=</span> movies_long.explode(<span class="st">"genres"</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>movies_long.head(<span class="dv">8</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#    movie_id                    title      genres</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1         Toy Story (1995)   Animation</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1         Toy Story (1995)  Children's</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1         Toy Story (1995)      Comedy</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         2           Jumanji (1995)   Adventure</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         2           Jumanji (1995)  Children's</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         2           Jumanji (1995)     Fantasy</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2         3  Grumpier Old Men (1995)      Comedy</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 2         3  Grumpier Old Men (1995)     Romance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>movies_long <span class="op">=</span> movies.copy()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>movies_long[<span class="st">"genres"</span>] <span class="op">=</span> movies_long[<span class="st">"genres"</span>].<span class="bu">str</span>.split(<span class="st">"|"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>movies_long <span class="op">=</span> movies_long.explode(<span class="st">"genres"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>movies_long.head(<span class="dv">8</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#    movie_id                    title      genres</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1         Toy Story (1995)   Animation</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1         Toy Story (1995)  Children's</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 0         1         Toy Story (1995)      Comedy</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         2           Jumanji (1995)   Adventure</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         2           Jumanji (1995)  Children's</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1         2           Jumanji (1995)     Fantasy</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2         3  Grumpier Old Men (1995)      Comedy</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 2         3  Grumpier Old Men (1995)     Romance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ol>
 <p>이 <code>movie_long</code>과 1번에서 만든 <code>user_rating</code>을 merge한 후 다음 문제를 이어가세요.</p>
@@ -719,11 +719,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ul>
 <li><code>so.Hist("proportion", common_norm=False)</code>이 필요할 수 있음</li>
 </ul>
-<div id="cell-20" class="cell" data-execution_count="87">
+<div id="cell-19" class="cell" data-execution_count="87">
 <div class="cell-output cell-output-display" data-execution_count="87">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-12-output-1.png" width="676" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-11-output-1.png" width="676" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -733,11 +733,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><code>so.Agg()</code>를 활용하고,</li>
 <li><code>.limit(x=(3, 4.2))</code>를 써서 확대해서 살펴보세요.</li>
 </ul>
-<div id="cell-22" class="cell" data-execution_count="93">
+<div id="cell-21" class="cell" data-execution_count="93">
 <div class="cell-output cell-output-display" data-execution_count="93">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-13-output-1.png" width="676" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-12-output-1.png" width="676" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -746,21 +746,21 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ul>
 <li><code>unstack()</code>을 활용해 보세요.</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gender       genre    F    M</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0           Action  ...  ...</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1        Adventure  ...  ...</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ..             ...  ...  ...</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 16             War  ...  ...</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 17         Western  ...  ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gender       genre    F    M</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0           Action  ...  ...</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1        Adventure  ...  ...</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ..             ...  ...  ...</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 16             War  ...  ...</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 17         Western  ...  ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>9.4 영화별 남녀의 평균 평점의 차이(Female - Male) 순으로 <strong>정렬된</strong> 플랏을 대략적으로 다음과 같이 그려봅니다.</p>
 <ul>
 <li>Customizing할 때, <code>.limit(x=(3, 4.2))</code>과 <code>.scale(y=so.Nominal(order=[]))</code>이 필요할 수 있습니다.</li>
 </ul>
-<div id="cell-24" class="cell" data-execution_count="104">
+<div id="cell-23" class="cell" data-execution_count="104">
 <div class="cell-output cell-output-display" data-execution_count="104">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-14-output-1.png" width="676" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-13-output-1.png" width="676" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -770,11 +770,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>range는 <code>.add(so.Range(), so.Est("mean", errorbar="sd"))</code>를 활용하고</li>
 <li>평균은 <code>Agg()</code>을 이용해 표시합니다.</li>
 </ul>
-<div id="cell-26" class="cell" data-execution_count="107">
+<div id="cell-25" class="cell" data-execution_count="107">
 <div class="cell-output cell-output-display" data-execution_count="107">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-15-output-1.png" width="676" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-14-output-1.png" width="676" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -792,7 +792,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>56: “56+”</li>
 </ul>
 <p>9번에서 데이터를 만들지 못한 경우 경우, 다음 .parquet <a href="https://www.dropbox.com/scl/fi/t85szukc0qzwp7up2ho01/movies_long_all.parquet?rlkey=bss0kp2dab1yln83e8gr9vipy&amp;dl=1">파일</a>을 받아 이용해 다음 문제를 이어가세요.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pd.read_parquet(<span class="st">"data/movies_long_all.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.read_parquet(<span class="st">"data/movies_long_all.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>10.1 우선, 위에서 western 장르가 남녀의 평점 차이가 가장 크게 나타나 남성이 선호하는 것으로 보이는데 western 장르만 따로 떼어 나이대/남녀 별로 rating에 차이가 있는지 살펴봅니다.</p>
 <ul>
 <li>우선 scatterplot으로 살펴보는 것이 유용한지 체크해보세요.</li>
@@ -803,11 +803,11 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 </ul></li>
 <li>어떤 점을 파악할 수 있나요?</li>
 </ul>
-<div id="cell-28" class="cell" data-execution_count="56">
+<div id="cell-27" class="cell" data-execution_count="56">
 <div class="cell-output cell-output-display" data-execution_count="56">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-16-output-1.png" width="545" height="321" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-15-output-1.png" width="545" height="321" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -818,7 +818,7 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li>이를 확인하기 위해 다음과 같은 테이블을 구해보세요.</li>
 <li>예를 들어, 18:18-24세 남성의 14%와 여성의 14%가 평점을 남겼으며, 45:45-49세 남성의 15%와 여성의 9%가 평점을 남겼습니다.</li>
 </ul>
-<div id="cell-30" class="cell" data-execution_count="59">
+<div id="cell-29" class="cell" data-execution_count="59">
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>    age gender  mean  size  total  ratio
 0     1      F  3.60    91   3477   0.03
@@ -838,21 +838,21 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 </div>
 </div>
 <p>10.3 이 테이블을 다음과 같이 비율을 <code>pointsize</code>에 mapping하여 시각화해보고, 동일한 나이대에서 남녀의 평점 개수 비율에 차이가 크게 나는지 살펴보세요.</p>
-<div id="cell-32" class="cell" data-execution_count="63">
+<div id="cell-31" class="cell" data-execution_count="63">
 <div class="cell-output cell-output-display" data-execution_count="63">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-18-output-1.png" width="685" height="445" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-17-output-1.png" width="685" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>10.4 이제 모든 장르를 한눈에 살펴보기 위해 <code>facet</code>을 이용해 다음과 같이 시각화해보세요.</p>
-<div id="cell-34" class="cell" data-execution_count="64">
+<div id="cell-33" class="cell" data-execution_count="64">
 <div class="cell-output cell-output-display" data-execution_count="64">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-19-output-1.png" width="1015" height="753" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-18-output-1.png" width="1015" height="753" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -860,9 +860,9 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <ol start="11" type="1">
 <li>영화 제목에 있는 출시년도를 추출해 이용하기 위해 다음 코드를 활용하세요.</li>
 </ol>
-<div id="cell-37" class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">"year"</span>] <span class="op">=</span> movies[<span class="st">"title"</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="st">"int"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>movies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-36" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">"year"</span>] <span class="op">=</span> movies[<span class="st">"title"</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="st">"int"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>movies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>      movie_id                    title                        genres  year
 0            1         Toy Story (1995)   Animation|Children's|Comedy  1995
@@ -882,9 +882,9 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><p>11.3 오래된 영화일수록 나이든 사람들의 시청 비율이 높을지에 대해 분포를 살펴보세요.</p>
 <ul>
 <li><p>나이를 다음과 같이 (pandas) <code>category</code> type으로 변환하여 분석합니다.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>.assign(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    age <span class="op">=</span> <span class="kw">lambda</span> x: pd.Categorical(x.age.astype(<span class="st">"string"</span>), categories<span class="op">=</span>[<span class="st">"1"</span>, <span class="st">"18"</span>, <span class="st">"25"</span>, <span class="st">"35"</span>, <span class="st">"45"</span>, <span class="st">"50"</span>, <span class="st">"56"</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>.assign(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    age <span class="op">=</span> <span class="kw">lambda</span> x: pd.Categorical(x.age.astype(<span class="st">"string"</span>), categories<span class="op">=</span>[<span class="st">"1"</span>, <span class="st">"18"</span>, <span class="st">"25"</span>, <span class="st">"35"</span>, <span class="st">"45"</span>, <span class="st">"50"</span>, <span class="st">"56"</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>나이를 row에 facet하는 방식으로 분포를 살펴보세요.</p></li>
 </ul></li>
 </ul>
@@ -895,19 +895,19 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><p>예를 들어, 코메디 장르의 경우 아래 플랏처럼 1920년대에 다른 장르에 비해 상대적으로 높은 비율을 보이다가 1950년대까지는 쭉 낮아지다 다시 증가하는 비율을 보입니다.</p></li>
 <li><p>장르별로 facet을 하여 모든 장르들의 비율 변화를 그려보세요.</p></li>
 <li><p>우선 년대를 다음 방식으로 만든 후, 예를 들어, 1990-1999년은 1990이 되도록 한 후</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>movies.assign(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    decade <span class="op">=</span> <span class="kw">lambda</span> x: x.year <span class="op">//</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">10</span>  <span class="co"># // 나눗셈의 몫</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>movies.assign(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    decade <span class="op">=</span> <span class="kw">lambda</span> x: x.year <span class="op">//</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">10</span>  <span class="co"># // 나눗셈의 몫</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>decade</code>와 <code>genres</code>에 대해 <code>pd.crosstab()</code>을 적용하여 비율에 대한 테이블을 만든 후 <code>stack()</code>을 적용하여 long foramt으로 바꾼 후 그려보세요.</p>
 <ul>
 <li><code>pd.crosstab()</code>의 파라미터를 확인해서 <strong>비율</strong>을 구하세요.</li>
 </ul></li>
 </ul>
-<div id="cell-40" class="cell" data-execution_count="162">
+<div id="cell-39" class="cell" data-execution_count="162">
 <div class="cell-output cell-output-display" data-execution_count="162">
 <div>
 <figure class="figure">
-<p><img src="movielens_files/figure-html/cell-22-output-1.png" width="369" height="273" class="figure-img"></p>
+<p><img src="movielens_files/figure-html/cell-21-output-1.png" width="369" height="273" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -920,9 +920,9 @@ ml-1m.zip 압축파일을 풀어 <code>users.dat</code>, <code>ratings.dat</code
 <li><p>13.2 구현된 코드로 실행한 결과를 표시해보세요.</p>
 <p>예를 들어, 유저별로 장르마다 몇 %씩을 평가했는지와 전체 유저의 장르별 평가 비율을 구해 상대적으로 유저들이 얼마나 치우쳐 장르를 소비하는 지를 알아보는 방식도 좋겠습니다.</p></li>
 </ul>
-<div id="cell-42" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tips.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-41" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>tips.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>   total_bill  tip     sex smoker  day    time  size
 0       16.99 1.01  Female     No  Sun  Dinner     2
