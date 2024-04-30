@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-22">
+<meta name="dcterms.date" content="2024-05-01">
 
 <title> Data Analysis &amp; Visualization - Pivot</title>
 <style>
@@ -448,7 +448,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2024</p>
+      <p class="date">May 1, 2024</p>
     </div>
   </div>
   
@@ -496,11 +496,11 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </ol>
 <p><img src="images/tidydata.png" class="img-fluid" width="700"></p>
 <p>아래의 데이터는 모두 같은 4가지 정보, country, year, cases, population을 담고 있으나 table1만 tidy</p>
-<div id="cell-4" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"table1"</span>, <span class="st">"tidyr"</span>).data</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>       country  year   cases  population
 0  Afghanistan  1999     745    19987071
 1  Afghanistan  2000    2666    20595360
@@ -510,10 +510,10 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 5        China  2000  213766  1280428583</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"table2"</span>, <span class="st">"tidyr"</span>).data</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>        country  year        type       count
 0   Afghanistan  1999       cases         745
 1   Afghanistan  1999  population    19987071
@@ -526,10 +526,10 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 [12 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="51">
+<div id="cell-6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table3 <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"table3"</span>, <span class="st">"tidyr"</span>).data</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>       country  year               rate
 0  Afghanistan  1999       745/19987071
 1  Afghanistan  2000      2666/20595360
@@ -539,20 +539,20 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 5        China  2000  213766/1280428583</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>table4a <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"table4a"</span>, <span class="st">"tidyr"</span>).data</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>table4a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>       country    1999    2000
 0  Afghanistan     745    2666
 1       Brazil   37737   80488
 2        China  212258  213766</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="8">
+<div id="cell-8" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>table4b <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"table4b"</span>, <span class="st">"tidyr"</span>).data</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>table4b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>       country        1999        2000
 0  Afghanistan    19987071    20595360
 1       Brazil   172006362   174504898
@@ -560,12 +560,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </div>
 </div>
 <p>기본적으로 table1의 형태일 때, 효과적으로 데이터를 다룰 수 있음</p>
-<div id="cell-10" class="cell" data-execution_count="9">
+<div id="cell-10" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute rate per 10,000</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>table1.assign(</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    rate <span class="op">=</span> <span class="kw">lambda</span> x: x.cases <span class="op">/</span> x.population <span class="op">*</span> <span class="dv">10_000</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>       country  year   cases  population  rate
 0  Afghanistan  1999     745    19987071  0.37
 1  Afghanistan  2000    2666    20595360  1.29
@@ -575,23 +575,23 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 5        China  2000  213766  1280428583  1.67</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="10">
+<div id="cell-11" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute cases per year</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>table1.groupby(<span class="st">"year"</span>)[<span class="st">"cases"</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>year
 1999    250740
 2000    296920
 Name: cases, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="19">
+<div id="cell-12" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualise changes over time</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(table1, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"cases"</span>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), color<span class="op">=</span><span class="st">"country"</span>)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <figure class="figure">
 <p><img src="pivot_files/figure-html/cell-11-output-1.png" width="742" height="445" class="figure-img"></p>
@@ -603,9 +603,9 @@ Name: cases, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="long-form">Long Form</h2>
 <p><code>melt()</code><br>
 <code>stack()</code>: index에 적용</p>
-<div id="cell-14" class="cell" data-execution_count="36">
+<div id="cell-14" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>       country    1999    2000
 0  Afghanistan     745    2666
 1       Brazil   37737   80488
@@ -613,7 +613,7 @@ Name: cases, dtype: int64</code></pre>
 </div>
 </div>
 <p><img src="images/melt.png" class="img-fluid" width="700"></p>
-<div id="cell-16" class="cell" data-execution_count="21">
+<div id="cell-16" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>table4a_long <span class="op">=</span> table4a.melt(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"country"</span>,            <span class="co"># 고정할 컬럼</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"1999"</span>, <span class="st">"2000"</span>],  <span class="co"># value로 사용할 컬럼</span></span>
@@ -621,11 +621,8 @@ Name: cases, dtype: int64</code></pre>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"cases"</span>            <span class="co"># value에 있는 정보에 대한 변수명</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 생략시 모든 컬럼을 value_vars로 사용</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>table4a_long <span class="op">=</span> table4a.melt(id_vars<span class="op">=</span><span class="st">"country"</span>)  <span class="co"># 또는 pd.melt() 이용</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>table4a_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>table4a_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>       country  year   cases
 0  Afghanistan  1999     745
 1       Brazil  1999   37737
@@ -645,26 +642,48 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>생략시 모든 컬럼을 value_vars로 사용.<br>
+컬럼 이름은 각각 <code>variable</code>, <code>value</code>로 나타남.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>table4a_long <span class="op">=</span> table4a.melt(id_vars<span class="op">=</span><span class="st">"country"</span>)  <span class="co"># 또는 pd.melt() 이용</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        country variable   value</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 0  Afghanistan     1999     745</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1       Brazil     1999   37737</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2        China     1999  212258</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 3  Afghanistan     2000    2666</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 4       Brazil     2000   80488</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 5        China     2000  213766</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><code>stack()</code>은 index를 이용해 long form으로 변환시켜 줌. (컬럼 전체가 stack됨)</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>table4a.set_index(<span class="st">"country"</span>).stack()  <span class="co"># Series</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># country          </span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Afghanistan  1999       745</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#              2000      2666</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil       1999     37737</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#              2000     80488</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># China        1999    212258</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#              2000    213766</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># dtype: int64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>table4a.set_index(<span class="st">"country"</span>).stack()  <span class="co"># Series</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># country          </span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Afghanistan  1999       745</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#              2000      2666</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil       1999     37737</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#              2000     80488</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># China        1999    212258</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#              2000    213766</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># dtype: int64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>unstack()</code>은 반대</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>table4a.set_index(<span class="st">"country"</span>).stack().unstack(level<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># country  Afghanistan  Brazil   China</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1999             745   37737  212258</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2000            2666   80488  213766</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>table4a.set_index(<span class="st">"country"</span>).stack().unstack(level<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># country  Afghanistan  Brazil   China</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1999             745   37737  212258</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2000            2666   80488  213766</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 마찬가지로 table4b도 long format으로 변환: population의 정보</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>table4b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 마찬가지로 table4b도 long format으로 변환: population의 정보</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>table4b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>       country        1999        2000
 0  Afghanistan    19987071    20595360
@@ -672,14 +691,14 @@ Note
 2        China  1272915272  1280428583</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>table4b_long <span class="op">=</span> table4b.melt(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"country"</span>,           <span class="co"># 고정할 컬럼</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"1999"</span>, <span class="st">"2000"</span>]  <span class="co"># value로 사용할 컬럼</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"year"</span>,             <span class="co"># 컬럼에 있는 정보에 대한 변수명</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"population"</span>,     <span class="co"># value에 있는 정보에 대한 변수명</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>table4b_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>table4b_long <span class="op">=</span> table4b.melt(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span><span class="st">"country"</span>,           <span class="co"># 고정할 컬럼</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>[<span class="st">"1999"</span>, <span class="st">"2000"</span>]  <span class="co"># value로 사용할 컬럼</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"year"</span>,             <span class="co"># 컬럼에 있는 정보에 대한 변수명</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"population"</span>,     <span class="co"># value에 있는 정보에 대한 변수명</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>table4b_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>       country  year  population
 0  Afghanistan  1999    19987071
@@ -690,8 +709,8 @@ Note
 5        China  2000  1280428583</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pd.merge(table4a_long, table4b_long)  <span class="co"># keys: "country" &amp; "year"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pd.merge(table4a_long, table4b_long)  <span class="co"># keys: "country" &amp; "year"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>       country  year   cases  population
 0  Afghanistan  1999     745    19987071
@@ -707,8 +726,8 @@ Note
 <h2 class="anchored" data-anchor-id="wide-format">Wide Format</h2>
 <p><code>pivot()</code><br>
 <code>unstack()</code>: index에 적용</p>
-<div id="cell-22" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>        country  year        type       count
 0   Afghanistan  1999       cases         745
@@ -723,12 +742,12 @@ Note
 </div>
 </div>
 <p><img src="images/pivot.png" class="img-fluid" width="720"></p>
-<div id="cell-24" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>table2.pivot(</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"country"</span>, <span class="st">"year"</span>],  <span class="co"># index로 고정할 컬럼</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span><span class="st">"type"</span>,             <span class="co"># 컬럼 이름으로 들어갈 컬럼</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">"count"</span>              <span class="co"># 값로 들어갈 컬럼</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>table2.pivot(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"country"</span>, <span class="st">"year"</span>],  <span class="co"># index로 고정할 컬럼</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span><span class="st">"type"</span>,             <span class="co"># 컬럼 이름으로 들어갈 컬럼</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">"count"</span>              <span class="co"># 값로 들어갈 컬럼</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>type               cases  population
 country     year                    
@@ -752,16 +771,16 @@ Note
 <div class="callout-body-container callout-body">
 <p><code>unstack()</code>은 index를 이용해 wide form으로 변환시켜 줌<br>
 맨 안쪽 index level (level=2)에 default로 적용</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>table2.set_index([<span class="st">"country"</span>, <span class="st">"year"</span>, <span class="st">"type"</span>]).unstack() </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                    count            </span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># type               cases  population</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># country     year                    </span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Afghanistan 1999     745    19987071</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000    2666    20595360</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil      1999   37737   172006362</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000   80488   174504898</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># China       1999  212258  1272915272</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000  213766  1280428583</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>table2.set_index([<span class="st">"country"</span>, <span class="st">"year"</span>, <span class="st">"type"</span>]).unstack() </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                    count            </span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># type               cases  population</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># country     year                    </span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Afghanistan 1999     745    19987071</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000    2666    20595360</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil      1999   37737   172006362</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000   80488   174504898</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># China       1999  212258  1272915272</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000  213766  1280428583</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -778,9 +797,9 @@ Note
 </div>
 </div>
 <p>Q: table1을 년도별로 wide form으로 변환하면?</p>
-<div id="cell-28" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use .pivot()</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>table1.pivot(index<span class="op">=</span><span class="st">"country"</span>, columns<span class="op">=</span><span class="st">"year"</span>, values<span class="op">=</span>[<span class="st">"cases"</span>, <span class="st">"population"</span>])  <span class="co"># values: list로 입력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use .pivot()</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>table1.pivot(index<span class="op">=</span><span class="st">"country"</span>, columns<span class="op">=</span><span class="st">"year"</span>, values<span class="op">=</span>[<span class="st">"cases"</span>, <span class="st">"population"</span>])  <span class="co"># values: list로 입력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>              cases          population            
 year           1999    2000        1999        2000
@@ -790,19 +809,19 @@ Brazil        37737   80488   172006362   174504898
 China        212258  213766  1272915272  1280428583</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use .unstack() to pivot a level of the index labels</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>table1.set_index([<span class="st">"country"</span>, <span class="st">"year"</span>]).unstack(<span class="st">"year"</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># table1.set_index(["country", "year"])</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                    cases  population</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># country     year                    </span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Afghanistan 1999     745    19987071</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000    2666    20595360</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil      1999   37737   172006362</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000   80488   174504898</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># China       1999  212258  1272915272</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000  213766  1280428583</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-30" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use .unstack() to pivot a level of the index labels</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>table1.set_index([<span class="st">"country"</span>, <span class="st">"year"</span>]).unstack(<span class="st">"year"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># table1.set_index(["country", "year"])</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                    cases  population</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># country     year                    </span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Afghanistan 1999     745    19987071</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000    2666    20595360</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil      1999   37737   172006362</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#             2000   80488   174504898</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>              cases          population            
 year           1999    2000        1999        2000
@@ -815,8 +834,8 @@ China        212258  213766  1272915272  1280428583</code></pre>
 </section>
 <section id="separating-and-uniting" class="level2">
 <h2 class="anchored" data-anchor-id="separating-and-uniting">Separating and uniting</h2>
-<div id="cell-31" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>       country  year               rate
 0  Afghanistan  1999       745/19987071
@@ -828,8 +847,8 @@ China        212258  213766  1272915272  1280428583</code></pre>
 </div>
 </div>
 <p>rate에 있는 case와 population 정보를 분리</p>
-<div id="cell-33" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>table3[<span class="st">"rate"</span>].<span class="bu">str</span>.split(<span class="st">"/"</span>, expand<span class="op">=</span><span class="va">True</span>)  <span class="co"># expand: list의 성분을 분리하여 컬럼으로 만듦</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-34" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>table3[<span class="st">"rate"</span>].<span class="bu">str</span>.split(<span class="st">"/"</span>, expand<span class="op">=</span><span class="va">True</span>)  <span class="co"># expand: list의 성분을 분리하여 컬럼으로 만듦</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>        0           1
 0     745    19987071
@@ -840,10 +859,10 @@ China        212258  213766  1272915272  1280428583</code></pre>
 5  213766  1280428583</code></pre>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>table3[[<span class="st">"cases"</span>, <span class="st">"population"</span>]] <span class="op">=</span> <span class="op">\</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    table3.pop(<span class="st">"rate"</span>).<span class="bu">str</span>.split(<span class="st">"/"</span>, expand<span class="op">=</span><span class="va">True</span>)  <span class="co"># pop: 제거와 선택 동시</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>table3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>table3[[<span class="st">"cases"</span>, <span class="st">"population"</span>]] <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    table3.pop(<span class="st">"rate"</span>).<span class="bu">str</span>.split(<span class="st">"/"</span>, expand<span class="op">=</span><span class="va">True</span>)  <span class="co"># pop: 제거와 선택 동시</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>table3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>       country  year   cases  population
 0  Afghanistan  1999     745    19987071
@@ -855,8 +874,8 @@ China        212258  213766  1272915272  1280428583</code></pre>
 </div>
 </div>
 <p><code>year</code>를 앞 두자리와 뒤 두자리를 나누고자 하면 (seperate)</p>
-<div id="cell-36" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>table3[<span class="st">"year"</span>].astype(<span class="st">"string"</span>).<span class="bu">str</span>.extract(<span class="vs">r'(\d</span><span class="sc">{2}</span><span class="vs">)(\d</span><span class="sc">{2}</span><span class="vs">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>table3[<span class="st">"year"</span>].astype(<span class="st">"string"</span>).<span class="bu">str</span>.extract(<span class="vs">r'(\d</span><span class="sc">{2}</span><span class="vs">)(\d</span><span class="sc">{2}</span><span class="vs">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>    0   1
 0  19  99
@@ -885,11 +904,11 @@ Note
 </ul>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>table3[[<span class="st">"century"</span>, <span class="st">"year"</span>]] <span class="op">=</span> table3.pop(<span class="st">"year"</span>).astype(<span class="st">"string"</span>).<span class="bu">str</span>.extract(<span class="vs">r'(\d</span><span class="sc">{2}</span><span class="vs">)(\d</span><span class="sc">{2}</span><span class="vs">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>table3[[<span class="st">"century"</span>, <span class="st">"year"</span>]] <span class="op">=</span> table3.pop(<span class="st">"year"</span>).astype(<span class="st">"string"</span>).<span class="bu">str</span>.extract(<span class="vs">r'(\d</span><span class="sc">{2}</span><span class="vs">)(\d</span><span class="sc">{2}</span><span class="vs">)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>       country   cases  population century year
 0  Afghanistan     745    19987071      19   99
@@ -901,9 +920,9 @@ Note
 </div>
 </div>
 <p>다시 <code>century</code>와 <code>year</code> 합치기</p>
-<div id="cell-41" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>table3[<span class="st">"year_4d"</span>] <span class="op">=</span> table3[<span class="st">"century"</span>].<span class="bu">str</span>.cat(table3[<span class="st">"year"</span>])</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-42" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>table3[<span class="st">"year_4d"</span>] <span class="op">=</span> table3[<span class="st">"century"</span>].<span class="bu">str</span>.cat(table3[<span class="st">"year"</span>])</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>       country   cases  population century year year_4d
 0  Afghanistan     745    19987071      19   99    1999
