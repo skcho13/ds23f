@@ -109,20 +109,22 @@ website:
                 text: Pivot Table
               - href: contents/Transform/exercise_wrangle.ipynb
           - href: contents/Transform/misc.ipynb
-          # - section: Solutions
-          #   contents:
-          #     - href: contents/sol1.ipynb
-          #     - href: contents/sol2.ipynb
       - section: Exercises
         contents:
           - href: contents/Exercises/billboard.ipynb
             text: Billboard
           - href: contents/Exercises/movielens.ipynb
             text: MovieLens
-      #     # - section: Solutions
-      #     #   contents:
-      #     #     - href: contents/billboard_sol.ipynb
-      #     #     - href: contents/movielens_sol.ipynb
+      # - section: Solutions
+      #   contents:
+      #     - href: contents/Transform/sol1.ipynb
+      #       text: Transforming I
+      #     - href: contents/Transform/sol2.ipynb
+      #       text: Transforming II
+      #     - href: contents/Exercises/billboard_sol.ipynb
+      #       text: Billboard
+      #     - href: contents/Exercises/movielens_sol.ipynb
+      #       text: MovieLens
       # - text: ---
       # - section: contents/eda.ipynb
       #   contents:
