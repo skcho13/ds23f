@@ -59,8 +59,8 @@ website:
       #   text: "{{< fa magnifying-glass size=xs >}} 설문"
       # - href: contents/shortcuts.qmd
         # text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
-      - href: https://docs.google.com/document/d/12eF8TiTxtw1az5-eYaw9FbIteUAOhmtCY0IgB6CWd5I/edit?usp=sharing
-        text: "{{< bi stopwatch >}} 중간고사 <<<<<<<<<<"
+      # - href: https://docs.google.com/document/d/12eF8TiTxtw1az5-eYaw9FbIteUAOhmtCY0IgB6CWd5I/edit?usp=sharing
+      #   text: "{{< bi stopwatch >}} 중간고사 <<<<<<<<<<"
       - text: ---
       - section: Introduction
         contents:
