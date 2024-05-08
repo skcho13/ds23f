@@ -544,261 +544,44 @@
     ]
   },
   {
-    "objectID": "contents/EDA/eda.html",
-    "href": "contents/EDA/eda.html",
-    "title": "Exploratory Data Analysis",
+    "objectID": "contents/EDA/discretize.html",
+    "href": "contents/EDA/discretize.html",
+    "title": "Discretize",
     "section": "",
-    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\nsource: R for Data Science\nVisualising, transforming, modelling을 통해 질문들을 개선하거나 새로운 질문들을 생성하면서 데이터에 대한 이해를 늘리면서 질문들에 답을 구하는 반복순환 과정\n크게 다음 2가지 타입의 질문을 기본으로 시작\n# import a dataset\ndiamonds_data = sm.datasets.get_rdataset(\"diamonds\", \"ggplot2\")\ndiamonds = diamonds_data.data\nprint(diamonds_data.__doc__)\ndiamonds\n\n       carat        cut color clarity  depth  table  price    x    y    z\n0       0.23      Ideal     E     SI2  61.50  55.00    326 3.95 3.98 2.43\n1       0.21    Premium     E     SI1  59.80  61.00    326 3.89 3.84 2.31\n2       0.23       Good     E     VS1  56.90  65.00    327 4.05 4.07 2.31\n...      ...        ...   ...     ...    ...    ...    ...  ...  ...  ...\n53937   0.70  Very Good     D     SI1  62.80  60.00   2757 5.66 5.68 3.56\n53938   0.86    Premium     H     SI2  61.00  58.00   2757 6.15 6.12 3.74\n53939   0.75      Ideal     D     SI2  62.20  55.00   2757 5.83 5.87 3.64\n\n[53940 rows x 10 columns]\n# cut, color, clarity 모두 Categorical type으로 변형\ndiamonds[\"cut\"] = pd.Categorical(\n    diamonds[\"cut\"], \n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"],\n    ordered=True\n)\ndiamonds[\"color\"] = pd.Categorical(\n    diamonds[\"color\"], \n    categories=[\"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \"J\"],\n    ordered=True\n)\ndiamonds[\"clarity\"] = pd.Categorical(\n    diamonds[\"clarity\"], \n    categories=[\"I1\", \"SI2\", \"SI1\", \"VS2\", \"VS1\", \"VVS2\", \"VVS1\", \"IF\"],\n    ordered=True\n)",
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\n# import a dataset\ndiamonds = sm.datasets.get_rdataset(\"diamonds\", \"ggplot2\").data\ndiamonds2 = diamonds.copy()  # unmodified copy",
     "crumbs": [
-      "Exploratory Data Analysis"
+      "Exploratory Data Analysis",
+      "Discretize"
     ]
   },
   {
-    "objectID": "contents/EDA/eda.html#missing-values",
-    "href": "contents/EDA/eda.html#missing-values",
-    "title": "Exploratory Data Analysis",
-    "section": "Missing values",
-    "text": "Missing values\n특이값을 missing (NA)으로 처리할 때는 신중하게…\n특이한 값들이 있는 행을 다 제거하는 방식은 금물!\n예를 들어, diamonds.query('y &gt;= 3 & y &lt;= 20')\n만약 NA로 바꾸기로 했다면, .where(), .mask()를 활용\n\ndiamonds2 = diamonds.assign(\n    y = lambda x: np.where((x.y &lt; 3) | (x.y &gt; 20), np.nan, x.y)\n)\n\n\n\n\n\n\n\nTip\n\n\n\n.mask(), .where()\n# 조건에 맞는 값들을 NA로 바꿈\ndiamonds[\"y\"] = diamonds[\"y\"].mask((diamonds[\"y\"] &lt; 3) | (diamonds[\"y\"] &gt; 20))\n\n\n\n# NA의 제거에 대해 경고 없음!\n(\n    so.Plot(diamonds2, x=\"x\", y=\"y\")\n    .add(so.Dots(alpha=1))\n)\n\n\n\n\n\n\n\n\n결측치들을 포함한 경우와 제거한 경우를 비교해 보고자 할 때,\n\n결측치인지 아닌지를 나타내는 명목변수를 이용",
+    "objectID": "contents/EDA/discretize.html#categorical-type-in-pandas",
+    "href": "contents/EDA/discretize.html#categorical-type-in-pandas",
+    "title": "Discretize",
+    "section": "Categorical type in pandas",
+    "text": "Categorical type in pandas\n\n일종의 데이터 압축 기술이며, 적은 levels로만 이루어진 데이터의 경우 메모리 절약\n순서가 부여되어, sorting을 하거나 min/max 함수가 알파벳 순서가 아닌 부여된 순서를 적용\n다른 Python library들 중에는 이 순서를 활용하는 것이 있음; 통계적 분석이나 플랏을 그릴 때\n\nMcKinney’s/Categorical data\npandas/Categorical data\n\npd.Categorical(diamonds[\"cut\"])  # defualt: alphabetical order\n\n['Ideal', 'Premium', 'Good', 'Premium', 'Good', ..., 'Ideal', 'Good', 'Very Good', 'Premium', 'Ideal']\nLength: 53940\nCategories (5, object): ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']\n\n\n\ndiamonds2[\"cut\"].astype(\"category\")  # defualt: alphabetical order\n\n0            Ideal\n1          Premium\n2             Good\n           ...    \n53937    Very Good\n53938      Premium\n53939        Ideal\nName: cut, Length: 53940, dtype: category\nCategories (5, object): ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']\n\n\n\n카테고리의 순서를 지정\n\ndiamonds[\"cut\"] = pd.Categorical(\n    diamonds[\"cut\"], \n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"],\n    ordered=True\n)\n\n\n# .astype() method를 쓰려면,\ndiamonds[\"cut\"] = (\n    diamonds[\"cut\"]\n    .astype(\"category\")\n    .cat.set_categories([\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"], ordered=True)\n)\n\n# 또는\nfrom pandas.api.types import CategoricalDtype\n\ncat_type = CategoricalDtype(\n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"], ordered=True\n)\ndiamonds[\"cut2\"] = diamonds[\"cut\"].astype(cat_type)\n\n\ndiamonds[\"cut\"]\n\n0            Ideal\n1          Premium\n2             Good\n           ...    \n53937    Very Good\n53938      Premium\n53939        Ideal\nName: cut, Length: 53940, dtype: category\nCategories (5, object): ['Fair' &lt; 'Good' &lt; 'Very Good' &lt; 'Premium' &lt; 'Ideal']\n\n\n\ndiamonds[\"cut\"].cat.categories  # categories 확인\n\nIndex(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], dtype='object')\n\n\n\ndiamonds[\"cut\"].cat.codes  # codes 확인\n\n0        4\n1        3\n2        1\n        ..\n53937    2\n53938    3\n53939    4\nLength: 53940, dtype: int8\n\n\nCategory 타입의 변수는 데이터에 없는 level을 포함할 수 있음.\n\ndiamonds[\"cut2\"] = pd.Categorical(\n    diamonds[\"cut\"], \n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\", \"Perfect\"],  # \"Perfect\" 추가\n    ordered=True\n)\n\n\ndiamonds.value_counts(\"cut2\", sort=False)\n\ncut2\nFair          1610\nGood          4906\nVery Good    12082\nPremium      13791\nIdeal        21551\nPerfect          0\ndtype: int64\n\n\n\ndiamonds.groupby(\"cut2\")[\"price\"].mean()\n# 경고: 관칠값이 없는 카테고리는 앞으로 보여지지 않을 것임\n# 앞으로는 기본값이 diamonds.groupby(\"cut2\", observed=True)\n\ncut2\nFair        4358.76\nGood        3928.86\nVery Good   3981.76\nPremium     4584.26\nIdeal       3457.54\nPerfect         NaN\nName: price, dtype: float64\n\n\n\n\n카테고리 순서의 적용\n.value_count(), .groupby(), min(), max()\n시각화 library: seaborn, pandas\n\ndiamonds.value_counts(\"cut\", sort=False)\n\ncut\nFair          1610\nGood          4906\nVery Good    12082\nPremium      13791\nIdeal        21551\ndtype: int64\n\n\n\n# 결과의 index는 CategoricalIndex object\ndiamonds.value_counts(\"cut\", sort=False).index\n\nCategoricalIndex(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], categories=['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], ordered=True, dtype='category', name='cut')\n\n\n\n# group keys\ndiamonds.groupby(\"cut2\")[\"price\"].mean()\n\ncut2\nFair        4358.76\nGood        3928.86\nVery Good   3981.76\nPremium     4584.26\nIdeal       3457.54\nPerfect         NaN\nName: price, dtype: float64\n\n\n\n# min(), max() : 카테고리 순서대로 계산\ndiamonds[\"cut\"].min()\n\n'Fair'\n\n\n\n# sort_values()에서도 카테고리 순서대로 정렬\ndiamonds.sort_values(\"cut\")\n\n       carat    cut color clarity  depth  table  price    x    y    z   cut2\n4654    1.00   Fair     F     SI1  66.70  57.00   3669 6.07 5.99 4.02   Fair\n53338   1.20   Fair     G      I1  64.40  55.00   2655 6.77 6.61 4.31   Fair\n40890   0.50   Fair     E     SI1  65.00  58.00   1176 4.98 4.90 3.21   Fair\n...      ...    ...   ...     ...    ...    ...    ...  ...  ...  ...    ...\n29308   0.25  Ideal     G     VS1  62.70  54.00    438 4.05 4.08 2.55  Ideal\n29339   0.31  Ideal     G     VS2  59.10  57.00    698 4.48 4.45 2.64  Ideal\n53939   0.75  Ideal     D     SI2  62.20  55.00   2757 5.83 5.87 3.64  Ideal\n\n[53940 rows x 11 columns]\n\n\nSeaborn도 Categorical type을 지원함.\n\nleft = so.Plot(diamonds, x=\"cut2\").add(so.Bar(), so.Count())\nright = so.Plot(diamonds2, x=\"cut\").add(so.Bar(), so.Count())  # catergorical type 아님\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsns.boxplot(data=diamonds, x=\"cut2\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\ndiamonds.boxplot(\"price\", by=\"cut2\")  # pandas boxplot\nplt.show()  # 생략",
     "crumbs": [
-      "Exploratory Data Analysis"
+      "Exploratory Data Analysis",
+      "Discretize"
     ]
   },
   {
-    "objectID": "contents/EDA/eda.html#a-categorical-and-continuous-variable",
-    "href": "contents/EDA/eda.html#a-categorical-and-continuous-variable",
-    "title": "Exploratory Data Analysis",
-    "section": "A categorical and continuous variable",
-    "text": "A categorical and continuous variable\n\n카테고리별로 분포(frequency)를 나누어 비교\nfrequency polygon 이나 boxplot을 이용\nOne dimensional scatter plot으로 겹치지 않게 그리려면, jitter를 활용\n\n\n(\n    so.Plot(diamonds, x=\"price\", color=\"cut\")\n    .add(so.Line(), so.Hist(binwidth=500))\n)\n\n\n\n\n\n\n\n\n\n# 각 cut 내에서의 분포가 cut마다 어떻게 다른가 확인\n(\n    so.Plot(diamonds, x=\"price\", color=\"cut\")\n    .add(so.Line(), so.Hist(binwidth=500, stat=\"proportion\", common_norm=False))\n)\n\n\n\n\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"price\", color=\"cut\")\n    .add(so.Bars(), so.Hist(binwidth=500, stat=\"proportion\", common_norm=False))\n    .facet(\"cut\")\n)\n\n\n\n\n\n\n\n\nQ: 왜 fair 컷의 평균 가격이 가장 높은가???\nsns.boxplot(diamonds, x=\"cut\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\n\nUse custom plots\n\n# Custom plots\nfrom sbcustom import rangeplot\nrangeplot(diamonds, x=\"cut\", y=\"price\").layout(size=(6, 4))\n\n\n\n\n\n\n\n\n# Violin plot\nsns.violinplot(diamonds, x=\"cut\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\n다이아몬드 컷의 질이 낮을수록 평균 가격이 높은, 직관적으로 반대되는 패턴을 보임.\n한편, 카테고리의 순서가 존재하지 않는 경우: 의미있는 순서로 재정렬하여 패턴 파악을 용이하게 할 수 있음\n예를 들어, 자동차의 class를 고속도로 연비의 중앙값 순으로 정렬하고자 하면,\nmpg = sm.datasets.get_rdataset(\"mpg\", \"ggplot2\").data\nhwy_order = mpg.groupby(\"class\")[\"hwy\"].median().sort_values().index\n\nsns.boxplot(mpg, y=\"class\", x=\"hwy\", fill=False, order=hwy_order)\nplt.show()\n\n\n\n\n\n\n\n\n(\n    rangeplot(mpg, y=\"class\", x=\"hwy\", marker=\"v\")\n    .scale(y=so.Nominal(order=hwy_order))\n    .layout(size=(6, 4))\n)\n\n\n\n\n\n\n\n\n\n연습문제\n\n** What variable in the diamonds dataset is most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationships lead to lower quality diamonds being more expensive?\n* Compare and contrast a violin plot with a facetted histogram, or a coloured frequency polygon. What are the pros and cons of each method?",
+    "objectID": "contents/EDA/discretize.html#discretizebining",
+    "href": "contents/EDA/discretize.html#discretizebining",
+    "title": "Discretize",
+    "section": "Discretize/Bining",
+    "text": "Discretize/Bining\n연속변수를 카테고리화하여 범주형 변수로 변환하여 분석\npd.cut(), pd.qcut()\n\nparameters: bins, precision, labels\n\n\n# pd.cut: 동일한 길이의 10개 구간\n(\n    diamonds\n    .assign(carat_cat = lambda x: pd.cut(x.carat, 10))\n    .value_counts(\"carat_cat\", sort=False)\n)\n\ncarat_cat\n(0.195, 0.681]    25155\n(0.681, 1.162]    18626\n(1.162, 1.643]     7129\n                  ...  \n(3.567, 4.048]        5\n(4.048, 4.529]        2\n(4.529, 5.01]         1\nLength: 10, dtype: int64\n\n\n\n# 나누는 구간을 지정\n(\n    diamonds\n    .assign(carat_cat = lambda x: pd.cut(x.carat, [0, 1, 3, 5]))\n    .value_counts(\"carat_cat\")\n)\n\ncarat_cat\n(0, 1]    36438\n(1, 3]    17470\n(3, 5]       31\ndtype: int64\n\n\n\n# pd.qcut: 동일한 갯수의 관측치를 포함하도록 하는 10개의 구간; 구간의 길이가 모두 다름\n(\n    diamonds.assign(carat_cat = lambda x: pd.qcut(x.carat, 10))\n    .value_counts(\"carat_cat\", sort=False)\n)\n\ncarat_cat\n(0.199, 0.31]    6452\n(0.31, 0.35]     4606\n(0.35, 0.42]     5421\n                 ... \n(1.01, 1.13]     4573\n(1.13, 1.51]     6052\n(1.51, 5.01]     4635\nLength: 10, dtype: int64\n\n\n\n\n\n\n\n\nNote\n\n\n\ncarat_cat = pd.cut(diamonds[\"carat\"], 3)\ncarat_cat.dtype\n# CategoricalDtype(categories=[(0.195, 1.803], (1.803, 3.407], (3.407, 5.01]], ordered=True)\n\ncarat_cat.cat.categories\n# IntervalIndex([(0.195, 1.803], (1.803, 3.407], (3.407, 5.01]], dtype='interval[float64, right]')",
     "crumbs": [
-      "Exploratory Data Analysis"
+      "Exploratory Data Analysis",
+      "Discretize"
     ]
   },
   {
-    "objectID": "contents/EDA/eda.html#two-categorical-variables",
-    "href": "contents/EDA/eda.html#two-categorical-variables",
-    "title": "Exploratory Data Analysis",
-    "section": "Two categorical variables",
-    "text": "Two categorical variables\n\n두 범주형 변수 사이의 covariation을 파악하려면, 두 변수 값의 모든 조합에 대한 count를 표시\n\n\ntable_cut = diamonds.groupby([\"cut\", \"clarity\"]).size().reset_index(name=\"n\")\ntable_cut\n\n      cut clarity     n\n0    Fair      I1   210\n1    Fair     SI2   466\n2    Fair     SI1   408\n..    ...     ...   ...\n37  Ideal    VVS2  2606\n38  Ideal    VVS1  2047\n39  Ideal      IF  1212\n\n[40 rows x 3 columns]\n\n\n\n각 조합에 해당하는 관측값의 양에 비례하여 원의 크기를 표시하면,\ncut와 clarity 사이에 약한 상관관계를 맺는 것으로 보임\n\n\np1 = (\n    so.Plot(table_cut, x=\"cut\", y=\"clarity\", pointsize=\"n\", color=\"n\")\n    .add(so.Dot())\n    .scale(pointsize=(5, 30))\n)\np2 = (\n    so.Plot(diamonds, x='cut', y='clarity')\n    .add(so.Line(), so.PolyFit(3))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n순서가 없는 범주형 변수인 경우, 행과 열을 유사한 정도에 따라 순서를 매기는 알고리즘을 통해 재정렬하여 패턴을 볼 수도 있음\n\ngapminder = sm.datasets.get_rdataset(\"gapminder\", \"gapminder\").data\ngapminder\n\n          country continent  year  lifeExp       pop  gdpPercap\n0     Afghanistan      Asia  1952    28.80   8425333     779.45\n1     Afghanistan      Asia  1957    30.33   9240934     820.85\n2     Afghanistan      Asia  1962    32.00  10267083     853.10\n...           ...       ...   ...      ...       ...        ...\n1701     Zimbabwe    Africa  1997    46.81  11404948     792.45\n1702     Zimbabwe    Africa  2002    39.99  11926563     672.04\n1703     Zimbabwe    Africa  2007    43.49  12311143     469.71\n\n[1704 rows x 6 columns]\n\n\n\nplotdata = (\n    gapminder\n    .query('continent == \"Asia\"')\n    .pivot(index=\"country\", columns=\"year\", values=\"lifeExp\")  # wide format 변환\n)\nplotdata\n\n\n\n\n\n\n\n\nyear\n1952\n1957\n1962\n1967\n1972\n1977\n1982\n1987\n1992\n1997\n2002\n2007\n\n\ncountry\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAfghanistan\n28.80\n30.33\n32.00\n34.02\n36.09\n38.44\n39.85\n40.82\n41.67\n41.76\n42.13\n43.83\n\n\nBahrain\n50.94\n53.83\n56.92\n59.92\n63.30\n65.59\n69.05\n70.75\n72.60\n73.92\n74.80\n75.64\n\n\nBangladesh\n37.48\n39.35\n41.22\n43.45\n45.25\n46.92\n50.01\n52.82\n56.02\n59.41\n62.01\n64.06\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\nVietnam\n40.41\n42.89\n45.36\n47.84\n50.25\n55.76\n58.82\n62.82\n67.66\n70.67\n73.02\n74.25\n\n\nWest Bank and Gaza\n43.16\n45.67\n48.13\n51.63\n56.53\n60.77\n64.41\n67.05\n69.72\n71.10\n72.37\n73.42\n\n\nYemen, Rep.\n32.55\n33.97\n35.18\n36.98\n39.85\n44.17\n49.11\n52.92\n55.60\n58.02\n60.31\n62.70\n\n\n\n\n33 rows × 12 columns\n\n\n\n\n\n# hierarchical clustering in scipy\nsns.clustermap(plotdata, col_cluster=False, method=\"ward\")\nplt.show()  # 생략\n\n\n\n\n\n\n\n\n\n\nHierarchical Clustering\nimport scipy.cluster.hierarchy as sch\n\ndendrogram = sch.dendrogram(\n    sch.linkage(plotdata, method=\"ward\"),\n    labels=plotdata.index,\n    orientation=\"left\",\n    no_plot=True,  # dendrogram plot 생략\n)\n\n(\n    gapminder.query('continent == \"Asia\"')\n    .pipe(so.Plot, x=\"year\", y=\"country\", color=\"lifeExp\")  # pipe operator\n    .add(so.Dot(pointsize=12, marker=\"s\"))  # square marker\n    .scale(y=so.Nominal(order=dendrogram[\"ivl\"]), color=\"rocket\")\n    .layout(size=(4, 7))\n)\n\n\n\n\n\n\n\n\n\n\n연습문제\n\nHow could you rescale the count dataset above to more clearly show the distribution of cut within colour, or colour within cut?\n\ncount 대신 비율을 계산 후 그려보세요.\n예를 들어, color D에 cut 각각의 비율들을 구해 시각화\n pd.crosstab(diamonds[\"cut\"], diamonds[\"color\"], normalize='columns')  # 'columns': 비율을 구하는 방향\n\nExplore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?\n\ngroupby([\"month\", \"dest\"])로 그룹핑을 해서 시작해 볼 것\n결측치를 어떻게 처리하면 좋을지 생각해 볼 것\nsns.clustermap() 또는 위의 dendrogram을 직접 이용한 플랏도 그려볼 것",
-    "crumbs": [
-      "Exploratory Data Analysis"
-    ]
-  },
-  {
-    "objectID": "contents/EDA/eda.html#two-continuous-variables",
-    "href": "contents/EDA/eda.html#two-continuous-variables",
-    "title": "Exploratory Data Analysis",
-    "section": "Two continuous variables",
-    "text": "Two continuous variables\n\nScatterplot, 2d-histogram\nDiscretize: pd.cut(), pd.qcut()\n\n\n(\n    so.Plot(diamonds.query('carat &lt; 3'), x=\"carat\", y=\"price\")\n    .add(so.Dots(alpha=1/100, color=\".6\"))\n    .add(so.Line(), so.PolyFit(5))\n)\n\n\n\n\n\n\n\n\n2d-histogram: x, y축 모두 binning\nfrom matplotlib.colors import LogNorm\n\nsns.jointplot(diamonds, x=\"carat\", y=\"price\", kind=\"hex\", gridsize=30, height=5, norm=LogNorm())  # gridsize: bin 개수\nplt.show()\n\n\n\n\n\n\n\nDiscretize: 연속 변수를 카테고리화\n\ndiamonds_cat = diamonds.query(\"carat &lt; 3\").assign(\n    carat_cat=lambda x: pd.cut(x.carat, 20, labels=False),\n    carat_qcat=lambda x: pd.qcut(x.carat, 20, labels=False),\n)\n\nsns.boxplot(diamonds_cat, x=\"carat_cat\", y=\"price\", fill=False)\nplt.show() # 생략\n\n\n\n\n\n\n\n\nrangeplot(diamonds_cat, x=\"carat_cat\", y=\"price\")\n\n\n\n\n\n\n\n\nsns.boxplot(diamonds_cat, x=\"carat_qcat\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\n\n연습문제\n\nInstead of summarising the conditional distribution with a boxplot, you could use a frequency polygon.\n\n즉, 두 연속변수 중 하나를 카테고리화하는데, boxplot대신 frequency polygon으로 그려볼 것\n\nVisualise the distribution of carat, partitioned by price.\nHow does the price distribution of very large diamonds compare to small diamonds? Is it as you expect, or does it surprise you?\nCombine two of the techniques you’ve learned to visualise the combined distribution of cut, carat, and price.\nTwo dimensional plots reveal outliers that are not visible in one dimensional plots. For example, some points in the plot below have an unusual combination of x and y values, which makes the points outliers even though their x and y values appear normal when examined separately.\nWhy is a scatterplot a better display than a binned plot for this case?\n\n\n(\n    so.Plot(diamonds, x='x', y='y')\n    .add(so.Dots())\n    .limit(x=(4, 11), y=(4, 11))\n)",
-    "crumbs": [
-      "Exploratory Data Analysis"
-    ]
-  },
-  {
-    "objectID": "contents/EDA/eda.html#buliding-models",
-    "href": "contents/EDA/eda.html#buliding-models",
-    "title": "Exploratory Data Analysis",
-    "section": "Buliding models",
-    "text": "Buliding models\nDiamonds 데이터셋에서,\n컷(cut)과 가격(price)의 관계는 예상과 달랐는데, 이는 컷(cut)과 무게(carat), 무게(carat)와 가격(price) 사이에 깊은 관계가 있었기 때문임.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n모델링을 통해 가격(price)과 크기(carat) 사이의 강한 관계를 제거할 수 있도록 모델을 세울 수 있음\n\n캐럿 당 가격으로 처리?\n\n이 관계를 제거한 후 남은 패턴을 탐색할 수 있음\nBuild a model!\n\nLinear model, 선형(직선) 모형을 여기서는 특히, \\(y = b_1x + b_0\\)인 1차 함수꼴의 모형으로 세움\n\\(price =  b_1 * carat + b_0 + e\\) (residual/error, 잔차/예측오차)의 모형을 세운 후 데이터에 가장 적합한(fit) 파라미터 \\(b_1, b_0\\) 값을 구하는 과정: fitted model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResidual samples\n\n\n\n\n\nimport statsmodels.formula.api as smf\n\ndiamonds2 = diamonds.query(\"carat &lt; 3\")\ndiamonds_fit = smf.ols(\"price ~ carat\", data=diamonds2).fit()\n\ndiamonds2 = diamonds2.assign(\n    pred=diamonds_fit.fittedvalues,\n    resid=diamonds_fit.resid,\n)\n\nnp.random.seed(126)\ndiamonds2[[\"cut\", \"carat\", \"price\", \"pred\", \"resid\"]].sample(7)\n\n\n\n\n\n             cut  carat  price     pred    resid\n32609      Ideal   0.31    802   117.54   684.46\n16255      Ideal   1.35   6502  8263.21 -1761.21\n17451      Ideal   1.01   6999  5600.20  1398.80\n16089       Good   1.01   6429  5600.20   828.80\n42762    Premium   0.56   1345  2075.63  -730.63\n26768       Good   2.02  16593 13510.90  3082.10\n47809  Very Good   0.71   1902  3250.49 -1348.49\n\n\nprint(diamonds_fit.params)  # print coefficients\nprint(f\"R2 = {diamonds_fit.rsquared:.3f}\")  # print R-squared\n\n\n\nIntercept   -2310.50\ncarat        7832.37\ndtype: float64\nR2 = 0.853\n\n\n\n\nresiduals (잔차)은 모형이 예측하지 못하는 정도를 나타내며, 그것들의 총체를 줄이는 것이 좋은 모형임.\n\n총체를 구하는 방법에는 여러가지가 있음.\n\n크기(carat)로 가격(price)을 예측/설명(account for)하는 정도를 제거한 후, 즉, 크기(carat)로 예측/설명되지 않는 가격(price)의 정도에 대해서 다른 변수들과의 관계를 탐구\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n(\n    so.Plot(diamonds2, x='carat', y='resid')\n    .add(so.Dots(color=\".6\", alpha=1/100))\n    .add(so.Line(color=\"red\"), so.Agg(lambda x: 0))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n캐럿(carat)으로 설명되지 않는 가격의 값들로만 추가 분석을 실시하면,\n즉, cut으로 “다이아몬드의 무게로는 설명되지 않는 가격”의 변량을 얼마나 추가로 설명할 수 있는가?\n\n\n\n\n\n\nCode\n\n\n\n\n\nfrom sbcustom import rangeplot\n(\n    rangeplot(diamonds2, x=\"cut\", y=\"resid\")\n    .add(so.Line(color=\"red\"), so.Agg(lambda x: 0))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n다이아몬드의 무게로 가격을 설명한 후 남은(residualized) 가격의 변량을 cut이 어떻게 예측하는가?\n다이아몬드의 무게로 설명되지(not acounted for) 않는 가격의 변량을 cut이 어떻게 예측하는가?\n다이아몬드의 무게가 가격에 미친 영향을 제거한 후, 혹은 그 영향을 넘어서서 (above and beyond) cut이 어떻게 가격을 예측하는가?\n다이아몬드의 무게(carat)가 동일하다면, 즉 무게가 고정된다면 (hold it constant), 무게의 영향이 제거된 다이아몬드의 퀄리티(cut, …)에 따른 가격에 대한 관계가 나타날 것임.\n\n다음과 같이 다이아몬드의 무게를 비슷한 구간으로 나누어 살펴보면,\n\n\n\n\n\n\nCode\n\n\n\ndiamonds2[\"carat_cat\"] = pd.qcut(diamonds2[\"carat\"], 12)\n(\n    rangeplot(diamonds2, x='cut', y='price')\n    .facet(\"carat_cat\", wrap=3)\n    .share(y=False)\n    .layout(size=(10, 8))\n)",
-    "crumbs": [
-      "Exploratory Data Analysis"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "contents/shortcuts.html",
+    "href": "contents/shortcuts.html",
+    "title": "오늘의 숏컷",
     "section": "",
-    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 1:00 ~ 2:50PM\nWebsite: dgdavs.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
-    "crumbs": [
-      "{{< fa angles-right size=xs >}} Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#강의-정보",
-    "href": "index.html#강의-정보",
-    "title": "Welcome",
-    "section": "",
-    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 1:00 ~ 2:50PM\nWebsite: dgdavs.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
-    "crumbs": [
-      "{{< fa angles-right size=xs >}} Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#강의-개요",
-    "href": "index.html#강의-개요",
-    "title": "Welcome",
-    "section": "강의 개요",
-    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n\n데이터를 조작, 가공하는 기술을 익히고,\n이를 통해 얻은 정제된 데이터를 시각화를 통해패턴을 여러 각도에서 살펴보고,\n데이터 모델링과 통계적 분석을 접목하여 현상에 대한 올바른이해를 돕습니다.\n\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition",
-    "crumbs": [
-      "{{< fa angles-right size=xs >}} Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#수업-활동",
-    "href": "index.html#수업-활동",
-    "title": "Welcome",
-    "section": "수업 활동",
-    "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)",
-    "crumbs": [
-      "{{< fa angles-right size=xs >}} Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#수업-계획",
-    "href": "index.html#수업-계획",
-    "title": "Welcome",
-    "section": "수업 계획",
-    "text": "수업 계획\n1주. 강의 개요 및 데이터 분석의 의미 소개\n2주. 넘파이와 판다스 라이브러리의 기본\n3주. 탐색적 분석을 위한 시각화 라이브러리\n4주. 시각화의 활용1\n5주. 시각화의 활용2\n6주. 판다스를 이용한 데이터의 변형 및 가공 1\n7주. 판다스를 이용한 데이터의 변형 및 가공 2\n8주. 기술적(descriptive) 분석 1\n9주. 기술적(descriptive) 분석 2\n10주. 탐색적 분석 & 및 중간고사\n11주. 데이터 모델링 기초 & 통계의 기초 개념\n12주. 데이터 모델링 1\n13주. 데이터 모델링 2\n14주. Binary 명목 변수에 대한 분석: 로지스틱 회귀분석 및 GLM 소개\n15주. 기말고사",
-    "crumbs": [
-      "{{< fa angles-right size=xs >}} Welcome"
-    ]
-  },
-  {
-    "objectID": "contents/notice.html#중간고사",
-    "href": "contents/notice.html#중간고사",
-    "title": "Notice",
-    "section": "중간고사",
-    "text": "중간고사",
-    "crumbs": [
-      "{{< fa check size=xs >}} Notice"
-    ]
-  },
-  {
-    "objectID": "contents/notice.html#기말고사",
-    "href": "contents/notice.html#기말고사",
-    "title": "Notice",
-    "section": "기말고사",
-    "text": "기말고사",
-    "crumbs": [
-      "{{< fa check size=xs >}} Notice"
-    ]
-  },
-  {
-    "objectID": "contents/notice.html#개별-프로젝트",
-    "href": "contents/notice.html#개별-프로젝트",
-    "title": "Notice",
-    "section": "개별 프로젝트",
-    "text": "개별 프로젝트",
-    "crumbs": [
-      "{{< fa check size=xs >}} Notice"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/rethinking.html",
-    "href": "contents/Introduction/rethinking.html",
-    "title": "Statistical thinking",
-    "section": "",
-    "text": "Data is a window, not a mirror to reality!\n\n수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요\n분석 결과는 주어진 가정에 대한 분명한 제시(transparency)와\n그 가정을 기반으로 한 적절한 해석이 요구됨\n\n\nSource: The Book of Why by Judea Pearl, Dana Mackenzie (2018)\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n이미지/사물 인식\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리, ChatGPT의 답변\n비즈니스 분석\n이상치 탐지\n\n\n\n\n관계/원인 분석\n현상/실재에 대한 이해과 매커니즘 파악\nStatistical Models 강점\nParametric\n\n음식/운동의 효능\n광고의 효과\n복지/치안 정책의 효과\n\n\n\n\n\n\n\n전형적인 인과적 질문들\n\n\n\nHow effective is a given treatment in preventing a disease?\nWas it the new tax break that caused our sales to go up? Or our marketing campaign?\nWhat is the annual health-care costs attributed to obesity?\nCan hiring records prove an employer guilty of sex discrimination?\nI am about to quit my job, will I regret it?\n\n\n번역 by DeepL\n\n특정 치료법이 질병 예방에 얼마나 효과적일까요?\n새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?\n비만으로 인한 연간 의료 비용은 얼마인가요?\n채용 기록으로 고용주의 성차별을 입증할 수 있나요?\n직장을 그만두려고 하는데 후회하게 될까요?\n\n\n\n예를 들어,\n\n닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n임금 차별\n\n가난, 인종, 범죄\n\nRacial differences in homicide rates are poorly explained by economics\n\n출산율의 감소\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지 접근법(예측과 이해)는 서로 상보 관계!",
-    "crumbs": [
-      "Introduction",
-      "Statistical Thinking"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/rethinking.html#데이터를-분석한다는-것은",
-    "href": "contents/Introduction/rethinking.html#데이터를-분석한다는-것은",
-    "title": "Statistical thinking",
-    "section": "",
-    "text": "Data is a window, not a mirror to reality!\n\n수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요\n분석 결과는 주어진 가정에 대한 분명한 제시(transparency)와\n그 가정을 기반으로 한 적절한 해석이 요구됨\n\n\nSource: The Book of Why by Judea Pearl, Dana Mackenzie (2018)\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n이미지/사물 인식\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리, ChatGPT의 답변\n비즈니스 분석\n이상치 탐지\n\n\n\n\n관계/원인 분석\n현상/실재에 대한 이해과 매커니즘 파악\nStatistical Models 강점\nParametric\n\n음식/운동의 효능\n광고의 효과\n복지/치안 정책의 효과\n\n\n\n\n\n\n\n전형적인 인과적 질문들\n\n\n\nHow effective is a given treatment in preventing a disease?\nWas it the new tax break that caused our sales to go up? Or our marketing campaign?\nWhat is the annual health-care costs attributed to obesity?\nCan hiring records prove an employer guilty of sex discrimination?\nI am about to quit my job, will I regret it?\n\n\n번역 by DeepL\n\n특정 치료법이 질병 예방에 얼마나 효과적일까요?\n새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?\n비만으로 인한 연간 의료 비용은 얼마인가요?\n채용 기록으로 고용주의 성차별을 입증할 수 있나요?\n직장을 그만두려고 하는데 후회하게 될까요?\n\n\n\n예를 들어,\n\n닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n임금 차별\n\n가난, 인종, 범죄\n\nRacial differences in homicide rates are poorly explained by economics\n\n출산율의 감소\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지 접근법(예측과 이해)는 서로 상보 관계!",
-    "crumbs": [
-      "Introduction",
-      "Statistical Thinking"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/rethinking.html#데이터-분석에-관한-전통적인-분류",
-    "href": "contents/Introduction/rethinking.html#데이터-분석에-관한-전통적인-분류",
-    "title": "Statistical thinking",
-    "section": "데이터 분석에 관한 전통적인 분류",
-    "text": "데이터 분석에 관한 전통적인 분류\n\n\n\n탐색적 분석 vs. 가설 검증\nexploratory vs. confirmatory\n\n탐색적 분석\n\n통찰 혹은 가설의 기초 제공\n끼워 맞추기? 오류에 빠지기 쉬움\n\n가설 검증\n\n진위의 확률을 높임\n탐색적 분석으로부터 온 가설은 재테스트\n\n\n\n\n\n관찰 vs. 실험 데이터\nobservational vs. experimental\n\n당근과 시력?\n커피의 효과?\n남녀의 임금 차별?\n심리치료의 효과?\n\n\n\n\n표본 vs. 모집단\nsample vs. population\n\nParameter(모수), uncertainty(불확실성)\n내일 태양이 뜰 확률?\n연봉과 삶의 만족도와 관계\n성별과 임금과의 관계\n두통약의 효능: “effect size”",
-    "crumbs": [
-      "Introduction",
-      "Statistical Thinking"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/rethinking.html#통계적-사고",
-    "href": "contents/Introduction/rethinking.html#통계적-사고",
-    "title": "Statistical thinking",
-    "section": "통계적 사고",
-    "text": "통계적 사고\nDistribution\n\n남녀 임금의 차이\n \n\n\nConfounding\nCommon Cause\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\nAnswers!\n\n\n\n\n\nSpurious relations\n \n\n\n\n앞서 든 예도 마찬가지로\n  \n올바른 관계를 파악하려면, 동일한 나이에 대해 그 관계를 파악한 후 각 나이에서의 효과를 (weighted) 평균해서 살펴봐야함\n통계에서는 이를 나이를 통제 (control for age)한다고 표현하며, 같은 의미로 다음과 같은 표현을 씀\n\n나이를 고려했을 때; account for age\n\n나이를 조정했을 때; adjust for age\n\n나이와 무관/독립인; independent of age\n\nSimpson’s paradox\n\nSource: The book of why by Judea Pearl\n예를 들어, 은퇴한 노인들을 대상으로 규칙적인 걷기가 사망율을 감소시킬 것이라는 가설을 확인하기 위해 1965년 이후 8000명 가량의 남성들을 추적조사한 데이터의 일부를 이용했는데,\n\n12년 후 사망율에서 casual walker(하루 1마일 이하)와 intense walker(하루 2마일 이상)가 각각 43%, 21.5%로 나타났음.\n이 걷기의 효과를 의심케 하는 요소들(confounding)은 무엇인가?\n\n\n\n\n\n\n\nAnswers!\n\n\n\n\n\n\n건강이 나빠 많이 걷지 못했을 수도…\n많이 걷는 사람은 상대적으로 젊을 수도…\n많이 먹는 사람이 덜 걸을 수도…\n술을 많이 먹는 사람이 덜 걸을 수도…\n\n\n\n\n남녀 연봉 차이의 원인을 찾으려면?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\nColider bias\n운동능력이 뛰어나면 지능이 떨어지는가?\n\nSource: Statistical Modeling by Daniel T. Kaplan\nMechanisms/Mediation\n\n레몬과 괴혈병\n\n\n만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되었을 때, 나이가 많은 선원들에게서 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 관계를 추론해서는 안됨. 하지만 예측은 여전히 유효함.\n\n\n\n수집된 데이터의 성격\nSelection Bias\n수집된 데이터의 성격에 따라 인과추론을 방해하거나(confounding)\n일반화할 수 있는 대상의 범위가 제한됨(external validity)\n\n노인에 관한 데이터: 누가 사망했는가?\n과거 기록을 이용?\n회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화\n누가 참여했는가? 어떤 방식으로 참여했는가?\n\n관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?\n\n어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?\n코호트/특정세대의 특성: 그들의 특성인가?\n\n\n\n실험\nExperiment\nRCT (randomized controlled trial)\n\n개념적으로는 물리적 통제라고 볼 수 있으며,\n두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당)",
-    "crumbs": [
-      "Introduction",
-      "Statistical Thinking"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "contents/Introduction/intro2.html",
-    "href": "contents/Introduction/intro2.html",
-    "title": "개관",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/intro2.html#미래-데이터의-중요성",
-    "href": "contents/Introduction/intro2.html#미래-데이터의-중요성",
-    "title": "개관",
-    "section": "",
-    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/intro2.html#데이터-사이언스의-응용-사례",
-    "href": "contents/Introduction/intro2.html#데이터-사이언스의-응용-사례",
-    "title": "개관",
-    "section": "데이터 사이언스의 응용 사례",
-    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/intro2.html#사회적-파장",
-    "href": "contents/Introduction/intro2.html#사회적-파장",
-    "title": "개관",
-    "section": "사회적 파장",
-    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계/디지털과의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/intro2.html#data-science",
-    "href": "contents/Introduction/intro2.html#data-science",
-    "title": "개관",
-    "section": "Data Science",
-    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
-  },
-  {
-    "objectID": "contents/Introduction/intro2.html#skills",
-    "href": "contents/Introduction/intro2.html#skills",
-    "title": "개관",
-    "section": "Skills",
-    "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
-    "crumbs": [
-      "Introduction",
-      "Data Analysis Intro"
-    ]
+    "text": "move : alt(option) + arrow up/down\ncopy : alt(option) + shift + arrow up/down\nctrl(cmd) + /\n셀 밖에서 a / b (esc, enter)\n셀 밖에서 c / x / v\ncmd + enter, cmd+ shift + enter (Mac)\nctrl + shift + -\nctrl(cmd) + d\nctrl(cmd) + [, ]\n\n\nctrl -\npandas=2.1.3, seaborn=0.13 update!"
   },
   {
     "objectID": "contents/Introduction/setup.html",
@@ -911,72 +694,261 @@
     ]
   },
   {
-    "objectID": "contents/shortcuts.html",
-    "href": "contents/shortcuts.html",
-    "title": "오늘의 숏컷",
+    "objectID": "contents/Introduction/intro2.html",
+    "href": "contents/Introduction/intro2.html",
+    "title": "개관",
     "section": "",
-    "text": "move : alt(option) + arrow up/down\ncopy : alt(option) + shift + arrow up/down\nctrl(cmd) + /\n셀 밖에서 a / b (esc, enter)\n셀 밖에서 c / x / v\ncmd + enter, cmd+ shift + enter (Mac)\nctrl + shift + -\nctrl(cmd) + d\nctrl(cmd) + [, ]\n\n\nctrl -\npandas=2.1.3, seaborn=0.13 update!"
-  },
-  {
-    "objectID": "contents/EDA/discretize.html",
-    "href": "contents/EDA/discretize.html",
-    "title": "Discretize",
-    "section": "",
-    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\n# import a dataset\ndiamonds = sm.datasets.get_rdataset(\"diamonds\", \"ggplot2\").data\ndiamonds2 = diamonds.copy()  # unmodified copy",
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
     "crumbs": [
-      "Exploratory Data Analysis",
-      "Discretize"
+      "Introduction",
+      "Data Analysis Intro"
     ]
   },
   {
-    "objectID": "contents/EDA/discretize.html#categorical-type-in-pandas",
-    "href": "contents/EDA/discretize.html#categorical-type-in-pandas",
-    "title": "Discretize",
-    "section": "Categorical type in pandas",
-    "text": "Categorical type in pandas\n\n일종의 데이터 압축 기술이며, 적은 levels로만 이루어진 데이터의 경우 메모리 절약\n순서가 부여되어, sorting을 하거나 min/max 함수가 알파벳 순서가 아닌 부여된 순서를 적용\n다른 Python library들 중에는 이 순서를 활용하는 것이 있음; 통계적 분석이나 플랏을 그릴 때\n\nMcKinney’s/Categorical data\npandas/Categorical data\n\npd.Categorical(diamonds[\"cut\"])  # defualt: alphabetical order\n\n['Ideal', 'Premium', 'Good', 'Premium', 'Good', ..., 'Ideal', 'Good', 'Very Good', 'Premium', 'Ideal']\nLength: 53940\nCategories (5, object): ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']\n\n\n\ndiamonds2[\"cut\"].astype(\"category\")  # defualt: alphabetical order\n\n0            Ideal\n1          Premium\n2             Good\n           ...    \n53937    Very Good\n53938      Premium\n53939        Ideal\nName: cut, Length: 53940, dtype: category\nCategories (5, object): ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']\n\n\n\n카테고리의 순서를 지정\n\ndiamonds[\"cut\"] = pd.Categorical(\n    diamonds[\"cut\"], \n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"],\n    ordered=True\n)\n\n\n# .astype() method를 쓰려면,\ndiamonds[\"cut\"] = (\n    diamonds[\"cut\"]\n    .astype(\"category\")\n    .cat.set_categories([\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"], ordered=True)\n)\n\n# 또는\nfrom pandas.api.types import CategoricalDtype\n\ncat_type = CategoricalDtype(\n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"], ordered=True\n)\ndiamonds[\"cut2\"] = diamonds[\"cut\"].astype(cat_type)\n\n\ndiamonds[\"cut\"]\n\n0            Ideal\n1          Premium\n2             Good\n           ...    \n53937    Very Good\n53938      Premium\n53939        Ideal\nName: cut, Length: 53940, dtype: category\nCategories (5, object): ['Fair' &lt; 'Good' &lt; 'Very Good' &lt; 'Premium' &lt; 'Ideal']\n\n\n\ndiamonds[\"cut\"].cat.categories  # categories 확인\n\nIndex(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], dtype='object')\n\n\n\ndiamonds[\"cut\"].cat.codes  # codes 확인\n\n0        4\n1        3\n2        1\n        ..\n53937    2\n53938    3\n53939    4\nLength: 53940, dtype: int8\n\n\nCategory 타입의 변수는 데이터에 없는 level을 포함할 수 있음.\n\ndiamonds[\"cut2\"] = pd.Categorical(\n    diamonds[\"cut\"], \n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\", \"Perfect\"],  # \"Perfect\" 추가\n    ordered=True\n)\n\n\ndiamonds.value_counts(\"cut2\", sort=False)\n\ncut2\nFair          1610\nGood          4906\nVery Good    12082\nPremium      13791\nIdeal        21551\nPerfect          0\ndtype: int64\n\n\n\ndiamonds.groupby(\"cut2\")[\"price\"].mean()\n# 경고: 관칠값이 없는 카테고리는 앞으로 보여지지 않을 것임\n# 앞으로는 기본값이 diamonds.groupby(\"cut2\", observed=True)\n\ncut2\nFair        4358.76\nGood        3928.86\nVery Good   3981.76\nPremium     4584.26\nIdeal       3457.54\nPerfect         NaN\nName: price, dtype: float64\n\n\n\n\n카테고리 순서의 적용\n.value_count(), .groupby(), min(), max()\n시각화 library: seaborn, pandas\n\ndiamonds.value_counts(\"cut\", sort=False)\n\ncut\nFair          1610\nGood          4906\nVery Good    12082\nPremium      13791\nIdeal        21551\ndtype: int64\n\n\n\n# 결과의 index는 CategoricalIndex object\ndiamonds.value_counts(\"cut\", sort=False).index\n\nCategoricalIndex(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], categories=['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], ordered=True, dtype='category', name='cut')\n\n\n\n# group keys\ndiamonds.groupby(\"cut2\")[\"price\"].mean()\n\ncut2\nFair        4358.76\nGood        3928.86\nVery Good   3981.76\nPremium     4584.26\nIdeal       3457.54\nPerfect         NaN\nName: price, dtype: float64\n\n\n\n# min(), max() : 카테고리 순서대로 계산\ndiamonds[\"cut\"].min()\n\n'Fair'\n\n\n\n# sort_values()에서도 카테고리 순서대로 정렬\ndiamonds.sort_values(\"cut\")\n\n       carat    cut color clarity  depth  table  price    x    y    z   cut2\n4654    1.00   Fair     F     SI1  66.70  57.00   3669 6.07 5.99 4.02   Fair\n53338   1.20   Fair     G      I1  64.40  55.00   2655 6.77 6.61 4.31   Fair\n40890   0.50   Fair     E     SI1  65.00  58.00   1176 4.98 4.90 3.21   Fair\n...      ...    ...   ...     ...    ...    ...    ...  ...  ...  ...    ...\n29308   0.25  Ideal     G     VS1  62.70  54.00    438 4.05 4.08 2.55  Ideal\n29339   0.31  Ideal     G     VS2  59.10  57.00    698 4.48 4.45 2.64  Ideal\n53939   0.75  Ideal     D     SI2  62.20  55.00   2757 5.83 5.87 3.64  Ideal\n\n[53940 rows x 11 columns]\n\n\nSeaborn도 Categorical type을 지원함.\n\nleft = so.Plot(diamonds, x=\"cut2\").add(so.Bar(), so.Count())\nright = so.Plot(diamonds2, x=\"cut\").add(so.Bar(), so.Count())  # catergorical type 아님\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsns.boxplot(data=diamonds, x=\"cut2\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\ndiamonds.boxplot(\"price\", by=\"cut2\")  # pandas boxplot\nplt.show()  # 생략",
-    "crumbs": [
-      "Exploratory Data Analysis",
-      "Discretize"
-    ]
-  },
-  {
-    "objectID": "contents/EDA/discretize.html#discretizebining",
-    "href": "contents/EDA/discretize.html#discretizebining",
-    "title": "Discretize",
-    "section": "Discretize/Bining",
-    "text": "Discretize/Bining\n연속변수를 카테고리화하여 범주형 변수로 변환하여 분석\npd.cut(), pd.qcut()\n\nparameters: bins, precision, labels\n\n\n# pd.cut: 동일한 길이의 10개 구간\n(\n    diamonds\n    .assign(carat_cat = lambda x: pd.cut(x.carat, 10))\n    .value_counts(\"carat_cat\", sort=False)\n)\n\ncarat_cat\n(0.195, 0.681]    25155\n(0.681, 1.162]    18626\n(1.162, 1.643]     7129\n                  ...  \n(3.567, 4.048]        5\n(4.048, 4.529]        2\n(4.529, 5.01]         1\nLength: 10, dtype: int64\n\n\n\n# 나누는 구간을 지정\n(\n    diamonds\n    .assign(carat_cat = lambda x: pd.cut(x.carat, [0, 1, 3, 5]))\n    .value_counts(\"carat_cat\")\n)\n\ncarat_cat\n(0, 1]    36438\n(1, 3]    17470\n(3, 5]       31\ndtype: int64\n\n\n\n# pd.qcut: 동일한 갯수의 관측치를 포함하도록 하는 10개의 구간; 구간의 길이가 모두 다름\n(\n    diamonds.assign(carat_cat = lambda x: pd.qcut(x.carat, 10))\n    .value_counts(\"carat_cat\", sort=False)\n)\n\ncarat_cat\n(0.199, 0.31]    6452\n(0.31, 0.35]     4606\n(0.35, 0.42]     5421\n                 ... \n(1.01, 1.13]     4573\n(1.13, 1.51]     6052\n(1.51, 5.01]     4635\nLength: 10, dtype: int64\n\n\n\n\n\n\n\n\nNote\n\n\n\ncarat_cat = pd.cut(diamonds[\"carat\"], 3)\ncarat_cat.dtype\n# CategoricalDtype(categories=[(0.195, 1.803], (1.803, 3.407], (3.407, 5.01]], ordered=True)\n\ncarat_cat.cat.categories\n# IntervalIndex([(0.195, 1.803], (1.803, 3.407], (3.407, 5.01]], dtype='interval[float64, right]')",
-    "crumbs": [
-      "Exploratory Data Analysis",
-      "Discretize"
-    ]
-  },
-  {
-    "objectID": "contents/Exams/midterm579.html",
-    "href": "contents/Exams/midterm579.html",
-    "title": "Midterm",
+    "objectID": "contents/Introduction/intro2.html#미래-데이터의-중요성",
+    "href": "contents/Introduction/intro2.html#미래-데이터의-중요성",
+    "title": "개관",
     "section": "",
-    "text": "Load Packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\n총점 225"
+    "text": "다양한 소스들로부터 데이터 생성: 전지구적 개인과 환경에 대한 상세한 정보 발생\n인터넷 & 통신 (SNS, 사진, 위치, 장소, 유동인구, 상품거래, 물류)\n사물인터넷 (IoT), CCTV\n스마트 팩토리, 파밍\n게놈프로젝트, 생체정보, 의료/보건: 인류, 실시간\n\n23andMe, Theranos\n\n과학적 발견: 물리법칙의 발견, 약물의 합성, 생체 내 상호작용의 메커니즘 규명\n자율주행차량: 내부, 외부\n금융정보 및 흐름\n사회 지표 활용: 고용, 직업, 연봉, 만족도 조사, 취약 계층, 우울\n생성형 인공지능: 기계의 정보 생산\nAI companion: 개인 내면에 대한 정보\n\n영화 Her (2013), Sony’s robotics dog ‘Aibo’",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
   },
   {
-    "objectID": "contents/Exams/midterm579.html#a.-다음은-어느-웨이터의-팁에-관한-tips-데이터를-이용한-질문입니다.",
-    "href": "contents/Exams/midterm579.html#a.-다음은-어느-웨이터의-팁에-관한-tips-데이터를-이용한-질문입니다.",
-    "title": "Midterm",
-    "section": "A. 다음은 어느 웨이터의 팁에 관한 tips 데이터를 이용한 질문입니다.",
-    "text": "A. 다음은 어느 웨이터의 팁에 관한 tips 데이터를 이용한 질문입니다.\n\n\n\n\n\n\n\ntotal_bill: 음식값($)\n\ntip: 팁($)\n\nsex: 팁을 준 사람의 성별\n\nsmoker: 테이블에 흡연자 유무\n\n\n\n\n\nday: 요일\n\ntime: 점심/저녁 시간\n\nsize: 테이블의 손님 수\n\n\n\n\n\n# load a dataset\ntips = sns.load_dataset(\"tips\")\n\n\nA-1. 점심, 저녁 때에 따른 식사비와 팁의 관계를 알아보기 위해 다음과 같은 시각화를 위한 코드를 짜보세요. (5)\n\nfitted line은 2차 다항함수로 fit 시키세요.\n\n\n\n\n\n\n\n\n\n\n\n\nA-2. 요일에 따른 팁의 분포를 보기 위한 다음과 같은 시각화를 위한 코드를 짜보세요. (10)\n\nbinwidth는 1($1)로 설정하세요.\ny축은 팁의 비율(proportion)로 표시하세요.\n각 요일 내에서의 비율이 되도록 하세요. (즉, 요일별로 높이의 합이 1)\n\n\n\n\n\n\n\n\n\n\n\n\nA-3. 요일에 따른 팁의 분포가 성별과 흡연자 유무에 따라 다른가를 보기 위한 다음과 같은 시각화를 위한 코드를 짜보세요. (10)\n\n디테일은 무시하시고,\n수업시간에 boxplot의 대체로 이용했던 시각화로, median과 25%, 75% quantile range가 표시되도록 하세요.\n\n\n\n\n\n\n\n\n\n\n\n\nA-4. 요일에 따른 팁의 평균(mean), 중앙값(median), 값의 개수(count)를 함께 보기 위해\n 1) 요일에 따른 세 통계치를 groupby를 이용해 다음과 같이 DataFrame으로 구한 후, (5)\n\n\n\n\n\n\n    day mean median count\n0  Thur    .      .     .\n1   Fri    .      .     .\n2   Sat    .      .     .\n3   Sun    .      .     .\n\n\n\n 2) (1)의 결과를 이용해 다음과 같이 시각화해보세요. (디테일은 무시) (15)\n\nmedian은 오렌지 색(orange)으로, mean은 빨강색(red)로 표시하고, 점의 크기에 count를 mapping하세요.\n점의 크기는 .scale(pointsize=(5, 15))를 활용해서 조정하세요.\n목요일에 median과 mean이 다른 요일에 비해 큰 차이가 나는데 그 의미를 팁을 어떻게 받았을지를 고려해서 기술해보세요.\n\n\n\n\n\n\n\n\n\n\nA-5. 웨이터로서 서빙하는 강도가 테이블의 손님 수에 비례한다고 가정합니다. 예를 들어, 1명 손님(table size 1) 테이블을 서빙하는데 비해 5명 손님(table size 5) 테이블을 서빙하는데 5배로 힘들다고 가정합니다. 웨이터가 노동 대비 팁을 최대로 받고자 하는데, 즉, 손님 한명 당 팁을 얼마 받게 되는지를 계산하여 (팁은 한 테이블 당 한번 받습니다.) 언제 몇 명의 손님 테이블을 서빙할 때, 노력 대비 최대의 팁을 얻게 될지에 대해서 다음 과정을 통해 분석하고 간단히 결론을 내려보세요. (주말 여부와 점심/저녁 여부에 따라 살펴봅니다.)\n 1) “주말(토,일) 여부”에 대한 변수(weekend)와 “한 손님 당 팁”에 해당하는 변수(tip_per_person)을 추가하고, (5)\n   (주의: tip.size 사용불가, tip[\"size\"]으로 사용)\n#     total_bill tip sex smoker day time size weekend tip_per_person\n# 0            .   .   .      .   .    .    .       .              .\n# 1            .   .   .      .   .    .    .       .              .\n# 2            .   .   .      .   .    .    .       .              .\n...\n 2) 주말여부, 점심/저녁 여부, 테이블 사이즈의 따른 “한 손님 당 팁”의 평균값을 DataFrame으로 구한 후, (5)\n#    weekend time size mean_tip_pp\n# 0        .    .    .           .\n# 1        .    .    .           .\n# 2        .    .    .           .\n...\n 3) 이를 이용해 대략 다음과 같은 시각화를 해보고 (디테일은 무시), 이 플랏에서 발견되는 패턴에 대해 간단히 언급하고, 결론을 기술해보세요. (10)"
+    "objectID": "contents/Introduction/intro2.html#데이터-사이언스의-응용-사례",
+    "href": "contents/Introduction/intro2.html#데이터-사이언스의-응용-사례",
+    "title": "개관",
+    "section": "데이터 사이언스의 응용 사례",
+    "text": "데이터 사이언스의 응용 사례\n\n영업 및 마케팅\n\n웹사이트에서 고객의 구매 행동, 소셜 미디어의 댓글을 추적 고객의 선호도를 파악\n월마트의 경우,\n\n수 십년 넘게 매장의 재고 수준을 최적화했고, 2004년, 몇 주 전에 발생한 허리케인의 판매 데이터를 분석하여 “딸기 팝타트”를 재입고\n소셜 미디어 트렌드 및 신용카드 활동을 분석하여 신제품 출시 및 고객 경험 개인화/최적화\n\n추천 시스템을 통해 사용자 취향에 맞는 제품을 추천하여 틈새 상품의 판매도 촉진\n\n\n\n공공기관\n\n미국의 경우, 정부 주도의 데이터 과학 이니셔티브 발족; 특히, 보건 분야에 큰 투자\n\nPrecision Medicine Initiative (2015)\n\n인간 게놈 시퀀싱과 데이터 과학을 결합하여 개별 환자를 위한 약물을 설계\n백만 명 이상의 자원봉사자로부터 환경, 라이프스타일, 생물학적 데이터를 수집하여 정밀 의학을 위한 세계 최대의 데이터를 구축\n\n\n\n도시 운영 및 설계\n\n스마트 시티: 환경, 에너지, 교통 흐름을 추적, 분석, 제어\n장기적 도시 계획 수립에 정보를 축적\n\n치안 및 범죄 예측\n\nPolice Data Initiative\n\n범죄 다발 지역과 재범률을 예측\n시민 단체들의 비판도 존재\n\n시카고 경찰; 1주일 이내의 범죄 예측\n비판: Event-level prediction of urban crime reveals a signature of enforcement bias in US cities. Nature human behaviour\n\n각종 보험료 산정\n\n과거의 데이터를 분석하여, 보험금을 지급할 확률을 계산하고 보험료를 산정\n\n\n\n\n스포츠\n\nMoneyball: The Art of Winning an Unfair Game\n\n야구에서 전통적으로 강조되던 도루, 타점, 타율의 통계보다 출루율과 장타율이 더 나은 척도였음\n“저평가된” 선수, 승리에 기여하는 능력에 비해 낮은 급여를 받는 선수를 찾아 영입\n\nSabermetrics: sciecne of baseball\n데이터 분석을 통해 시장에서 어떤 조직이 우위를 점할 수 있는 방법을 제시\n적절한 속성을 찾는 것의 중요성",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
   },
   {
-    "objectID": "contents/Exams/midterm579.html#b.-다음은-nycflight13패키지의-데이터셋를-이용한-질문입니다.",
-    "href": "contents/Exams/midterm579.html#b.-다음은-nycflight13패키지의-데이터셋를-이용한-질문입니다.",
-    "title": "Midterm",
-    "section": "B. 다음은 nycflight13패키지의 데이터셋를 이용한 질문입니다.",
-    "text": "B. 다음은 nycflight13패키지의 데이터셋를 이용한 질문입니다.\n데이터셋 import\nflights = sm.datasets.get_rdataset(\"flights\", \"nycflights13\").data\nweather = sm.datasets.get_rdataset(\"weather\", \"nycflights13\").data\n또는 다운로드 flights.csv, weather.csv\n다음 코드를 이용해 중복된 값을 제거하고 진행하세요.\nweather.drop_duplicates(subset=[\"origin\", \"year\", \"month\", \"day\", \"hour\"], inplace=True)\n\nB-1. 항공사(carrier)별로 1) 실제 출항한 항공편의 수와 2) 결항된 항공편의 수를 크기 순으로 다음과 같이 시각화해보세요. (디테일은 무시) (15)\n\n결항된 항공편은 dep_delay값이 missing인 경우로 정의하고,\n결항된 항공편을 표시하는 컬럼(cancel)을 만든 후,\n항공편의 수를 따로 구하지 말고 seaborn.objects로 직접 시각화해보세요.\nBar의 표시 순서는 결항여부와 상관없이 항공편 수가 많은 항공사 순으로 하세요.\n.share(y=False)를 이용해 y축의 눈금이 변하도록 하세요.\n\n\n\n\n\n\n\n\n\n\n\n\nB-2. 위 플랏에서 결항된 항공편이 많은 상위 3개의 항공사만로 flights 데이터를 필터링하여, 다음과 같은 것을 알아봅니다.\n수업 과제에서 대략 하루 중 오전부터 시간이 지남에 따라 항공편의 지연이 증가하는 것을 보았습니다. 이번에는 항공사별로 시간대(hour)에 따른 도착 지연 여부의 비율이 달(month)에 따라 변화하는지를 보고자 합니다.\n 1) 30분 넘게 도착이 지연되었는지 여부(즉, arr_delay &gt; 30의 여부)를 표시하는 변수를 만든 후, 항공사(carrier), 달(month), 시간(hour)에 따른 30분 이상 도착 지연된 항공편의 비율(즉, arr_delay &gt; 30인 항공편의 비율)을 다음과 같은 형태로 구합니다. (10)\n#     carrier month hour mean_delay_rate\n# 0         .     .    .               .\n# 1         .     .    .               .\n# 2         .     .    .               .\n# ...\n 2) 이를 이용하여, 대략 다음과 같이 column에 달(month), row에 항공사(carrier)를 facetting하여 시각화를 구한 후 (디테일은 무시), 눈에 띄는 패턴에 대해 “대략” 기술해보세요. (하루 중 시간이 지남에 따라 지연율이 증가하는 경향을 중심으로) (10)\n\nfitted line은 2차 다항함수로 합니다.\n.layout(size=(14, 6))를 추가하여, 플랏의 크기를 조절하세요.\n\n\n\n\n\n\n\n\n\n\n\n\nB-3. 출발지연(dep_delay)이 날씨에 의해 얼마나 영향을 받았는지 알아보고자 합니다.\n\n우선, flights와 weather 데이터를 default인 inner방식으로 merge하여 flights_weather 변수명로 저장 후 진행합니다.\ndep_delay가 음수인 경우 지연되지 않은 것으로 보고 음수인 값을 모두 0으로 바꿉니다.\n\n 1) 바람의 세기(wind_speed)에 따라 평균 출발지연(dep_delay)이 어떻게 변하는지 알아보기 위해, 따로 값을 구하지 않고 seaborn.objects를 직접 이용해 다음과 같은 시각화를 구현해보세요. (디테일은 무시) (10)\n\nso.Agg()를 이용해 평균값이 그려지도록 하고,\n출발지(origin) 공항에 따라 차이가 있는지 구별하고,\nfitted line은 5차 다항함수로 합니다.\n\n\n\n\n\n\n\n\n\n\n 2) 이번에는 이슬점(dewp)에 따른 평균 출발지연(dep_delay)에 대해 마찬가지로 시각화해보세요. (5)\n\n\n\n\n\n\n\n\n\n 3) (1)번 플랏에서 특이하게 오래 지연된(출발 지연 평균값이 50이상) 몇 개의 값이 보입니다. 그 지점에 해당하는 부분의 데이터를 다음과 같이 구해보세요. (10)\n\n우선, (1)번 플랏에 표시된 값들을 직접 구하는데, flights_weather 테이블에서 출발지(origin)와 바람의 세기(wind_speed)에 따른 dep_delay의 평균값들을 구한 후,\n그 값이 50이상인 경우에 해당하는 경우로만 weather 테이블을 필터링하고,\n다음의 컬럼들만 선택해 표시하세요.\n\norigin, month, day, hour 와\n기상정보: temp, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, visib\n\n\n#     origin  month  day  hour  temp  dewp  humid  wind_dir  wind_speed  ...\n#       EWR      1   24    13 24.08 -7.06  24.57    330.00       28.77   ...\n#       ...    ...  ...   ...   ...   ...    ...      ...         ...    ...\n#       ...    ...  ...   ...   ...   ...    ...      ...         ...    ...\n#       ...    ...  ...   ...   ...   ...    ...      ...         ...    ...\n# [20 rows x 13 columns]\n 4) 이제 3)에서 얻은 테이블로 다음과 같이 출발지(origin)에 따른 각 기상정보들에 대한 평균값을 구하는데, (5)\n\ntag 컬럼을 추가하여, severe로 모두 표기하세요.\n\n\n\n\n\n\n\n\n\n\n\ntemp\ndewp\nhumid\nwind_dir\nwind_speed\nwind_gust\nprecip\npressure\nvisib\ntag\n\n\norigin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEWR\n40.75\n22.62\n51.84\n187.00\n29.34\n40.28\n0.01\n1013.24\n9.80\nsevere\n\n\nJFK\n49.89\n39.45\n71.75\n145.00\n31.07\n42.41\n0.02\n1007.58\n8.44\nsevere\n\n\nLGA\n42.53\n28.49\n58.69\n310.00\n33.37\n43.73\n0.07\n1011.20\n8.50\nsevere\n\n\n\n\n\n\n\n\n 5) 이번에는 flights_weather 테이블에서 마찬가지로 출발지(origin)에 따른 각 기상정보들에 대한 평균값을 구해보세요. (5)\n\n이는 4)에서 얻은 특이한 날에 대한 평균값과 전체 평균값을 비교하기 위함입니다.\ntag 컬럼을 추가하여, overall로 모두 표기하세요.\n\n\n\n\n\n\n\n\n\n\n\ntemp\ndewp\nhumid\nwind_dir\nwind_speed\nwind_gust\nprecip\npressure\nvisib\ntag\n\n\norigin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEWR\n57.42\n41.87\n59.47\n199.39\n10.05\n23.93\n0.01\n1017.76\n9.24\noverall\n\n\nJFK\n56.19\n42.18\n62.34\n204.68\n12.23\n27.67\n0.00\n1018.07\n9.22\noverall\n\n\nLGA\n57.37\n40.78\n56.70\n200.59\n11.15\n24.86\n0.00\n1017.59\n9.31\noverall\n\n\n\n\n\n\n\n\n 6) 다음과 같이 출발지(origin)에 따라 severe한 경우와 overall을 비교하기 위한 시각화를 해보세요. (15)\n\n4)번과 5)번 테이블을 pd.concat([df1, df2], axis=0)을 이용해 합친 후,\n.melt()를 이용해 long format으로 바꾸어 다음과 같이 기상정보가 한 줄에 3개씩 나타나도록 시각화하고, 눈에 띄는 점을 간략히 기술해보세요. (디테일은 무시)\n\nid_vars=[\"origin\", \"tag\"]으로 설정"
+    "objectID": "contents/Introduction/intro2.html#사회적-파장",
+    "href": "contents/Introduction/intro2.html#사회적-파장",
+    "title": "개관",
+    "section": "사회적 파장",
+    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계/디지털과의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
   },
   {
-    "objectID": "contents/Exams/midterm579.html#c.-다음은-movielens-1m-dataset을-이용한-질문입니다.",
-    "href": "contents/Exams/midterm579.html#c.-다음은-movielens-1m-dataset을-이용한-질문입니다.",
-    "title": "Midterm",
-    "section": "C. 다음은 MovieLens 1M Dataset을 이용한 질문입니다.",
-    "text": "C. 다음은 MovieLens 1M Dataset을 이용한 질문입니다.\n\n\nImport data (클릭)\nunames = [\"user_id\", \"gender\", \"age\", \"occupation\", \"zip\"]\nusers = pd.read_table(\n    \"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/users.dat\",\n    sep=\"::\",\n    header=None,\n    names=unames,\n    engine=\"python\",\n)\n\nrnames = [\"user_id\", \"movie_id\", \"rating\", \"timestamp\"]\nratings = pd.read_table(\n    \"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/ratings.dat\",\n    sep=\"::\",\n    header=None,\n    names=rnames,\n    engine=\"python\",\n)\n\nmnames = [\"movie_id\", \"title\", \"genres\"]\nmovies = pd.read_table(\n    \"https://raw.githubusercontent.com/wesm/pydata-book/3rd-edition/datasets/movielens/movies.dat\",\n    sep=\"::\",\n    header=None,\n    names=mnames,\n    engine=\"python\",\n)\n\n\n또는, 데이터셋 다운로드 링크: users.csv, ratings.csv, movies.csv\n다음 C-1 ~ C-5를 통해 장르와 성별에 따른 (개인별로 표준화된 평점으로) 평균 최고점을 얻은 영화를 구합니다.\n\nC-1. 우선, ratings 데이터에서 개인별로 몇 개의 영화를 평가했는지를 groupby를 이용해 구한 후, 그 결과를 이용해 다음과 같이 개인별 평가 개수에 대한 분포를 frequency polygon 스타일로 시각화해보세요. (10)\n\nbinwidth=10로 하고,\nx축의 범위는 [0, 1000]으로 제한하세요.\n\n\n\n\n\n\n\n\n\n\n\n\nC-2. 수업 과제에서 살펴보았듯이 개인별로 평가에 대한 편향성이 존재합니다. 이를 해결하기 위한 한 방법으로, 개인별로 평점을 표준화해서 이후 진행하려고 합니다. (10)\n\n우선, 개인별 표준화를 위해 필요한 최소 평점 개수를 30개로 정하고, C-1을 이용해 평점을 최소 30개 이상(포함) 남긴 사람들만으로 ratings 데이터를 필터링하고,\n이들의 평점을 개인별 표준화하여 rating_z라는 변수에 추가하여,\n\n표준화는 평균을 빼고 표준편차로 나누는 것을 말합니다.\n\n대략 다음과 같은 테이블을 구합니다. 예를 들어, user_id 1번에게는 rating 5점이 그 사람의 표준화 점수로는 1.19점에 해당합니다.\n\n\n\n\n\n\n\n\n\n \nuser_id\nmovie_id\nrating\ntimestamp\nn_ratings\nrating_z\n\n\n\n\n0\n1\n1193\n5\n978300760\n53\n1.19\n\n\n1\n1\n661\n3\n978302109\n53\n-1.75\n\n\n2\n1\n914\n3\n978301968\n53\n-1.75\n\n\n3\n1\n3408\n4\n978300275\n53\n-0.28\n\n\n4\n1\n2355\n5\n978824291\n53\n1.19\n\n\n5\n...\n...\n...\n...\n...\n...\n\n\n\n\n\n\n\n\nC-3. 영화(movie_id)와 성별(gender)에 따른 표준화된 평점(rating_z)의 평균을 구하기 위해\n\nC-2를 구하지 못한 경우, 링크에서 다운로드 받아 진행하세요.\n우선, C-2의 결과 테이블과 users 데이터를 merge하여, user_ratings 데이터를 만든 후,\n영화(movie_id)와 성별(gender)에 따른 표준화된 평점(rating_z)의 평균을 다음 테이블과 같이 구합니다. (10)\n\n#      movie_id gender mean_rating_z\n# 0           .      .             .\n# 1           .      .             .\n# 2           .      .             .\n# ...\n\n\nC-4. 장르와 성별 내에서 평균 평점이 높은 순으로 순위를 매기기 위해서,\n\n우선, movies 데이터를 다음을 이용해 long format으로 바꾼 후,\nmovies_long = movies.copy()\nmovies_long[\"genres\"] = movies_long[\"genres\"].str.split(\"|\")\nmovies_long = movies_long.explode(\"genres\")\n이를 C-3의 결과와 merge하고,\n장르와 성별에 내에서 “표준화된 평점의 평균”(mean_rating_z)이 높은 순서대로 순위를 매겨 rank라는 변수에 추가하여 다음 형태의 테이블을 구합니다. (10)\n\nrank()는 min 방식으로 적용합니다.\n\n\n#       movie_id gender mean_rating_z title genres rank\n# 0            .      .             .     .      .    .\n# 1            .      .             .     .      .    .\n# 2            .      .             .     .      .    .\n# ...\n\n\nC-5. 이제 (C-4)의 테이블을 이용하여, 장르와 성별에 따라 표준화된 평점 평균이 가장 높은 영화 한편씩을 보여주는 다음과 같은 테이블을 구합니다. (10)\n\npivot()을 이용하여, 장르(genres)별로 성별(gender)이 wide format으로 나타나도록, 그리고 영화제목(title)과 평점(mean_rating_z)이 각각 나타타도록 테이블을 구합니다. (MultiIndex)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nmean_rating_z\n\n\ngender\nF\nM\nF\nM\n\n\ngenres\n\n\n\n\n\n\n\n\nAction\n.\n.\n.\n.\n\n\nAdventure\n.\n.\n.\n.\n\n\nAnimation\n.\n.\n.\n.\n\n\nChildren's\n.\n.\n.\n.\n\n\n...\n...\n...\n...\n...\n\n\nSci-Fi\n.\n.\n.\n.\n\n\nThriller\n.\n.\n.\n.\n\n\nWar\n.\n.\n.\n.\n\n\nWestern\n.\n.\n.\n.\n\n\n\n\n18 rows × 4 columns\n\n\n\n\n\n\n\nC-6. 이번에는 장르별 평점의 분포 차이를 살펴보는데,\n 1) 장르별로 각 평점(1, 2, 3, 4, 5)을 몇 개 얻었는지(n)와 각 장르 내에서 각 평점이 몇 %를 차지하는지(pct)를 다음 테이블과 같이 구합니다. (10)\n\n\n     genres  rating  n pct\n0    Action       1  .   .\n1    Action       2  .   .\n2    Action       3  .   .\n3    Action       4  .   .\n..      ...     ... ..  ..\n86  Western       2  .   .\n87  Western       3  .   .\n88  Western       4  .   .\n89  Western       5  .   .\n\n[90 rows x 4 columns]\n\n\n 2) 이를 이용해 대략 다음과 같은 형태로 장르별 평점의 분포를 시각화합니다. (디테일은 무시) (10)\n\n평점 5의 비율이 높은 순서대로 정렬되도록 합니다.\n이 플랏으로부터 어떤 (잠정적) 추론을 할 수 있을지 간략히 기술해보세요.\n주의: rating의 dtype이 integer나 string타입이라야 5가지의 색상(hue)으로 표현됩니다."
+    "objectID": "contents/Introduction/intro2.html#data-science",
+    "href": "contents/Introduction/intro2.html#data-science",
+    "title": "개관",
+    "section": "Data Science",
+    "text": "Data Science\n\nArtificial intelligence (인공 지능)\nMachine learning (기계 학습)\nDeep learning (심층 학습)\nData mining (데이터 마이닝)\nStatistical Learning (통계적 학습)\n\n\n\n\n소프트웨어 개발\n데이터에 기반한 분석 위해 작동하도록 프로그래밍을 하여 운영되도록 하는 일\n주로 전통적인 컴퓨터 사이언스의 커리큘럼에 의해 트레이닝\n\n유튜브의 영상 추천\n페이스북의 친구 매칭\n스팸메일 필터링\n자율주행\n\n\n\n\n\n\n데이터 분석\n하나의 구체적인 질문에 답하고자 함\n다양한 소스의 정제되는 않은 데이터를 통합하거나 가공하는 기술이 요구\n\nDNA의 분석을 통해 특정 질병의 발병 인자를 탐색\n유동인구와 매출을 분석해 상권을 분석\n어떤 정책의 유효성을 분석에 정책결정에 공헌\n교통 흐름의 지연이 어떻게 발생하는지를 분석, 해결책 제시",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "contents/Introduction/intro2.html#skills",
+    "href": "contents/Introduction/intro2.html#skills",
+    "title": "개관",
+    "section": "Skills",
+    "text": "Skills\n\n\nDomain knowledge\n\n해결하려는 문제에 대한 이해없이 단순한 알고리즘만으로 “one size fits all”은 효과적이지 않음\n추상화된 현실에 대한 모형은 수많은 가정/사전 지식(prior knowledge)을 전제하고 있음.\n각 분야의 전문 지식은 데이터가 발생되는 과정, 데이터의 특성, 데이터의 의미를 이해하는데 필수적\n\nEthics\n\n데이터를 합법적이고 적절하게 사용하려면 규정을 이해하고, 자신의 업무에 미치는 영향과 사회에 미치는 파급력 대한 윤리적 이해가 필요\n\n배출(exhaust) 데이터: 어떤 목적을 가진 데이터 수집 프로세스로부터 얻어진 부산물\n\n소셜 미디어: 사용자가 다른 사람들과 소통할 수 있도록 도움\n\n공유된 이미지, 블로그 게시물, 트윗, 좋아요 등으로부터\n누가/얼마나 많이 보았는지/좋아요/리트윗을 했는지 등을 수집\n\n아마존 웹사이트: 다양한 물건을 편리하게 구매할 수 있도록 도움\n\n사용자가 장바구니에 어떤 품목을 담았는지, 사이트에 얼마나 오래 머물렀는지, 어떤 다른 품목을 보았는지 등을 수집\n\n메타데이터(metadata)\n통화 내역만으로 많은 민감한 정보을 유추할 수 있음\n\n알코올 중독자 모임, 이혼 전문 변호사, 성병 전문 병원 등\n\n\n한편, 서비스와 마케팅을 타겟팅할 수 있는 잠재력\n\n\nWrangling\n\n데이터 소스는 다양한 형식으로 존재\n통합, 정리, 변환, 정규화 등의 작업이 요구\ndata munging, data wrangling, data cleaning, data preparation, data preprocessing 등으로 불림\n\nDatabase & computer science\n\n수집된 데이터가 저장되고, 가공/추출된 데이터의 재저장 등 데이터베이스와의 소통할 수 있는 기술\n다양해지고 방대해진 빅데이터를 저장/배포하기 위한 도구를 활용\nML 모델을 이해하고 개발하여 제품의 출시, 분석, 백엔드 애플리케이션에 통합할 수 있는 기술 등\n\nVisualisation\n\n작업 프로세스의 모든 과정에 관여\n\n데이터를 탐색하거나,\n데이터의 의미를 효과적으로 전달\n\n\nStatistics & Probability\n\n데이터 과학 프로세스 전반에 걸쳐 사용됨\n\n초기 수집과 조사\n다양한 모델과 분석의 결과를 해석\n의사결정에 활용\n\n\nMachine Learning\n\n데이터로부터 패턴을 찾기 위한 다양한 알고리즘을 사용\n응용 측면에서는\n\n수많은 알고리즘에 대해 가정, 특성, 용도, 결과의 의미, 적용가능한 유형의 데이터 등\n해결할 문제와 데이터에 가장 적합한 알고리즘을 파악\n\n\nCommunication\n\n데이터에 담긴 스토리를 효과적으로 전달하는 능력\n분석을 통해 얻은 인사이트, 조직 내 목적에 어떻게 부합하는지, 조직의 기능에 미칠 수 있는 영향 등",
+    "crumbs": [
+      "Introduction",
+      "Data Analysis Intro"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "contents/Introduction/rethinking.html",
+    "href": "contents/Introduction/rethinking.html",
+    "title": "Statistical thinking",
+    "section": "",
+    "text": "Data is a window, not a mirror to reality!\n\n수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요\n분석 결과는 주어진 가정에 대한 분명한 제시(transparency)와\n그 가정을 기반으로 한 적절한 해석이 요구됨\n\n\nSource: The Book of Why by Judea Pearl, Dana Mackenzie (2018)\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n이미지/사물 인식\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리, ChatGPT의 답변\n비즈니스 분석\n이상치 탐지\n\n\n\n\n관계/원인 분석\n현상/실재에 대한 이해과 매커니즘 파악\nStatistical Models 강점\nParametric\n\n음식/운동의 효능\n광고의 효과\n복지/치안 정책의 효과\n\n\n\n\n\n\n\n전형적인 인과적 질문들\n\n\n\nHow effective is a given treatment in preventing a disease?\nWas it the new tax break that caused our sales to go up? Or our marketing campaign?\nWhat is the annual health-care costs attributed to obesity?\nCan hiring records prove an employer guilty of sex discrimination?\nI am about to quit my job, will I regret it?\n\n\n번역 by DeepL\n\n특정 치료법이 질병 예방에 얼마나 효과적일까요?\n새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?\n비만으로 인한 연간 의료 비용은 얼마인가요?\n채용 기록으로 고용주의 성차별을 입증할 수 있나요?\n직장을 그만두려고 하는데 후회하게 될까요?\n\n\n\n예를 들어,\n\n닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n임금 차별\n\n가난, 인종, 범죄\n\nRacial differences in homicide rates are poorly explained by economics\n\n출산율의 감소\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지 접근법(예측과 이해)는 서로 상보 관계!",
+    "crumbs": [
+      "Introduction",
+      "Statistical Thinking"
+    ]
+  },
+  {
+    "objectID": "contents/Introduction/rethinking.html#데이터를-분석한다는-것은",
+    "href": "contents/Introduction/rethinking.html#데이터를-분석한다는-것은",
+    "title": "Statistical thinking",
+    "section": "",
+    "text": "Data is a window, not a mirror to reality!\n\n수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요\n분석 결과는 주어진 가정에 대한 분명한 제시(transparency)와\n그 가정을 기반으로 한 적절한 해석이 요구됨\n\n\nSource: The Book of Why by Judea Pearl, Dana Mackenzie (2018)\n\n\n\n\n\n예측 모델\n예측의 신속성과 정확성\nMachine Learning 강점\nAlgorithmic\n\n이미지/사물 인식\n개인화된 추천 목록: 유튜브, 넷플릭스\n시리, ChatGPT의 답변\n비즈니스 분석\n이상치 탐지\n\n\n\n\n관계/원인 분석\n현상/실재에 대한 이해과 매커니즘 파악\nStatistical Models 강점\nParametric\n\n음식/운동의 효능\n광고의 효과\n복지/치안 정책의 효과\n\n\n\n\n\n\n\n전형적인 인과적 질문들\n\n\n\nHow effective is a given treatment in preventing a disease?\nWas it the new tax break that caused our sales to go up? Or our marketing campaign?\nWhat is the annual health-care costs attributed to obesity?\nCan hiring records prove an employer guilty of sex discrimination?\nI am about to quit my job, will I regret it?\n\n\n번역 by DeepL\n\n특정 치료법이 질병 예방에 얼마나 효과적일까요?\n새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?\n비만으로 인한 연간 의료 비용은 얼마인가요?\n채용 기록으로 고용주의 성차별을 입증할 수 있나요?\n직장을 그만두려고 하는데 후회하게 될까요?\n\n\n\n예를 들어,\n\n닭의 울음이 태양을 솟게 하는가?\n돈과 행복: 패턴 vs. 예외\n\n임금 차별\n\n가난, 인종, 범죄\n\nRacial differences in homicide rates are poorly explained by economics\n\n출산율의 감소\n\n\n\n\n\n\n심리적 관성/편견 주의\n분석가의 책임의식\n두 가지 접근법(예측과 이해)는 서로 상보 관계!",
+    "crumbs": [
+      "Introduction",
+      "Statistical Thinking"
+    ]
+  },
+  {
+    "objectID": "contents/Introduction/rethinking.html#데이터-분석에-관한-전통적인-분류",
+    "href": "contents/Introduction/rethinking.html#데이터-분석에-관한-전통적인-분류",
+    "title": "Statistical thinking",
+    "section": "데이터 분석에 관한 전통적인 분류",
+    "text": "데이터 분석에 관한 전통적인 분류\n\n\n\n탐색적 분석 vs. 가설 검증\nexploratory vs. confirmatory\n\n탐색적 분석\n\n통찰 혹은 가설의 기초 제공\n끼워 맞추기? 오류에 빠지기 쉬움\n\n가설 검증\n\n진위의 확률을 높임\n탐색적 분석으로부터 온 가설은 재테스트\n\n\n\n\n\n관찰 vs. 실험 데이터\nobservational vs. experimental\n\n당근과 시력?\n커피의 효과?\n남녀의 임금 차별?\n심리치료의 효과?\n\n\n\n\n표본 vs. 모집단\nsample vs. population\n\nParameter(모수), uncertainty(불확실성)\n내일 태양이 뜰 확률?\n연봉과 삶의 만족도와 관계\n성별과 임금과의 관계\n두통약의 효능: “effect size”",
+    "crumbs": [
+      "Introduction",
+      "Statistical Thinking"
+    ]
+  },
+  {
+    "objectID": "contents/Introduction/rethinking.html#통계적-사고",
+    "href": "contents/Introduction/rethinking.html#통계적-사고",
+    "title": "Statistical thinking",
+    "section": "통계적 사고",
+    "text": "통계적 사고\nDistribution\n\n남녀 임금의 차이\n \n\n\nConfounding\nCommon Cause\n\n머리가 길면 우울증도 높다?\n초등생이 발이 크면 독해력도 높다?\n\n\n\n\n\n\n\nAnswers!\n\n\n\n\n\nSpurious relations\n \n\n\n\n앞서 든 예도 마찬가지로\n  \n올바른 관계를 파악하려면, 동일한 나이에 대해 그 관계를 파악한 후 각 나이에서의 효과를 (weighted) 평균해서 살펴봐야함\n통계에서는 이를 나이를 통제 (control for age)한다고 표현하며, 같은 의미로 다음과 같은 표현을 씀\n\n나이를 고려했을 때; account for age\n\n나이를 조정했을 때; adjust for age\n\n나이와 무관/독립인; independent of age\n\nSimpson’s paradox\n\nSource: The book of why by Judea Pearl\n예를 들어, 은퇴한 노인들을 대상으로 규칙적인 걷기가 사망율을 감소시킬 것이라는 가설을 확인하기 위해 1965년 이후 8000명 가량의 남성들을 추적조사한 데이터의 일부를 이용했는데,\n\n12년 후 사망율에서 casual walker(하루 1마일 이하)와 intense walker(하루 2마일 이상)가 각각 43%, 21.5%로 나타났음.\n이 걷기의 효과를 의심케 하는 요소들(confounding)은 무엇인가?\n\n\n\n\n\n\n\nAnswers!\n\n\n\n\n\n\n건강이 나빠 많이 걷지 못했을 수도…\n많이 걷는 사람은 상대적으로 젊을 수도…\n많이 먹는 사람이 덜 걸을 수도…\n술을 많이 먹는 사람이 덜 걸을 수도…\n\n\n\n\n남녀 연봉 차이의 원인을 찾으려면?\n\n직업 특성, 부서, 직급, 연령, 출산, 출세욕\n\n\n\nColider bias\n운동능력이 뛰어나면 지능이 떨어지는가?\n\nSource: Statistical Modeling by Daniel T. Kaplan\nMechanisms/Mediation\n\n레몬과 괴혈병\n\n\n만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되었을 때, 나이가 많은 선원들에게서 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 관계를 추론해서는 안됨. 하지만 예측은 여전히 유효함.\n\n\n\n수집된 데이터의 성격\nSelection Bias\n수집된 데이터의 성격에 따라 인과추론을 방해하거나(confounding)\n일반화할 수 있는 대상의 범위가 제한됨(external validity)\n\n노인에 관한 데이터: 누가 사망했는가?\n과거 기록을 이용?\n회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화\n누가 참여했는가? 어떤 방식으로 참여했는가?\n\n관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?\n\n어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?\n코호트/특정세대의 특성: 그들의 특성인가?\n\n\n\n실험\nExperiment\nRCT (randomized controlled trial)\n\n개념적으로는 물리적 통제라고 볼 수 있으며,\n두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당)",
+    "crumbs": [
+      "Introduction",
+      "Statistical Thinking"
+    ]
+  },
+  {
+    "objectID": "contents/notice.html#중간고사",
+    "href": "contents/notice.html#중간고사",
+    "title": "Notice",
+    "section": "중간고사",
+    "text": "중간고사",
+    "crumbs": [
+      "{{< fa check size=xs >}} Notice"
+    ]
+  },
+  {
+    "objectID": "contents/notice.html#기말고사",
+    "href": "contents/notice.html#기말고사",
+    "title": "Notice",
+    "section": "기말고사",
+    "text": "기말고사",
+    "crumbs": [
+      "{{< fa check size=xs >}} Notice"
+    ]
+  },
+  {
+    "objectID": "contents/notice.html#개별-프로젝트",
+    "href": "contents/notice.html#개별-프로젝트",
+    "title": "Notice",
+    "section": "개별 프로젝트",
+    "text": "개별 프로젝트",
+    "crumbs": [
+      "{{< fa check size=xs >}} Notice"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 1:00 ~ 2:50PM\nWebsite: dgdavs.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "crumbs": [
+      "{{< fa angles-right size=xs >}} Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#강의-정보",
+    "href": "index.html#강의-정보",
+    "title": "Welcome",
+    "section": "",
+    "text": "강사: 조성균 / sk.cho@snu.ac.kr\n면담 시간: 수업 후\n수업시간: 월, 수 1:00 ~ 2:50PM\nWebsite: dgdavs.modellings.art\n출석: 링크\n과제: Notice\n질문: Communicate/Ask",
+    "crumbs": [
+      "{{< fa angles-right size=xs >}} Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#강의-개요",
+    "href": "index.html#강의-개요",
+    "title": "Welcome",
+    "section": "강의 개요",
+    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n\n데이터를 조작, 가공하는 기술을 익히고,\n이를 통해 얻은 정제된 데이터를 시각화를 통해패턴을 여러 각도에서 살펴보고,\n데이터 모델링과 통계적 분석을 접목하여 현상에 대한 올바른이해를 돕습니다.\n\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition",
+    "crumbs": [
+      "{{< fa angles-right size=xs >}} Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#수업-활동",
+    "href": "index.html#수업-활동",
+    "title": "Welcome",
+    "section": "수업 활동",
+    "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)",
+    "crumbs": [
+      "{{< fa angles-right size=xs >}} Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#수업-계획",
+    "href": "index.html#수업-계획",
+    "title": "Welcome",
+    "section": "수업 계획",
+    "text": "수업 계획\n1주. 강의 개요 및 데이터 분석의 의미 소개\n2주. 넘파이와 판다스 라이브러리의 기본\n3주. 탐색적 분석을 위한 시각화 라이브러리\n4주. 시각화의 활용1\n5주. 시각화의 활용2\n6주. 판다스를 이용한 데이터의 변형 및 가공 1\n7주. 판다스를 이용한 데이터의 변형 및 가공 2\n8주. 기술적(descriptive) 분석 1\n9주. 기술적(descriptive) 분석 2\n10주. 탐색적 분석 & 및 중간고사\n11주. 데이터 모델링 기초 & 통계의 기초 개념\n12주. 데이터 모델링 1\n13주. 데이터 모델링 2\n14주. Binary 명목 변수에 대한 분석: 로지스틱 회귀분석 및 GLM 소개\n15주. 기말고사",
+    "crumbs": [
+      "{{< fa angles-right size=xs >}} Welcome"
+    ]
+  },
+  {
+    "objectID": "contents/EDA/eda.html",
+    "href": "contents/EDA/eda.html",
+    "title": "Exploratory Data Analysis",
+    "section": "",
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")\nsource: R for Data Science\nVisualising, transforming, modelling을 통해 질문들을 개선하거나 새로운 질문들을 생성하면서 데이터에 대한 이해를 늘리면서 질문들에 답을 구하는 반복순환 과정\n크게 다음 2가지 타입의 질문을 기본으로 시작\n# import a dataset\ndiamonds_data = sm.datasets.get_rdataset(\"diamonds\", \"ggplot2\")\ndiamonds = diamonds_data.data\nprint(diamonds_data.__doc__)\ndiamonds\n\n       carat        cut color clarity  depth  table  price    x    y    z\n0       0.23      Ideal     E     SI2  61.50  55.00    326 3.95 3.98 2.43\n1       0.21    Premium     E     SI1  59.80  61.00    326 3.89 3.84 2.31\n2       0.23       Good     E     VS1  56.90  65.00    327 4.05 4.07 2.31\n...      ...        ...   ...     ...    ...    ...    ...  ...  ...  ...\n53937   0.70  Very Good     D     SI1  62.80  60.00   2757 5.66 5.68 3.56\n53938   0.86    Premium     H     SI2  61.00  58.00   2757 6.15 6.12 3.74\n53939   0.75      Ideal     D     SI2  62.20  55.00   2757 5.83 5.87 3.64\n\n[53940 rows x 10 columns]\n# cut, color, clarity 모두 Categorical type으로 변형\ndiamonds[\"cut\"] = pd.Categorical(\n    diamonds[\"cut\"], \n    categories=[\"Fair\", \"Good\", \"Very Good\", \"Premium\", \"Ideal\"],\n    ordered=True\n)\ndiamonds[\"color\"] = pd.Categorical(\n    diamonds[\"color\"], \n    categories=[\"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \"J\"],\n    ordered=True\n)\ndiamonds[\"clarity\"] = pd.Categorical(\n    diamonds[\"clarity\"], \n    categories=[\"I1\", \"SI2\", \"SI1\", \"VS2\", \"VS1\", \"VVS2\", \"VVS1\", \"IF\"],\n    ordered=True\n)",
+    "crumbs": [
+      "Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/EDA/eda.html#missing-values",
+    "href": "contents/EDA/eda.html#missing-values",
+    "title": "Exploratory Data Analysis",
+    "section": "Missing values",
+    "text": "Missing values\n특이값을 missing (NA)으로 처리할 때는 신중하게…\n특이한 값들이 있는 행을 다 제거하는 방식은 금물!\n예를 들어, diamonds.query('y &gt;= 3 & y &lt;= 20')\n만약 NA로 바꾸기로 했다면, .where(), .mask()를 활용\n\ndiamonds2 = diamonds.assign(\n    y = lambda x: np.where((x.y &lt; 3) | (x.y &gt; 20), np.nan, x.y)\n)\n\n\n\n\n\n\n\nTip\n\n\n\n.mask(), .where()\n# 조건에 맞는 값들을 NA로 바꿈\ndiamonds[\"y\"] = diamonds[\"y\"].mask((diamonds[\"y\"] &lt; 3) | (diamonds[\"y\"] &gt; 20))\n\n\n\n# NA의 제거에 대해 경고 없음!\n(\n    so.Plot(diamonds2, x=\"x\", y=\"y\")\n    .add(so.Dots(alpha=1))\n)\n\n\n\n\n\n\n\n\n결측치들을 포함한 경우와 제거한 경우를 비교해 보고자 할 때,\n\n결측치인지 아닌지를 나타내는 명목변수를 이용",
+    "crumbs": [
+      "Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/EDA/eda.html#a-categorical-and-continuous-variable",
+    "href": "contents/EDA/eda.html#a-categorical-and-continuous-variable",
+    "title": "Exploratory Data Analysis",
+    "section": "A categorical and continuous variable",
+    "text": "A categorical and continuous variable\n\n카테고리별로 분포(frequency)를 나누어 비교\nfrequency polygon 이나 boxplot을 이용\nOne dimensional scatter plot으로 겹치지 않게 그리려면, jitter를 활용\n\n\n(\n    so.Plot(diamonds, x=\"price\", color=\"cut\")\n    .add(so.Line(), so.Hist(binwidth=500))\n)\n\n\n\n\n\n\n\n\n\n# 각 cut 내에서의 분포가 cut마다 어떻게 다른가 확인\n(\n    so.Plot(diamonds, x=\"price\", color=\"cut\")\n    .add(so.Line(), so.Hist(binwidth=500, stat=\"proportion\", common_norm=False))\n)\n\n\n\n\n\n\n\n\n\n(\n    so.Plot(diamonds, x=\"price\", color=\"cut\")\n    .add(so.Bars(), so.Hist(binwidth=500, stat=\"proportion\", common_norm=False))\n    .facet(\"cut\")\n)\n\n\n\n\n\n\n\n\nQ: 왜 fair 컷의 평균 가격이 가장 높은가???\nsns.boxplot(diamonds, x=\"cut\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\n\nUse custom plots\n\n# Custom plots\nfrom sbcustom import rangeplot\nrangeplot(diamonds, x=\"cut\", y=\"price\").layout(size=(6, 4))\n\n\n\n\n\n\n\n\n# Violin plot\nsns.violinplot(diamonds, x=\"cut\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\n다이아몬드 컷의 질이 낮을수록 평균 가격이 높은, 직관적으로 반대되는 패턴을 보임.\n한편, 카테고리의 순서가 존재하지 않는 경우: 의미있는 순서로 재정렬하여 패턴 파악을 용이하게 할 수 있음\n예를 들어, 자동차의 class를 고속도로 연비의 중앙값 순으로 정렬하고자 하면,\nmpg = sm.datasets.get_rdataset(\"mpg\", \"ggplot2\").data\nhwy_order = mpg.groupby(\"class\")[\"hwy\"].median().sort_values().index\n\nsns.boxplot(mpg, y=\"class\", x=\"hwy\", fill=False, order=hwy_order)\nplt.show()\n\n\n\n\n\n\n\n\n(\n    rangeplot(mpg, y=\"class\", x=\"hwy\", marker=\"v\")\n    .scale(y=so.Nominal(order=hwy_order))\n    .layout(size=(6, 4))\n)\n\n\n\n\n\n\n\n\n\n연습문제\n\n** What variable in the diamonds dataset is most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationships lead to lower quality diamonds being more expensive?\n* Compare and contrast a violin plot with a facetted histogram, or a coloured frequency polygon. What are the pros and cons of each method?",
+    "crumbs": [
+      "Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/EDA/eda.html#two-categorical-variables",
+    "href": "contents/EDA/eda.html#two-categorical-variables",
+    "title": "Exploratory Data Analysis",
+    "section": "Two categorical variables",
+    "text": "Two categorical variables\n\n두 범주형 변수 사이의 covariation을 파악하려면, 두 변수 값의 모든 조합에 대한 count를 표시\n\n\ntable_cut = diamonds.groupby([\"cut\", \"clarity\"]).size().reset_index(name=\"n\")\ntable_cut\n\n      cut clarity     n\n0    Fair      I1   210\n1    Fair     SI2   466\n2    Fair     SI1   408\n..    ...     ...   ...\n37  Ideal    VVS2  2606\n38  Ideal    VVS1  2047\n39  Ideal      IF  1212\n\n[40 rows x 3 columns]\n\n\n\n각 조합에 해당하는 관측값의 양에 비례하여 원의 크기를 표시하면,\ncut와 clarity 사이에 약한 상관관계를 맺는 것으로 보임\n\n\np1 = (\n    so.Plot(table_cut, x=\"cut\", y=\"clarity\", pointsize=\"n\", color=\"n\")\n    .add(so.Dot())\n    .scale(pointsize=(5, 30))\n)\np2 = (\n    so.Plot(diamonds, x='cut', y='clarity')\n    .add(so.Line(), so.PolyFit(3))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n순서가 없는 범주형 변수인 경우, 행과 열을 유사한 정도에 따라 순서를 매기는 알고리즘을 통해 재정렬하여 패턴을 볼 수도 있음\n\ngapminder = sm.datasets.get_rdataset(\"gapminder\", \"gapminder\").data\ngapminder\n\n          country continent  year  lifeExp       pop  gdpPercap\n0     Afghanistan      Asia  1952    28.80   8425333     779.45\n1     Afghanistan      Asia  1957    30.33   9240934     820.85\n2     Afghanistan      Asia  1962    32.00  10267083     853.10\n...           ...       ...   ...      ...       ...        ...\n1701     Zimbabwe    Africa  1997    46.81  11404948     792.45\n1702     Zimbabwe    Africa  2002    39.99  11926563     672.04\n1703     Zimbabwe    Africa  2007    43.49  12311143     469.71\n\n[1704 rows x 6 columns]\n\n\n\nplotdata = (\n    gapminder\n    .query('continent == \"Asia\"')\n    .pivot(index=\"country\", columns=\"year\", values=\"lifeExp\")  # wide format 변환\n)\nplotdata\n\n\n\n\n\n\n\n\nyear\n1952\n1957\n1962\n1967\n1972\n1977\n1982\n1987\n1992\n1997\n2002\n2007\n\n\ncountry\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAfghanistan\n28.80\n30.33\n32.00\n34.02\n36.09\n38.44\n39.85\n40.82\n41.67\n41.76\n42.13\n43.83\n\n\nBahrain\n50.94\n53.83\n56.92\n59.92\n63.30\n65.59\n69.05\n70.75\n72.60\n73.92\n74.80\n75.64\n\n\nBangladesh\n37.48\n39.35\n41.22\n43.45\n45.25\n46.92\n50.01\n52.82\n56.02\n59.41\n62.01\n64.06\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\nVietnam\n40.41\n42.89\n45.36\n47.84\n50.25\n55.76\n58.82\n62.82\n67.66\n70.67\n73.02\n74.25\n\n\nWest Bank and Gaza\n43.16\n45.67\n48.13\n51.63\n56.53\n60.77\n64.41\n67.05\n69.72\n71.10\n72.37\n73.42\n\n\nYemen, Rep.\n32.55\n33.97\n35.18\n36.98\n39.85\n44.17\n49.11\n52.92\n55.60\n58.02\n60.31\n62.70\n\n\n\n\n33 rows × 12 columns\n\n\n\n\n\n# hierarchical clustering in scipy\nsns.clustermap(plotdata, col_cluster=False, method=\"ward\")\nplt.show()  # 생략\n\n\n\n\n\n\n\n\n\n\nHierarchical Clustering\nimport scipy.cluster.hierarchy as sch\n\ndendrogram = sch.dendrogram(\n    sch.linkage(plotdata, method=\"ward\"),\n    labels=plotdata.index,\n    orientation=\"left\",\n    no_plot=True,  # dendrogram plot 생략\n)\n\n(\n    gapminder.query('continent == \"Asia\"')\n    .pipe(so.Plot, x=\"year\", y=\"country\", color=\"lifeExp\")  # pipe operator\n    .add(so.Dot(pointsize=12, marker=\"s\"))  # square marker\n    .scale(y=so.Nominal(order=dendrogram[\"ivl\"]), color=\"rocket\")\n    .layout(size=(4, 7))\n)\n\n\n\n\n\n\n\n\n\n\n연습문제\n\nHow could you rescale the count dataset above to more clearly show the distribution of cut within colour, or colour within cut?\n\ncount 대신 비율을 계산 후 그려보세요.\n예를 들어, color D에 cut 각각의 비율들을 구해 시각화\n pd.crosstab(diamonds[\"cut\"], diamonds[\"color\"], normalize='columns')  # 'columns': 비율을 구하는 방향\n\nExplore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?\n\ngroupby([\"month\", \"dest\"])로 그룹핑을 해서 시작해 볼 것\n결측치를 어떻게 처리하면 좋을지 생각해 볼 것\nsns.clustermap() 또는 위의 dendrogram을 직접 이용한 플랏도 그려볼 것",
+    "crumbs": [
+      "Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/EDA/eda.html#two-continuous-variables",
+    "href": "contents/EDA/eda.html#two-continuous-variables",
+    "title": "Exploratory Data Analysis",
+    "section": "Two continuous variables",
+    "text": "Two continuous variables\n\nScatterplot, 2d-histogram\nDiscretize: pd.cut(), pd.qcut()\n\n\n(\n    so.Plot(diamonds.query('carat &lt; 3'), x=\"carat\", y=\"price\")\n    .add(so.Dots(alpha=1/100, color=\".6\"))\n    .add(so.Line(), so.PolyFit(5))\n)\n\n\n\n\n\n\n\n\n2d-histogram: x, y축 모두 binning\nfrom matplotlib.colors import LogNorm\n\nsns.jointplot(diamonds, x=\"carat\", y=\"price\", kind=\"hex\", gridsize=30, height=5, norm=LogNorm())  # gridsize: bin 개수\nplt.show()\n\n\n\n\n\n\n\nDiscretize: 연속 변수를 카테고리화\n\ndiamonds_cat = diamonds.query(\"carat &lt; 3\").assign(\n    carat_cat=lambda x: pd.cut(x.carat, 20, labels=False),\n    carat_qcat=lambda x: pd.qcut(x.carat, 20, labels=False),\n)\n\nsns.boxplot(diamonds_cat, x=\"carat_cat\", y=\"price\", fill=False)\nplt.show() # 생략\n\n\n\n\n\n\n\n\nrangeplot(diamonds_cat, x=\"carat_cat\", y=\"price\")\n\n\n\n\n\n\n\n\nsns.boxplot(diamonds_cat, x=\"carat_qcat\", y=\"price\", fill=False)\nplt.show()  # 생략\n\n\n\n\n\n\n\n\n연습문제\n\nInstead of summarising the conditional distribution with a boxplot, you could use a frequency polygon.\n\n즉, 두 연속변수 중 하나를 카테고리화하는데, boxplot대신 frequency polygon으로 그려볼 것\n\nVisualise the distribution of carat, partitioned by price.\nHow does the price distribution of very large diamonds compare to small diamonds? Is it as you expect, or does it surprise you?\nCombine two of the techniques you’ve learned to visualise the combined distribution of cut, carat, and price.\nTwo dimensional plots reveal outliers that are not visible in one dimensional plots. For example, some points in the plot below have an unusual combination of x and y values, which makes the points outliers even though their x and y values appear normal when examined separately.\nWhy is a scatterplot a better display than a binned plot for this case?\n\n\n(\n    so.Plot(diamonds, x='x', y='y')\n    .add(so.Dots())\n    .limit(x=(4, 11), y=(4, 11))\n)",
+    "crumbs": [
+      "Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "contents/EDA/eda.html#buliding-models",
+    "href": "contents/EDA/eda.html#buliding-models",
+    "title": "Exploratory Data Analysis",
+    "section": "Buliding models",
+    "text": "Buliding models\nDiamonds 데이터셋에서,\n컷(cut)과 가격(price)의 관계는 예상과 달랐는데, 이는 컷(cut)과 무게(carat), 무게(carat)와 가격(price) 사이에 깊은 관계가 있었기 때문임.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n모델링을 통해 가격(price)과 크기(carat) 사이의 강한 관계를 제거할 수 있도록 모델을 세울 수 있음\n\n캐럿 당 가격으로 처리?\n\n이 관계를 제거한 후 남은 패턴을 탐색할 수 있음\nBuild a model!\n\nLinear model, 선형(직선) 모형을 여기서는 특히, \\(y = b_1x + b_0\\)인 1차 함수꼴의 모형으로 세움\n\\(price =  b_1 * carat + b_0 + e\\) (residual/error, 잔차/예측오차)의 모형을 세운 후 데이터에 가장 적합한(fit) 파라미터 \\(b_1, b_0\\) 값을 구하는 과정: fitted model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResidual samples\n\n\n\n\n\nimport statsmodels.formula.api as smf\n\ndiamonds2 = diamonds.query(\"carat &lt; 3\")\ndiamonds_fit = smf.ols(\"price ~ carat\", data=diamonds2).fit()\n\ndiamonds2 = diamonds2.assign(\n    pred=diamonds_fit.fittedvalues,\n    resid=diamonds_fit.resid,\n)\n\nnp.random.seed(126)\ndiamonds2[[\"cut\", \"carat\", \"price\", \"pred\", \"resid\"]].sample(7)\n\n\n\n\n\n             cut  carat  price     pred    resid\n32609      Ideal   0.31    802   117.54   684.46\n16255      Ideal   1.35   6502  8263.21 -1761.21\n17451      Ideal   1.01   6999  5600.20  1398.80\n16089       Good   1.01   6429  5600.20   828.80\n42762    Premium   0.56   1345  2075.63  -730.63\n26768       Good   2.02  16593 13510.90  3082.10\n47809  Very Good   0.71   1902  3250.49 -1348.49\n\n\nprint(diamonds_fit.params)  # print coefficients\nprint(f\"R2 = {diamonds_fit.rsquared:.3f}\")  # print R-squared\n\n\n\nIntercept   -2310.50\ncarat        7832.37\ndtype: float64\nR2 = 0.853\n\n\n\n\nresiduals (잔차)은 모형이 예측하지 못하는 정도를 나타내며, 그것들의 총체를 줄이는 것이 좋은 모형임.\n\n총체를 구하는 방법에는 여러가지가 있음.\n\n크기(carat)로 가격(price)을 예측/설명(account for)하는 정도를 제거한 후, 즉, 크기(carat)로 예측/설명되지 않는 가격(price)의 정도에 대해서 다른 변수들과의 관계를 탐구\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n(\n    so.Plot(diamonds2, x='carat', y='resid')\n    .add(so.Dots(color=\".6\", alpha=1/100))\n    .add(so.Line(color=\"red\"), so.Agg(lambda x: 0))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n캐럿(carat)으로 설명되지 않는 가격의 값들로만 추가 분석을 실시하면,\n즉, cut으로 “다이아몬드의 무게로는 설명되지 않는 가격”의 변량을 얼마나 추가로 설명할 수 있는가?\n\n\n\n\n\n\nCode\n\n\n\n\n\nfrom sbcustom import rangeplot\n(\n    rangeplot(diamonds2, x=\"cut\", y=\"resid\")\n    .add(so.Line(color=\"red\"), so.Agg(lambda x: 0))\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n다이아몬드의 무게로 가격을 설명한 후 남은(residualized) 가격의 변량을 cut이 어떻게 예측하는가?\n다이아몬드의 무게로 설명되지(not acounted for) 않는 가격의 변량을 cut이 어떻게 예측하는가?\n다이아몬드의 무게가 가격에 미친 영향을 제거한 후, 혹은 그 영향을 넘어서서 (above and beyond) cut이 어떻게 가격을 예측하는가?\n다이아몬드의 무게(carat)가 동일하다면, 즉 무게가 고정된다면 (hold it constant), 무게의 영향이 제거된 다이아몬드의 퀄리티(cut, …)에 따른 가격에 대한 관계가 나타날 것임.\n\n다음과 같이 다이아몬드의 무게를 비슷한 구간으로 나누어 살펴보면,\n\n\n\n\n\n\nCode\n\n\n\ndiamonds2[\"carat_cat\"] = pd.qcut(diamonds2[\"carat\"], 12)\n(\n    rangeplot(diamonds2, x='cut', y='price')\n    .facet(\"carat_cat\", wrap=3)\n    .share(y=False)\n    .layout(size=(10, 8))\n)",
+    "crumbs": [
+      "Exploratory Data Analysis"
+    ]
   },
   {
     "objectID": "contents/Exercises/billboard_sol.html",
