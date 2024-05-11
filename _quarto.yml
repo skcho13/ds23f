@@ -7,7 +7,6 @@ project:
     - "!contents/ignore/"
     - "!contents/Exams/"
     - "!contents/old/"
-    - "!contents/Modelling/"
     - "!contents/Statisitcs/"
     - "!*.py"
     - "!final*.ipynb"
@@ -125,17 +124,12 @@ website:
             text: Billboard
           - href: contents/Exercises/movielens_sol.ipynb
             text: MovieLens
-      # - text: ---
-      # - section: contents/eda.ipynb
-      #   contents:
-      #     - href: contents/discretize.ipynb
-      # # - text: ---
-      # # - section: Modelling
-      # #   contents:
-      # #     - href: contents/model-basic.ipynb
-      # #       text: Model Basics
-      # #     - href: contents/modelling1.ipynb
-      # #     - href: contents/modelling2.ipynb
+      - section: Modelling
+        contents:
+          - href: contents/Modelling/model-basic.ipynb
+            text: Model Basics
+          - href: contents/Modelling/modelling1.ipynb
+          - href: contents/Modelling/modelling2.ipynb
       # #     - href: contents/logistic.ipynb
       # #   #   - section: Solutions
       # #   #     contents:

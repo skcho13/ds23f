@@ -37,68 +37,88 @@
     <lastmod>2024-04-07T19:19:04.441Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/vis.html</loc>
-    <lastmod>2024-03-17T04:03:20.981Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Modelling/modelling2.html</loc>
+    <lastmod>2024-05-11T17:29:16.367Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/inspection.html</loc>
-    <lastmod>2024-03-19T15:58:21.274Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Modelling/model-basic.html</loc>
+    <lastmod>2024-05-11T17:06:21.277Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
-    <lastmod>2024-05-05T20:20:44.704Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Modelling/logistic.html</loc>
+    <lastmod>2023-12-11T04:16:05.635Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard.html</loc>
-    <lastmod>2024-04-30T19:48:01.184Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/EDA/discretize.html</loc>
-    <lastmod>2024-04-07T19:58:08.829Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/shortcuts.html</loc>
-    <lastmod>2023-12-10T14:11:04.430Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/setup.html</loc>
-    <lastmod>2024-03-14T18:16:44.185Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/intro2.html</loc>
-    <lastmod>2024-03-09T08:50:24.390Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/about.html</loc>
-    <lastmod>2023-02-12T04:02:01.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/rethinking.html</loc>
-    <lastmod>2024-03-11T21:00:31.864Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/notice.html</loc>
-    <lastmod>2024-03-03T18:44:14.337Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/index.html</loc>
-    <lastmod>2024-03-18T13:18:57.410Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/EDA/eda.html</loc>
-    <lastmod>2024-04-16T17:49:23.924Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard_sol.html</loc>
-    <lastmod>2024-05-05T20:08:17.377Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Introduction/pandas.html</loc>
+    <lastmod>2024-04-07T19:13:34.482Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Exercises/movielens_sol.html</loc>
     <lastmod>2024-05-06T07:14:00.764Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Introduction/pandas.html</loc>
-    <lastmod>2024-04-07T19:13:34.482Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard_sol.html</loc>
+    <lastmod>2024-05-05T20:08:17.377Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/EDA/eda.html</loc>
+    <lastmod>2024-04-16T17:49:23.924Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/index.html</loc>
+    <lastmod>2024-03-18T13:18:57.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/notice.html</loc>
+    <lastmod>2024-03-03T18:44:14.337Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Introduction/rethinking.html</loc>
+    <lastmod>2024-03-11T21:00:31.864Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/about.html</loc>
+    <lastmod>2023-02-12T04:02:01.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Introduction/intro2.html</loc>
+    <lastmod>2024-03-09T08:50:24.390Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Introduction/setup.html</loc>
+    <lastmod>2024-03-14T18:16:44.185Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/shortcuts.html</loc>
+    <lastmod>2023-12-10T14:11:04.430Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/EDA/discretize.html</loc>
+    <lastmod>2024-04-07T19:58:08.829Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard.html</loc>
+    <lastmod>2024-04-30T19:48:01.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
+    <lastmod>2024-05-05T20:20:44.704Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Introduction/inspection.html</loc>
+    <lastmod>2024-03-19T15:58:21.274Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Introduction/vis.html</loc>
+    <lastmod>2024-03-17T04:03:20.981Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Modelling/model-basic-old.html</loc>
+    <lastmod>2023-11-21T23:40:14.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Modelling/modelling1.html</loc>
+    <lastmod>2024-05-11T17:25:50.627Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Statistics/statistics.html</loc>
