@@ -124,6 +124,7 @@ website:
             text: Billboard
           - href: contents/Exercises/movielens_sol.ipynb
             text: MovieLens
+      - text: ---
       - section: Modelling
         contents:
           - href: contents/Modelling/model-basic.ipynb

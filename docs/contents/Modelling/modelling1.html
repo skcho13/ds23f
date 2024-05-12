@@ -452,6 +452,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
@@ -600,7 +601,7 @@ window.Quarto = {
 </div>
 <section id="why-are-low-quality-diamonds-more-expensive" class="level1">
 <h1>Why are low quality diamonds more expensive?</h1>
-<div id="cell-4" class="cell" data-execution_count="77">
+<div id="cell-4" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"diamonds"</span>, <span class="st">"ggplot2"</span>).data</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cut, color, clarity 모두 categorical type으로 변형</span></span>
@@ -886,7 +887,7 @@ dtype: float64</code></pre>
 <ul>
 <li>다이아몬드의 3가지 퀄리티와 carat이 모두 연관되어 있어, 각각의 고유한 효과를 보기 위해 다음과 같이 모든 예측변수들을 포함하는 모형을 세울 수 있음</li>
 </ul>
-<div id="cell-36" class="cell" data-execution_count="100">
+<div id="cell-36" class="cell" data-execution_count="134">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mod_full <span class="op">=</span> smf.ols(<span class="st">'lprice ~ lcarat + cut + color + clarity'</span>, data<span class="op">=</span>diamonds2).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="prediction-1" class="level3">
@@ -896,15 +897,15 @@ dtype: float64</code></pre>
 <li>연속변수에 대해서는 보통 평균(mean)이나 중앙값(median)을</li>
 <li>카테고리 변수에 대해서는 보통 최빈값(mode)을 사용</li>
 </ul>
-<div id="cell-38" class="cell" data-execution_count="101">
+<div id="cell-38" class="cell" data-execution_count="135">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame({<span class="st">"cut"</span>: [<span class="st">"Fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very Good"</span>, <span class="st">"Premium"</span>, <span class="st">"Ideal"</span>]})</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"color"</span>] <span class="op">=</span> diamonds2.color.mode()[<span class="dv">0</span>]  <span class="co"># mode: 최빈값</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"clarity"</span>] <span class="op">=</span> diamonds2.clarity.mode()[<span class="dv">0</span>]</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"lcarat"</span>] <span class="op">=</span> diamonds2.lcarat.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="102">
+<div id="cell-39" class="cell" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
+<div class="cell-output cell-output-display" data-execution_count="136">
 <pre><code>         cut color clarity  lcarat
 0       Fair     G     SI1   -0.51
 1       Good     G     SI1   -0.51
@@ -914,11 +915,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 <p>즉, G 컬러이고, SI1의 투명도와, 캐럿(로그) -0.51인 다이아몬드에 대해서, cut이 좋아질수록 가격이 얼마나 올라가는지를 예측해 본다면,</p>
-<div id="cell-41" class="cell" data-execution_count="103">
+<div id="cell-41" class="cell" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"lpred"</span>] <span class="op">=</span> mod_full.predict(grid)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>grid.lpred  <span class="co"># 원래 단위인 price로 되돌리기</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="103">
+<div class="cell-output cell-output-display" data-execution_count="137">
 <pre><code>         cut color clarity  lcarat  lpred    pred
 0       Fair     G     SI1   -0.51  10.99 2035.36
 1       Good     G     SI1   -0.51  11.10 2202.21
@@ -931,11 +932,11 @@ dtype: float64</code></pre>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(grid, x<span class="op">=</span><span class="st">'cut'</span>, y<span class="op">=</span><span class="st">'pred'</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(marker<span class="op">=</span><span class="st">"o"</span>))</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    .limit(y<span class="op">=</span>(<span class="dv">1300</span>, <span class="dv">4100</span>))  <span class="co"># 아래 플랏과 비교하기 위해 y축 범위를 고정</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-42" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="104">
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-42" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="140">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="modelling1_files/figure-html/cell-31-output-1.png" width="605" height="451"></p>
+<p><img src="modelling1_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
