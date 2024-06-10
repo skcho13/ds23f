@@ -134,10 +134,10 @@ website:
       # #     - href: contents/logistic.ipynb
       # #   #   - section: Solutions
       # #   #     contents:
-      # #   #       - href: contents/modelling1_ex.ipynb
-      # #   #         text: Modelling 1 Ex.
-      # #   #       - href: contents/modelling2_ex.ipynb
-      # #   #         text: Modelling 2 Ex.
+          - href: contents/Modelling/modelling1_ex.ipynb
+            text: Modelling 1 Ex.
+          - href: contents/Modelling/modelling2_ex.ipynb
+            text: Modelling 2 Ex.
       # #   # #       # contents:
       # #   #       #   - href: contents/modelling3_ex.ipynb
       # #   #     #- href: contents/misc4.ipynb
