@@ -78,6 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/bootstrap-icons-1.9.1/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -162,6 +163,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../../contents/notice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"> Notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1fBnGShT9pysO6zd6L69LmuVyZhan1Zi7RGs7VYBz37o/edit?usp=sharing" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"> 기말고사 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -621,7 +628,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Count())</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    .scale(x<span class="op">=</span>so.Nominal(order<span class="op">=</span>[<span class="st">"Adelie"</span>, <span class="st">"Gentoo"</span>, <span class="st">"Chinstrap"</span>]))  <span class="co"># x축의 카테고리 순서를 변경</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-8" class="cell quarto-layout-panel" data-execution_count="4" data-layout="[[2, 1]]">
+<div id="cell-8" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="customizing_files/figure-html/cell-5-output-1.png" width="599" height="445"></p>
@@ -867,7 +874,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 플랏 별로 한글 폰트 설정</span></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>p.theme({<span class="st">"font.family"</span>: [<span class="st">"AppleGothic"</span>]})  <span class="co"># Windows: "Malgun Gothic"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-24" class="cell quarto-layout-panel" data-execution_count="14" data-layout="[[3, 1]]">
+<div id="cell-24" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="14">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="customizing_files/figure-html/cell-15-output-1.png" width="599" height="445"></p>
@@ -943,7 +950,7 @@ Note
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는 직접 함수를 호출</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sbcustom <span class="im">import</span> boxplot, rangeplot</span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>rangeplot(penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-31" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[[2, 1]]">
+<div id="cell-31" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="13">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="customizing_files/figure-html/cell-18-output-1.png" width="599" height="445"></p>
@@ -951,7 +958,7 @@ Note
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>boxplot(penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"island"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="14" data-layout="[[4, 1]]">
+<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[4, 1]]" data-execution_count="14">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
 <p><img src="customizing_files/figure-html/cell-19-output-1.png" width="729" height="445"></p>

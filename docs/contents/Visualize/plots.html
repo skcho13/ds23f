@@ -79,6 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/bootstrap-icons-1.9.1/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -163,6 +164,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   <div class="sidebar-item-container"> 
   <a href="../../contents/notice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"> Notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1fBnGShT9pysO6zd6L69LmuVyZhan1Zi7RGs7VYBz37o/edit?usp=sharing" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"> 기말고사 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -1466,7 +1473,7 @@ memory usage: 7.4 KB</code></pre>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Count())  <span class="co"># category type의 변수는 순서가 존재. </span></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 그렇지 않은 경우 알바벳 순서로. </span></span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>).show()  <span class="co"># .show()는 생략해도 됨</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-80" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="147">
+<div id="cell-80" class="cell quarto-layout-panel" data-execution_count="147" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
@@ -1503,7 +1510,7 @@ Note
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Count())</span>
 <span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-82" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="148">
+<div id="cell-82" class="cell quarto-layout-panel" data-execution_count="148" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
@@ -1517,7 +1524,7 @@ Note
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># grouping의 처리에 대해서는 뒤에... 에를 들어, color="sex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-83" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="149">
+<div id="cell-83" class="cell quarto-layout-panel" data-execution_count="149" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
@@ -1554,7 +1561,7 @@ Important
 <span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"count"</span>)</span>
 <span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar())</span>
 <span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-85" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="150">
+<div id="cell-85" class="cell quarto-layout-panel" data-execution_count="150" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
@@ -1572,7 +1579,7 @@ Important
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist())  <span class="co"># Histogram; x값을 bins으로 나누어 count를 계산!</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># .Bars()는 .Bar()에 비해 연속변수에 더 적합: 얇은 경계선으로 나란히 붙혀서 그려짐</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-87" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="151">
+<div id="cell-87" class="cell quarto-layout-panel" data-execution_count="151" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
@@ -1628,7 +1635,7 @@ Figure&nbsp;4: binwidth vs.&nbsp;bins
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(<span class="st">"proportion"</span>))  <span class="co"># 비율을 계산; stat="count"가 default</span></span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-90" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="154">
+<div id="cell-90" class="cell quarto-layout-panel" data-execution_count="154" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
@@ -1640,7 +1647,7 @@ Figure&nbsp;4: binwidth vs.&nbsp;bins
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Area(), so.KDE())  <span class="co"># Density plot</span></span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-91" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="155">
+<div id="cell-91" class="cell quarto-layout-panel" data-execution_count="155" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-49-output-1.png" class="img-fluid"></p>
@@ -1653,7 +1660,7 @@ Figure&nbsp;4: binwidth vs.&nbsp;bins
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"orange"</span>), so.KDE(bw_adjust<span class="op">=</span><span class="fl">.2</span>))  <span class="co"># Density bandwidth: binwidth에 대응</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(alpha<span class="op">=</span><span class="fl">.3</span>), so.Hist(<span class="st">"density"</span>, binwidth<span class="op">=</span><span class="dv">100</span>))  <span class="co"># stat="density"</span></span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-92" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="156">
+<div id="cell-92" class="cell quarto-layout-panel" data-execution_count="156" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
@@ -1690,7 +1697,7 @@ source: R for Data Science</p>
 <p><img src="images/plot_cps4.png" class="img-fluid" width="900"></p>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, fill<span class="op">=</span><span class="va">False</span>)  <span class="co"># fill: box의 색을 채울지 여부</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략해도 무방</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-97" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="105">
+<div id="cell-97" class="cell quarto-layout-panel" data-execution_count="105" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
@@ -1703,7 +1710,7 @@ source: R for Data Science</p>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Range(), so.Est(errorbar<span class="op">=</span>(<span class="st">"pi"</span>, <span class="dv">50</span>)))   <span class="co"># .Range(): 기본 min/max range, </span></span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># .Est(): estimator</span></span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-98" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="157">
+<div id="cell-98" class="cell quarto-layout-panel" data-execution_count="157" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>
@@ -1717,7 +1724,7 @@ source: R for Data Science</p>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Range(), so.Est(errorbar<span class="op">=</span>(<span class="st">"pi"</span>, <span class="dv">50</span>)))   <span class="co"># .Range(): 기본 min/max range, </span></span>
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># .Est(): estimator</span></span>
 <span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-99" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="158">
+<div id="cell-99" class="cell quarto-layout-panel" data-execution_count="158" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
@@ -1730,7 +1737,7 @@ source: R for Data Science</p>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Range(), so.Est(errorbar<span class="op">=</span>(<span class="st">"pi"</span>, <span class="dv">50</span>)))   <span class="co"># .Range(): 기본 min/max range, </span></span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># .Est(): estimator</span></span>
 <span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-100" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="159">
+<div id="cell-100" class="cell quarto-layout-panel" data-execution_count="159" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-56-output-1.png" class="img-fluid"></p>
@@ -1755,7 +1762,7 @@ source: R for Data Science</p>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"sex"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># 생략해도 무방</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-103" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="103">
+<div id="cell-103" class="cell quarto-layout-panel" data-execution_count="103" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
@@ -1831,7 +1838,7 @@ source: R for Data Science</p>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(), so.Hist(common_bins<span class="op">=</span><span class="va">False</span>))  <span class="co"># bins을 공유하지 않도록</span></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Hist(): 다양한 parameter가 있음...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-108" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="169">
+<div id="cell-108" class="cell quarto-layout-panel" data-execution_count="169" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-62-output-1.png" class="img-fluid"></p>
@@ -1843,7 +1850,7 @@ source: R for Data Science</p>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(marker<span class="op">=</span><span class="st">"."</span>), so.Hist(binwidth<span class="op">=</span><span class="dv">200</span>))  <span class="co"># Line에 maker "."을 표시</span></span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-110" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="170">
+<div id="cell-110" class="cell quarto-layout-panel" data-execution_count="170" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-63-output-1.png" class="img-fluid"></p>
@@ -1854,7 +1861,7 @@ source: R for Data Science</p>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(marker<span class="op">=</span><span class="st">"."</span>), so.Hist(binwidth<span class="op">=</span><span class="dv">200</span>, stat<span class="op">=</span><span class="st">"proportion"</span>,  common_norm<span class="op">=</span><span class="va">False</span>))  <span class="co"># Line에 maker "."을 표시</span></span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-111" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="171">
+<div id="cell-111" class="cell quarto-layout-panel" data-execution_count="171" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-64-output-1.png" class="img-fluid"></p>
@@ -1866,7 +1873,7 @@ source: R for Data Science</p>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Area(), so.KDE(common_norm<span class="op">=</span><span class="va">False</span>))  <span class="co"># Density plot, species별로 넓이가 1이 되도록</span></span>
 <span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-113" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="172">
+<div id="cell-113" class="cell quarto-layout-panel" data-execution_count="172" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-65-output-1.png" class="img-fluid"></p>
@@ -1878,7 +1885,7 @@ source: R for Data Science</p>
 <h3 class="anchored" data-anchor-id="two-categorical-variables">Two categorical variables</h3>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> so.Plot(penguins, x<span class="op">=</span><span class="st">"island"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>p.add(so.Bar(), so.Count()).show()  <span class="co"># Bar() mark + Count() transformation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-115" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="180">
+<div id="cell-115" class="cell quarto-layout-panel" data-execution_count="180" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-66-output-1.png" class="img-fluid"></p>
@@ -1930,7 +1937,7 @@ Figure&nbsp;5: dodge vs.&nbsp;stack
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    so.Bar(width<span class="op">=</span><span class="fl">.5</span>), so.Hist(<span class="st">"proportion"</span>),  <span class="co"># proportion; stat="count"로 하면 앞서 so.Count()와 동일</span></span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    so.Stack()  <span class="co"># stacking</span></span>
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-119" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="183">
+<div id="cell-119" class="cell quarto-layout-panel" data-execution_count="183" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-69-output-1.png" class="img-fluid"></p>
@@ -1943,7 +1950,7 @@ Figure&nbsp;5: dodge vs.&nbsp;stack
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    so.Stack()  <span class="co"># stacking</span></span>
 <span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>).show()</span>
 <span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="co"># warning이 뜰 수 있음!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-120" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="184">
+<div id="cell-120" class="cell quarto-layout-panel" data-execution_count="184" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-70-output-1.png" class="img-fluid"></p>
@@ -1981,7 +1988,7 @@ Figure&nbsp;5: dodge vs.&nbsp;stack
 <div>
 
 </div>
-<div id="cell-124" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="187">
+<div id="cell-124" class="cell quarto-layout-panel" data-execution_count="187" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-73-output-1.png" class="img-fluid"></p>
@@ -1999,7 +2006,7 @@ Figure&nbsp;5: dodge vs.&nbsp;stack
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())  <span class="co"># overplotting에는 so.Dots()가 유리 </span></span>
 <span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-127" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="199">
+<div id="cell-127" class="cell quarto-layout-panel" data-execution_count="199" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="plots_files/figure-html/cell-74-output-1.png" class="img-fluid"></p>
