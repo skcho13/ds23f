@@ -28,6 +28,8 @@ website:
   description: "Data Analysis and Visualization, Dongguk University, 2024-1"
   site-url: "https://dgdavs.modellings.art"
   site-path: "/"
+  open-graph: 
+    site-name: Data Analysis and Visualization in Python
   # repo-url:
   # repo-actions: [edit, issue]
 
