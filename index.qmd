@@ -12,7 +12,7 @@ email: sk.cho@snu.ac.kr
 면담 시간: 수업 후  
 Website: [dgdavs.modellings.art](https://dgdavs.modellings.art)
 
-출석: [링크](https://docs.google.com/spreadsheets/d/1gRhzRZFCRphnn9x-a7RiXxUxd9wuLn0RyzYOxdZ4nxI/edit?usp=sharing)
+출석:
 
 과제: Notice  
 질문: Communicate/Ask
