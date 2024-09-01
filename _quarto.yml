@@ -32,7 +32,7 @@ website:
   bread-crumbs: false
   # navbar: true
   title: "{{< fa chart-simple >}} Data Analysis & Visualization"
-  description: "Data Analysis and Visualization, Dongguk University, 2024-1"
+  description: "Data Analysis and Visualization, Dongguk University, 2024-2"
   site-url: "https://dgdavs.modellings.art"
   site-path: "/"
   open-graph: 

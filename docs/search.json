@@ -672,7 +672,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 1:00 ~ 2:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n출석:\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 3:00 ~ 4:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
@@ -682,7 +682,7 @@
     "href": "index.html#강의-정보",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 1:00 ~ 2:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n출석:\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 3:00 ~ 4:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
@@ -702,7 +702,7 @@
     "href": "index.html#수업-활동",
     "title": "Welcome",
     "section": "수업 활동",
-    "text": "수업 활동\n출석 (5%), 일반과제 (25%), 중간고사 (25%), 기말고사 (25%), 개별 프로젝트 (20%)",
+    "text": "수업 활동\n출석 (10%), 일반과제 (30%), 중간고사 (30%), 기말고사 (30%)",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
@@ -836,7 +836,7 @@
     "href": "contents/Introduction/intro2.html#사회적-파장",
     "title": "개관",
     "section": "사회적 파장",
-    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계/디지털과의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 vs. 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\nThe Social Dilemma (2020)",
+    "text": "사회적 파장\n\n유토피아 vs. 디스토피아\n\n초연결성, 투명성 vs. 완전한 감시와 통제\n개인화된 서비스 vs. 설득/유혹/조작\n개별성/자율성 vs. 피동적/비주체적\n기계와의 교감 vs. 인간관계의 소외, 현실과의 단절\n정보와 인간에 대한 신뢰 약화와 사회적 연대, 문명 붕괴\n자연과의 조화 vs. 생태계의 파괴\n\n\n\n\n\n\n\n\n\n\n\nBrave New World, 1932\n\n\n\n\n\n\n\nThe Technological Society, 1954\n\n\n\n\n\n\n\nSapiens, Homo Deus, 21 Lessons for the 21st Century by Yuval Noah Harari\n\n\n\n\n\n\n\n\n\n\n\nYuval Noah Harari: An Urgent Warning They Hope You Ignore.\n\n\n\nThe Social Dilemma (2020)\nNetflix documentary",
     "crumbs": [
       "Introduction",
       "Data Analysis Intro"
