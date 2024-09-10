@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-09-04">
+<meta name="dcterms.date" content="2024-09-11">
 
 <title>Python 설정 –  Data Analysis &amp; Visualization</title>
 <style>
@@ -466,7 +466,6 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   <li><a href="#vs-code내에서-terminal-사용" id="toc-vs-code내에서-terminal-사용" class="nav-link" data-scroll-target="#vs-code내에서-terminal-사용">VS Code내에서 terminal 사용</a></li>
   </ul></li>
   <li><a href="#jupyter-notebooklab" id="toc-jupyter-notebooklab" class="nav-link" data-scroll-target="#jupyter-notebooklab">Jupyter Notebook/Lab</a></li>
-  <li><a href="#python-packages-modules-functions" id="toc-python-packages-modules-functions" class="nav-link" data-scroll-target="#python-packages-modules-functions">Python Packages, Modules, Functions</a></li>
   </ul>
 </nav>
     </div>
@@ -493,7 +492,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 4, 2024</p>
+      <p class="date">September 11, 2024</p>
     </div>
   </div>
   
@@ -528,7 +527,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <li>Colab AI assistant</li>
 <li>구글 드라이브의 데이터셋을 import:</li>
 </ul>
-<div id="4c8e6f26" class="cell">
+<div id="e6ee8289" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"drive/MyDrive/..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -761,63 +760,6 @@ Command Line Tools
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> jupyter <span class="ex">lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>등록한 커널을 선택 후 시작</p>
 <p>커널을 종료하려면, 쉘에서 Ctrl-C 두 번</p>
-</section>
-<section id="python-packages-modules-functions" class="level2">
-<h2 class="anchored" data-anchor-id="python-packages-modules-functions">Python Packages, Modules, Functions</h2>
-<p>Jupyter notebook 파일을 생성: <code>filename.ipynb</code></p>
-<div id="1eecd533" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="두 개 이상의 함수/모듈을 import하거나 as로 별칭 지정 가능">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-두 개 이상의 함수/모듈을 import하거나 as로 별칭 지정 가능
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv <span class="im">as</span> inverse</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv, det</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv <span class="im">as</span> inverse, det <span class="im">as</span> determinant</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.linalg?  <span class="co"># 함수에 대한 도움말</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>NumPy 패키지(package)의 <code>linalg</code> 모듈(module)</strong></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>np.linalg  <span class="co"># linalg.py 파이썬 스트립트 파일</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong><code>linalg</code> 모듈 파일 안에 <code>def</code>으로 정의된 함수</strong></p>
-<div id="9f522802" class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv  <span class="co"># 모듈 안에서 def으로 정의된 함수 inv()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv?  <span class="co"># 함수에 대한 도움말</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>예를 들어, 행렬의 역행렬을 구하는 함수 <code>inv</code>를 사용하려면</p>
-<div id="ced689ba" class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">123</span>)  <span class="co"># random number generator</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.standard_normal((<span class="dv">3</span>, <span class="dv">3</span>))  <span class="co"># 3x3 matrix from standard normal distribution</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>어떻게 <code>import</code>하느냐에 따라 다른 방식으로 사용</p>
-<div id="bd1935aa" class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>inv(x)  <span class="co"># inverse matrix of x</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inv 함수를 따로 import하지 않은 경우, numpy의 linalg 모듈을 통해 사용</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(x)  <span class="co"># same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>주로 모듈 이름을 함께 쓰는 것이 관례인데</strong>,</p>
-<ul>
-<li>이는 코드의 가독성을 높이고,</li>
-<li>사용자 정의 함수와의 충돌을 방지하기 위함</li>
-</ul>
-<p>모듈 안에 정의된 함수들을 확인하려면: <code>dir()</code> 함수</p>
-<div id="7a1fd8fe" class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np.linalg)  <span class="co"># 모듈 안에 정의된 함수들</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 </section>
