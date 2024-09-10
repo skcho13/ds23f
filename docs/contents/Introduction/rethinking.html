@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-09-09">
+<meta name="dcterms.date" content="2024-09-11">
 
 <title>Statistical thinking –  Data Analysis &amp; Visualization</title>
 <style>
@@ -498,7 +498,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 9, 2024</p>
+      <p class="date">September 11, 2024</p>
     </div>
   </div>
   
@@ -730,6 +730,9 @@ Parametric</p>
 <p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수들(lurking third variables)에 의해 매개되어 있어 진실한 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.</p>
 <section id="common-cause" class="level3">
 <h3 class="anchored" data-anchor-id="common-cause">Common Cause</h3>
+<p>신발을 신고 잠든 다음날 두통이 생긴다면?</p>
+<p><img src="images/causal_diagram_headache.png" class="img-fluid" width="340"><br>
+Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
 <p>극단적이지만 이해하지 쉬운 예로는</p>
 <ul>
 <li>머리가 길면 우울증도 높다?</li>
@@ -798,6 +801,25 @@ Answers!
 <a href="../images/moderation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="../images/moderation.png" class="img-fluid" width="800"></a><br>
 <img src="../images/slices.png" class="img-fluid" width="200"></li>
 </ul>
+<p><strong>COVID-27</strong><br>
+Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+<p><img src="images/covid.png" class="img-fluid" width="420"></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/causal_diagram_covid1.png" class="img-fluid" width="340"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/causal_diagram_covid2.png" class="img-fluid" width="340"></p>
+</div>
+</div>
+</div>
+<p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
+Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
+<p><img src="images/causal_diagram_grades.png" class="img-fluid" width="500"></p>
 </section>
 <section id="colider-bias" class="level3">
 <h3 class="anchored" data-anchor-id="colider-bias">Colider bias</h3>
@@ -809,10 +831,10 @@ Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
 <h3 class="anchored" data-anchor-id="mechanismsmediation">Mechanisms/Mediation</h3>
 <ul>
 <li>레몬과 괴혈병<br>
-<img src="../images/mediation.png" class="img-fluid" width="250"></li>
+<img src="../images/mediation.png" class="img-fluid" width="220"></li>
 </ul>
 <p>만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되었을 때, 나이가 많은 선원들에게서 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 관계를 추론해서는 안됨. 하지만 예측은 여전히 유효함.<br>
-<img src="../images/mediation-2.png" class="img-fluid" width="320"></p>
+<img src="../images/mediation-2.png" class="img-fluid" width="280"></p>
 </section>
 <section id="interactionmoderation" class="level3">
 <h3 class="anchored" data-anchor-id="interactionmoderation">Interaction/Moderation</h3>
@@ -822,6 +844,44 @@ Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
 <li>위험 요인 (risk factor)</li>
 </ul>
 <p><img src="../images/interaction.png" class="img-fluid" width="800"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Interaction의 패턴">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interaction의 패턴
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Synergistic or enhancing interaction</li>
+</ol>
+<ul>
+<li>상호작용 효과가 원래 효과들과 같은 방향으로 작용하는 경우</li>
+<li>삶의 만족도(Y)가 직업 스트레스(X)와 부정적인 관계에 있고, 부부관계의 문제(Z)와도 부정적인 관계에 있는 경우</li>
+<li>이 둘의 상호작용이 부정적이라면, 직업 스트레스와 부부관계의 문제가 동시에 증가하면 각각의 sum이 예측하는 것보다 더 낮은 삶의 만족도가 예측됨.</li>
+</ul>
+<ol start="2" type="1">
+<li>Buffering interaction</li>
+</ol>
+<ul>
+<li>두 변수가 반대 방향으로 Y에 작용하고 있을 때, 한 변수가 다른 변수의 효과를 감소시키는 경우</li>
+<li>즉, 한 변수의 impact가 다른 변수의 impact를 줄여주는 경우</li>
+<li>건강보건에 대한 연구에서, 한 변수가 질병의 위험요인이고 다른 변수가 질병의 위험을 줄여주는 보호요인인 경우</li>
+<li>위의 예에서처럼, 나이(X)는 지구력 감소의 위험요인이고, 운동기간(Z)은 지구력 보호요인인 경우</li>
+</ul>
+<ol start="3" type="1">
+<li>Interference or antagonistic interactionin</li>
+</ol>
+<ul>
+<li>두 변수가 같은 방향으로 Y에 작용하고 있을 때, 상호작용은 반대 방향으로 작용하는 경우</li>
+<li>대학생의 학업성취도(Y)에 대하여, 학업동기(X)와 학업능력(Z)이 모두 학업성취도(Y)에 긍정적인 영향을 미치나 이 두 변수는 서로 보완적인 효과를 가지고 있음.</li>
+<li>즉, 성취도에 대한 학업능력의 중요성은 높은 학업동기에 의해 낮아질 수 있음.</li>
+<li>반대로, 학업동기에 대한 중요성은 높은 학업능력에 의해 낮아질 수 있음.</li>
+</ul>
+</div>
+</div>
 </section>
 </section>
 <section id="수집된-데이터의-성격" class="level2">
@@ -849,7 +909,7 @@ Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
 <li>개념적으로는 물리적 통제라고 볼 수 있으며,</li>
 <li>두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당)</li>
 </ul>
-<p><img src="../images/RCT2.png" class="img-fluid" width="400"></p>
+<p><img src="../images/RCT2.png" class="img-fluid" width="400"> <img src="../images/experiment-validity.png" class="img-fluid" width="400"></p>
 
 
 </section>
@@ -1307,7 +1367,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
