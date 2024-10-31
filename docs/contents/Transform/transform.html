@@ -4886,13 +4886,7 @@ Suppressing the Group Keys
 <span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 149        7.51 2.00    Male     No  Thur   Lunch     2     0.27</span></span>
 <span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 221       13.42 3.48  Female    Yes   Fri   Lunch     2     0.26</span></span>
 <span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 194       16.58 4.00    Male    Yes  Thur   Lunch     2     0.24</span></span>
-<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 88        24.71 5.85    Male     No  Thur   Lunch     2     0.24</span></span>
-<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 222        8.58 1.92    Male    Yes   Fri   Lunch     1     0.22</span></span>
-<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 172        7.25 5.15    Male    Yes   Sun  Dinner     2     0.71</span></span>
-<span id="cb139-9"><a href="#cb139-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 178        9.60 4.00  Female    Yes   Sun  Dinner     2     0.42</span></span>
-<span id="cb139-10"><a href="#cb139-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 67         3.07 1.00  Female    Yes   Sat  Dinner     1     0.33</span></span>
-<span id="cb139-11"><a href="#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 232       11.61 3.39    Male     No   Sat  Dinner     2     0.29</span></span>
-<span id="cb139-12"><a href="#cb139-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 183       23.17 6.50    Male    Yes   Sun  Dinner     4     0.28</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Hide warnings">
@@ -4917,17 +4911,16 @@ Hide warnings
 </ul>
 <p><img src="images/apply.png" class="img-fluid" width="700"></p>
 <p><a href="https://stackoverflow.com/questions/19798153/difference-between-map-applymap-and-apply-methods-in-pandas">Source, 비교 참고</a></p>
-<div id="cell-136" class="cell" data-execution_count="76">
+<div id="cell-136" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_format(x):</span>
 <span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.1f}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-137" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>tips_num <span class="op">=</span> tips.select_dtypes(<span class="st">"number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-138" class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># element-wise, DataFrame method</span></span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>tips_num.applymap(my_format)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
+<div id="cell-137" class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>tips_num <span class="op">=</span> tips.select_dtypes(<span class="st">"number"</span>)  <span class="co"># select numeric columns</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="co"># element-wise, DataFrame method</span></span>
+<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a>tips_num.applymap(my_format)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="90">
 <pre><code>    total_bill  tip size tip_pct
 0         17.0  1.0  2.0     0.1
 1         10.3  1.7  3.0     0.2
@@ -4940,10 +4933,10 @@ Hide warnings
 [244 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div id="cell-139" class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># element-wise, Series method</span></span>
-<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>tips[<span class="st">"tip"</span>].<span class="bu">map</span>(my_format)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
+<div id="cell-138" class="cell" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># element-wise, Series method</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>tips[<span class="st">"tip"</span>].<span class="bu">map</span>(my_format)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>0      1.0
 1      1.7
 2      3.5
@@ -4954,25 +4947,30 @@ Hide warnings
 Name: tip, Length: 244, dtype: object</code></pre>
 </div>
 </div>
-<div id="cell-140" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> peak_to_peak(arr):</span>
-<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr.<span class="bu">max</span>() <span class="op">-</span> arr.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-139" class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> peak_to_peak(arr):</span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr.<span class="bu">max</span>() <span class="op">-</span> arr.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-141" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column-wise operation</span></span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>tips_num.<span class="bu">apply</span>(peak_to_peak)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div id="cell-140" class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column-wise operation</span></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>tips_num.<span class="bu">apply</span>(peak_to_peak)</span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co"># row-wise operation</span></span>
+<span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a>tips_num.<span class="bu">apply</span>(peak_to_peak, axis<span class="op">=</span><span class="st">"columns"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+
+</div>
+<div id="cell-141" class="cell quarto-layout-panel" data-execution_count="98" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>total_bill   47.74
 tip           9.00
 size          5.00
 tip_pct       0.67
 dtype: float64</code></pre>
 </div>
-</div>
-<div id="cell-142" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># row-wise operation</span></span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>tips_num.<span class="bu">apply</span>(peak_to_peak, axis<span class="op">=</span><span class="st">"columns"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>0     16.93
 1     10.18
 2     20.84
@@ -4983,24 +4981,25 @@ dtype: float64</code></pre>
 Length: 244, dtype: float64</code></pre>
 </div>
 </div>
+</div>
 <p><strong>Groupby object에 적용</strong>할 때 비교</p>
 <p><code>apply</code>에 패스되는 함수가 Series나 DataFrame를 반환하는 경우</p>
-<div id="cell-144" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f2(x):</span>
-<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series([x.<span class="bu">min</span>(), x.<span class="bu">max</span>()], index<span class="op">=</span>[<span class="st">"min"</span>, <span class="st">"max"</span>])  <span class="co"># Series를 반환</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-143" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f2(x):</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series([x.<span class="bu">min</span>(), x.<span class="bu">max</span>()], index<span class="op">=</span>[<span class="st">"min"</span>, <span class="st">"max"</span>])  <span class="co"># Series를 반환</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-145" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply에 패스되는 함수가 Series를 반환하는 경우</span></span>
-<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a>tips_num.<span class="bu">apply</span>(f2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-144" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply에 패스되는 함수가 Series를 반환하는 경우</span></span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>tips_num.<span class="bu">apply</span>(f2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>     total_bill   tip  size  tip_pct
 min        3.07  1.00     1     0.04
 max       50.81 10.00     6     0.71</code></pre>
 </div>
 </div>
-<div id="cell-146" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Series Groupby object의 경우</span></span>
-<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a>tips.groupby(<span class="st">"time"</span>, observed<span class="op">=</span><span class="va">False</span>)[<span class="st">"tip"</span>].<span class="bu">apply</span>(f2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-145" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Series Groupby object의 경우</span></span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a>tips.groupby(<span class="st">"time"</span>, observed<span class="op">=</span><span class="va">False</span>)[<span class="st">"tip"</span>].<span class="bu">apply</span>(f2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>time       
 Lunch   min    1.25
@@ -5010,13 +5009,13 @@ Dinner  min    1.00
 Name: tip, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-147" class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrame GroupBy object의 경우</span></span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f3(g):</span>
-<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> g[<span class="st">"tip"</span>]</span>
-<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series([x.<span class="bu">min</span>(), x.<span class="bu">max</span>()], index<span class="op">=</span>[<span class="st">"min"</span>, <span class="st">"max"</span>])</span>
-<span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-6"><a href="#cb157-6" aria-hidden="true" tabindex="-1"></a>tips.groupby(<span class="st">"time"</span>, observed<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(f3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-146" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrame GroupBy object의 경우</span></span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f3(g):</span>
+<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> g[<span class="st">"tip"</span>]</span>
+<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series([x.<span class="bu">min</span>(), x.<span class="bu">max</span>()], index<span class="op">=</span>[<span class="st">"min"</span>, <span class="st">"max"</span>])</span>
+<span id="cb155-5"><a href="#cb155-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-6"><a href="#cb155-6" aria-hidden="true" tabindex="-1"></a>tips.groupby(<span class="st">"time"</span>, observed<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(f3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>        min   max
 time             
@@ -5026,22 +5025,22 @@ Dinner 1.00 10.00</code></pre>
 </div>
 <p><strong>Groupby filtering</strong></p>
 <p>앞서 다음과 같이 <code>.filter()</code>를 이용하여 groupby filtering을 했는데, <code>apply</code>를 이용하여 좀 더 복잡한 filtering을 할 수 있음</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]).<span class="bu">filter</span>(<span class="kw">lambda</span> x: x[<span class="st">"arr_delay"</span>].mean() <span class="op">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]).<span class="bu">filter</span>(<span class="kw">lambda</span> x: x[<span class="st">"arr_delay"</span>].mean() <span class="op">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>다음과 같은 방식으로 <code>apply</code>를 이용하여 filtering하면 위와 동일함.</p>
-<div id="cell-151" class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> less_than(group, t):</span>
-<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> group[<span class="st">"arr_delay"</span>].mean() <span class="op">&lt;</span> t</span>
-<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group <span class="cf">if</span> condition <span class="cf">else</span> <span class="va">None</span></span>
-<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb160-5"><a href="#cb160-5" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]).<span class="bu">apply</span>(less_than, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-150" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> less_than(group, t):</span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> group[<span class="st">"arr_delay"</span>].mean() <span class="op">&lt;</span> t</span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group <span class="cf">if</span> condition <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]).<span class="bu">apply</span>(less_than, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>가령, 도착지연이 그날 하루 평균보다 낮았던 항공편들만 추리기</p>
-<div id="cell-153" class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> less_than_mean(group):</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> group[<span class="st">"arr_delay"</span>] <span class="op">&lt;</span> group[<span class="st">"arr_delay"</span>].mean()</span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group[idx]</span>
-<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]).<span class="bu">apply</span>(less_than_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-152" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> less_than_mean(group):</span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> group[<span class="st">"arr_delay"</span>] <span class="op">&lt;</span> group[<span class="st">"arr_delay"</span>].mean()</span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group[idx]</span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]).<span class="bu">apply</span>(less_than_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <div>
 
@@ -5260,8 +5259,8 @@ Dinner 1.00 10.00</code></pre>
 </div>
 </div>
 <p>grouping 변수를 제거하고 깔끔하게 하려면; <code>group_keys=False</code></p>
-<div id="cell-155" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>], group_keys<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(less_than_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-154" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>flights.groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>], group_keys<span class="op">=</span><span class="va">False</span>).<span class="bu">apply</span>(less_than_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <div>
 
@@ -5456,50 +5455,49 @@ Custom methods
 </div>
 <div class="callout-body-container callout-body">
 <p>다음과 같이 pandas object에 custom method를 추가할 수 있음</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> select_cols(<span class="va">self</span>, <span class="op">*</span>cols):</span>
-<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb163-5"><a href="#cb163-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Select a subset of columns from the DataFrame.</span></span>
-<span id="cb163-6"><a href="#cb163-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-7"><a href="#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb163-8"><a href="#cb163-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - cols (tuple of str): Column names to select. Use a colon (:) to specify a range of columns.</span></span>
-<span id="cb163-9"><a href="#cb163-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-10"><a href="#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb163-11"><a href="#cb163-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - pd.DataFrame: The DataFrame with selected columns.</span></span>
-<span id="cb163-12"><a href="#cb163-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-13"><a href="#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Example:</span></span>
-<span id="cb163-14"><a href="#cb163-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - tips.select("tip", "day:size")</span></span>
-<span id="cb163-15"><a href="#cb163-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb163-16"><a href="#cb163-16" aria-hidden="true" tabindex="-1"></a>    selected_cols <span class="op">=</span> []</span>
-<span id="cb163-17"><a href="#cb163-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> cols:</span>
-<span id="cb163-18"><a href="#cb163-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">":"</span> <span class="kw">in</span> col:</span>
-<span id="cb163-19"><a href="#cb163-19" aria-hidden="true" tabindex="-1"></a>            start, end <span class="op">=</span> col.split(<span class="st">":"</span>)</span>
-<span id="cb163-20"><a href="#cb163-20" aria-hidden="true" tabindex="-1"></a>            columns <span class="op">=</span> <span class="va">self</span>.loc[:, start:end].columns</span>
-<span id="cb163-21"><a href="#cb163-21" aria-hidden="true" tabindex="-1"></a>            selected_cols.extend(columns)</span>
-<span id="cb163-22"><a href="#cb163-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb163-23"><a href="#cb163-23" aria-hidden="true" tabindex="-1"></a>            selected_cols.append(col)</span>
-<span id="cb163-24"><a href="#cb163-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-25"><a href="#cb163-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>[selected_cols]</span>
-<span id="cb163-26"><a href="#cb163-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-27"><a href="#cb163-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the custom method to the DataFrame class</span></span>
-<span id="cb163-28"><a href="#cb163-28" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.select <span class="op">=</span> select_cols</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> select_cols(<span class="va">self</span>, <span class="op">*</span>cols):</span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Select a subset of columns from the DataFrame.</span></span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - cols (tuple of str): Column names to select. Use a colon (:) to specify a range of columns.</span></span>
+<span id="cb161-9"><a href="#cb161-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-10"><a href="#cb161-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb161-11"><a href="#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - pd.DataFrame: The DataFrame with selected columns.</span></span>
+<span id="cb161-12"><a href="#cb161-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-13"><a href="#cb161-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Example:</span></span>
+<span id="cb161-14"><a href="#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - tips.select("tip", "day:size")</span></span>
+<span id="cb161-15"><a href="#cb161-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb161-16"><a href="#cb161-16" aria-hidden="true" tabindex="-1"></a>    selected_cols <span class="op">=</span> []</span>
+<span id="cb161-17"><a href="#cb161-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> cols:</span>
+<span id="cb161-18"><a href="#cb161-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">":"</span> <span class="kw">in</span> col:</span>
+<span id="cb161-19"><a href="#cb161-19" aria-hidden="true" tabindex="-1"></a>            start, end <span class="op">=</span> col.split(<span class="st">":"</span>)</span>
+<span id="cb161-20"><a href="#cb161-20" aria-hidden="true" tabindex="-1"></a>            columns <span class="op">=</span> <span class="va">self</span>.loc[:, start:end].columns</span>
+<span id="cb161-21"><a href="#cb161-21" aria-hidden="true" tabindex="-1"></a>            selected_cols.extend(columns)</span>
+<span id="cb161-22"><a href="#cb161-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb161-23"><a href="#cb161-23" aria-hidden="true" tabindex="-1"></a>            selected_cols.append(col)</span>
+<span id="cb161-24"><a href="#cb161-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-25"><a href="#cb161-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>[selected_cols]</span>
+<span id="cb161-26"><a href="#cb161-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-27"><a href="#cb161-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the custom method to the DataFrame class</span></span>
+<span id="cb161-28"><a href="#cb161-28" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.select <span class="op">=</span> select_cols</span>
+<span id="cb161-29"><a href="#cb161-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-30"><a href="#cb161-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-31"><a href="#cb161-31" aria-hidden="true" tabindex="-1"></a>flights.select(<span class="st">"origin"</span>, <span class="st">"dest"</span>, <span class="st">"dep_delay:arr_delay"</span>).head()</span>
+<span id="cb161-32"><a href="#cb161-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   origin dest  dep_delay  arr_time  sched_arr_time  arr_delay</span></span>
+<span id="cb161-33"><a href="#cb161-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 0    EWR  IAH       2.00    830.00             819      11.00</span></span>
+<span id="cb161-34"><a href="#cb161-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 1    LGA  IAH       4.00    850.00             830      20.00</span></span>
+<span id="cb161-35"><a href="#cb161-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 2    JFK  MIA       2.00    923.00             850      33.00</span></span>
+<span id="cb161-36"><a href="#cb161-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 3    JFK  BQN      -1.00   1004.00            1022     -18.00</span></span>
+<span id="cb161-37"><a href="#cb161-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 4    LGA  ATL      -6.00    812.00             837     -25.00</span></span>
+<span id="cb161-38"><a href="#cb161-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-39"><a href="#cb161-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Build useful methods</span></span>
+<span id="cb161-40"><a href="#cb161-40" aria-hidden="true" tabindex="-1"></a>flights.deselect()</span>
+<span id="cb161-41"><a href="#cb161-41" aria-hidden="true" tabindex="-1"></a>flights.relocate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="cell-158" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>flights.select(<span class="st">"origin"</span>, <span class="st">"dest"</span>, <span class="st">"dep_delay:arr_delay"</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>  origin dest  dep_delay  arr_time  sched_arr_time  arr_delay
-0    EWR  IAH       2.00    830.00             819      11.00
-1    LGA  IAH       4.00    850.00             830      20.00
-2    JFK  MIA       2.00    923.00             850      33.00
-3    JFK  BQN      -1.00   1004.00            1022     -18.00
-4    LGA  ATL      -6.00    812.00             837     -25.00</code></pre>
-</div>
-</div>
-<div class="sourceCode" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build some deselect methods</span></span>
-<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>flights.deselect()</span>
-<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a>flights.relocate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
