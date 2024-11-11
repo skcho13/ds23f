@@ -19,8 +19,8 @@ project:
     #- "!movielens_sol.ipynb"
     - "!modelling1_ex.ipynb"
     - "!modelling2_ex.ipynb"
-    - "!sol1.ipynb"
-    - "!sol2.ipynb"
+    #- "!sol1.ipynb"
+    #- "!sol2.ipynb"
 
   resources: CNAME
   preview:
@@ -125,10 +125,10 @@ website:
             text: MovieLens
       - section: Solutions
         contents:
-      #     - href: contents/Transform/sol1.ipynb
-      #       text: Transforming I
-      #     - href: contents/Transform/sol2.ipynb
-      #       text: Transforming II
+          - href: contents/Transform/sol1.ipynb
+            text: Transforming I
+          - href: contents/Transform/sol2.ipynb
+            text: Transforming II
           - href: contents/Exercises/billboard_sol.ipynb
             text: Billboard
           - href: contents/Exercises/movielens_sol.ipynb
