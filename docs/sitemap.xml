@@ -61,6 +61,10 @@
     <lastmod>2024-03-19T15:58:21.274Z</lastmod>
   </url>
   <url>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
+    <lastmod>2024-11-11T07:38:55.828Z</lastmod>
+  </url>
+  <url>
     <loc>https://dgdavs.modellings.art/contents/Exercises/billboard.html</loc>
     <lastmod>2024-04-30T19:48:01.184Z</lastmod>
   </url>
@@ -73,8 +77,12 @@
     <lastmod>2024-04-16T17:49:23.924Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
-    <lastmod>2024-05-05T20:20:44.704Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard_sol.html</loc>
+    <lastmod>2024-11-11T08:47:11.466Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens_sol.html</loc>
+    <lastmod>2024-11-11T08:47:02.400Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/pandas.html</loc>

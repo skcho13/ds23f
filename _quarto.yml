@@ -15,8 +15,8 @@ project:
     - "!slides/"
     - "!*-temp.ipynb"
     - "!*-temp.qmd"
-    - "!billboard_sol.ipynb"
-    - "!movielens_sol.ipynb"
+    #- "!billboard_sol.ipynb"
+    #- "!movielens_sol.ipynb"
     - "!modelling1_ex.ipynb"
     - "!modelling2_ex.ipynb"
     - "!sol1.ipynb"
@@ -123,16 +123,16 @@ website:
             text: Billboard
           - href: contents/Exercises/movielens.ipynb
             text: MovieLens
-      # - section: Solutions
-      #   contents:
+      - section: Solutions
+        contents:
       #     - href: contents/Transform/sol1.ipynb
       #       text: Transforming I
       #     - href: contents/Transform/sol2.ipynb
       #       text: Transforming II
-      #     - href: contents/Exercises/billboard_sol.ipynb
-      #       text: Billboard
-      #     - href: contents/Exercises/movielens_sol.ipynb
-      #       text: MovieLens
+          - href: contents/Exercises/billboard_sol.ipynb
+            text: Billboard
+          - href: contents/Exercises/movielens_sol.ipynb
+            text: MovieLens
       - text: ---
       - section: Modelling
         contents:
