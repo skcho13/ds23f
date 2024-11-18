@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-13">
+<meta name="dcterms.date" content="2024-11-18">
 
 <title>Model Basics –  Data Analysis &amp; Visualization</title>
 <style>
@@ -576,7 +576,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 13, 2024</p>
+      <p class="date">November 18, 2024</p>
     </div>
   </div>
   
@@ -604,7 +604,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="45" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="45">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -672,6 +672,8 @@ window.Quarto = {
 <li>분산이 유한한 분포 중에 정보 엔트로피가 최대(maximum entropy)인 분포</li>
 <li>중심극한정리(Central Limit Theorem)</li>
 </ul>
+<p><span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, density function: <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\)</span></p>
+<p><span class="math inline">\(X \sim N(0, 1)\)</span>: <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}\)</span>, (standard normal distribution)</p>
 <div>
 
 </div>
@@ -1116,6 +1118,7 @@ Important
 <li>보통 squared error function을 사용함.</li>
 <li>이 squared error가 최소가 되도록 하는 것을 ordinary least squares(OLS) estimator라고 함</li>
 <li>Error가 Gaussian 일때, 이 OLS는 적절한 parameter를 추정하게 됨.</li>
+<li>Likelihood를 최대화하는 방식으로 추정하는 방식: Maximum Likelihood Estimation(MLE)</li>
 </ul></li>
 </ul>
 <p><em>예측의 <strong>정확성(accuracy)</strong>을 평가</em></p>
@@ -1151,10 +1154,10 @@ Important
 </ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  ols(<span class="st">"y ~ x1 + x2"</span>, data <span class="op">=</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>예를 들어, <code>SaratogaHouses</code> 데이터셋에서 집값을 거주공간의 넓이(<code>livingArea</code>)와 침실의 갯수(<code>bedrooms</code>)로 예측하는 경우</p>
-<div id="cell-48" class="cell" data-execution_count="8">
+<div id="cell-48" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>).data</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>houses.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>    price  lotSize  age  landValue  livingArea  pctCollege  bedrooms  \
 0  132500     0.09   42      50000         906          35         2   
 1  181115     0.92    0      22300        1953          51         3   
@@ -1171,16 +1174,16 @@ Important
 2         No              No         No  </code></pre>
 </div>
 </div>
-<div id="cell-49" class="cell" data-execution_count="51">
+<div id="cell-49" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>houses[<span class="st">"livingArea2"</span>] <span class="op">=</span> houses[<span class="st">"livingArea"</span>] <span class="op">/</span> <span class="fl">35.5</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>mod_houses <span class="op">=</span> ols(<span class="st">"price ~ livingArea2 + bedrooms"</span>, data<span class="op">=</span>houses).fit()</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>mod_houses.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
-<pre><code>Intercept      36667.89513634
-livingArea2     4451.87723917
-bedrooms      -14196.76861208
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Intercept      36667.90
+livingArea2     4451.88
+bedrooms      -14196.77
 dtype: float64</code></pre>
 </div>
 </div>
@@ -1353,9 +1356,11 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <section id="predictions-the-pattern-that-the-model-has-captured" class="level2">
 <h2 class="anchored" data-anchor-id="predictions-the-pattern-that-the-model-has-captured">Predictions: the pattern that the model has captured</h2>
 <p>우선, 예측 변수들의 데이터 값을 커버하는 grid를 구성</p>
-<div id="cell-58" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<p>Data: <a href="https://www.dropbox.com/s/z37caxcbr0xbutt/sim1.csv?dl=1">sim1.csv</a></p>
+<div id="cell-58" class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"/data/sim1.csv"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>     x     y
 0    1  4.20
 1    1  7.51
@@ -1368,19 +1373,19 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 [30 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div id="cell-59" class="cell" data-execution_count="36">
+<div id="cell-59" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid for the range of x sim1: new data</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(x<span class="op">=</span>np.linspace(sim1.x.<span class="bu">min</span>(), sim1.x.<span class="bu">max</span>(), <span class="dv">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>모델에 grid를 입력하여 prediction값을 추가</p>
-<div id="cell-61" class="cell" data-execution_count="38">
+<div id="cell-61" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a model for sim1</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sim1_mod <span class="op">=</span> ols(<span class="st">"y ~ x"</span>, data<span class="op">=</span>sim1).fit()</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> sim1_mod.predict(grid) <span class="co"># column 이름이 매치되어야 함</span></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>       x  pred
 0   1.00  6.27
 1   2.00  8.32
@@ -1394,7 +1399,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 </div>
 </div>
 <p>prediction을 시각화</p>
-<div id="cell-63" class="cell" data-execution_count="40">
+<div id="cell-63" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -1405,7 +1410,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    .scale(x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>grid.x))</span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <figure class="figure">
 <p><img src="model-basic_files/figure-html/cell-37-output-1.png" width="422" height="326" class="figure-img"></p>
@@ -1417,12 +1422,12 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <section id="residuals-what-the-model-has-missed." class="level2">
 <h2 class="anchored" data-anchor-id="residuals-what-the-model-has-missed.">Residuals: what the model has missed.</h2>
 <p><span class="math inline">\(e = Y - \hat{Y}\)</span> : 관측값 - 예측값</p>
-<div id="cell-66" class="cell" data-execution_count="42">
+<div id="cell-66" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"resid"</span>] <span class="op">=</span> sim1_mod.resid  <span class="co"># Y - Y_hat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-67" class="cell" data-execution_count="43">
+<div id="cell-67" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>     x     y  fitted  resid
 0    1  4.20    6.27  -2.07
 1    1  7.51    6.27   1.24
@@ -1436,13 +1441,13 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 </div>
 </div>
 <p>우선, residuals의 분포를 시각화해서 살펴보면,</p>
-<div id="cell-70" class="cell" data-execution_count="56">
+<div id="cell-70" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"resid"</span>].hist(bins<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-42-output-1.png" width="251" height="175" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-42-output-1.png" width="503" height="351" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1478,7 +1483,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <div>
 
 </div>
-<div id="cell-78" class="cell quarto-layout-panel" data-execution_count="72" data-layout-ncol="2">
+<div id="cell-78" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-47-output-1.png" class="img-fluid" width="630"></p>
@@ -1511,22 +1516,22 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <ul>
 <li>2개의 범주인 경우: 한 개의 변수 <code>sex[T.male]</code>이 생성</li>
 </ul>
-<div id="cell-80" class="cell" data-execution_count="42">
+<div id="cell-80" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"sex"</span>: [<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>], <span class="st">"response"</span>: [<span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">13</span>]})</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>      sex  response
 0    male        10
 1  female        21
 2    male        13</code></pre>
 </div>
 </div>
-<div id="cell-81" class="cell" data-execution_count="46">
+<div id="cell-81" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Design matrix</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'response ~ sex'</span>, data<span class="op">=</span>df, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>   Intercept  sex[T.male]
 0       1.00         1.00
 1       1.00         0.00
@@ -1537,10 +1542,10 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <li>세 개의 범주인 경우: 두 개의 변수 <code>sex[T.male]</code>, <code>sex[T.neutral]</code>가 생성</li>
 <li>일반적으로 <code>n</code>개의 범주를 가진 변수인 경우 <code>n-1</code>개의 변수가 생성</li>
 </ul>
-<div id="cell-83" class="cell" data-execution_count="3">
+<div id="cell-83" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"sex"</span>: [<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"neutral"</span>], <span class="st">"response"</span>: [<span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">5</span>]})</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>       sex  response
 0     male        10
 1   female        21
@@ -1548,10 +1553,10 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 3  neutral         5</code></pre>
 </div>
 </div>
-<div id="cell-84" class="cell" data-execution_count="130">
+<div id="cell-84" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"response ~ sex"</span>, data<span class="op">=</span>df, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="130">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>   Intercept  sex[T.male]  sex[T.neutral]
 0       1.00         1.00            0.00
 1       1.00         0.00            0.00
@@ -1560,9 +1565,9 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 </div>
 </div>
 <p>직접 변환: pandas의 <code>get_dummies</code>를 이용</p>
-<div id="cell-86" class="cell" data-execution_count="7">
+<div id="cell-86" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(df) <span class="co"># drop_first=True, prefix="sex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>   response  sex_female  sex_male  sex_neutral
 0        10       False      True        False
 1        21        True     False        False
@@ -1573,10 +1578,10 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <hr>
 <p>실제 예를 들어서 살펴보면,<br>
 Data: <a href="https://www.dropbox.com/s/4001aduta6qrnky/sim2.csv?dl=1">sim2.csv</a></p>
-<div id="cell-88" class="cell" data-execution_count="77">
+<div id="cell-88" class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sim2 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim2.csv"</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>sim2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>    x    y
 0   a 1.94
 1   a 1.18
@@ -1589,22 +1594,22 @@ Data: <a href="https://www.dropbox.com/s/4001aduta6qrnky/sim2.csv?dl=1">sim2.csv
 [40 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div id="cell-89" class="cell" data-execution_count="80">
+<div id="cell-89" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sim2.plot.scatter(x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"y"</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-54-output-1.png" width="266" height="185" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-54-output-1.png" width="531" height="371" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Fit a model to Data</p>
-<div id="cell-91" class="cell" data-execution_count="81">
+<div id="cell-91" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim2).fit()</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="81">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>Intercept   1.15
 x[T.b]      6.96
 x[T.c]      4.98
@@ -1613,11 +1618,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 <p>모델을 이용해 새로운 데이터의 예측값을 구하면</p>
-<div id="cell-93" class="cell" data-execution_count="84">
+<div id="cell-93" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: <span class="bu">list</span>(<span class="st">"abcd"</span>)})  <span class="co"># new data</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> mod2.predict(grid)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>   x  pred
 0  a  1.15
 1  b  8.12
@@ -1627,7 +1632,7 @@ dtype: float64</code></pre>
 </div>
 <p>예측값을 시각화하면,<br>
 각 카테고리 별로 평균값으로 예측… why?</p>
-<div id="cell-95" class="cell" data-execution_count="100">
+<div id="cell-95" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.scatter scatter plot, 점의 내부가 채워지지 않도록 설정</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(sim2[<span class="st">"x"</span>], sim2[<span class="st">"y"</span>])</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(grid[<span class="st">"x"</span>], grid[<span class="st">"pred"</span>], color<span class="op">=</span><span class="st">"red"</span>)</span>
@@ -1635,30 +1640,31 @@ dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-57-output-1.png" width="256" height="175" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-57-output-1.png" width="512" height="351" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>fitted model의 파라미터를 보면,<br>
 formula <code>y ~ x</code>는 실제 <span class="math inline">\(\hat{y} = a_0 + a_1x[T.b] + a_2 x[T.c] + a_3 x[T.d]\)</span> 으로 해석</p>
-<div id="cell-97" class="cell" data-execution_count="139">
+<div id="cell-97" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ x"</span>, data<span class="op">=</span>sim2, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>pd.concat([X, sim2[<span class="st">"x"</span>]], axis<span class="op">=</span><span class="dv">1</span>).sample(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="139">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>    Intercept  x[T.b]  x[T.c]  x[T.d]  x
-15       1.00    1.00    0.00    0.00  b
-35       1.00    0.00    0.00    1.00  d
-4        1.00    0.00    0.00    0.00  a
+25       1.00    0.00    1.00    0.00  c
+37       1.00    0.00    0.00    1.00  d
 32       1.00    0.00    0.00    1.00  d
-31       1.00    0.00    0.00    1.00  d
-11       1.00    1.00    0.00    0.00  b
-38       1.00    0.00    0.00    1.00  d
-28       1.00    0.00    1.00    0.00  c</code></pre>
+..        ...     ...     ...     ... ..
+10       1.00    1.00    0.00    0.00  b
+1        1.00    0.00    0.00    0.00  a
+2        1.00    0.00    0.00    0.00  a
+
+[8 rows x 5 columns]</code></pre>
 </div>
 </div>
 <p>SaratogaHouses 데이터셋에 적용해 보면,</p>
-<div id="cell-99" class="cell" data-execution_count="124">
+<div id="cell-99" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>).data</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span><span class="st">"price"</span>, x<span class="op">=</span><span class="st">"fuel"</span>, data<span class="op">=</span>houses, fill<span class="op">=</span><span class="va">False</span>)</span>
@@ -1666,15 +1672,15 @@ formula <code>y ~ x</code>는 실제 <span class="math inline">\(\hat{y} = a_0 +
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-59-output-1.png" width="283" height="185" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-59-output-1.png" width="567" height="371" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-100" class="cell" data-execution_count="125">
+<div id="cell-100" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mod_houses <span class="op">=</span> ols(<span class="st">"price ~ fuel"</span>, data<span class="op">=</span>houses)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mod_houses.fit().params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>Intercept     164937.57
 fuel[T.gas]    63597.52
 fuel[T.oil]    23796.83
@@ -1687,10 +1693,10 @@ dtype: float64</code></pre>
 <li><code>fuel[T.gas]</code> = 0, <code>fuel[T.oil]</code> = 0, <code>fuel[T.electric]</code> = 1 일 때</li>
 <li>각 기울기는 electric일과 해당 fuel 종류의 평균 가격의 차이를 의미</li>
 </ul>
-<div id="cell-102" class="cell" data-execution_count="126">
+<div id="cell-102" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"price ~ fuel"</span>, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="126">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>      Intercept  fuel[T.gas]  fuel[T.oil]
 0          1.00         0.00         0.00
 1          1.00         1.00         0.00
