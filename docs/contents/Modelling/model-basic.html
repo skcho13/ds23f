@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-18">
+<meta name="dcterms.date" content="2024-11-20">
 
 <title>Model Basics –  Data Analysis &amp; Visualization</title>
 <style>
@@ -576,7 +576,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 18, 2024</p>
+      <p class="date">November 20, 2024</p>
     </div>
   </div>
   
@@ -1208,16 +1208,14 @@ dtype: float64</code></pre>
 <li>(빨간색 경로) 침실이 1개 늘면 집의 크기가 14평 늘게 되고 집값은 14평*$4452 = $62,328 늘어는데, 침실 갯수의 효과 $-14,197와 함께, 침실이 1개 늘면 집값은 $62,328 - $14,197 = $48,218 늘어나는 것으로 보였음.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="두 변수들 간의 관계">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 두 변수들 간의 관계
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>두 변수들 간의 관계를 보면,</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod_houses1 <span class="op">=</span> ols(<span class="st">"price ~ livingArea2"</span>, data<span class="op">=</span>houses).fit()</span>
@@ -1261,7 +1259,6 @@ livingArea2 0.031</p>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="../images/saratoga-plot-3.png" class="img-fluid"></p>
-</div>
 </div>
 </div>
 </div>
