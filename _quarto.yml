@@ -173,11 +173,13 @@ format:
         code-fold: false
         code-overflow: wrap
         code-summary: "Show the code"
-        theme: [sandstone, theme-light.scss]
+        theme:
+          light: [sandstone, theme-light.scss]
+          dark: [darkly, theme-dark.scss]
         fontsize: 1.1em
         linestretch: 2
         code-copy: true
-        highlight-style: ayu-light
+        highlight-style: gruvbox
         link-external-newwindow: true
         bread-crumbs: false
         grid:

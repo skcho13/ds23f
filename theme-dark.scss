@@ -1,12 +1,16 @@
 /*-- scss:defaults --*/
 // Base document colors
 
-$link-color: #63a500; // #20B2AA, 9480e4, 1988b0
-$body-color: rgba(0, 0, 0, 0.8);  // font color
+$link-color: #63a500;// #20B2AA; // #63a500; // 9480e4, 1988b0
+$body-color: #fefffa;  //  #fffef1; // font color
+$body-bg: rgb(61, 61, 61);
 
-$sidebar-bg: #ffffff; // F6F6FF
-$sidebar-fg: #e16868; // #7a63d4, 6B51D8, 51a9d8
+$sidebar-bg: rgb(61, 61, 61); // ffffff, F6F6FF
+$sidebar-fg: #e16868; // 6B51D8, 51a9d8
 //$sidebar-hl: #d5b501;
+
+$navbar-fg: #ded8f9;
+$navbar-hl: #ded8f9;
 
 // Font sizes
 $h1-font-size: 1.4rem;
@@ -20,14 +24,14 @@ $sidebar-font-size-section: 0.95rem !default;
 
 // Fonts
 $font-family-sans-serif: 'Mulish', sans-serif; // 'Oxygen', sans-serif;
-$font-family-monospace: 'JetBrains Mono', monospace; //'Red Hat Mono', monospace; 
+$font-family-monospace: 'Red Hat Mono', monospace; //'JetBrains Mono', monospace; 
 
 // Code blocks
 $code-block-font-size: .9rem;
 
-$code-block-bg-alpha: .9;  // This is not used if an explicit background color is set. 
-$code-block-bg: hsl(0, 0%, 98%); // #F6F6FF
-$code-block-border-left: #ef9b20; // #FFDE7C; //#ff7c7c;
+$code-block-bg-alpha: -.7;  // This is not used if an explicit background color is set. 
+// $code-block-bg: #f9f9fd; // #F6F6FF
+$code-block-border-left: #87bc45; // #FFDE7C; //#ff7c7c;
 $code-block-border-left-size: 2px;
 $code-color: #FF6347; //FE5370
 
