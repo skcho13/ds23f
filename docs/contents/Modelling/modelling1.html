@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-18">
+<meta name="dcterms.date" content="2024-11-27">
 
 <title>Model Building I –  Data Analysis &amp; Visualization</title>
 <style>
@@ -567,7 +567,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 18, 2024</p>
+      <p class="date">November 27, 2024</p>
     </div>
   </div>
   
@@ -641,7 +641,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-6" class="cell quarto-layout-panel" data-execution_count="79" data-layout-ncol="2">
+<div id="cell-6" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="79">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-6-output-1.png" class="img-fluid" width="630"></p>
@@ -671,7 +671,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="81" data-layout-ncol="2">
+<div id="cell-9" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="81">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-8-output-1.png" class="img-fluid" width="630"></p>
@@ -719,7 +719,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-13" class="cell quarto-layout-panel" data-execution_count="84" data-layout-ncol="2">
+<div id="cell-13" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="84">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-11-output-1.png" class="img-fluid" width="630"></p>
@@ -827,7 +827,7 @@ dtype: float64</code></pre>
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="92" data-layout-ncol="2">
+<div id="cell-26" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="92">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-19-output-1.png" class="img-fluid" width="630"></p>
@@ -852,7 +852,7 @@ dtype: float64</code></pre>
 <div>
 
 </div>
-<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="95" data-layout-ncol="2">
+<div id="cell-29" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="95">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>Intercept          11.84
@@ -944,7 +944,7 @@ dtype: float64</code></pre>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(marker<span class="op">=</span><span class="st">"o"</span>))</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    .limit(y<span class="op">=</span>(<span class="dv">1300</span>, <span class="dv">4100</span>))  <span class="co"># 아래 플랏과 비교하기 위해 y축 범위를 고정</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-42" class="cell quarto-layout-panel" data-execution_count="140" data-layout-ncol="2">
+<div id="cell-42" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="140">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-31-output-1.png" class="img-fluid" width="630"></p>
@@ -966,7 +966,7 @@ dtype: float64</code></pre>
 <div>
 
 </div>
-<div id="cell-48" class="cell quarto-layout-panel" data-execution_count="109" data-layout-ncol="2">
+<div id="cell-48" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="109">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-36-output-1.png" class="img-fluid" width="630"></p>
@@ -1135,6 +1135,8 @@ Model evaluation: R-squared, RMSE, MAE
 <li><p>Root-mean-squared deviation/error: <span class="math inline">\(RMSE = \displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{(y_i -\hat y_i)^2}}\)</span></p></li>
 <li><p>Mean absolute error: <span class="math inline">\(MAE = \displaystyle\frac{1}{n} \sum_{i=1}^{n}{|~y_i -\hat y_i~|}\)</span> : 이상치에 덜 민감함</p></li>
 </ul>
+<p>동일한 관계를 갖지만 예측정확성/설명력이 다른 경우의 예<br>
+<img src="../images/effect-size.png" class="img-fluid" width="600"></p>
 </div>
 </div>
 </section>
@@ -1230,7 +1232,7 @@ Model evaluation: R-squared, RMSE, MAE
 <div>
 
 </div>
-<div id="cell-69" class="cell quarto-layout-panel" data-execution_count="122" data-layout-ncol="2">
+<div id="cell-69" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="122">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-49-output-1.png" class="img-fluid" width="630"></p>
@@ -1335,7 +1337,7 @@ Source: p.31, <em>An Introduction to Statistical Learning (2e) by Gareth James, 
 <div>
 
 </div>
-<div id="cell-80" class="cell quarto-layout-panel" data-execution_count="131" data-layout-ncol="2">
+<div id="cell-80" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="131">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="modelling1_files/figure-html/cell-56-output-1.png" class="img-fluid" width="630"></p>
