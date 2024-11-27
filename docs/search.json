@@ -655,7 +655,7 @@
     "href": "contents/Modelling/modelling1.html#모델의-예측-정확성과-특성",
     "title": "Model Building I",
     "section": "모델의 예측 정확성과 특성",
-    "text": "모델의 예측 정확성과 특성\nResiduals의 분석\n변수의 개수가 증가하면, 즉 모델이 복잡할수록 샘플에 대한 예측력은 높아짐.\n반면, 변수들 간의 복잡한 correlation들이 모델의 해석에 오류를 가져올 수 있음.\n\n\n\n\n\n\n\n\n\nBias-Variance Tradeoff\n\nSource: p.31, An Introduction to Statistical Learning (2e) by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani",
+    "text": "모델의 예측 정확성과 특성\nResiduals의 분석\n변수의 개수가 증가하면, 즉 모델이 복잡할수록 샘플에 대한 예측력은 높아짐.\n하지만, 미래 데이터(모집단, 일반화)에 대한 예측력은 떨어질 수 있음.\n한편, 변수들 간의 복잡한 correlation들이 모델의 해석에 오류를 가져올 수 있음.\n\n\n\n\n\n\n\n\n\nBias-Variance Tradeoff\n\nSource: p.31, An Introduction to Statistical Learning (2e) by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani",
     "crumbs": [
       "Modelling",
       "Model Building I"
