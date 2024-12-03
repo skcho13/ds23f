@@ -490,6 +490,12 @@ window.Quarto = {
  <span class="menu-text">Model building II</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling1_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modelling 1 Ex.</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -785,7 +791,7 @@ dtype: int64</code></pre>
 <div>
 
 </div>
-<div id="cell-19" class="cell quarto-layout-panel" data-execution_count="12" data-layout-ncol="2">
+<div id="cell-19" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="12">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-13-output-1.png" class="img-fluid" width="605"></p>
@@ -929,7 +935,7 @@ Tip
 <p>Q: 왜 fair 컷의 평균 가격이 가장 높은가???</p>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-33" class="cell quarto-layout-panel" data-execution_count="13" data-layout="[[2, 1]]">
+<div id="cell-33" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="13">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-20-output-1.png" class="img-fluid" width="589"></p>
@@ -953,7 +959,7 @@ Tip
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Violin plot</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-37" class="cell quarto-layout-panel" data-execution_count="25" data-layout="[[2, 1]]">
+<div id="cell-37" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="25">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-22-output-1.png" class="img-fluid" width="589"></p>
@@ -968,7 +974,7 @@ Tip
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>sns.boxplot(mpg, y<span class="op">=</span><span class="st">"class"</span>, x<span class="op">=</span><span class="st">"hwy"</span>, fill<span class="op">=</span><span class="va">False</span>, order<span class="op">=</span>hwy_order)</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="26" data-layout="[[3, 1]]">
+<div id="cell-39" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="26">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-23-output-1.png" class="img-fluid" width="630"></p>
@@ -1036,7 +1042,7 @@ Tip
 <div>
 
 </div>
-<div id="cell-47" class="cell quarto-layout-panel" data-execution_count="43" data-layout-ncol="2">
+<div id="cell-47" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="43">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-28-output-1.png" class="img-fluid" width="630"></p>
@@ -1303,7 +1309,7 @@ Tip
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sns.jointplot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>, kind<span class="op">=</span><span class="st">"hex"</span>, gridsize<span class="op">=</span><span class="dv">30</span>, height<span class="op">=</span><span class="dv">5</span>, norm<span class="op">=</span>LogNorm())  <span class="co"># gridsize: bin 개수</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-59" class="cell quarto-layout-panel" data-execution_count="78" data-layout="[[3, 1]]">
+<div id="cell-59" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="78">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-36-output-1.png" class="img-fluid" width="511"></p>
@@ -1319,7 +1325,7 @@ Tip
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-62" class="cell quarto-layout-panel" data-execution_count="53" data-layout="[[2, 1]]">
+<div id="cell-62" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="53">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-38-output-1.png" class="img-fluid" width="589"></p>
@@ -1338,7 +1344,7 @@ Tip
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_qcat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.show()  <span class="co"># 생략</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-64" class="cell quarto-layout-panel" data-execution_count="55" data-layout="[[2, 1]]">
+<div id="cell-64" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="55">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-40-output-1.png" class="img-fluid" width="589"></p>
@@ -1448,7 +1454,7 @@ wait time (mins) between eruptions</p>
 <div>
 
 </div>
-<div id="cell-74" class="cell quarto-layout-panel" data-execution_count="18" data-layout-ncol="2">
+<div id="cell-74" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="18">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-46-output-1.png" class="img-fluid" width="630"></p>
@@ -1477,7 +1483,7 @@ wait time (mins) between eruptions</p>
 <div>
 
 </div>
-<div id="cell-77" class="cell quarto-layout-panel" data-execution_count="62" data-layout="[[3, 1]]">
+<div id="cell-77" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="62">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-47-output-1.png" class="img-fluid" width="605"></p>
@@ -1525,7 +1531,7 @@ Residual samples
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diamonds_fit.params)  <span class="co"># print coefficients</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R2 = </span><span class="sc">{</span>diamonds_fit<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)  <span class="co"># print R-squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-80" class="cell quarto-layout-panel" data-execution_count="64" data-layout-ncol="2">
+<div id="cell-80" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="64">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>Intercept   -2310.50
@@ -1596,7 +1602,7 @@ Code
 <div>
 
 </div>
-<div id="cell-86" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[3, 1]]">
+<div id="cell-86" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="66">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-51-output-1.png" class="img-fluid" width="605"></p>

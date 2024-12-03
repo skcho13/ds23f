@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-22">
+<meta name="dcterms.date" content="2024-12-03">
 
-<title>Case 1 –  Data Analysis &amp; Visualization</title>
+<title>Modelling Building 1 Exercises –  Data Analysis &amp; Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,15 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../contents/Transform/babynames.html" rel="next">
-<link href="../../contents/Transform/transform.html" rel="prev">
+<link href="../../contents/Modelling/modelling2.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,9 +116,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<meta property="og:title" content="Case 1 –  Data Analysis &amp; Visualization">
+<meta property="og:title" content="Modelling Building 1 Exercises –  Data Analysis &amp; Visualization">
 <meta property="og:description" content="R for Data Science by Wickham &amp; Grolemund">
 <meta property="og:site_name" content="Data Analysis and Visualization in Python">
 </head>
@@ -134,7 +136,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Case 1</h1>
+          <h1 class="quarto-secondary-nav-title">Modelling Building 1 Exercises</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -305,14 +307,14 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../../contents/Transform/transform.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transforming I</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/case1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../contents/Transform/case1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Case 1</span></a>
   </div>
 </li>
@@ -461,7 +463,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/Modelling/modelling1_ex.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contents/Modelling/modelling1_ex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Modelling 1 Ex.</span></a>
   </div>
 </li>
@@ -495,9 +497,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#q1" id="toc-q1" class="nav-link active" data-scroll-target="#q1">Q1</a></li>
-  <li><a href="#q2" id="toc-q2" class="nav-link" data-scroll-target="#q2">Q2</a></li>
-  <li><a href="#q3" id="toc-q3" class="nav-link" data-scroll-target="#q3">Q3</a></li>
+  <li><a href="#flights-to-sfo" id="toc-flights-to-sfo" class="nav-link active" data-scroll-target="#flights-to-sfo">Flights to SFO</a></li>
   </ul>
 </nav>
     </div>
@@ -506,7 +506,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Case 1</h1>
+<h1 class="title d-none d-lg-block">Modelling Building 1 Exercises</h1>
 <p class="subtitle lead">R for Data Science by Wickham &amp; Grolemund</p>
 </div>
 
@@ -524,7 +524,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2024</p>
+      <p class="date">December 3, 2024</p>
     </div>
   </div>
   
@@ -536,7 +536,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="63">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -564,321 +564,372 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">"retina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="q1" class="level2">
-<h2 class="anchored" data-anchor-id="q1">Q1</h2>
-<p>각 도착지에 따른 비행거리(<code>distance</code>)와 도착지연시간(<code>arr_delay</code>)와의 관계를 알아보고자 함.</p>
-<ol type="1">
-<li>Group flights by destination.</li>
-<li>Summarise to compute distance, average delay, and number of flights.</li>
-<li>Filter to remove noisy points and Honolulu airport, which is almost twice as far away as the next closest airport.</li>
-</ol>
-<div id="cell-4" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the nycflight13 dataset</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"flights"</span>, <span class="st">"nycflights13"</span>).data.drop(columns<span class="op">=</span><span class="st">"time_hour"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="flights-to-sfo" class="level2">
+<h2 class="anchored" data-anchor-id="flights-to-sfo">Flights to SFO</h2>
+<div id="cell-5" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">'flights'</span>, <span class="st">'nycflights13'</span>).data</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the date column to a datetime object</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"time_hour"</span>] <span class="op">=</span> pd.to_datetime(flights[<span class="st">"time_hour"</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column for the day of the week</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dow"</span>] <span class="op">=</span> (</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    flights[<span class="st">"time_hour"</span>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    .dt.day_name()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>[:<span class="dv">3</span>]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="st">"category"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    .cat.set_categories([<span class="st">"Sun"</span>, <span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>])</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column for the season</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"season"</span>] <span class="op">=</span> np.where(flights[<span class="st">"month"</span>].isin([<span class="dv">6</span>, <span class="dv">7</span>]), <span class="st">"summer"</span>, <span class="st">"other month"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grouping by destinations</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>by_dest <span class="op">=</span> flights.groupby(<span class="st">"dest"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out the flights to SFO</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sfo <span class="op">=</span> flights.query(<span class="st">'dest == "SFO" &amp; arr_delay &lt; 500'</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>delay <span class="op">=</span> (</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      by_dest</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      .agg(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            count<span class="op">=</span>(<span class="st">"distance"</span>, <span class="st">"count"</span>), </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            dist<span class="op">=</span>(<span class="st">"distance"</span>, <span class="st">"mean"</span>), </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            delays<span class="op">=</span>(<span class="st">"arr_delay"</span>, <span class="st">"mean"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      .reset_index()</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour + origin + carrier + season + dow"</span>, data<span class="op">=</span>sfo).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>delay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="71">
-<pre><code>    dest  count       dist   delays
-0    ABQ    254 1826.00000  4.38189
-1    ACK    265  199.00000  4.85227
-2    ALB    439  143.00000 14.39713
-..   ...    ...        ...      ...
-102  TVC    101  652.38614 12.96842
-103  TYS    631  638.80983 24.06920
-104  XNA   1036 1142.50579  7.46573
-
-[105 rows x 4 columns]</code></pre>
+<p>이미 세운 모형의 잔차를 분석</p>
+<div id="cell-9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sfo[<span class="st">"resid"</span>] <span class="op">=</span> mod.resid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sfo, x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#.add(so.Dots(alpha=.1))</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<figure class="figure">
+<p><img src="modelling1_ex_files/figure-html/cell-9-output-1.png" width="605" height="451" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="74">
+</div>
+<div id="cell-11" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(delay, x<span class="op">=</span><span class="st">"dist"</span>, y<span class="op">=</span><span class="st">"delays"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(), pointsize<span class="op">=</span><span class="st">"count"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    .scale(pointsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">20</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sfo, x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"season"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-12-output-1.png" width="705" height="445" class="figure-img"></p>
+<p><img src="modelling1_ex_files/figure-html/cell-10-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>불필요한 자료를 제거하고 시각화하는 것이 유리</p>
-<div id="cell-14" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to remove noisy points and Honolulu airport</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>delay_sub <span class="op">=</span> delay.query(<span class="st">'count &gt; 20 &amp; dest != "HNL"'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    so.Plot(delay_sub, x<span class="op">=</span><span class="st">"dist"</span>, y<span class="op">=</span><span class="st">"delays"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(), pointsize<span class="op">=</span><span class="st">"count"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    .scale(pointsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">20</span>))</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div id="cell-12" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sfo, x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    .facet(row<span class="op">=</span><span class="st">"season"</span>, col<span class="op">=</span><span class="st">"dow"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-13-output-1.png" width="705" height="445" class="figure-img"></p>
+<p><img src="modelling1_ex_files/figure-html/cell-11-output-1.png" width="878" height="566" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>다음과 같이 제외되는 자료에 대해 label 혹은 True/False을 붙여 관리하는 것도 방법</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> (delay[<span class="st">"count"</span>] <span class="op">&gt;</span> <span class="dv">20</span>) <span class="op">&amp;</span> (delay[<span class="st">"dest"</span>] <span class="op">!=</span> <span class="st">"HNL"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> delay.<span class="bu">eval</span>(<span class="st">'count &gt; 20 and dest != "HNL"'</span>)  <span class="co"># query와 동일한 문법</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>delay[<span class="st">"incl"</span>] <span class="op">=</span> np.where(idx, <span class="st">"out"</span>, <span class="st">"in"</span>)  <span class="co"># idx가 True인 곳은 "out", False인 곳은 "in"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>delay</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   dest  count    dist  delay incl</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 0  ABQ    254 1826.00   4.38  out</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 1  ACK    265  199.00   4.85  out</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2  ALB    439  143.00  14.40  out</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3  ANC      8 3370.00  -2.50   in</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4  ATL  17215  757.11  11.30  out</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 제외되는 데이터를 같이 볼 수 있음</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    so.Plot(delay, x<span class="op">=</span><span class="st">"dist"</span>, y<span class="op">=</span><span class="st">"delay"</span>, color<span class="op">=</span><span class="st">"incl"</span>)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(), pointsize<span class="op">=</span><span class="st">"count"</span>)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    .scale(pointsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">20</span>))</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/plot3.png" class="img-fluid" width="400"></p>
-</div>
-</div>
-</section>
-<section id="q2" class="level2">
-<h2 class="anchored" data-anchor-id="q2">Q2</h2>
-<p>평균적으로 가장 연착시간이 큰 항공기(tail number로 구분)를 살펴보는데,<br>
-우선, <code>count()</code>를 사용하여 샘플 수가 극히 작은 케이스들 혹은 극단치들을 제거해서 살펴보는 것이 유리함.</p>
-<div id="cell-18" class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> flights.groupby(<span class="st">"tailnum"</span>)[[<span class="st">"arr_delay"</span>]].mean() <span class="co"># as DataFrame</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>delays</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>         arr_delay
-tailnum           
-D942DN    31.50000
-N0EGMQ     9.98295
-N10156    12.71724
-...            ...
-N998DL    16.39474
-N999DN    14.31148
-N9EAMQ     9.23529
-
-[4043 rows x 1 columns]</code></pre>
-</div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(delays, x<span class="op">=</span><span class="st">"arr_delay"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.Hist())</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
+<p>처음부터 변수들 간의 관계를 파악하면서 모형을 세운다면,</p>
+<div id="cell-14" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sfo, x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'arr_delay'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#.add(so.Dots(alpha=.1))</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-16-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="modelling1_ex_files/figure-html/cell-12-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>pandas DataFrame method <code>.hist()</code>를 간단히 이용할 수 있음</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>delays.hist(bins<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<p>300분이 넘는 delay도 있음을 보이는데, 각 평균 delay값이 몇 개 항목의 평균인지 살펴보면 흥미로운 사실을 발견할 수 있음. 즉,</p>
-<div id="cell-22" class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> (</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    flights</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"tailnum"</span>)[<span class="st">"arr_delay"</span>]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    .agg([(<span class="st">"delay"</span>, <span class="st">"mean"</span>), (<span class="st">"n"</span>, <span class="st">"count"</span>)])</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>delays</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="79">
-<pre><code>           delay    n
-tailnum              
-D942DN  31.50000    4
-N0EGMQ   9.98295  352
-N10156  12.71724  145
-...          ...  ...
-N998DL  16.39474   76
-N999DN  14.31148   61
-N9EAMQ   9.23529  238
-
-[4043 rows x 2 columns]</code></pre>
-</div>
-</div>
-<div id="cell-23" class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(delays, x<span class="op">=</span><span class="st">"n"</span>, y<span class="op">=</span><span class="st">"delay"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".4"</span>), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
+<div id="cell-15" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sfo, x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'arr_delay'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#.add(so.Dots(alpha=.1))</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"month"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-18-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="modelling1_ex_files/figure-html/cell-13-output-1.png" width="1141" height="374" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>비행횟수가 작을수록 편차가 크게 나타나는데,<br>
-일반적으로 샘플 수가 클수록 평균들의 편차가 줄어드는 현상이 나타남.</p>
-<p>위와 같은 플랏을 볼 때, 샘플 수가 매우 작은 그룹들은 제외하고 살펴보는 것이 패턴을 파악하는데 종종 도움이 됨.<br>
-간단하게, <code>query()</code> method를 이용하면 편리</p>
-<div id="cell-25" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(delays.query(<span class="st">'n &gt; 25'</span>), x<span class="op">=</span><span class="st">"n"</span>, y<span class="op">=</span><span class="st">"delay"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".4"</span>), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="83">
+<div id="cell-16" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sfo, x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'arr_delay'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#.add(so.Dots(alpha=.1))</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"dow"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-19-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="modelling1_ex_files/figure-html/cell-14-output-1.png" width="854" height="374" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>연속적인 함수 적용시 <code>.pipe</code> method를 권장; method chaining</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    delays</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'n &gt; 25'</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    .pipe(so.Plot, x<span class="op">=</span><span class="st">"n"</span>, y<span class="op">=</span><span class="st">"delay"</span>)  <span class="co"># 함수 so.Plot의 첫 번째 인자로 DataFrame을 받음</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="q3" class="level2">
-<h2 class="anchored" data-anchor-id="q3">Q3</h2>
-<div id="cell-28" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lahman's Baseball Database</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>batting <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/beanumber/baseball_R/master/data/Batting.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-29" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>batting</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>        playerID  yearID  stint teamID lgID    G  G_batting     AB     R  \
-0      aardsda01    2004      1    SFN   NL   11         11   0.00  0.00   
-1      aardsda01    2006      1    CHN   NL   45         43   2.00  0.00   
-2      aardsda01    2007      1    CHA   AL   25          2   0.00  0.00   
-...          ...     ...    ...    ...  ...  ...        ...    ...   ...   
-95192  zwilldu01    1914      1    CHF   FL  154        154 592.00 91.00   
-95193  zwilldu01    1915      1    CHF   FL  150        150 548.00 65.00   
-95194  zwilldu01    1916      1    CHN   NL   35         35  53.00  4.00   
-
-           H  ...    SB   CS    BB    SO  IBB  HBP    SH   SF  GIDP  G_old  
-0       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  0.00 0.00  0.00  11.00  
-1       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  1.00 0.00  0.00  45.00  
-2       0.00  ...  0.00 0.00  0.00  0.00 0.00 0.00  0.00 0.00  0.00   2.00  
-...      ...  ...   ...  ...   ...   ...  ...  ...   ...  ...   ...    ...  
-95192 185.00  ... 21.00  NaN 46.00 68.00  NaN 1.00 10.00  NaN   NaN 154.00  
-95193 157.00  ... 24.00  NaN 67.00 65.00  NaN 2.00 18.00  NaN   NaN 150.00  
-95194   6.00  ...  0.00  NaN  4.00  6.00  NaN 0.00  2.00  NaN   NaN  35.00  
-
-[95195 rows x 24 columns]</code></pre>
-</div>
-</div>
-<div id="cell-30" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AB: At Bats 타석에 나선 횟수, H: Hits; times reached base 출루한 횟수</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>batters <span class="op">=</span> batting.groupby(<span class="st">"playerID"</span>)[[<span class="st">"H"</span>, <span class="st">"AB"</span>]].<span class="bu">sum</span>()</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>batters <span class="op">=</span> batters.assign(</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    BA <span class="op">=</span> <span class="kw">lambda</span> x: x.H <span class="op">/</span> x.AB   <span class="co"># BA: batting average 타율</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>batters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>                   H          AB      BA
-playerID                                
-aardsda01    0.00000     3.00000 0.00000
-aaronha01 3771.00000 12364.00000 0.30500
-aaronto01  216.00000   944.00000 0.22881
-...              ...         ...     ...
-zuvelpa01  109.00000   491.00000 0.22200
-zuverge01   21.00000   142.00000 0.14789
-zwilldu01  364.00000  1280.00000 0.28437
-
-[17661 rows x 3 columns]</code></pre>
-</div>
-</div>
-<div id="cell-31" class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtering없이 보았을 때와 비교해서 어느 정도 제외할지 고민</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(batters.query(<span class="st">'AB &gt; 100'</span>), x<span class="op">=</span><span class="st">"AB"</span>, y<span class="op">=</span><span class="st">"BA"</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".4"</span>), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
+<div id="cell-17" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sbcustom <span class="im">import</span> rangeplot</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rangeplot(sfo, x<span class="op">=</span><span class="st">'origin'</span>, y<span class="op">=</span><span class="st">'arr_delay'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-23-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="modelling1_ex_files/figure-html/cell-15-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1번 기회를 얻은 타자... 타율 100%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>batters.sort_values(<span class="st">"BA"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>             H   AB   BA
-playerID                
-paciojo01 3.00 3.00 1.00
-gallaja01 1.00 1.00 1.00
-sellsda01 1.00 1.00 1.00
-...        ...  ...  ...
-kehnch01  2.00 2.00 1.00
-devinha01 2.00 2.00 1.00
-liddeda01 1.00 1.00 1.00
+<div id="cell-18" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rangeplot(sfo, x<span class="op">=</span><span class="st">'carrier'</span>, y<span class="op">=</span><span class="st">'arr_delay'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+<figure class="figure">
+<p><img src="modelling1_ex_files/figure-html/cell-16-output-1.png" width="605" height="451" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mod.summary(slim<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              arr_delay   R-squared:                       0.096
+Model:                            OLS   Adj. R-squared:                  0.095
+No. Observations:               13169   F-statistic:                     107.0
+Covariance Type:            nonrobust   Prob (F-statistic):          8.13e-275
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+Intercept          -20.4363      2.116     -9.660      0.000     -24.583     -16.289
+origin[T.JFK]        4.1590      0.966      4.306      0.000       2.266       6.052
+carrier[T.B6]       -9.5832      1.807     -5.302      0.000     -13.126      -6.040
+carrier[T.DL]      -17.9685      1.553    -11.571      0.000     -21.012     -14.925
+carrier[T.UA]       -4.0238      1.424     -2.826      0.005      -6.815      -1.232
+carrier[T.VX]       -4.9082      1.537     -3.194      0.001      -7.921      -1.896
+season[T.summer]    24.6238      0.991     24.838      0.000      22.681      26.567
+dow[T.Mon]          -2.6982      1.424     -1.895      0.058      -5.489       0.093
+dow[T.Tue]          -6.0939      1.423     -4.282      0.000      -8.883      -3.304
+dow[T.Wed]          -5.3144      1.425     -3.728      0.000      -8.108      -2.520
+dow[T.Thu]          -1.2890      1.425     -0.905      0.366      -4.082       1.504
+dow[T.Fri]          -4.9515      1.422     -3.483      0.000      -7.738      -2.165
+dow[T.Sat]         -10.3953      1.518     -6.847      0.000     -13.371      -7.419
+hour                 2.0666      0.086     23.944      0.000       1.897       2.236
+====================================================================================
 
-[10 rows x 3 columns]</code></pre>
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour + origin + carrier + season + dow"</span>, data<span class="op">=</span>sfo).fit()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># origin removed</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour + carrier + season + dow"</span>, data<span class="op">=</span>sfo).fit()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># carrier removed</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour + season + dow"</span>, data<span class="op">=</span>sfo).fit()</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod1<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod2<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="17">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<pre><code>R-squared: 0.096, 0.094, 0.084</code></pre>
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hour와 season이 상호작용하는 것으로 가정</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour * season + origin + carrier + dow"</span>, data<span class="op">=</span>sfo).fit()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># hour와 모든 달과 상호작용하는 것으로 가정</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>mod4 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour * C(month) + origin + carrier + dow"</span>, data<span class="op">=</span>sfo).fit()  <span class="co"># C(month) : month를 범주형 변수로 취급</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># hour, 모든 달, 요일이 서로 상호작용하는 것으로 가정</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>mod5 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour * C(month) * dow + origin + carrier"</span>, data<span class="op">=</span>sfo).fit()  <span class="co"># C(month) : month를 범주형 변수로 취급</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod3<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod4<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod5<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="57">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<pre><code>R-squared: 0.096, 0.118, 0.136, 0.177</code></pre>
+</div>
+</div>
+</div>
+<p>Sample에서 더 많은 변량이 설명된다는 것이 반드시 좋은 모형을 의미하지는 않음!<br>
+통계에서는 <strong>adjusted(shrunken) R-squared</strong>로 보정</p>
+<div id="cell-23" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mod5.summary().tables[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              arr_delay   R-squared:                       0.177
+Model:                            OLS   Adj. R-squared:                  0.166
+Method:                 Least Squares   F-statistic:                     16.25
+Date:                Tue, 03 Dec 2024   Prob (F-statistic):               0.00
+Time:                        03:09:23   Log-Likelihood:                -67798.
+No. Observations:               13169   AIC:                         1.359e+05
+Df Residuals:                   12996   BIC:                         1.372e+05
+Df Model:                         172                                         
+Covariance Type:            nonrobust                                         
+==============================================================================</code></pre>
+</div>
+</div>
+<p><strong>Cross-validation</strong><br>
+5-fold cross-validation을 통해 모형의 성능을 평가</p>
+<div id="cell-25" class="cell" data-execution_count="165">
+<details class="code-fold">
+<summary>code for cv_score()</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> root_mean_squared_error, r2_score, mean_absolute_error</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cv_score(mod):</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"the number of parameters: </span><span class="sc">{</span>mod<span class="sc">.</span>df_model<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    kfold <span class="op">=</span> KFold(<span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    ave_r2, ave_aic, ave_bic <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (train_idx, test_idx) <span class="kw">in</span> <span class="bu">enumerate</span>(kfold.split(sfo)):</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        sfo_train, sfo_test <span class="op">=</span> sfo.iloc[train_idx], sfo.iloc[test_idx]</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        mod_ <span class="op">=</span> ols(mod.model.formula, data<span class="op">=</span>sfo_train).fit()</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># R-squared</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>        r2_train <span class="op">=</span> r2_score(sfo_train[<span class="st">"arr_delay"</span>], mod_.predict(sfo_train))</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>        r2_test <span class="op">=</span> r2_score(sfo_test[<span class="st">"arr_delay"</span>], mod_.predict(sfo_test))</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        ave_r2 <span class="op">+=</span> r2_test</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># AIC, BIC</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        aic, bic <span class="op">=</span> mod_.aic, mod_.bic</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>        ave_aic <span class="op">+=</span> aic</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>        ave_bic <span class="op">+=</span> bic</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Fold </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: Train R2: </span><span class="sc">{</span>r2_train<span class="sc">:.2f}</span><span class="ss">, Test R2: </span><span class="sc">{</span>r2_test<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Average Test R2: </span><span class="sc">{</span>ave_r2<span class="op">/</span><span class="dv">5</span><span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Average AIC: </span><span class="sc">{</span>ave_aic<span class="op">/</span><span class="dv">5</span><span class="sc">:.2f}</span><span class="ss">, Average BIC: </span><span class="sc">{</span>ave_bic<span class="op">/</span><span class="dv">5</span><span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-26" class="cell" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cv_score(mod5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the number of parameters: 172.0
+
+Fold 1: Train R2: 0.19, Test R2: 0.12
+Fold 2: Train R2: 0.18, Test R2: 0.13
+Fold 3: Train R2: 0.18, Test R2: 0.17
+Fold 4: Train R2: 0.17, Test R2: 0.18
+Fold 5: Train R2: 0.18, Test R2: 0.16
+
+Average Test R2: 0.15
+Average AIC: 108788.40, Average BIC: 110044.81</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cv_score(mod4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the number of parameters: 34.0
+
+Fold 1: Train R2: 0.14, Test R2: 0.11
+Fold 2: Train R2: 0.14, Test R2: 0.12
+Fold 3: Train R2: 0.13, Test R2: 0.14
+Fold 4: Train R2: 0.13, Test R2: 0.14
+Fold 5: Train R2: 0.14, Test R2: 0.14
+
+Average Test R2: 0.13
+Average AIC: 109047.00, Average BIC: 109301.19</code></pre>
+</div>
+</div>
+<div id="cell-28" class="cell" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cv_score(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the number of parameters: 14.0
+
+Fold 1: Train R2: 0.12, Test R2: 0.09
+Fold 2: Train R2: 0.12, Test R2: 0.11
+Fold 3: Train R2: 0.12, Test R2: 0.13
+Fold 4: Train R2: 0.12, Test R2: 0.13
+Fold 5: Train R2: 0.12, Test R2: 0.13
+
+Average Test R2: 0.12
+Average AIC: 109229.17, Average BIC: 109338.10</code></pre>
+</div>
+</div>
+<div id="cell-29" class="cell" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Spline regression</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mod5_spline <span class="op">=</span> ols(<span class="st">"arr_delay ~ cr(hour, df=5) * C(month) * dow + origin + carrier"</span>, data<span class="op">=</span>sfo).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-30" class="cell" data-execution_count="170">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>cv_score(mod5_spline)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the number of parameters: 424.0
+
+Fold 1: Train R2: 0.21, Test R2: 0.10
+Fold 2: Train R2: 0.21, Test R2: 0.12
+Fold 3: Train R2: 0.20, Test R2: 0.14
+Fold 4: Train R2: 0.20, Test R2: 0.16
+Fold 5: Train R2: 0.20, Test R2: 0.15
+
+Average Test R2: 0.14
+Average AIC: 108957.71, Average BIC: 112044.26</code></pre>
+</div>
+</div>
+<div id="cell-31" class="cell" data-execution_count="171">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ridge regression with polynomial features</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> RidgeCV</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>kfold <span class="op">=</span> KFold(<span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>sfo[<span class="st">"month"</span>] <span class="op">=</span> sfo[<span class="st">"month"</span>].astype(<span class="st">"category"</span>)  <span class="co"># 범주형 변수로 변환</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sfo[[<span class="st">"hour"</span>, <span class="st">"origin"</span>, <span class="st">"carrier"</span>, <span class="st">"month"</span>, <span class="st">"dow"</span>]]</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.get_dummies(X, drop_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> sfo[<span class="st">"arr_delay"</span>]</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(<span class="dv">2</span>)  <span class="co"># 모든 2차 항을 포함</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>ridge <span class="op">=</span> RidgeCV()</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> make_pipeline(poly, ridge)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>cross_val_score(pipe, X, y, cv<span class="op">=</span>kfold, scoring<span class="op">=</span><span class="st">"r2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="171">
+<pre><code>array([0.13, 0.15, 0.17, 0.19, 0.16])</code></pre>
+</div>
+</div>
+<div id="cell-32" class="cell" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the number of parameters</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>poly.fit_transform(X).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="164">
+<pre><code>(13169, 300)</code></pre>
+</div>
+</div>
+<div id="cell-33" class="cell" data-execution_count="178">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBRegressor</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>xgb <span class="op">=</span> XGBRegressor(n_estimators<span class="op">=</span><span class="dv">5000</span>, learning_rate<span class="op">=</span><span class="fl">0.01</span>, max_depth<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>cross_val_score(xgb, X, y, cv<span class="op">=</span>kfold, scoring<span class="op">=</span><span class="st">"r2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="178">
+<pre><code>array([0.13, 0.15, 0.18, 0.19, 0.18])</code></pre>
 </div>
 </div>
 
@@ -1457,14 +1508,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../contents/Transform/transform.html" class="pagination-link" aria-label="Transforming I">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transforming I</span>
+      <a href="../../contents/Modelling/modelling2.html" class="pagination-link" aria-label="Model building II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Model building II</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../contents/Transform/babynames.html" class="pagination-link" aria-label="Case 2">
-        <span class="nav-page-text">Case 2</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
