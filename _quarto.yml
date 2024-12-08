@@ -18,7 +18,7 @@ project:
     #- "!billboard_sol.ipynb"
     #- "!movielens_sol.ipynb"
     #- "!modelling1_ex.ipynb"
-    - "!modelling2_ex.ipynb"
+    # - "!modelling2_ex.ipynb"
     #- "!sol1.ipynb"
     #- "!sol2.ipynb"
 
@@ -145,8 +145,8 @@ website:
       # #   #     contents:
           - href: contents/Modelling/modelling1_ex.ipynb
             text: Modelling 1 Ex.
-          # - href: contents/Modelling/modelling2_ex.ipynb
-          #   text: Modelling 2 Ex.
+          - href: contents/Modelling/modelling2_ex.ipynb
+            text: Modelling 2 Ex.
       # #   # #       # contents:
       # #   #       #   - href: contents/modelling3_ex.ipynb
       # #   #     #- href: contents/misc4.ipynb
