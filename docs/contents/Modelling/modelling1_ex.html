@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../contents/Modelling/modelling2_ex.html" rel="next">
 <link href="../../contents/Modelling/modelling2.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -467,6 +468,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
  <span class="menu-text">Modelling 1 Ex.</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling2_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modelling 2 Ex.</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -749,7 +756,7 @@ Notes:
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour + season + dow"</span>, data<span class="op">=</span>sfo).fit()</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod1<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod2<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="17">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="17" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>R-squared: 0.096, 0.094, 0.084</code></pre>
@@ -766,7 +773,7 @@ Notes:
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>mod5 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour * C(month) * dow + origin + carrier"</span>, data<span class="op">=</span>sfo).fit()  <span class="co"># C(month) : month를 범주형 변수로 취급</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod3<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod4<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod5<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-21" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="57">
+<div id="cell-21" class="cell quarto-layout-panel" data-execution_count="57" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>R-squared: 0.096, 0.118, 0.136, 0.177</code></pre>
@@ -1513,6 +1520,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../contents/Modelling/modelling2_ex.html" class="pagination-link" aria-label="Modelling 2 Ex.">
+        <span class="nav-page-text">Modelling 2 Ex.</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
