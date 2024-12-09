@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-12-02">
+<meta name="dcterms.date" content="2024-12-08">
 
 <title>Model building II –  Data Analysis &amp; Visualization</title>
 <style>
@@ -568,7 +568,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 2, 2024</p>
+      <p class="date">December 8, 2024</p>
     </div>
   </div>
   
@@ -580,7 +580,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="3">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical calculation &amp; data frames</span></span>
@@ -610,17 +610,17 @@ window.Quarto = {
 </div>
 <section id="what-affects-the-number-of-daily-flights" class="level1">
 <h1>What affects the number of daily flights?</h1>
-<div id="cell-4" class="cell" data-execution_count="5">
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">'flights'</span>, <span class="st">'nycflights13'</span>).data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="6">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dates from year, month, day</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"date"</span>] <span class="op">=</span> pd.to_datetime(flights[[<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="7">
+<div id="cell-6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>daily <span class="op">=</span> flights.groupby(<span class="st">"date"</span>).size().reset_index(name<span class="op">=</span><span class="st">"n"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>daily</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>          date    n
 0   2013-01-01  842
 1   2013-01-02  943
@@ -633,13 +633,13 @@ window.Quarto = {
 [365 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(daily, x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'n'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line())</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-7-output-1.png" width="757" height="374" class="figure-img"></p>
@@ -650,7 +650,7 @@ window.Quarto = {
 <section id="day-of-week-요일" class="level2">
 <h2 class="anchored" data-anchor-id="day-of-week-요일">1. Day of week (요일)</h2>
 <p>항공편의 개수는 요일에 따른 효과가 크게 미치기 때문에 우선 요일의 효과를 살펴보면서 장기간의 트렌드를 이해하고자 함</p>
-<div id="cell-9" class="cell" data-execution_count="9">
+<div id="cell-9" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column for the day of the week</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>daily[<span class="st">"wday"</span>] <span class="op">=</span> pd.Categorical(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    daily[<span class="st">"date"</span>].dt.day_name().<span class="bu">str</span>[:<span class="dv">3</span>],</span>
@@ -658,9 +658,9 @@ window.Quarto = {
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ordered<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="10">
+<div id="cell-10" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>daily</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>          date    n wday
 0   2013-01-01  842  Tue
 1   2013-01-02  943  Wed
@@ -673,10 +673,10 @@ window.Quarto = {
 [365 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="11">
+<div id="cell-11" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sbcustom <span class="im">import</span> boxplot</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>boxplot(daily, <span class="st">"wday"</span>, <span class="st">"n"</span>, alpha<span class="op">=</span><span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-10-output-1.png" width="605" height="451" class="figure-img"></p>
@@ -685,12 +685,12 @@ window.Quarto = {
 </div>
 </div>
 <p>매우 강한 주말 효과를 제거하기 위해 모델을 만들어 residuals을 얻음</p>
-<div id="cell-13" class="cell" data-execution_count="12">
+<div id="cell-13" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.ols(<span class="st">"n ~ wday"</span>, data<span class="op">=</span>daily).fit()</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>mod.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Intercept      891.48
 wday[T.Mon]     83.33
 wday[T.Tue]     59.88
@@ -701,7 +701,7 @@ wday[T.Sat]   -146.87
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="14">
+<div id="cell-15" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame({<span class="st">"wday"</span>: [<span class="st">"Sun"</span>, <span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>]})</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> mod.predict(grid)</span>
@@ -712,7 +712,7 @@ dtype: float64</code></pre>
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="15">
+<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="13">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>  wday   pred
@@ -737,13 +737,13 @@ Name: n, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="16">
+<div id="cell-17" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    boxplot(daily, <span class="st">"wday"</span>, <span class="st">"n"</span>, alpha<span class="op">=</span><span class="fl">.5</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(color<span class="op">=</span><span class="st">"blue"</span>, marker<span class="op">=</span><span class="st">"&lt;"</span>), x<span class="op">=</span>grid.wday, y<span class="op">=</span>grid.pred)  <span class="co"># prediction 추가</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    .scale(x<span class="op">=</span>so.Nominal(order<span class="op">=</span>[<span class="st">"Sun"</span>, <span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>]))</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-15-output-1.png" width="605" height="451" class="figure-img"></p>
@@ -752,18 +752,18 @@ Name: n, dtype: float64</code></pre>
 </div>
 </div>
 <p>Residuals: 요일의 효과를 제거한 후의 날짜와 항공편의 개수의 관계</p>
-<div id="cell-19" class="cell" data-execution_count="17">
+<div id="cell-19" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column of residuals from mod</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>daily[<span class="st">"resid"</span>] <span class="op">=</span> mod.resid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="18">
+<div id="cell-20" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(daily, x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line())</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">":"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-17-output-1.png" width="757" height="374" class="figure-img"></p>
@@ -776,14 +776,14 @@ Name: n, dtype: float64</code></pre>
 <ol type="1">
 <li>6월부터 모델이 잡아내지 못한 패턴들이 심해짐. 이를 위해 우선, 요일별로 잔차를 들여다 보면,</li>
 </ol>
-<div id="cell-22" class="cell" data-execution_count="19">
+<div id="cell-22" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(daily, x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'resid'</span>, color<span class="op">=</span><span class="st">"wday"</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line())</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".6"</span>, linestyle<span class="op">=</span><span class="st">":"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-18-output-1.png" width="848" height="374" class="figure-img"></p>
@@ -796,9 +796,9 @@ Name: n, dtype: float64</code></pre>
 <ol start="2" type="1">
 <li>특히나 적은 항공편이 있는 날들이 있어서 그 날들을 살펴보면</li>
 </ol>
-<div id="cell-26" class="cell" data-execution_count="21">
+<div id="cell-26" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>daily.query(<span class="st">'resid &lt; -100'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>          date    n wday   resid
 0   2013-01-01  842  Tue -109.36
 19  2013-01-20  786  Sun -105.48
@@ -814,7 +814,7 @@ Name: n, dtype: float64</code></pre>
 </div>
 </div>
 <p>미국 공휴일에 해당하는 날들로 보임: 새해, 독립기념일(7/4), 추수감사절, 크리스마스 등등</p>
-<div id="cell-28" class="cell" data-execution_count="26">
+<div id="cell-28" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>공휴일 확인</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> holidays</span>
@@ -825,7 +825,7 @@ Name: n, dtype: float64</code></pre>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>          date    n wday   resid      holiday_name
 0   2013-01-01  842  Tue -109.36    New Year's Day
 19  2013-01-20  786  Sun -105.48     Not a holiday
@@ -843,7 +843,7 @@ Name: n, dtype: float64</code></pre>
 <ol start="3" type="1">
 <li>일년에 걸쳐 나타나는 장기간의 트렌드가 있어보임: <code>so.Polyfit(5)</code>을 이용해 시각화해보면</li>
 </ol>
-<div id="cell-31" class="cell" data-execution_count="102">
+<div id="cell-31" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(daily, x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".5"</span>))</span>
@@ -851,7 +851,7 @@ Name: n, dtype: float64</code></pre>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">":"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-23-output-1.png" width="757" height="374" class="figure-img"></p>
@@ -861,11 +861,11 @@ Name: n, dtype: float64</code></pre>
 </div>
 <p>다항함수 fit 보다 좀 더 flexible한 <strong>natural spline</strong>으로 fit을 하면,<br>
 <code>patsy</code> 패키지의 <code>cr</code> 함수를 이용: <a href="https://patsy.readthedocs.io/en/latest/spline-regression.html">spline regression</a></p>
-<div id="cell-33" class="cell" data-execution_count="103">
+<div id="cell-33" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 일년 중 몇 일째인지 수치형 변수로 추가: cr함수가 datetime을 처리하지 못함.</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>daily[<span class="st">"day"</span>] <span class="op">=</span> daily[<span class="st">"date"</span>].dt.day_of_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="104">
+<div id="cell-34" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10개의 조각으로 이루어진 cubic(3차) natural spline</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>fit_spline <span class="op">=</span> smf.ols(<span class="st">"resid ~ cr(day, df=10)"</span>, data<span class="op">=</span>daily).fit()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>daily[<span class="st">"ns_fitted"</span>] <span class="op">=</span> fit_spline.fittedvalues</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -887,9 +887,9 @@ Note
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>daily[<span class="st">"bs_fitted"</span>] <span class="op">=</span> fit_bspline.fittedvalues</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="105">
+<div id="cell-36" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>daily.head(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>        date    n wday   resid  day  ns_fitted
 0 2013-01-01  842  Tue -109.36    1     -56.91
 1 2013-01-02  943  Wed  -19.69    2     -56.86
@@ -900,7 +900,7 @@ Note
 6 2013-01-07  933  Mon  -41.81    7     -56.54</code></pre>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="106">
+<div id="cell-37" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(daily, x<span class="op">=</span><span class="st">'day'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".6"</span>))</span>
@@ -909,7 +909,7 @@ Note
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="106">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-27-output-1.png" width="758" height="374" class="figure-img"></p>
@@ -919,13 +919,13 @@ Note
 </div>
 <p>겨울에 좀 적으며, 여름에 많음: 여러 해의 데이터가 있다면 이 패턴을 구체화 할 수 있으나 2013년의 데이터만 있으므로 우리의 지식에 의존해서 설명해 볼 수 밖에 없음</p>
 <p>참고로 위에서 언급한 B-splines를 이용한 모델에 의한 예측값을 추가로 그리면,</p>
-<div id="cell-39" class="cell" data-execution_count="111">
+<div id="cell-39" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted line by B-spline model: 1차 함수(직선), 10개의 pieces로 나누어짐</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fit_bspline <span class="op">=</span> smf.ols(<span class="st">"resid ~ bs(day, df=10, degree=1)"</span>, data<span class="op">=</span>daily).fit()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>daily[<span class="st">"bs_fitted"</span>] <span class="op">=</span> fit_bspline.fittedvalues</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>p.add(so.Line(color<span class="op">=</span><span class="st">"blue"</span>), y<span class="op">=</span>daily.bs_fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 <figure class="figure">
 <p><img src="modelling2_files/figure-html/cell-28-output-1.png" width="758" height="374" class="figure-img"></p>

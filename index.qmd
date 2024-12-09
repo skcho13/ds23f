@@ -36,11 +36,9 @@ Website: [dgdavs.modellings.art](https://dgdavs.modellings.art)
 - 번역서: Pandas를 이용한 데이터 분석 실습 2/e  
   Hands-On Data Analysis with Pandas (2e) by Stefanie Molin: 
     [code](https://github.com/stefmolin/Hands-On-Data-Analysis-with-Pandas-2nd-edition) in GitHub 
-
 - [Python for Data Analysis (3e)](https://wesmckinney.com/book/) by Wes McKinney: 
     [code](https://github.com/wesm/pydata-book/tree/3rd-edition) in GitHub  
     3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석
-
 - [R for Data Science](https://r4ds.had.co.nz/index.html) by Wickham & Grolemund; 
     [2nd edition](https://r4ds.hadley.nz/ )
 
