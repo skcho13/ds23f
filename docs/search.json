@@ -616,7 +616,7 @@
     "href": "contents/Modelling/modelling2_ex.html",
     "title": "Model Buidling 2 Exercises",
     "section": "",
-    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")",
+    "text": "Load packages\n# numerical calculation & data frames\nimport numpy as np\nimport pandas as pd\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport seaborn.objects as so\n\n# statistics\nimport statsmodels.api as sm\nimport statsmodels.formula.api as smf\n\n# pandas options\npd.set_option('mode.copy_on_write', True)  # pandas 2.0\npd.options.display.float_format = '{:.2f}'.format  # pd.reset_option('display.float_format')\npd.options.display.max_rows = 7  # max number of rows to display\n\n# NumPy options\nnp.set_printoptions(precision = 2, suppress=True)  # suppress scientific notation\n\n# For high resolution display\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats(\"retina\")",
     "crumbs": [
       "Modelling",
       "Modelling 2 Ex."
