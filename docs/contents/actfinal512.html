@@ -563,7 +563,7 @@ window.Quarto = {
 <p>총점 250</p>
 <section id="a.-다음은-houses-in-saratoga-county-2006-saratogahouses를-이용한-질문들입니다." class="level2">
 <h2 class="anchored" data-anchor-id="a.-다음은-houses-in-saratoga-county-2006-saratogahouses를-이용한-질문들입니다.">A. 다음은 Houses in Saratoga County (2006) SaratogaHouses를 이용한 질문들입니다.</h2>
-<div id="cell-5" class="cell" data-execution_count="12">
+<div id="cell-5" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>).data</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수 설명</span></span>
@@ -626,8 +626,8 @@ window.Quarto = {
 </ul></li>
 <li>이 플롯을 보고, 오래된 집의 가격이 낮아지는 현상에 대한 가능한 설명을 기술해보세요.</li>
 </ol>
-<div id="cell-14" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="cell-14" class="cell" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-8-output-1.png" width="465" height="465" class="figure-img"></p>
@@ -672,8 +672,8 @@ window.Quarto = {
 <li>fitted line은 <strong>3차 다항함수</strong>로 그립니다.</li>
 </ul></li>
 </ul>
-<div id="cell-18" class="cell" data-execution_count="17">
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="cell-18" class="cell" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-10-output-1.png" width="852" height="369" class="figure-img"></p>
@@ -698,8 +698,8 @@ window.Quarto = {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 거주공간의 넓이: 분포에서 10%, 25%, 50%, 75%, 90% 지점의 값들</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>livingArea <span class="op">=</span> np.quantile(houses[<span class="st">"livingArea"</span>], [<span class="fl">0.10</span>, <span class="fl">0.25</span>, <span class="fl">0.50</span>, <span class="fl">0.75</span>, <span class="fl">0.90</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-21" class="cell" data-execution_count="23">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div id="cell-21" class="cell" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-12-output-1.png" width="612" height="321" class="figure-img"></p>
@@ -711,8 +711,8 @@ window.Quarto = {
 <li>아래와 같이 <code>livingArea</code>와 <code>age</code>의 위치를 바꿔 시각화해보고,<br>
 거주공간이 넓어질수록 가격이 높아지는 경향이 집의 연식에 따라 어떻게 달라질 수 있는지 간략히 기술해보세요. (5)</li>
 </ol>
-<div id="cell-23" class="cell" data-execution_count="25">
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div id="cell-23" class="cell" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-13-output-1.png" width="604" height="369" class="figure-img"></p>
@@ -735,8 +735,8 @@ window.Quarto = {
 <li>Y축은 거주공간의 넓이(<code>livingArea</code>)가 이미 residualized된 집값(<code>resid</code>)임을 고려하세요.</li>
 </ul></li>
 </ol>
-<div id="cell-25" class="cell" data-execution_count="26">
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div id="cell-25" class="cell" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-14-output-1.png" width="849" height="465" class="figure-img"></p>
@@ -753,7 +753,7 @@ window.Quarto = {
 Descriptions: <a href="https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset">Bike Sharing in Washington D.C. Dataset</a></p>
 <p>아래 코드를 이용해 cleaning 후<br>
 <code>bikes</code>는 hourly 데이터셋, <code>bikes_daily</code>는 daily 데이터셋으로 사용합니다.</p>
-<div id="cell-29" class="cell" data-execution_count="27">
+<div id="cell-29" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bikes <span class="op">=</span> pd.read_csv(<span class="st">"data/hour.csv"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>bikes_daily <span class="op">=</span> pd.read_csv(<span class="st">"data/day.csv"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -779,7 +779,7 @@ Descriptions: <a href="https://www.kaggle.com/datasets/marklvl/bike-sharing-data
 <div>
 
 </div>
-<div id="cell-31" class="cell quarto-layout-panel" data-execution_count="28" data-layout-ncol="2">
+<div id="cell-31" class="cell quarto-layout-panel" data-execution_count="49" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="actfinal512_files/figure-html/cell-17-output-1.png" class="img-fluid" width="417"></p>
@@ -802,7 +802,7 @@ Descriptions: <a href="https://www.kaggle.com/datasets/marklvl/bike-sharing-data
 <div>
 
 </div>
-<div id="cell-35" class="cell quarto-layout-panel" data-execution_count="100" data-layout-ncol="2">
+<div id="cell-35" class="cell quarto-layout-panel" data-execution_count="52" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="actfinal512_files/figure-html/cell-20-output-1.png" class="img-fluid" width="465"></p>
@@ -819,7 +819,7 @@ Descriptions: <a href="https://www.kaggle.com/datasets/marklvl/bike-sharing-data
 <div>
 
 </div>
-<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="98" data-layout-ncol="2">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="54" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="actfinal512_files/figure-html/cell-22-output-1.png" class="img-fluid" width="465"></p>
@@ -831,7 +831,7 @@ Descriptions: <a href="https://www.kaggle.com/datasets/marklvl/bike-sharing-data
 </div>
 <hr>
 <p><strong>이후부터는 2012년 hourly 데이터셋(<code>bikes</code>)에 대해, 자전거 대여수를 log 변환한 값을 다음과 같이 가공한 후 진행합니다.</strong></p>
-<div id="cell-40" class="cell" data-execution_count="31">
+<div id="cell-40" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bikes <span class="op">=</span> (</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    bikes.query(<span class="st">'year == "2012"'</span>)  <span class="co"># 2012년 데이터만 사용</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
@@ -875,7 +875,7 @@ rangeplot()
 <div>
 
 </div>
-<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="49" data-layout-ncol="2">
+<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="57" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="actfinal512_files/figure-html/cell-25-output-1.png" class="img-fluid" width="321"></p>
@@ -892,8 +892,8 @@ rangeplot()
 <ol type="a">
 <li>주말과 평일이 뚜렷이 구분되는 패턴으로 나타남을 확인하고,</li>
 </ol>
-<div id="cell-48" class="cell" data-execution_count="51">
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div id="cell-48" class="cell" data-execution_count="58">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-27-output-1.png" width="657" height="513" class="figure-img"></p>
@@ -904,8 +904,8 @@ rangeplot()
 <ol start="2" type="a">
 <li>공휴일은(<code>holiday == 1</code>) 요일에 상관없이 주말과 비슷한 패턴으로 나타남을 확인합니다.</li>
 </ol>
-<div id="cell-50" class="cell" data-execution_count="35">
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div id="cell-50" class="cell" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-28-output-1.png" width="861" height="225" class="figure-img"></p>
@@ -921,8 +921,8 @@ rangeplot()
 <li>확인차 <code>workingday</code> 여부에 따라 “하루 시간(<code>hr</code>)에 따른 자전거 대여수(<code>lregistered</code>)의 변화”를 마찬가지로 <code>rangeplot()</code>으로 아래와 같이 살펴보고,</li>
 <li>두드러진 특징을 간략히 기술하고, 왜 이런 패턴이 나타날지 대략 추측해보세요.</li>
 </ol>
-<div id="cell-53" class="cell" data-execution_count="40">
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div id="cell-53" class="cell" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-30-output-1.png" width="657" height="273" class="figure-img"></p>
@@ -933,19 +933,19 @@ rangeplot()
 </section>
 <section id="b-7.-시간hr에-따른-자전거-대여수lregistered의-변화는-다항함수로는-fit하기-어려운-곡선의-형태로-나타나므로-이-패턴을-잘-잡아낼-수-있도록-natural-spline으로-fit한-모형을-다음과-같이-만듭니다.-10" class="level4">
 <h4 class="anchored" data-anchor-id="b-7.-시간hr에-따른-자전거-대여수lregistered의-변화는-다항함수로는-fit하기-어려운-곡선의-형태로-나타나므로-이-패턴을-잘-잡아낼-수-있도록-natural-spline으로-fit한-모형을-다음과-같이-만듭니다.-10">B-7. 시간(<code>hr</code>)에 따른 자전거 대여수(<code>lregistered</code>)의 변화는 다항함수로는 fit하기 어려운 곡선의 형태로 나타나므로 이 패턴을 잘 잡아낼 수 있도록 natural spline으로 fit한 모형을 다음과 같이 만듭니다. (10)</h4>
-<div id="cell-55" class="cell" data-execution_count="41">
+<div id="cell-55" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod_ns <span class="op">=</span> smf.ols(<span class="st">"lregistered ~ cr(hr, df=10) * workingday"</span>, data<span class="op">=</span>bikes).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>이 모형에 대해, 예측변수의 다음 값들에 대해 모형의 예측값을 그려보는데, <code>lregistered</code>가 아닌 <strong>원래 단위인 대여 수</strong>(<code>registered</code>)로 환원하여 예측값을 계산 후 아래와 같이 그려보세요. (디테일은 무시)</p>
 <ul>
 <li><code>lregistered</code>는 <span class="math inline">\(log_2{(\text{registered} + 1)}\)</span>으로 변환되었습니다.</li>
 </ul>
-<div id="cell-57" class="cell" data-execution_count="42">
+<div id="cell-57" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>hr <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">24</span>, <span class="dv">5</span><span class="op">/</span><span class="dv">60</span>)  <span class="co"># 5분 단위로 24시간</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>workingday <span class="op">=</span> [<span class="st">"workday"</span>, <span class="st">"day off"</span>]  <span class="co"># 근무일, 휴일</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>workingday <span class="op">=</span> [<span class="st">"workday"</span>, <span class="st">"day-off"</span>]  <span class="co"># 근무일, 휴일</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="45">
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div id="cell-58" class="cell" data-execution_count="64">
+<div class="cell-output cell-output-display" data-execution_count="64">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-33-output-1.png" width="634" height="369" class="figure-img"></p>
@@ -961,8 +961,8 @@ rangeplot()
 <li>기온(<code>temp</code>)과 근무일 여부(<code>workingday</code>) 두 변수가 상호작용하는지 판단한 후, 위에서 세운 <code>mod_ns</code> 모형에 기온(<code>temp</code>) 변수를 추가한 모형 <code>mod_ns2</code>를 세웁니다.<br>
 (최적은 아니지만) 2차 다항함수의 형태로 가정해 모형을 세워보세요.</li>
 </ol>
-<div id="cell-63" class="cell" data-execution_count="44">
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div id="cell-63" class="cell" data-execution_count="68">
+<div class="cell-output cell-output-display" data-execution_count="68">
 <div>
 <figure class="figure">
 <p><img src="actfinal512_files/figure-html/cell-37-output-1.png" width="587" height="321" class="figure-img"></p>
@@ -987,7 +987,7 @@ rangeplot()
 <div>
 
 </div>
-<div id="cell-66" class="cell quarto-layout-panel" data-execution_count="78" data-layout-ncol="2">
+<div id="cell-66" class="cell quarto-layout-panel" data-execution_count="70" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="actfinal512_files/figure-html/cell-39-output-1.png" class="img-fluid" width="623"></p>
