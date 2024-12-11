@@ -756,7 +756,7 @@ Notes:
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour + season + dow"</span>, data<span class="op">=</span>sfo).fit()</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod1<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod2<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="17" data-layout-ncol="3">
+<div id="cell-20" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="17">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>R-squared: 0.096, 0.094, 0.084</code></pre>
@@ -773,7 +773,7 @@ Notes:
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>mod5 <span class="op">=</span> ols(<span class="st">"arr_delay ~ hour * C(month) * dow + origin + carrier"</span>, data<span class="op">=</span>sfo).fit()  <span class="co"># C(month) : month를 범주형 변수로 취급</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>mod<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod3<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod4<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>mod5<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-21" class="cell quarto-layout-panel" data-execution_count="57" data-layout-ncol="2">
+<div id="cell-21" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="57">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>R-squared: 0.096, 0.118, 0.136, 0.177</code></pre>

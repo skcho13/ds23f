@@ -1008,7 +1008,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mod_r3 <span class="op">=</span> smf.ols(<span class="st">"registered ~ (temp + I(temp**2)) * year + month"</span>, data<span class="op">=</span>bikes_daily).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>display(mod_r3.rsquared, mod_r2.rsquared)  <span class="co"># month 추가로 인한 R2가 증가분</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-40" class="cell quarto-layout-panel" data-execution_count="31" data-layout-ncol="2">
+<div id="cell-40" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>0.7053133858977505</code></pre>
@@ -1271,7 +1271,7 @@ temp_cat
 <p>화수목 요일에서 나타나는 계절별 패턴의 차이를 반영할건가?</p>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>mod_c2 <span class="op">=</span> smf.ols(<span class="st">"lcasual ~ (temp + I(temp**2)) + year + wday"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>display(mod_c.rsquared, mod_c2.rsquared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-64" class="cell quarto-layout-panel" data-execution_count="50" data-layout-ncol="2">
+<div id="cell-64" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="50">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>0.5504710020921331</code></pre>
