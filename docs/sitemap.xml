@@ -29,10 +29,6 @@
     <lastmod>2024-10-31T04:06:41.729Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/sol2.html</loc>
-    <lastmod>2024-05-05T16:16:30.114Z</lastmod>
-  </url>
-  <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/pivot.html</loc>
     <lastmod>2024-04-30T19:30:54.004Z</lastmod>
   </url>
@@ -53,10 +49,6 @@
     <lastmod>2023-11-25T20:41:33.180Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Modelling/modelling2.html</loc>
-    <lastmod>2024-12-08T11:47:31.161Z</lastmod>
-  </url>
-  <url>
     <loc>https://dgdavs.modellings.art/contents/Modelling/modelling1.html</loc>
     <lastmod>2024-11-27T15:57:07.411Z</lastmod>
   </url>
@@ -67,10 +59,6 @@
   <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/inspection.html</loc>
     <lastmod>2024-03-19T15:58:21.274Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
-    <lastmod>2024-11-11T07:38:55.828Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Exercises/billboard.html</loc>
@@ -85,12 +73,8 @@
     <lastmod>2024-04-16T17:49:23.924Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/billboard_sol.html</loc>
-    <lastmod>2024-11-11T08:47:11.466Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens_sol.html</loc>
-    <lastmod>2024-11-12T06:27:34.345Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Exercises/movielens.html</loc>
+    <lastmod>2024-11-11T07:38:55.828Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Introduction/pandas.html</loc>
@@ -101,12 +85,8 @@
     <lastmod>2024-11-27T16:12:36.772Z</lastmod>
   </url>
   <url>
-    <loc>https://dgdavs.modellings.art/contents/Modelling/modelling1_ex.html</loc>
-    <lastmod>2024-12-02T20:13:48.470Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Modelling/modelling2_ex.html</loc>
-    <lastmod>2024-12-10T18:43:10.883Z</lastmod>
+    <loc>https://dgdavs.modellings.art/contents/Modelling/modelling2.html</loc>
+    <lastmod>2024-12-08T11:47:31.161Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/babynames.html</loc>
@@ -123,10 +103,6 @@
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/misc.html</loc>
     <lastmod>2024-04-21T19:48:15.090Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dgdavs.modellings.art/contents/Transform/sol1.html</loc>
-    <lastmod>2024-05-05T16:16:22.361Z</lastmod>
   </url>
   <url>
     <loc>https://dgdavs.modellings.art/contents/Transform/subsetting.html</loc>

@@ -15,12 +15,12 @@ project:
     - "!slides/"
     - "!*-temp.ipynb"
     - "!*-temp.qmd"
-    #- "!billboard_sol.ipynb"
-    #- "!movielens_sol.ipynb"
-    #- "!modelling1_ex.ipynb"
-    # - "!modelling2_ex.ipynb"
-    #- "!sol1.ipynb"
-    #- "!sol2.ipynb"
+    - "!billboard_sol.ipynb"
+    - "!movielens_sol.ipynb"
+    - "!modelling1_ex.ipynb"
+    - "!modelling2_ex.ipynb"
+    - "!sol1.ipynb"
+    - "!sol2.ipynb"
 
   resources: CNAME
   preview:
@@ -123,16 +123,16 @@ website:
             text: Billboard
           - href: contents/Exercises/movielens.ipynb
             text: MovieLens
-      - section: Solutions
-        contents:
-          - href: contents/Transform/sol1.ipynb
-            text: Transforming I
-          - href: contents/Transform/sol2.ipynb
-            text: Transforming II
-          - href: contents/Exercises/billboard_sol.ipynb
-            text: Billboard
-          - href: contents/Exercises/movielens_sol.ipynb
-            text: MovieLens
+      # - section: Solutions
+      #   contents:
+      #     - href: contents/Transform/sol1.ipynb
+      #       text: Transforming I
+      #     - href: contents/Transform/sol2.ipynb
+      #       text: Transforming II
+      #     - href: contents/Exercises/billboard_sol.ipynb
+      #       text: Billboard
+      #     - href: contents/Exercises/movielens_sol.ipynb
+      #       text: MovieLens
       - text: ---
       - section: Modelling
         contents:
@@ -143,10 +143,10 @@ website:
       # #     - href: contents/logistic.ipynb
       # #   #   - section: Solutions
       # #   #     contents:
-          - href: contents/Modelling/modelling1_ex.ipynb
-            text: Modelling 1 Ex.
-          - href: contents/Modelling/modelling2_ex.ipynb
-            text: Modelling 2 Ex.
+          # - href: contents/Modelling/modelling1_ex.ipynb
+          #   text: Modelling 1 Ex.
+          # - href: contents/Modelling/modelling2_ex.ipynb
+          #   text: Modelling 2 Ex.
       # #   # #       # contents:
       # #   #       #   - href: contents/modelling3_ex.ipynb
       # #   #     #- href: contents/misc4.ipynb
