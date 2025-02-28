@@ -1544,7 +1544,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 3:00 ~ 4:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 1:00 ~ 2:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
@@ -1554,7 +1554,7 @@
     "href": "index.html#강의-정보",
     "title": "Welcome",
     "section": "",
-    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 3:00 ~ 4:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask",
+    "text": "강사: 조성균\nemail: sk.cho@snu.ac.kr\n수업시간: 월, 수 1:00 ~ 2:50PM\n면담 시간: 수업 후\nWebsite: dgdavs.modellings.art\n과제: Notice\n질문: Communicate/Ask",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
@@ -1564,7 +1564,7 @@
     "href": "index.html#강의-개요",
     "title": "Welcome",
     "section": "강의 개요",
-    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n\n데이터를 조작, 가공하는 기술을 익히고,\n이를 통해 얻은 정제된 데이터를 시각화를 통해패턴을 여러 각도에서 살펴보고,\n데이터 모델링과 통계적 분석을 접목하여 현상에 대한 올바른이해를 돕습니다.\n\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n교재\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition",
+    "text": "강의 개요\n본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.\n\n데이터를 조작, 가공하는 기술을 익히고,\n이를 통해 얻은 정제된 데이터를 시각화를 통해패턴을 여러 각도에서 살펴보고,\n데이터 모델링과 통계적 분석을 접목하여 현상에 대한 올바른이해를 돕습니다.\n\n수업은 크게 5부분으로 나뉨\n\n탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)\n데이터 시각화 (data visualization)\n기술적 분석 (descriptive analysis)\n모델링 (modelling)\n통계 (statistics)\n\n\n참고도서\n\n번역서: Pandas를 이용한 데이터 분석 실습 2/e\nHands-On Data Analysis with Pandas (2e) by Stefanie Molin: code in GitHub\nPython for Data Analysis (3e) by Wes McKinney: code in GitHub\n3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석\nR for Data Science by Wickham & Grolemund; 2nd edition",
     "crumbs": [
       "{{< fa angles-right size=xs >}} Welcome"
     ]
