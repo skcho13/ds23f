@@ -470,12 +470,12 @@ window.Quarto = {
   <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a>
   <ul class="collapse">
   <li><a href="#common-causefork" id="toc-common-causefork" class="nav-link" data-scroll-target="#common-causefork">Common Cause/Fork</a></li>
-  <li><a href="#colider-bias" id="toc-colider-bias" class="nav-link" data-scroll-target="#colider-bias">Colider bias</a></li>
+  <li><a href="#colidersimmorality" id="toc-colidersimmorality" class="nav-link" data-scroll-target="#colidersimmorality">Coliders/Immorality</a></li>
   <li><a href="#mechanismsmediationschains" id="toc-mechanismsmediationschains" class="nav-link" data-scroll-target="#mechanismsmediationschains">Mechanisms/Mediations/Chains</a></li>
   <li><a href="#interactionmoderation" id="toc-interactionmoderation" class="nav-link" data-scroll-target="#interactionmoderation">Interaction/Moderation</a></li>
   </ul></li>
-  <li><a href="#수집된-데이터의-성격" id="toc-수집된-데이터의-성격" class="nav-link" data-scroll-target="#수집된-데이터의-성격">수집된 데이터의 성격</a></li>
-  <li><a href="#실험" id="toc-실험" class="nav-link" data-scroll-target="#실험">실험</a></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -813,8 +813,8 @@ Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
 Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
 <p><img src="images/causal_diagram_grades.png" class="img-fluid" width="500"></p>
 </section>
-<section id="colider-bias" class="level3">
-<h3 class="anchored" data-anchor-id="colider-bias">Colider bias</h3>
+<section id="colidersimmorality" class="level3">
+<h3 class="anchored" data-anchor-id="colidersimmorality">Coliders/Immorality</h3>
 <p><strong>운동능력이 뛰어나면 지능이 떨어지는가?</strong></p>
 <p><img src="images/collider.png" class="img-fluid" width="300"><br>
 Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
@@ -877,32 +877,48 @@ Interaction의 패턴
 </div>
 </section>
 </section>
-<section id="수집된-데이터의-성격" class="level2">
-<h2 class="anchored" data-anchor-id="수집된-데이터의-성격">수집된 데이터의 성격</h2>
-<p><strong>Selection Bias</strong></p>
-<p>수집된 데이터의 성격에 따라 인과추론을 방해하거나(confounding)<br>
+<section id="selection-bias" class="level2">
+<h2 class="anchored" data-anchor-id="selection-bias">Selection Bias</h2>
+<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding, internal validity)<br>
 일반화할 수 있는 대상의 범위가 제한됨(external validity)</p>
 <ul>
-<li>노인에 관한 데이터: 누가 사망했는가?</li>
-<li>과거 기록을 이용?</li>
+<li>노인에 관한 데이터: 누가 사망했는가?
+<ul>
+<li>Survival bias: 일종의 collider bias</li>
+<li>예를 들어, 비만이 사망율에 미치는 효과에 대한 추정치에 대한 오류</li>
+</ul></li>
+<li>과거 기록을 이용?; 수녀들의 기록 연구</li>
 <li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
-<li>누가 참여했는가? 어떤 방식으로 참여했는가?
+<li>누가 참여(안)했는가? 어떤 방식으로 참여했는가?
 <ul>
 <li>관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?</li>
+<li>“Where are the missing holes?” by Abraham Wald <img src="images/missing-holes.png" class="img-fluid" width="400"><br>
+<a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></li>
 </ul></li>
 <li>어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?</li>
 <li>코호트/특정세대의 특성: 그들의 특성인가?</li>
 </ul>
 </section>
-<section id="실험" class="level2">
-<h2 class="anchored" data-anchor-id="실험">실험</h2>
-<p><strong>Experiment</strong></p>
-<p>RCT (randomized controlled trial)</p>
+<section id="experiments" class="level2">
+<h2 class="anchored" data-anchor-id="experiments">Experiments</h2>
 <ul>
-<li>개념적으로는 물리적 통제라고 볼 수 있으며,</li>
-<li>두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당)</li>
+<li>개입없이 수동적으로 얻은 관찰 데이터의 분석에서는 항상 confounding이 존재할 기능성이 있음</li>
+<li>결정적인 인과관계를 파악하기 위해, 전통적으로 “통계학”의 시각에서 인과문제를 해결하기 위해 <strong>RCT (randomized controlled trial)</strong>라고 부르는 소위 gold standard한 실험 연구를 통해서 해결하고자 했음</li>
+<li>개념적으로는 “물리적 통제”라고 볼 수 있음; vs.&nbsp;“통계적 통제”</li>
+<li>두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당): 모든 면에서 동질한 성향을 가짐. 예를 들어, 두 집단의 연령이 평균적으로 동일해짐.</li>
+<li>분야마다 효과를 제대로 검증하기 위한 많은 실험 설계들이 발전되었음; 연구방법론</li>
 </ul>
 <p><img src="../images/RCT2.png" class="img-fluid" width="400"> <img src="../images/experiment-validity.png" class="img-fluid" width="400"></p>
+<p>앞서 든 예에서, 걷기가 사망율에 미치는 효과를 검증하려면, 가령 600명을 300명씩 두 그룹으로 무작위로 나눈 후 한쪽은 1마일 이하를 걷도록 하고 나머지는 2마일 이상을 걷게 한 후 12년 후 사망율을 확인해야 함.</p>
+<p>하지만, 실험 연구는 자체로 많은 한계를 지님</p>
+<ul>
+<li>많은 경우 실험이 불가능하거나 완전한 통제가 어려움</li>
+<li>실험에서 처치한 구체적인 상황에서만 유효하고; 어느 지형을 어느 속도로 누구와 어떻게 걸었는지에 대한 실험 통제하에서</li>
+<li>따라서 그 효과 또한 일반화되어 표현하기 어려움</li>
+<li>반대로, 덜 통제된 실험의 경우 어떤 요인의 효과인지 불분명</li>
+<li>완전한 통제를 할수록 더 인위적인 상황이 연출됨; 자연스러운/현실적인 상황에서 적용된다는 보장이 없음</li>
+<li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
+</ul>
 
 
 </section>
