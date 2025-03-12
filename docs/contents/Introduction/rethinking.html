@@ -585,7 +585,73 @@ Parametric</p>
 <h3 class="anchored" data-anchor-id="counterfactuals">Counterfactuals</h3>
 <ul>
 <li>두통이 사라졌다면 왜(Why) 그럴까?</li>
-<li>약을 먹지 않았어도 두통이 사라졌을까?: 가상의 세계 (counterfactual world)</li>
+<li>약을 먹지 않았어도 두통이 사라졌을까?: 반사실적(가상의) 세계 (counterfactual world)
+<ul>
+<li>Individual Treatment Effect: <span class="math inline">\(\tau_i \equiv Y_i(1) - Y_i(0)\)</span></li>
+<li>Average Treatment Effect: <span class="math inline">\(\tau \equiv E[Y_i(1) - Y_i(0)] = E[Y_i(1)] - E[Y_i(0)]\)</span></li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:10%;">
+<p><br></p>
+</div><div class="column" style="line-height: 1.0em; font-size: .9em">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(T\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(1)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(0)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(1) - Y(0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
 <li>“현재 치약을 구매한 고객이 가격을 두 배로 올려도 여전히 치약을 구매할 확률은 얼마인가?”</li>
 <li>우리는 현실 세계(고객이 현재 가격으로 치약을 구매했다는 것을 알고 있는)와 가상의 세계(가격이 두 배 높은 경우)와 비교</li>
 <li>보이는 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 있는 새로운 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 없는 세계(보이는 것과 모순)</li>
@@ -616,34 +682,35 @@ Parametric</p>
 </section>
 <section id="구체적인-예들" class="level2">
 <h2 class="anchored" data-anchor-id="구체적인-예들">구체적인 예들</h2>
-<ul>
-<li>닭의 울음이 태양을 솟게 하는가?</li>
-<li>돈과 행복: 패턴 vs.&nbsp;예외
+<p><strong><em>닭의 울음이 태양을 솟게 하는가?</em></strong></p>
+<p><strong><em>돈과 행복: 패턴 vs.&nbsp;예외 </em></strong></p>
 <ul>
 <li>특정 A의 임금이 <em>p</em> 에서 <em>q</em> 로 증가할 때, 트렌드대로 움직이겠는가?<br>
 </li>
 <li>특정 B의 임금이 <em>r</em> 에서 <em>s</em> 로 감소할 때, 트렌드대로 움직이겠는가?</li>
 <li>특정 C의 임금을 올려주면, 트렌드대로 움직이겠는가?<br>
 <a href="../images/plot_ls3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../images/plot_ls3.png" class="img-fluid" width="450"></a></li>
-</ul></li>
-<li>미혼자에 대한 임금 차별 <a href="../images/plot_wage2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../images/plot_wage2.png" class="img-fluid" width="750"></a>
-<ul>
-<li>연령을 고려한 마라톤 기록?</li>
-<li>나이와는 무관한/독립적인 마라톤 능력에 대해 말하고자 함<br>
-<img src="../images/marathon.png" class="img-fluid" width="450"></li>
-</ul></li>
 </ul>
+<p><strong><em>미혼자에 대한 임금 차별 vs.&nbsp;편견</em></strong></p>
+<ul>
+<li>미혼자에 대한 임금 차별이 있는가? 차별이 의미하는 바는 무엇인가?</li>
+<li>연령을 고려한 후에도 기혼자의 임금은 미혼자보다 높은가?</li>
+<li>연령을 고려한 후/연령을 조정한 후(adjusted for age)의 차이는 얼마라고 봐야하는가?</li>
+</ul>
+<p><a href="../images/plot_wage2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../images/plot_wage2.png" class="img-fluid" width="750"></a></p>
+<p><strong><em>연령을 고려한 마라톤 기록?</em></strong></p>
+<ul>
+<li>나이와는 무관한/독립적인 마라톤 실력에 대해 말하고자 함</li>
+</ul>
+<p><img src="../images/marathon.png" class="img-fluid" width="450"></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: https://doi.org/10.1186/2052-1847-6-31</p>
 </div>
-<ul>
-<li>가난, 인종, 범죄
-<ul>
-<li><a href="https://randomcriticalanalysis.com/2015/11/16/racial-differences-in-homicide-rates-are-poorly-explained-by-economics/">Racial differences in homicide rates are poorly explained by economics</a></li>
-</ul></li>
-<li>출산율의 감소<br>
-<iframe src="https://ourworldindata.org/grapher/children-per-woman-fertility-rate-vs-level-of-prosperity" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe></li>
-</ul>
+<p><strong><em>가난, 인종, 범죄 간의 관계</em></strong></p>
+<p><a href="https://randomcriticalanalysis.com/2015/11/16/racial-differences-in-homicide-rates-are-poorly-explained-by-economics/">Racial differences in homicide rates are poorly explained by economics</a></p>
+<p><strong><em>출산율은 왜 감소하는가?</em></strong></p>
+<iframe src="https://ourworldindata.org/grapher/children-per-woman-fertility-rate-vs-level-of-prosperity" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
+</iframe>
 </section>
 <section id="분석가의-태도" class="level2">
 <h2 class="anchored" data-anchor-id="분석가의-태도">분석가의 태도</h2>
@@ -887,7 +954,14 @@ Interaction의 패턴
 <li>Survival bias: 일종의 collider bias</li>
 <li>예를 들어, 비만이 사망율에 미치는 효과에 대한 추정치에 대한 오류</li>
 </ul></li>
-<li>과거 기록을 이용?; 수녀들의 기록 연구</li>
+<li>의료 분야에서 발견되는 패러독스
+<ul>
+<li>비만은 당뇨 환자에게 이익이 되는가?</li>
+</ul></li>
+<li>과거 기록을 이용?; 수녀들의 자서전 연구
+<ul>
+<li>추적조사/종단연구(longitudinal study)</li>
+</ul></li>
 <li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
 <li>누가 참여(안)했는가? 어떤 방식으로 참여했는가?
 <ul>
@@ -919,6 +993,22 @@ Interaction의 패턴
 <li>완전한 통제를 할수록 더 인위적인 상황이 연출됨; 자연스러운/현실적인 상황에서 적용된다는 보장이 없음</li>
 <li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
 </ul>
+<!-- 
+## Average Treatment Effect
+
+$\mathbb{E}[Y(1) - Y(0)] = \mathbb{E}[Y(1)] - \mathbb{E}[Y(0)] = \mathbb{E}[Y | T = 1] - \mathbb{E}[Y | T = 0]$
+
+::: {.column width="50%" style="line-height: 1.0em; font-size: .9em"}
+| $i$ | $T$ | $Y$ | $Y(1)$ | $Y(0)$ | $Y(1) - Y(0)$ |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:------:|
+| 1   | 0   | 0   |        | 0      | ?            |
+| 2   | 1   | 1   | 1      |        | ?            |
+| 3   | 1   | 0   | 0      |        | ?            |
+| 4   | 0   | 0   |        | 0      | ?            |
+| 5   | 0   | 1   |        | 1      | ?            |
+| 6   | 1   | 1   | 1      |        | ?            |
+:::
+ -->
 
 
 </section>

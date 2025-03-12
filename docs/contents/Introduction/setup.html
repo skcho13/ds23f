@@ -6,8 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-09-11">
 
 <title>Python 설정 –  Data Analysis &amp; Visualization</title>
 <style>
@@ -487,19 +485,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Sungkyun Cho </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 11, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -532,7 +518,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <li>Colab AI assistant</li>
 <li>구글 드라이브의 데이터셋을 import:</li>
 </ul>
-<div id="32fa56fc" class="cell">
+<div id="ee38840b" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"drive/MyDrive/..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -568,7 +554,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">create</span> <span class="at">--name</span> myenv  <span class="co"># --name 대신 -n으로 축약 가능</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 버전의 파이썬과 함께 설치시</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">create</span> <span class="at">--name</span> myenv python=3.12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">create</span> <span class="at">--name</span> myenv python=3.13</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>환경 확인</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">env</span> list</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># conda environments:</span></span>
@@ -602,7 +588,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">config</span> <span class="at">--add</span> channels conda-forge</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">config</span> <span class="at">--set</span> channel_priority strict  <span class="co"># 채널 순으로 검색, 버전 순이 아니고</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 개별적으로 채널을 선택해서 install하려면 (특정 환경에 설치하려면 아래 conda environment 참조)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> scipy <span class="at">--channel</span> conda-forge</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="at">--channel</span> conda-forge scipy </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pakcage가 있는 채널들</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="ex">search</span> scipy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -611,8 +597,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 환경을 activate한 후</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Python을 update하거나 다른 버전을 설치하려면, 가령 3.12으로 업데이트 하려면</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> python=3.12  <span class="co"># python update</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Python을 update하거나 다른 버전을 설치하려면, 가령 3.13으로 업데이트 하려면</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> python=3.13  <span class="co"># python update</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 패키지 설치</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">myenv</span><span class="kw">)</span><span class="op">&gt;</span> conda <span class="fu">install</span> <span class="op">&lt;</span>package name1<span class="op">&gt;</span> <span class="op">&lt;</span>package name2<span class="op">&gt;</span> ...</span>
