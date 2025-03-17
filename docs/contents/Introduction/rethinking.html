@@ -585,11 +585,9 @@ Parametric</p>
 <h3 class="anchored" data-anchor-id="counterfactuals">Counterfactuals</h3>
 <ul>
 <li>두통이 사라졌다면 왜(Why) 그럴까?</li>
-<li>약을 먹지 않았어도 두통이 사라졌을까?: 반사실적(가상의) 세계 (counterfactual world)
-<ul>
-<li>Individual Treatment Effect: <span class="math inline">\(\tau_i \equiv Y_i(1) - Y_i(0)\)</span></li>
-<li>Average Treatment Effect: <span class="math inline">\(\tau \equiv E[Y_i(1) - Y_i(0)] = E[Y_i(1)] - E[Y_i(0)]\)</span></li>
-</ul></li>
+<li>약을 먹지 않았어도 두통이 사라졌을까?: 반사실적(가상의) 세계 (counterfactual world)</li>
+<li>Individual Treatment Effect: <span class="math inline">\(\tau_i \equiv Y_i(1) - Y_i(0)\)</span>: <em>the fundamental problem of causal inference</em></li>
+<li>Average Treatment Effect: <span class="math inline">\(\tau \equiv E[Y_i(1) - Y_i(0)] = E[Y_i(1)] - E[Y_i(0)]\)</span>: 여러 관측치(데이터)를 이용해 (노이즈를 제거하면서) 최적의 인과효과를 추정</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:10%;">
@@ -731,7 +729,7 @@ Parametric</p>
 <li>탐색적 분석
 <ul>
 <li>통찰 혹은 가설의 기초 제공</li>
-<li>끼워 맞추기? 오류에 빠지기 쉬움</li>
+<li>끼워 맞추기? 오류에 빠지기 쉬움: <a href="https://www.tylervigen.com/spurious-correlations">spurious associations</a></li>
 </ul></li>
 <li>가설 검증
 <ul>
@@ -882,9 +880,8 @@ Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
 </section>
 <section id="colidersimmorality" class="level3">
 <h3 class="anchored" data-anchor-id="colidersimmorality">Coliders/Immorality</h3>
-<p><strong>운동능력이 뛰어나면 지능이 떨어지는가?</strong></p>
-<p><img src="images/collider.png" class="img-fluid" width="300"><br>
-Source: <em>Statistical Modeling</em> by Daniel T. Kaplan</p>
+<p><strong>미모가 뛰어나면 연기력이 떨어지는가?</strong></p>
+<p><img src="images/collider3.png" class="img-fluid" width="300"></p>
 <p><strong>코딩 기술이 뛰어나면 협업능력이 떨어지는가?</strong><br>
 어느 회사에서 지원자의 코딩 능력과 협업 능력을 1점부터 5점까지 정량화하여,<br>
 총점 8점 이상을 받은 지원자를 모두 채용한다고 했을 때,</p>
@@ -946,8 +943,8 @@ Interaction의 패턴
 </section>
 <section id="selection-bias" class="level2">
 <h2 class="anchored" data-anchor-id="selection-bias">Selection Bias</h2>
-<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding, internal validity)<br>
-일반화할 수 있는 대상의 범위가 제한됨(external validity)</p>
+<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding); internal validity(내적 타당도)<br>
+일반화할 수 있는 대상의 범위가 제한됨; external validity(외적 타당도)</p>
 <ul>
 <li>노인에 관한 데이터: 누가 사망했는가?
 <ul>
