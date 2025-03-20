@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-17">
+<meta name="dcterms.date" content="2025-03-20">
 
 <title>Data Visualization –  Data Analysis &amp; Visualization</title>
 <style>
@@ -38,14 +38,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3e062e8fe420344c07f1e837915f9541.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-55b2b16ef464b1d24caa77f57887db60.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5b0e1abfa7b260a7547a9d73df142e4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-20f56965e95c736e2c02136d799c44de.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,7 +113,10 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <meta property="og:title" content="Data Visualization –  Data Analysis &amp; Visualization">
 <meta property="og:description" content="Mixed">
+<meta property="og:image" content="https://dgdavs.modellings.art/contents/Introduction/images/vis-tools.png">
 <meta property="og:site_name" content="Data Analysis and Visualization in Python">
+<meta property="og:image:height" content="1252">
+<meta property="og:image:width" content="1691">
 </head>
 
 <body class="nav-sidebar floating">
@@ -494,7 +500,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 17, 2024</p>
+      <p class="date">March 20, 2025</p>
     </div>
   </div>
   
@@ -508,8 +514,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <section id="데이터-시각화-라이브러리" class="level1">
 <h1>데이터 시각화 라이브러리</h1>
-<p>Python의 시각화 라이브러리는 다양하게 개발되어지고 있으며, 각기 특성이 달라 하나로만 쓰기 어려운 상황임</p>
-<p>R의 ggplot2라는 매우 강력한 시각화 도구와 비교하면 이에 상응할 만한 Python 시각화 도구는 찾기 어려움</p>
+<p>Python의 시각화 라이브러리는 다양하게 개발되어지고 있으며, 각기 특성이 달라 하나로만 쓰기 어려운 상황임<br>
+한편, R은 ggplot2라는 매우 강력한 시각화 라이브러리가 존재하고, 이는 grammar of graphics를 충실히 따라 설계되었고, 매우 flexible함</p>
 <section id="대표적-도구들" class="level2">
 <h2 class="anchored" data-anchor-id="대표적-도구들">대표적 도구들</h2>
 <p><strong>Matplotlib</strong></p>
@@ -538,10 +544,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <li>Web-based interactive 시각화인 D3에 그 모체를 두며, Vega/Vega-Lite로부터 파생됨</li>
 <li>javascript-based로 interactive 시각화에 용이하나 Python과 연계가 부족한 부분이 있고, 지원/커뮤니티가 미흡함</li>
 </ul>
-<p><strong><a href="https://bokeh.org/">Bokeh</a></strong></p>
-<p><strong><a href="https://plotly.com/">Plotly</a></strong></p>
-<p>다양한 언어(R, Python, Julia)을 지원하며, 기업 수준의 상용화 제품들도 있으며, 지원군 많음</p>
-<hr>
+<p><strong><a href="https://bokeh.org/">Bokeh</a></strong><br>
+<strong><a href="https://plotly.com/">Plotly</a></strong>: 다양한 언어(R, Python, Julia)을 지원하며, 기업 수준의 상용화 제품들도 있으며, 지원군 많음</p>
 <p>Jake VanderPlas의 2017년 발표 자료 중: <em>The Python Visualization Landscape</em></p>
 <p><img src="images/vis-tools.png" class="img-fluid" width="700"></p>
 <p>Source: <a href="https://www.youtube.com/watch?v=FytuB8nFHPQ">Jake VanderPlas - The Python Visualization Landscape PyCon 2017</a></p>
@@ -735,14 +739,14 @@ if (outputEl) {{
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/communication1.png" class="img-fluid"></p>
+<p><a href="images/communication1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/communication1.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/communication2.png" class="img-fluid"></p>
+<p><a href="images/communication2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/communication2.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
-<p><img src="images/communication3.png" class="img-fluid"></p>
+<p><a href="images/communication3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/communication3.png" class="img-fluid"></a></p>
 </section>
 <section id="참조할-만한-websites" class="level1">
 <h1>참조할 만한 Websites</h1>
@@ -981,8 +985,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1098,7 +1100,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1347,6 +1348,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
