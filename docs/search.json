@@ -1594,7 +1594,7 @@
     "href": "contents/Introduction/rethinking.html#selection-bias",
     "title": "Statistical thinking",
     "section": "Selection Bias",
-    "text": "Selection Bias\n수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding); internal validity(내적 타당도)\n일반화할 수 있는 대상의 범위가 제한됨; external validity(외적 타당도)\n\n노인에 관한 데이터: 누가 사망했는가?\n\nSurvival bias: 일종의 collider bias\n예를 들어, 비만이 사망율에 미치는 효과에 대한 추정치에 대한 오류\n\n의료 분야에서 발견되는 패러독스\n\n비만은 당뇨 환자에게 이익이 되는가?\n\n과거 기록을 이용?; 수녀들의 자서전 연구\n\n추적조사/종단연구(longitudinal study)\n\n회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화\n누가 참여(안)했는가? 어떤 방식으로 참여했는가?\n\n관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?\n“Where are the missing holes?” by Abraham Wald \nSource: War History Online\n\n어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?\n코호트/특정세대의 특성: 그들의 특성인가?",
+    "text": "Selection Bias\n수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding); internal validity(내적 타당도)\n일반화할 수 있는 대상의 범위가 제한됨; external validity(외적 타당도)\n\n노인에 관한 데이터: 누가 사망했는가?\n\nSurvival bias: 일종의 collider bias\n예를 들어, 비만이 사망율에 미치는 효과에 대한 추정치에 대한 오류 \n\n의료 분야에서 발견되는 패러독스\n\n비만은 당뇨 환자에게 이익이 되는가?\n\n과거 기록을 이용?; 수녀들의 자서전 연구\n\n추적조사/종단연구(longitudinal study)\n\n회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화\n누가 참여(안)했는가? 어떤 방식으로 참여했는가?\n\n관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?\n“Where are the missing holes?” by Abraham Wald \nSource: War History Online\n\n어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?\n코호트/특정세대의 특성: 그들의 특성인가?",
     "crumbs": [
       "Introduction",
       "Statistical Thinking"
