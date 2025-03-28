@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,12 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3e062e8fe420344c07f1e837915f9541.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-55b2b16ef464b1d24caa77f57887db60.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5b0e1abfa7b260a7547a9d73df142e4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-20f56965e95c736e2c02136d799c44de.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -168,7 +168,10 @@ window.Quarto = {
 
 <meta property="og:title" content="Model Basics –  Data Analysis &amp; Visualization">
 <meta property="og:description" content="R for Data Science by Wickham &amp; Grolemund">
+<meta property="og:image" content="https://dgdavs.modellings.art/contents/images/model.png">
 <meta property="og:site_name" content="Data Analysis and Visualization in Python">
+<meta property="og:image:height" content="190">
+<meta property="og:image:width" content="517">
 </head>
 
 <body class="nav-sidebar floating">
@@ -359,20 +362,14 @@ window.Quarto = {
       <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/case1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Case 1</span></a>
+  <a href="../../contents/Transform/nycflights.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NYC Flights</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/Transform/babynames.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Case 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/exercise_transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+ <span class="menu-text">Baby Names</span></a>
   </div>
 </li>
       </ul>
@@ -574,7 +571,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="45" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="45">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -647,7 +644,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
+<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -767,7 +764,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="5">
+<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[[2, 4, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -795,7 +792,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="8">
+<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="630"></p>
@@ -832,7 +829,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-26" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="12">
+<div id="cell-26" class="cell quarto-layout-panel" data-execution_count="12" data-layout="[[1, 2]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>RMSE = <span class="math inline">\(\displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{e^2}}\)</span> = 2.67</p>
@@ -880,7 +877,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="20">
+<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" class="img-fluid" width="591"></p>
@@ -894,7 +891,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="19">
+<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="599"></p>
@@ -1258,7 +1255,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(formula, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-55" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="6">
+<div id="cell-55" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[[1, 2]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>         price
@@ -1290,7 +1287,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> houses[<span class="st">"price"</span>], houses[[<span class="st">"livingArea"</span>, <span class="st">"bedrooms"</span>]]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-56" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="31">
+<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[[1, 2]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>0       132500
@@ -1451,7 +1448,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <div>
 
 </div>
-<div id="cell-78" class="cell quarto-layout-panel" data-execution_count="72" data-layout-ncol="2">
+<div id="cell-78" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-47-output-1.png" class="img-fluid" width="630"></p>
@@ -1487,7 +1484,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>display(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-80" class="cell quarto-layout-panel" data-execution_count="21" data-layout-ncol="2">
+<div id="cell-80" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="21">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-48-output-1.png" class="img-fluid" width="605"></p>
@@ -2312,8 +2309,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2429,7 +2424,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

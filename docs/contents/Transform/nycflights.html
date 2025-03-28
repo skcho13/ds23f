@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-22">
+<meta name="dcterms.date" content="2025-03-29">
 
-<title>Case 1 –  Data Analysis &amp; Visualization</title>
+<title>NYC Flights –  Data Analysis &amp; Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,12 +73,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3e062e8fe420344c07f1e837915f9541.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-55b2b16ef464b1d24caa77f57887db60.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5b0e1abfa7b260a7547a9d73df142e4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-20f56965e95c736e2c02136d799c44de.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -119,9 +119,12 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="Case 1 –  Data Analysis &amp; Visualization">
+<meta property="og:title" content="NYC Flights –  Data Analysis &amp; Visualization">
 <meta property="og:description" content="R for Data Science by Wickham &amp; Grolemund">
+<meta property="og:image" content="https://dgdavs.modellings.art/contents/Transform/nycflights_files/figure-html/cell-12-output-1.png">
 <meta property="og:site_name" content="Data Analysis and Visualization in Python">
+<meta property="og:image:height" content="890">
+<meta property="og:image:width" content="1410">
 </head>
 
 <body class="nav-sidebar floating">
@@ -134,7 +137,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Case 1</h1>
+          <h1 class="quarto-secondary-nav-title">NYC Flights</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -312,20 +315,14 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/case1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Case 1</span></a>
+  <a href="../../contents/Transform/nycflights.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">NYC Flights</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/Transform/babynames.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Case 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/exercise_transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+ <span class="menu-text">Baby Names</span></a>
   </div>
 </li>
       </ul>
@@ -457,6 +454,10 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
   <li><a href="#q1" id="toc-q1" class="nav-link active" data-scroll-target="#q1">Q1</a></li>
   <li><a href="#q2" id="toc-q2" class="nav-link" data-scroll-target="#q2">Q2</a></li>
   <li><a href="#q3" id="toc-q3" class="nav-link" data-scroll-target="#q3">Q3</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">A</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">B</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">C</a></li>
   </ul>
 </nav>
     </div>
@@ -465,7 +466,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Case 1</h1>
+<h1 class="title d-none d-lg-block">NYC Flights</h1>
 <p class="subtitle lead">R for Data Science by Wickham &amp; Grolemund</p>
 </div>
 
@@ -483,7 +484,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2024</p>
+      <p class="date">March 29, 2025</p>
     </div>
   </div>
   
@@ -575,7 +576,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <div class="cell-output cell-output-display" data-execution_count="74">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-12-output-1.png" width="705" height="445" class="figure-img"></p>
+<p><img src="nycflights_files/figure-html/cell-12-output-1.png" width="705" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -594,7 +595,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 <div class="cell-output cell-output-display" data-execution_count="75">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-13-output-1.png" width="705" height="445" class="figure-img"></p>
+<p><img src="nycflights_files/figure-html/cell-13-output-1.png" width="705" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -664,7 +665,7 @@ N9EAMQ     9.23529
 <div class="cell-output cell-output-display" data-execution_count="78">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-16-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="nycflights_files/figure-html/cell-16-output-1.png" width="599" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -714,7 +715,7 @@ N9EAMQ   9.23529  238
 <div class="cell-output cell-output-display" data-execution_count="84">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-18-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="nycflights_files/figure-html/cell-18-output-1.png" width="599" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -732,7 +733,7 @@ N9EAMQ   9.23529  238
 <div class="cell-output cell-output-display" data-execution_count="83">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-19-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="nycflights_files/figure-html/cell-19-output-1.png" width="599" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -818,7 +819,7 @@ zwilldu01  364.00000  1280.00000 0.28437
 <div class="cell-output cell-output-display" data-execution_count="85">
 <div>
 <figure class="figure">
-<p><img src="case1_files/figure-html/cell-23-output-1.png" width="599" height="445" class="figure-img"></p>
+<p><img src="nycflights_files/figure-html/cell-23-output-1.png" width="599" height="445" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -840,6 +841,82 @@ liddeda01 1.00 1.00 1.00
 [10 rows x 3 columns]</code></pre>
 </div>
 </div>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+</section>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">A</h2>
+<p>다음 조건을 만족하는 항공편을 필터링 해보세요. (1~6)</p>
+<ol type="1">
+<li>Had an arrival delay of two or more hours</li>
+<li>Flew to Houston (<code>IAH</code>&nbsp;or&nbsp;<code>HOU</code>)</li>
+<li>Departed in summer (July, August, and September)</li>
+<li>Arrived more than two hours late, but didn’t leave late</li>
+<li>Were delayed by at least an hour, but made up over 30 minutes in flight<br>
+출발할 때 예정시간보다 1시간 이상 지연되어 출발하였으나 빠르게 비행하여 출발 지연된 시간보다 도착 지연이 30분이상 단축된 항공편들입니다. (예를 들어, 1시간 늦게 출발했는데, 도착은 28분 지연된 항공편)</li>
+<li>Departed between midnight and 6am (inclusive)</li>
+</ol>
+<hr>
+<ol start="7" type="1">
+<li>Find the fastest flights.</li>
+<li>Sort&nbsp;<code>flights</code>&nbsp;to find the most delayed flights. Find the flights that left earliest (예정시간보다 가장 일찍 출발한).</li>
+<li>Which flights travelled the farthest? Which travelled the shortest?</li>
+<li>각 도착지 별로, 뉴욕에서 출항한 항공편이 1년 중 몇 일 있었는가?</li>
+<li>뉴욕에서 1년 중 300일 이상 출항하는 도착지들을 구하면?</li>
+</ol>
+</section>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">B</h2>
+<ol type="1">
+<li>Our definition of <strong>cancelled flights</strong> (<code>dep_delay</code> <strong>or</strong> <code>arr_delay</code> is missing) is slightly suboptimal. Why? Which is the most important column?
+<ul>
+<li>예를 들어, 출발지연은 missing이 아니나 도착지연은 missing인 것이 있음</li>
+</ul></li>
+<li>Look at the number of cancelled flights per day. Is there a pattern? Is the proportion of cancelled flights related to the (daily) average delay?
+<ul>
+<li>취소되는 항공편들이 많은 것과 관계 있는 것은 무엇이 있을까…</li>
+</ul></li>
+<li>What time of day should you fly if you want to avoid delays as much as possible?</li>
+<li>For each destination, compute the total minutes of delay. For each flight, compute the proportion of the total delay for its destination.</li>
+<li>Find all destinations that are flown by at least two carriers. Use that information to rank the carriers.
+<ul>
+<li>즉, 적어도 두 항공사가 출항하는 도착지들도 한정한 후,</li>
+<li>다양한 곳으로 출항할수록 높은 순위의 항공사라고 보고, 항공사들의 순위를 정해봄</li>
+</ul></li>
+</ol>
+</section>
+<section id="c" class="level2">
+<h2 class="anchored" data-anchor-id="c">C</h2>
+<p>Challenges:</p>
+<ol type="1">
+<li><p>Which carrier has the worst arrival delays? Challenge: can you disentangle the effects of bad airports vs.&nbsp;bad carriers? Why/why not?</p>
+<ul>
+<li>항공사(carrier)마다 취항하는 곳에 차이가 날 수 있다면, 그건 그 노선 혹은 공항의 문제이지 항공사의 문제는 아닐 수도 있음을 암시하는 것임</li>
+</ul></li>
+<li><p>Which plane (<code>tailnum</code>) has the worst on-time record?</p>
+<ul>
+<li>on-time을 적절히 정의한 후에 진행; 여러 방식이 있을 수 있음</li>
+<li>예를 들어, 늦게 도착하지 않은 항공편의 “갯수”로 보거나</li>
+<li>도착지연의 평균값을 기준으로 볼 수도 있음</li>
+</ul></li>
+<li><p>Look at each destination. Can you find flights that are suspiciously fast? (i.e.&nbsp;flights that represent a potential data entry error).</p>
+<ul>
+<li>빠르게 비행한 이유: 제트 기류? 정체가 심한 공항?…</li>
+<li>같은 루트를 비행하는 항공편들 안에서 특이점이라면 의심해 볼만함…</li>
+<li>서로 다른 루트를 비행하는 항공편들과의 비교는?</li>
+<li>빠르다는 것을 비교하려면 동일한 루트에서 비교해야 적절함</li>
+<li>다른 루트의 항공편들까지 같이 비교하려면 어떤 방식이 있겠는가?</li>
+</ul></li>
+<li><p>Compute the air time of a flight relative to the shortest flight to that destination. Which flights were most delayed in the air?</p>
+<ul>
+<li>“상대적”의 의미가 값의 차이로 볼지 비율의 차이로 볼지도 고려해 볼 것</li>
+</ul></li>
+<li><p><sup>**</sup> For each plane, count the number of flights before the first delay of greater than 1 hour.</p>
+<ul>
+<li><code>np.cumsum</code>을 활용</li>
+</ul></li>
+</ol>
 
 
 </section>
@@ -1071,8 +1148,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1188,7 +1263,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1421,8 +1495,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../contents/Transform/babynames.html" class="pagination-link" aria-label="Case 2">
-        <span class="nav-page-text">Case 2</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../contents/Transform/babynames.html" class="pagination-link" aria-label="Baby Names">
+        <span class="nav-page-text">Baby Names</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

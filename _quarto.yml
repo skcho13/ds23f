@@ -104,11 +104,10 @@ website:
             #   - href: contents/Transform/views.ipynb
           - href: contents/Transform/transform.ipynb
             contents:
-              - href: contents/Transform/case1.ipynb
-                text: Case 1
+              - href: contents/Transform/nycflights.ipynb
+                text: NYC Flights
               - href: contents/Transform/babynames.ipynb
-                text: Case 2
-              - href: contents/Transform/exercise_transform.ipynb
+                text: Baby Names
           - section: Transforming II
             contents:
               - href: contents/Transform/combine.ipynb

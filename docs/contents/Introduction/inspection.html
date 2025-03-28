@@ -312,20 +312,14 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
       <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/case1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Case 1</span></a>
+  <a href="../../contents/Transform/nycflights.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NYC Flights</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/Transform/babynames.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Case 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/exercise_transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+ <span class="menu-text">Baby Names</span></a>
   </div>
 </li>
       </ul>
@@ -592,7 +586,7 @@ memory usage: 7.4 KB</code></pre>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tips.describe() <span class="co"># numerical type만 나열</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-9" class="cell quarto-layout-panel" data-execution_count="60" data-layout-ncol="2">
+<div id="cell-9" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="60">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>       total_bill    tip   size
@@ -625,7 +619,7 @@ max          50.81  10.00   NaN    NaN  NaN     NaN   6.00
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tips.describe(include<span class="op">=</span><span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-11" class="cell quarto-layout-panel" data-execution_count="62" data-layout-ncol="2">
+<div id="cell-11" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="62">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>         sex smoker  day    time
@@ -817,7 +811,7 @@ memory usage: 18.9+ KB</code></pre>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>penguins.describe(include<span class="op">=</span><span class="st">"object"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-19" class="cell quarto-layout-panel" data-execution_count="19" data-layout-ncol="2">
+<div id="cell-19" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="19">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>       species  island   sex
