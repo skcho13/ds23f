@@ -92,7 +92,6 @@ website:
             contents: 
               - href: contents/Visualize/alt_plots.ipynb
           - href: contents/Visualize/customizing.ipynb
-      - text: ---
       - section: contents/EDA/eda.ipynb
         contents:
           - href: contents/EDA/discretize.ipynb
@@ -105,9 +104,7 @@ website:
           - href: contents/Transform/transform.ipynb
             contents:
               - href: contents/Transform/nycflights.ipynb
-                text: NYC Flights
-              - href: contents/Transform/babynames.ipynb
-                text: Baby Names
+                text: Examples
           - section: Transforming II
             contents:
               - href: contents/Transform/combine.ipynb
@@ -116,8 +113,10 @@ website:
                 text: Pivot Table
               - href: contents/Transform/exercise_wrangle.ipynb
           - href: contents/Transform/misc.ipynb
-      - section: Exercises
+      - section: Exploratory Analysis II
         contents:
+          - href: contents/Transform/babynames.ipynb
+            text: Baby Names
           - href: contents/Exercises/billboard.ipynb
             text: Billboard
           - href: contents/Exercises/movielens.ipynb

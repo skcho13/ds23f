@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-01">
+<meta name="dcterms.date" content="2025-03-29">
 
 <title>Exercises –  Data Analysis &amp; Visualization</title>
 <style>
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../contents/Exercises/movielens.html" rel="next">
-<link href="../../contents/Transform/misc.html" rel="prev">
+<link href="../../contents/Transform/babynames.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -270,11 +270,10 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../contents/EDA/eda.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploratory Data Analysis</span></a>
+ <span class="menu-text">Exploratory Analysis I</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,13 +315,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/Transform/nycflights.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">NYC Flights</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../contents/Transform/babynames.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Baby Names</span></a>
+ <span class="menu-text">Examples</span></a>
   </div>
 </li>
       </ul>
@@ -373,12 +366,18 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Exercises</span></a>
+ <span class="menu-text">Exploratory Analysis II</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/babynames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Baby Names</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/Exercises/billboard.html" class="sidebar-item-text sidebar-link active">
@@ -478,7 +477,7 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 1, 2024</p>
+      <p class="date">March 29, 2025</p>
     </div>
   </div>
   
@@ -520,9 +519,8 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </div>
 <section id="song-rankings-for-billboard-top-100-in-the-year-2000" class="level2">
 <h2 class="anchored" data-anchor-id="song-rankings-for-billboard-top-100-in-the-year-2000">Song rankings for Billboard top 100 in the year 2000</h2>
-<p>“billboard” in a package “tidyr”<br>
-Source: <a href="https://waxy.org/2008/05/the_whitburn_project/">The Whitburn Project</a></p>
-<p>다음 링크의 데이터는 빌보드차트에 관한 데이터입니다; <a href="https://www.dropbox.com/scl/fi/3mkq8ebr3ylhruiszy26p/billboard.csv?rlkey=vam8roaqts3dydnyexxzve9eh&amp;dl=1">링크</a></p>
+<p>Source: <a href="https://waxy.org/2008/05/the_whitburn_project/">The Whitburn Project</a></p>
+<p>다음 링크의 데이터는 빌보드차트에 관한 데이터입니다; <a href="https://www.dropbox.com/scl/fi/3mkq8ebr3ylhruiszy26p/billboard.csv?rlkey=vam8roaqts3dydnyexxzve9eh&amp;dl=1">billboard.csv</a></p>
 <ul>
 <li>각 곡이 차트에 진입한 날짜(<code>date_entered</code>)인 첫주(<code>wk1</code>)의 순위부터 78주(<code>wk78</code>)의 순위까지 기록되어 있습니다.</li>
 <li>차트에서 빠진 경우 missing (NA)으로 표시되어 있습니다.<br>
@@ -546,19 +544,19 @@ Note
 <a href="https://wesmckinney.com/book/accessing-data.html">Chpter 6. Data Loading, Storage, and File Formats</a> in Python for Data Analysis by Wes McKinney</p>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="op">=</span> pd.read_csv(<span class="st">"data/billboard.csv"</span>)</span>
+<div id="cell-5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="op">=</span> pd.read_csv(<span class="st">"../data/billboard.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>billboard.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>         artist                    track date_entered  wk1   wk2   wk3   wk4   
-0         2 Pac  Baby Don't Cry (Keep...   2000-02-26   87 82.00 72.00 77.00  \
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>         artist                    track date_entered  wk1   wk2   wk3   wk4  \
+0         2 Pac  Baby Don't Cry (Keep...   2000-02-26   87 82.00 72.00 77.00   
 1       2Ge+her  The Hardest Part Of ...   2000-09-02   91 87.00 92.00   NaN   
 2  3 Doors Down               Kryptonite   2000-04-08   81 70.00 68.00 67.00   
 3  3 Doors Down                    Loser   2000-10-21   76 76.00 72.00 69.00   
 4      504 Boyz            Wobble Wobble   2000-04-15   57 34.00 25.00 17.00   
 
-    wk5   wk6   wk7  ...  wk67  wk68  wk69  wk70  wk71  wk72  wk73  wk74   
-0 87.00 94.00 99.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN  \
+    wk5   wk6   wk7  ...  wk67  wk68  wk69  wk70  wk71  wk72  wk73  wk74  \
+0 87.00 94.00 99.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
 1   NaN   NaN   NaN  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
 2 66.00 57.00 54.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
 3 67.00 65.00 55.00  ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   
@@ -576,21 +574,18 @@ Note
 </div>
 <ol type="1">
 <li><p>총 몇 명의 가수(<code>artist</code>)가 차트에 있으며, 가수별로 몇 곡(<code>track</code>)이 차트에 들어있는지 알아보세요. (동명이인은 없다고 가정하고)</p></li>
-<li><p>곡명은 같지만, 가수가 다른 곡이 있는지 알아보고, 서로 다른 노래가 차트에 몇 개나 있는지 알아보세요.<br>
-살펴보았다면, 이후 grouping시 <code>artist</code>와 <code>track</code>을 함께 사용해야함을 이해했을 겁니다.</p></li>
-<li><p>이 데이터를 주(week)에 대해서 아래처럼 long format으로 바꿉니다.</p></li>
-</ol>
+<li><p>곡명은 같지만, 가수가 다른 곡이 있는지 알아보고, 서로 다른 노래가 차트에 몇 개나 있는지 알아보세요. 살펴보았다면, 이후 grouping시 <code>artist</code>와 <code>track</code>을 함께 사용해야함을 이해했을 겁니다.</p></li>
+<li><p>이 데이터를 주(week)에 대해서 아래처럼 long format으로 바꿉니다.</p>
 <ul>
 <li><code>wk</code> column에 <code>wk1</code>부터 missing이 없는 <code>wk*</code>까지 <strong>숫자</strong>로 표현되고,</li>
 <li><code>rank</code> column에는 해당하는 week의 순위가 나타납니다.</li>
 <li><code>melt()</code>를 이용하고, (<code>id_vars=["artist", "track", "date_entered"]</code>)</li>
 <li><code>.str.replace()</code>와 <code>.astype("int64")</code>를 사용해야 할 수 있습니다.</li>
 <li><code>.dropna(subset="rank", inplace=True)</code>를 사용하여 <code>rank</code> column의 missing을 처리하세요.</li>
-<li>결과를 <code>billboard_long</code> 변수에 할당하여 이후 문제를 이어가세요.
-<ul>
+<li>결과를 <code>billboard_long</code> 변수에 할당하여 이후 문제를 이어가세요.</li>
 <li>구하지 못한 경우, 정제된 다음 <a href="https://www.dropbox.com/s/fjepjyl0brr7tlw/billboard_long.csv?dl=1">파일</a>을 다운받아 사용하세요.</li>
 </ul></li>
-</ul>
+</ol>
 <div id="cell-9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>billboard_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -607,8 +602,7 @@ Note
 </div>
 </div>
 <ol start="4" type="1">
-<li>50주 이상(포함) 머무른 곡들을 구해보세요.</li>
-</ol>
+<li>50주 이상(포함) 머무른 곡들을 구해보세요.
 <ul>
 <li>연속으로 머무를 필요없음; 차트에서 나갔다가 다시 들어오는 곡들이 있음</li>
 <li>머문 기간을 <code>.size()</code>를 이용해 구한 후</li>
@@ -616,14 +610,15 @@ Note
 <li><code>query()</code>를 이용해 50주 이상으로 필터링</li>
 <li>결과가 <code>artist</code>와 <code>track</code>순으로 정렬되어 있는지 확인해 주세요!</li>
 <li>코드는 다음 예처럼 하나로 연결하여 간결하게 구성해보세요.</li>
-<li><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   billboard_long.groupby(...)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>   .size()</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>   ...</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>   .query(...)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<strong>이후 코드도 최대한 이처럼 간결하게 구성해보도록 하세요.</strong></li>
-</ul>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p><strong>이후 코드도 최대한 이처럼 간결하게 구성해보도록 하세요.</strong></p>
 <ol start="5" type="1">
 <li>4번에서 구한 곡들 각각에 대해서 주에 따라 순위가 어떻게 변화했는지 시각화를 통해 살펴보기 위해서</li>
 </ol>
@@ -635,8 +630,7 @@ Note
 <li>5.2 <code>seaborn.objects</code>를 이용해 <strong>대략</strong> 다음과 같이 주에 따른 순위의 변화를 그려보세요. <img src="images/plot_ex1.png" class="img-fluid" width="540"></li>
 </ul>
 <ol start="6" type="1">
-<li>(가수별) 곡별로 차트에 머문 기간(weeks)과 가장 높이 올라간 순위를 구해서, 높은 순위를 달성한 곡일수록 차트에 더 오래 머물었는지 알아봅니다.</li>
-</ol>
+<li><p>(가수별) 곡별로 차트에 머문 기간(weeks)과 가장 높이 올라간 순위를 구해서, 높은 순위를 달성한 곡일수록 차트에 더 오래 머물었는지 알아봅니다.</p>
 <ul>
 <li>6.1 곡별로 차트에 머문 기간을 DataFrame으로 구하고; <code>.reset_index(name=" ")</code> 이용</li>
 <li>6.2 곡별로 최상위 순위를 <code>min()</code>을 이용해 DataFrame으로 구한 후</li>
@@ -646,13 +640,12 @@ Note
 <li>눈에 띄는 점을 간단히 기술해보세요.</li>
 </ul>
 <img src="images/plot_ex3.png" class="img-fluid" width="540"></li>
-</ul>
-<ol start="7" type="1">
-<li>순위 1위를 달성한 곡들에 한해, 차트에 진입시 순위와 1위에 처음 도달한 주(week)의 정보가 다음과 같이 표시되도록 구해보세요.</li>
-</ol>
+</ul></li>
+<li><p>순위 1위를 달성한 곡들에 한해, 차트에 진입시 순위와 1위에 처음 도달한 주(week)의 정보가 다음과 같이 표시되도록 구해보세요.</p>
 <ul>
-<li><p>함수를 만들고; <code>min()</code>과 <code>argmin()</code>이 필요할 수 있음</p></li>
-<li><p><code>apply()</code>로 그 함수를 적용하여 구해보세요.</p>
+<li>함수를 만들고; <code>min()</code>과 <code>argmin()</code>이 필요할 수 있음</li>
+<li><code>apply()</code>로 그 함수를 적용하여 구해보세요.</li>
+</ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                 artist                    track  wk  rank</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              Aaliyah                Try Again   1 59.00</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1              Aaliyah                Try Again  14  1.00</span></span>
@@ -661,13 +654,11 @@ Note
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 4  Aguilera, Christina        What A Girl Wants   1 71.00</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5  Aguilera, Christina        What A Girl Wants   8  1.00</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-<ol start="8" type="1">
-<li>빠르게 1위가 된 곡일 수록 빠르게 차트에서 사라졌을까를 알아보기 위해, 7번의 결과를 이용해 다음과 같이 변형해보세요.</li>
-</ol>
+<li><p>빠르게 1위가 된 곡일 수록 빠르게 차트에서 사라졌을까를 알아보기 위해, 7번의 결과를 이용해 다음과 같이 변형해보세요.</p>
 <ul>
-<li><p>7번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/l9fm5cqzrr1vyzgnx31xj/wk_rank.csv?rlkey=tokg1kv9ecqevesfep1ysy2sg&amp;dl=1">파일</a>을 받아 이용하세요.</p></li>
-<li><p>즉, 차트 진입시의 순위 정보와, 1위가 된 week의 정보만을 취해, 그 비율(<code>rate</code>)를 구하면, 얼마나 빠르게 1위가 되었는지 알 수 있습니다.</p>
+<li>7번을 구하지 못한 경우, 다음 <a href="https://www.dropbox.com/scl/fi/l9fm5cqzrr1vyzgnx31xj/wk_rank.csv?rlkey=tokg1kv9ecqevesfep1ysy2sg&amp;dl=1">파일</a>을 받아 이용하세요.</li>
+<li>즉, 차트 진입시의 순위 정보와, 1위가 된 week의 정보만을 취해, 그 비율(<code>rate</code>)를 구하면, 얼마나 빠르게 1위가 되었는지 알 수 있습니다.</li>
+</ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                 artist                    track  wk  rank   rate</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0              Aaliyah                Try Again  14 59.00   4.21</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1  Aguilera, Christina  Come On Over Baby (A...  11 57.00   5.18</span></span>
@@ -675,9 +666,11 @@ Note
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3        Carey, Mariah  Thank God I Found Yo...  11 82.00   7.45</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 4                Creed      With Arms Wide Open  27 84.00   3.11</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5      Destiny's Child  Independent Women Pa...   9 78.00   8.67</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>마지막으로, <code>seaborn.objects</code>를 이용해 다음과 같이 시각화해보세요. <img src="images/plot_ex2.png" class="img-fluid" width="540"></p></li>
-</ul>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>마지막으로, <code>seaborn.objects</code>를 이용해 다음과 같이 시각화해보세요. <img src="images/plot_ex2.png" class="img-fluid" width="540"></li>
+</ul></li>
+</ol>
 
 
 </section>
@@ -1251,8 +1244,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../contents/Transform/misc.html" class="pagination-link" aria-label="Misc.">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Misc.</span>
+      <a href="../../contents/Transform/babynames.html" class="pagination-link" aria-label="Baby Names">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Baby Names</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
