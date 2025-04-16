@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-14">
+<meta name="dcterms.date" content="2025-04-16">
 
 <title>Exploratory Analysis I –  Data Analysis &amp; Visualization</title>
 <style>
@@ -535,7 +535,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 14, 2025</p>
+      <p class="date">April 16, 2025</p>
     </div>
   </div>
   
@@ -890,7 +890,7 @@ Tip
 </div>
 <p>Q: 왜 fair 컷의 평균 가격이 가장 높은가???</p>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-33" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="34">
+<div id="cell-33" class="cell quarto-layout-panel" data-execution_count="34" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-20-output-1.png" class="img-fluid" width="589"></p>
@@ -913,7 +913,7 @@ Tip
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Violin plot</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(diamonds, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-37" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="36">
+<div id="cell-37" class="cell quarto-layout-panel" data-execution_count="36" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-22-output-1.png" class="img-fluid" width="589"></p>
@@ -927,7 +927,7 @@ Tip
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>hwy_order <span class="op">=</span> mpg.groupby(<span class="st">"class"</span>)[<span class="st">"hwy"</span>].median().sort_values().index</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>sns.boxplot(mpg, y<span class="op">=</span><span class="st">"class"</span>, x<span class="op">=</span><span class="st">"hwy"</span>, fill<span class="op">=</span><span class="va">False</span>, order<span class="op">=</span>hwy_order)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-39" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="37">
+<div id="cell-39" class="cell quarto-layout-panel" data-execution_count="37" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-23-output-1.png" class="img-fluid" width="630"></p>
@@ -1190,7 +1190,7 @@ Tip
 </div>
 </div>
 </div>
-<div id="cell-53" class="cell" data-execution_count="49">
+<div id="cell-53" class="cell">
 <details class="code-fold">
 <summary>Hierarchical Clustering</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster.hierarchy <span class="im">as</span> sch</span>
@@ -1203,12 +1203,13 @@ Tip
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    gapminder.query(<span class="st">'continent == "Asia"'</span>)</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    .pipe(so.Plot, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"country"</span>, color<span class="op">=</span><span class="st">"lifeExp"</span>)  <span class="co"># pipe operator</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">12</span>, marker<span class="op">=</span><span class="st">"s"</span>))  <span class="co"># square marker</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    .scale(y<span class="op">=</span>so.Nominal(order<span class="op">=</span>dendrogram[<span class="st">"ivl"</span>]), color<span class="op">=</span><span class="st">"rocket"</span>)</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">7</span>))</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'continent == "Asia"'</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    .pipe(so.Plot, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"country"</span>, color<span class="op">=</span><span class="st">"lifeExp"</span>)  <span class="co"># pipe operator</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">12</span>, marker<span class="op">=</span><span class="st">"s"</span>))  <span class="co"># square marker</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    .scale(y<span class="op">=</span>so.Nominal(order<span class="op">=</span>dendrogram[<span class="st">"ivl"</span>]), color<span class="op">=</span><span class="st">"rocket"</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">7</span>))</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <div>
@@ -1260,7 +1261,7 @@ Tip
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> LogNorm</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sns.jointplot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>, kind<span class="op">=</span><span class="st">"hex"</span>, gridsize<span class="op">=</span><span class="dv">30</span>, height<span class="op">=</span><span class="dv">5</span>, norm<span class="op">=</span>LogNorm())<span class="op">;</span>  <span class="co"># gridsize: bin 개수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-59" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="53">
+<div id="cell-59" class="cell quarto-layout-panel" data-execution_count="53" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-36-output-1.png" class="img-fluid" width="511"></p>
@@ -1275,7 +1276,7 @@ Tip
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-62" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="55">
+<div id="cell-62" class="cell quarto-layout-panel" data-execution_count="55" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-38-output-1.png" class="img-fluid" width="589"></p>
@@ -1293,7 +1294,7 @@ Tip
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_qcat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-64" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="57">
+<div id="cell-64" class="cell quarto-layout-panel" data-execution_count="57" data-layout="[[2, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-40-output-1.png" class="img-fluid" width="589"></p>
@@ -1345,24 +1346,12 @@ Why is a scatterplot a better display than a binned plot for this case?</li>
 <li>어떤 다른 변수들이 이 관계에 영향을 줄 수 있는가? ex) 운동의 효과가 어느 때 하는가에 달라지는가?</li>
 <li>데이터의 하위그룹별로 봤을 때, 이 관계가 변하는가? ex) 남녀에게 효과가 다른가?</li>
 </ul>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><strong>Example: Old Faithful eruption (간헐천)</strong></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><br> eruption duration (mins) vs.<br>
-wait time (mins) between eruptions</p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="../images/faithful.png" class="img-fluid" width="300"></p>
-</div>
-</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../images/faithful.png" class="img-fluid figure-img" width="400"></p>
+<figcaption>eruption duration (mins) vs.&nbsp;wait time (mins) between eruptions</figcaption>
+</figure>
 </div>
 <div id="cell-69" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>faithful <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"faithful"</span>, <span class="st">"datasets"</span>).data</span>
@@ -1393,8 +1382,13 @@ wait time (mins) between eruptions</p>
 <li>두개의 군집을 형성</li>
 </ul>
 <blockquote class="blockquote">
+<p><em><strong>변동(variation)</strong>을 <strong>불확실성을 만들어내는</strong> 현상으로 생각한다면, <strong>공변동(covariation)</strong>는 <strong>불확실성을 줄이는</strong> 현상입니다. 두 변수가 공변하면, 한 변수의 값을 사용해 두 번째 변수의 값에 대해 더 나은 <strong>예측</strong>을 할 수 있습니다. 만약 공변동이 인과관계(특수한 경우)로 인한 것이라면, 한 변수의 값을 사용하여 두 번째 변수의 값을 <strong>제어</strong>할 수 있습니다.</em></p>
+</blockquote>
+<div style="line-height: 1.5em; font-size: .9em">
+<blockquote class="blockquote">
 <p><em>If you think of <strong>variation</strong> as a phenomenon that <strong>creates uncertainty</strong>, <strong>covariation</strong> is a phenomenon that <strong>reduces it</strong>. If two variables covary, you can use the values of one variable to make better <strong>predictions</strong> about the values of the second. If the covariation is due to a causal relationship (a special case), then you can use the value of one variable to <strong>control</strong> the value of the second.</em></p>
 </blockquote>
+</div>
 <p>패턴이 보이면, 이를 구체적으로 명시하는 모델을 세워 분석을 진행</p>
 <section id="buliding-models" class="level2">
 <h2 class="anchored" data-anchor-id="buliding-models">Buliding models</h2>
@@ -1432,7 +1426,7 @@ wait time (mins) between eruptions</p>
 <div>
 
 </div>
-<div id="cell-77" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="62">
+<div id="cell-77" class="cell quarto-layout-panel" data-execution_count="62" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-47-output-1.png" class="img-fluid" width="605"></p>
@@ -1551,7 +1545,7 @@ Code
 <div>
 
 </div>
-<div id="cell-86" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="66">
+<div id="cell-86" class="cell quarto-layout-panel" data-execution_count="66" data-layout="[[3, 1]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-51-output-1.png" class="img-fluid" width="605"></p>
