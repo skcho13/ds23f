@@ -127,8 +127,8 @@ website:
             text: Transforming I
           - href: contents/Transform/sol2.ipynb
             text: Transforming II
-      #     - href: contents/Exercises/billboard_sol.ipynb
-      #       text: Billboard
+          - href: contents/Exercises/billboard_sol.ipynb
+            text: Billboard
           - href: contents/Exercises/movielens_sol.ipynb
             text: MovieLens
       - text: ---
