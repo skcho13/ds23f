@@ -121,16 +121,16 @@ website:
             text: Billboard
           - href: contents/Exercises/movielens.ipynb
             text: MovieLens
-      # - section: Solutions
-      #   contents:
-      #     - href: contents/Transform/sol1.ipynb
-      #       text: Transforming I
-      #     - href: contents/Transform/sol2.ipynb
-      #       text: Transforming II
+      - section: Solutions
+        contents:
+          - href: contents/Transform/sol1.ipynb
+            text: Transforming I
+          - href: contents/Transform/sol2.ipynb
+            text: Transforming II
       #     - href: contents/Exercises/billboard_sol.ipynb
       #       text: Billboard
-      #     - href: contents/Exercises/movielens_sol.ipynb
-      #       text: MovieLens
+          - href: contents/Exercises/movielens_sol.ipynb
+            text: MovieLens
       - text: ---
       - section: Modelling
         contents:
