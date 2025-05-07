@@ -15,12 +15,12 @@ project:
     - "!slides/"
     - "!*-temp.ipynb"
     - "!*-temp.qmd"
-    - "!billboard_sol.ipynb"
-    - "!movielens_sol.ipynb"
+    # - "!billboard_sol.ipynb"
+    # - "!movielens_sol.ipynb"
     - "!modelling1_ex.ipynb"
     - "!modelling2_ex.ipynb"
-    - "!sol1.ipynb"
-    - "!sol2.ipynb"
+    # - "!sol1.ipynb"
+    # - "!sol2.ipynb"
 
   resources: CNAME
   preview:
