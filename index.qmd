@@ -5,8 +5,6 @@ date: last-modified
 author: Sungkyun Cho
 ---
 
-# [>>> 중간고사 <<<<<<<<<<<<<<<<<<<](https://docs.google.com/document/d/13PK8mp4J6TVzhlMSJItLrOZDozHkOQQ-qhKgWbW2Xhw/edit?usp=sharing)
-
 ## 강의 정보
 강사: 조성균  
 email: sk.cho@snu.ac.kr  
