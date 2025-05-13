@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-11-28">
+<meta name="dcterms.date" content="2025-05-14">
 
 <title>Model Basics –  Data Analysis &amp; Visualization</title>
 <style>
@@ -577,7 +577,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 28, 2024</p>
+      <p class="date">May 14, 2025</p>
     </div>
   </div>
   
@@ -629,17 +629,17 @@ window.Quarto = {
 </div>
 </div>
 <p>예를 들어, 캐럿과 가격의 진정한 관계를 모델로 표현</p>
-<p>Linear model: <span class="math inline">\(y = ax + b + \epsilon\)</span>,   <span class="math inline">\(\epsilon\)</span>: <strong>errors</strong></p>
+<p>Linear model: <span class="math inline">\(Y = aX + b + \epsilon\)</span>,   <span class="math inline">\(\epsilon\)</span>: <strong>errors</strong></p>
 <ul>
-<li><span class="math inline">\(price = a * carat + b + \epsilon\)</span><br>
+<li><span class="math inline">\(price = a \cdot carat + b + \epsilon\)</span><br>
 </li>
-<li>로그 변환: <span class="math inline">\(log(price) = a * log(carat) + b + \epsilon\)</span>
+<li>로그 변환 후 선형관계로 가정: <span class="math inline">\(log(price) = a \cdot log(carat) + b + \epsilon\)</span>
 <ul>
 <li><span class="math inline">\(\epsilon\)</span>: Gaussian 분포로 가정, 즉 <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span></li>
 </ul></li>
-<li><span class="math inline">\(E(y|x_i) = a * x_i + b\)</span> &nbsp; (<span class="math inline">\(E\)</span>: expectation, 기대값)
+<li><span class="math inline">\(E(Y|X = X_i) = a \cdot X_i + b\)</span> &nbsp; (<span class="math inline">\(E\)</span>: expectation, 기대값)
 <ul>
-<li><span class="math inline">\(x_i\)</span>에 대해서 conditional mean이 선형함수로 결정됨을 가정</li>
+<li>즉, <span class="math inline">\(X = X_i\)</span>에 대한 conditional mean이 선형함수로 결정됨을 가정</li>
 </ul></li>
 </ul>
 <p>Errors은 노이즈?</p>
@@ -648,37 +648,36 @@ window.Quarto = {
 <li><strong>Irreducible error</strong>:
 <ul>
 <li>측정 오차 (measurement error): ex. 성별, 젠더, 키, 온도, 강수량, 지능, 불쾌지수, …</li>
-<li>random processes
+<li>Random processes
 <ul>
 <li>물리적 세계의 불확실성: stochastic vs.&nbsp;deterministic world</li>
 <li>예를 들어, 동전을 4번 던질 때</li>
 </ul></li>
 <li><strong>보통 Gaussian 분포를 이루거나 가정</strong>: ex. 측정 오차들, 동전 앞면의 개수들, 키, 몸무게, IQ, …<br>
 </li>
-<li>그 외에 자연스럽게 나타나는 분포들이 있음; Binomial, Poisson, Exponential, Gamma, Beta, …</li>
+<li>그 외에 자연스럽게 나타난다고 가정할 수 있는 여러 분포들이 있음; Binomial, Poisson, Exponential, Weibull, Gamma, Beta, …</li>
 </ul></li>
 </ul>
 <p><strong>불확실성(uncertainty)</strong></p>
 <ul>
 <li>예측은 정확할 수 없으며, 이 불확실성이 error로 표현되며,</li>
-<li>확률(probability)의 개념으로 모형의 일부로 포함되어 예측하는데 중요한 요소로 활용됨.</li>
+<li>확률의 개념으로 모형의 일부로 포함되어 예측하는데 중요한 요소로 활용됨.</li>
 </ul>
 <p><strong>Gaussian/Normal distribution</strong></p>
 <ul>
-<li>랜덤한 값들의 합/평균들이 나타내는 분포
+<li>랜덤한 값들의 합/평균들이 나타내는 분포; 중심극한정리(Central Limit Theorem)
 <ul>
 <li>측정 오차의 분포(error distribution)</li>
 <li>다양한 힘들의 상호작용으로 인한 분포</li>
 </ul></li>
 <li>분산이 유한한 분포 중에 정보 엔트로피가 최대(maximum entropy)인 분포</li>
-<li>중심극한정리(Central Limit Theorem)</li>
+<li><span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>; density function <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\)</span></li>
+<li><span class="math inline">\(X \sim N(0, 1)\)</span>; <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}\)</span>, (standard normal distribution)</li>
 </ul>
-<p><span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, density function: <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\)</span></p>
-<p><span class="math inline">\(X \sim N(0, 1)\)</span>: <span class="math inline">\(\displaystyle f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}\)</span>, (standard normal distribution)</p>
 <div>
 
 </div>
-<div id="cell-12" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[10, 10, 4]]">
+<div id="cell-12" class="cell quarto-layout-panel" data-layout="[[10, 10, 4]]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
 <pre><code>1000 people, each 16 steps tossing a coin: 
@@ -755,8 +754,8 @@ Coin tossing widget code
 <ol type="1">
 <li><p><strong>A family of models</strong>를 정의: generic 패턴을 표현해 줄 수 있는 모델 클래스</p>
 <ul>
-<li>만약, 선형적인 관계라면 선형 모델인 &nbsp; <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span></li>
-<li>곡선 관계라면 가령, &nbsp; <span class="math inline">\(y = \beta_2 x^{\beta_1}\)</span></li>
+<li>선형적인 관계라면 가령, 예측변수가 2개인 선형 모델인 &nbsp; <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2\)</span></li>
+<li>지수적 관계라면 가령, &nbsp; <span class="math inline">\(y = \beta_0 + \beta_2 x^{\beta_1}\)</span></li>
 </ul></li>
 </ol>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -769,7 +768,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(\beta_0, \beta_1, \beta_2\)</span>는 패턴을 잡아낼 수 있도록 변하는 파라미터(parameter)<br>
+<p><span class="math inline">\(\beta_0, \beta_1, \beta_2\)</span>는 패턴을 잡아낼 수 있도록 변하는 파라미터(parameter); 통계에서는 <strong>모집단(population)</strong>에서 변수들의 관계를 의미<br>
 머신러닝에서는 parameters, coefficients, weights 등으로 혼용</p>
 </div>
 </div>
@@ -798,7 +797,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-16" class="cell quarto-layout-panel" data-execution_count="5" data-layout="[[2, 4, 1]]">
+<div id="cell-16" class="cell quarto-layout-panel" data-layout="[[2, 4, 1]]" data-execution_count="5">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 28.6%;justify-content: flex-start;">
 <pre><code>     x     y
@@ -826,7 +825,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <div>
 
 </div>
-<div id="cell-20" class="cell quarto-layout-panel" data-execution_count="8" data-layout="[[3, 1]]">
+<div id="cell-20" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="8">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-14-output-1.png" class="img-fluid" width="630"></p>
@@ -911,7 +910,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-32" class="cell quarto-layout-panel" data-execution_count="20" data-layout="[[3, 1]]">
+<div id="cell-32" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="20">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-20-output-1.png" class="img-fluid" width="591"></p>
@@ -925,7 +924,7 @@ Model evaluation
 <div>
 
 </div>
-<div id="cell-34" class="cell quarto-layout-panel" data-execution_count="19" data-layout="[[3, 1]]">
+<div id="cell-34" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="19">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-21-output-1.png" class="img-fluid" width="599"></p>
@@ -1110,8 +1109,9 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>sim1을 이용한 위의 예는 모든 모델에 적용될 수 있음</p>
-<p>즉, <span class="math inline">\(y = f(x1, x2,...)\)</span> 형태의 a family of models을 구성한 후</p>
-<p><em>모델 <strong>파라미터(parameter)</strong>의 추정</em></p>
+<p>즉, <span class="math inline">\(y = f(x1, x2,...)\)</span> 파라메트릭 클래스의 a family of models을 구성한 후</p>
+<ol type="1">
+<li><p><em>모델 <strong>파라미터(parameter)</strong>의 추정</em></p>
 <ul>
 <li>모델과 데이터와의 거리 <span class="math inline">\(d =|~data - model~|\)</span>를 정의한 후</li>
 <li>거리 <span class="math inline">\(d\)</span>가 최소가 되는 파라미터를 구하면, a family of models 중 <strong>best model</strong>을 만들 수 있음
@@ -1119,16 +1119,27 @@ Important
 <li>보통 squared error function을 사용함.</li>
 <li>이 squared error가 최소가 되도록 하는 것을 ordinary least squares(OLS) estimator라고 함</li>
 <li>Error가 Gaussian 일때, 이 OLS는 적절한 parameter를 추정하게 됨.</li>
-<li>Likelihood를 최대화하는 방식으로 추정하는 방식: Maximum Likelihood Estimation(MLE)</li>
 </ul></li>
-</ul>
-<p><em>예측의 <strong>정확성(accuracy)</strong>을 평가</em></p>
+<li>더 넓은 확률적 프레임워크인 likelihood의 관점에서 접근할 수 있음
 <ul>
-<li>예측값과 실제값의 차이를 나타내는 지표들: RMSE, MAE, R-squared</li>
-<li>전통적 접근: 모집단에 대해 보정</li>
-<li>현대적 접근: training/test set으로 나누어서 test set으로 모형을 평가</li>
-</ul>
-<p>새로운 a family of models을 구성해서 위를 반복하면, 여러 다른 모델들을 비교할 수 있음</p>
+<li>주어진 데이터가 관측될 가능도(likelihood)가 최대가 되는 파라이터와 분포를 찾는 방식</li>
+<li>Error가 Gaussian 일때, OLS와 (거의) 동일한 결과를 얻음</li>
+<li>Gaussian을 넘어 다양한 분포의 데이터에 적절히 대응 가능</li>
+</ul></li>
+</ul></li>
+<li><p><em>파라미터 추정값의 <strong>불확실성(uncertainty)</strong>을 추정</em></p>
+<ul>
+<li>파라이터 추정값의 불확실성</li>
+<li>예측값의 불확실성</li>
+</ul></li>
+<li><p><em>예측의 <strong>정확성(accuracy)</strong>을 평가</em></p>
+<ul>
+<li>예측값과 실제값의 차이를 나타내는 지표들: RMSE, MAE, R-squared, AIC, BIC</li>
+<li>전통적 접근: 표본에서 얻은 결과를 모집단에 대해 이론적으로 보정; 모집단에서는 정확도가 낮아질 것임.</li>
+<li>현대적 접근: 데이터를 training/test set으로 나누어서 test set으로 모형을 평가</li>
+</ul></li>
+</ol>
+<p>새로운 클래스(형태)의 a family of models을 구성해서 위를 반복하면, 여러 다른 모델들을 비교할 수 있음</p>
 </div>
 </div>
 </section>
@@ -1289,7 +1300,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(formula, data<span class="op">=</span>houses, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-55" class="cell quarto-layout-panel" data-execution_count="6" data-layout="[[1, 2]]">
+<div id="cell-55" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="6">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>         price
@@ -1321,7 +1332,7 @@ Formula를 활용할 수 있는 패키지
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> houses[<span class="st">"price"</span>], houses[[<span class="st">"livingArea"</span>, <span class="st">"bedrooms"</span>]]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>display(y, X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-56" class="cell quarto-layout-panel" data-execution_count="31" data-layout="[[1, 2]]">
+<div id="cell-56" class="cell quarto-layout-panel" data-layout="[[1, 2]]" data-execution_count="31">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>0       132500
