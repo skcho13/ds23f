@@ -605,7 +605,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-execution_count="45" data-layout-ncol="2">
+<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="45">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-5-output-1.png" class="img-fluid" width="630"></p>
@@ -791,7 +791,7 @@ The goal of a model is not to uncover truth, but to discover a simple approximat
 <section id="a-simple-model" class="level2">
 <h2 class="anchored" data-anchor-id="a-simple-model">A simple model</h2>
 <p>Data: <a href="https://www.dropbox.com/s/z37caxcbr0xbutt/sim1.csv?dl=1">sim1.csv</a></p>
-<div id="cell-15" class="cell" data-execution_count="3">
+<div id="cell-15" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="op">=</span> pd.read_csv(<span class="st">"data/sim1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
@@ -955,12 +955,12 @@ Model evaluation
 </div>
 <p>이렇게 squared error가 최소가 되도록 추정하는 것을 ordinary least squares(OLS) estimattion라고 함.<br>
 실제로는 위에서 처럼 grid search를 하지 않고, closed-form solution을 통해 바로 구할 수 있음.</p>
-<div id="cell-40" class="cell" data-execution_count="204">
+<div id="cell-40" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, data<span class="op">=</span>sim1).fit()</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>display(mod.summary().tables[<span class="dv">0</span>], mod.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mod.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
@@ -984,13 +984,13 @@ Model evaluation
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Thu, 04 Apr 2024</td>
+<td>Wed, 14 May 2025</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>1.17e-14</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>05:56:18</td>
+<td>11:42:02</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-65.226</td>
 </tr>
@@ -1020,8 +1020,8 @@ Model evaluation
 </tr>
 </tbody>
 </table>
-</div>
-<div class="cell-output cell-output-display">
+
+
 <table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -1053,6 +1053,37 @@ Model evaluation
 </tr>
 </tbody>
 </table>
+
+
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Omnibus:</td>
+<td>0.125</td>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
+<td>2.254</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
+<td>0.939</td>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
+<td>0.333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skew:</td>
+<td>0.081</td>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
+<td>0.847</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
+<td>2.510</td>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
+<td>13.7</td>
+</tr>
+</tbody>
+</table>
+<br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </div>
 </div>
 <p><br></p>
@@ -1166,10 +1197,10 @@ Important
 </ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  ols(<span class="st">"y ~ x1 + x2"</span>, data <span class="op">=</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>예를 들어, <code>SaratogaHouses</code> 데이터셋에서 집값을 거주공간의 넓이(<code>livingArea</code>)와 침실의 갯수(<code>bedrooms</code>)로 예측하는 경우</p>
-<div id="cell-48" class="cell" data-execution_count="3">
+<div id="cell-48" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>houses <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"SaratogaHouses"</span>, <span class="st">"mosaicData"</span>).data</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>houses.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>    price  lotSize  age  landValue  livingArea  pctCollege  bedrooms  \
 0  132500     0.09   42      50000         906          35         2   
 1  181115     0.92    0      22300        1953          51         3   
@@ -1186,13 +1217,13 @@ Important
 2         No              No         No  </code></pre>
 </div>
 </div>
-<div id="cell-49" class="cell" data-execution_count="4">
+<div id="cell-49" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>houses[<span class="st">"livingArea2"</span>] <span class="op">=</span> houses[<span class="st">"livingArea"</span>] <span class="op">/</span> <span class="fl">35.5</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>mod_houses <span class="op">=</span> ols(<span class="st">"price ~ livingArea2 + bedrooms"</span>, data<span class="op">=</span>houses).fit()</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>mod_houses.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Intercept      36667.90
 livingArea2     4451.88
 bedrooms      -14196.77
@@ -1382,19 +1413,19 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 [30 rows x 2 columns]</code></pre>
 </div>
 </div>
-<div id="cell-59" class="cell" data-execution_count="9">
+<div id="cell-59" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid for the range of x sim1: new data</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(x<span class="op">=</span>np.linspace(sim1.x.<span class="bu">min</span>(), sim1.x.<span class="bu">max</span>(), <span class="dv">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>모델에 grid를 입력하여 prediction값을 추가</p>
-<div id="cell-61" class="cell" data-execution_count="10">
+<div id="cell-61" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a model for sim1</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sim1_mod <span class="op">=</span> ols(<span class="st">"y ~ x"</span>, data<span class="op">=</span>sim1).fit()</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">"pred"</span>] <span class="op">=</span> sim1_mod.predict(grid) <span class="co"># column 이름이 매치되어야 함</span></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>       x  pred
 0   1.00  6.27
 1   2.00  8.32
@@ -1431,8 +1462,8 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <section id="residuals-what-the-model-has-missed." class="level2">
 <h2 class="anchored" data-anchor-id="residuals-what-the-model-has-missed.">Residuals: what the model has missed.</h2>
 <p><span class="math inline">\(e = Y - \hat{Y}\)</span> : 관측값 - 예측값</p>
-<div id="cell-66" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"fitted"</span>] <span class="op">=</span> sim1_mod.fittedvalues  <span class="co"># predicted values (Y_hat)</span></span>
+<div id="cell-66" class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"fitted"</span>] <span class="op">=</span> sim1_mod.fittedvalues  <span class="co"># 또는 sim1_mod.predict(sim1): predicted values (Y_hat)</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"resid"</span>] <span class="op">=</span> sim1_mod.resid  <span class="co"># Y - Y_hat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-67" class="cell" data-execution_count="12">
@@ -1451,26 +1482,26 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 </div>
 </div>
 <p>우선, residuals의 분포를 시각화해서 살펴보면,</p>
-<div id="cell-70" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"resid"</span>].hist(bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-70" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sim1[<span class="st">"resid"</span>].hist(bins<span class="op">=</span><span class="dv">20</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="model-basic_files/figure-html/cell-42-output-1.png" width="503" height="351" class="figure-img"></p>
+<p><img src="model-basic_files/figure-html/cell-42-output-1.png" width="537" height="416" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>예측 변수와 residuals의 관계를 시각화해서 보면,</p>
-<div id="cell-72" class="cell" data-execution_count="58">
+<div id="cell-72" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(sim1, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="58">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <figure class="figure">
 <p><img src="model-basic_files/figure-html/cell-43-output-1.png" width="470" height="374" class="figure-img"></p>
@@ -1493,7 +1524,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <div>
 
 </div>
-<div id="cell-78" class="cell quarto-layout-panel" data-execution_count="72" data-layout-ncol="2">
+<div id="cell-78" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-47-output-1.png" class="img-fluid" width="630"></p>
@@ -1529,7 +1560,7 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>display(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="cell-80" class="cell quarto-layout-panel" data-execution_count="21" data-layout-ncol="2">
+<div id="cell-80" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="21">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="model-basic_files/figure-html/cell-48-output-1.png" class="img-fluid" width="605"></p>
