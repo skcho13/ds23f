@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-05-14">
+<meta name="dcterms.date" content="2025-05-20">
 
 <title>Model Basics –  Data Analysis &amp; Visualization</title>
 <style>
@@ -577,7 +577,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 14, 2025</p>
+      <p class="date">May 20, 2025</p>
     </div>
   </div>
   
@@ -1589,10 +1589,10 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 <li>2개의 범주인 경우: 한 개의 변수 <code>sex[T.male]</code>이 생성</li>
 </ul>
 <p>예를 들어, 다음과 같은 데이터셋이 있을 때, <code>sex</code>로 <code>y</code>를 예측하는 경우</p>
-<div id="cell-82" class="cell" data-execution_count="7">
+<div id="cell-82" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"sex"</span>: [<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>], <span class="st">"y"</span>: [<span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">15</span>]})</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>      sex   y
 0    male  10
 1  female  21
@@ -1600,28 +1600,27 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 3    male  15</code></pre>
 </div>
 </div>
-<div id="cell-83" class="cell" data-execution_count="6">
+<div id="cell-83" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Design matrix</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'y ~ sex'</span>, data<span class="op">=</span>df, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>   Intercept  sex[T.male]
 0       1.00         1.00
 1       1.00         0.00
 2       1.00         0.00
-3       1.00         1.00
-4       1.00         1.00</code></pre>
+3       1.00         1.00</code></pre>
 </div>
 </div>
 <ul>
 <li>세 개의 범주인 경우: 두 개의 변수 <code>sex[T.male]</code>, <code>sex[T.neutral]</code>가 생성</li>
 <li>일반적으로 <code>n</code>개의 범주를 가진 변수인 경우 <code>n-1</code>개의 변수가 생성</li>
 </ul>
-<div id="cell-85" class="cell" data-execution_count="8">
+<div id="cell-85" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"sex"</span>: [<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"neutral"</span>], <span class="st">"y"</span>: [<span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">5</span>]})</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>       sex   y
 0     male  10
 1   female  21
@@ -1629,10 +1628,10 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 3  neutral   5</code></pre>
 </div>
 </div>
-<div id="cell-86" class="cell" data-execution_count="9">
+<div id="cell-86" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">"y ~ sex"</span>, data<span class="op">=</span>df, return_type<span class="op">=</span><span class="st">"dataframe"</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>   Intercept  sex[T.male]  sex[T.neutral]
 0       1.00         1.00            0.00
 1       1.00         0.00            0.00
@@ -1641,10 +1640,10 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 </div>
 </div>
 <p>직접 변환: pandas의 <code>get_dummies</code>를 이용하거나 scikit-learn의 <code>OneHotEncoder</code>를 이용</p>
-<div id="cell-88" class="cell">
+<div id="cell-88" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get_dummies() in pandas</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(df) <span class="co"># drop_first=True, prefix="sex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>    y  sex_female  sex_male  sex_neutral
 0  10       False      True        False
 1  21        True     False        False
@@ -1652,13 +1651,13 @@ Name: price, Length: 1728, dtype: int64</code></pre>
 3   5       False     False         True</code></pre>
 </div>
 </div>
-<div id="cell-89" class="cell">
+<div id="cell-89" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OneHotEncoder() using scikit-learn</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>) <span class="co"># drop="first"</span></span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>encoder.fit_transform(df[[<span class="st">"sex"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>array([[0., 1., 0.],
        [1., 0., 0.],
        [0., 1., 0.],
