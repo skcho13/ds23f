@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-04-16">
+<meta name="dcterms.date" content="2025-05-27">
 
 <title>Exploratory Analysis I –  Data Analysis &amp; Visualization</title>
 <style>
@@ -487,6 +487,12 @@ window.Quarto = {
  <span class="menu-text">Model building II</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling1_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modelling 1 Ex.</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -570,7 +576,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 16, 2025</p>
+      <p class="date">May 27, 2025</p>
     </div>
   </div>
   
@@ -617,7 +623,7 @@ window.Quarto = {
 <li>각 변수들 내에 <strong>변동성 (variation)</strong>은 어떠한가?</li>
 <li>두 변수들간에 <strong>공변성 (covariation)</strong>은 어떠한가?</li>
 </ol>
-<div id="cell-4" class="cell" data-execution_count="23">
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import a dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>diamonds_data <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"diamonds"</span>, <span class="st">"ggplot2"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> diamonds_data.data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -641,7 +647,7 @@ window.Quarto = {
 </div>
 </div>
 <p><img src="../images/diamonds.png" class="img-fluid" width="600"></p>
-<div id="cell-8" class="cell" data-execution_count="24">
+<div id="cell-8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cut, color, clarity 모두 Categorical type으로 변형</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>diamonds[<span class="st">"cut"</span>] <span class="op">=</span> pd.Categorical(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    diamonds[<span class="st">"cut"</span>], </span>
@@ -782,7 +788,7 @@ dtype: int64</code></pre>
 <div>
 
 </div>
-<div id="cell-19" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="29">
+<div id="cell-19" class="cell quarto-layout-panel" data-execution_count="29" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-13-output-1.png" class="img-fluid" width="605"></p>
@@ -996,10 +1002,10 @@ Tip
 <ul>
 <li>두 범주형 변수 사이의 covariation을 파악하려면, 두 변수 값의 모든 조합에 대한 count를 표시</li>
 </ul>
-<div id="cell-44" class="cell" data-execution_count="40">
+<div id="cell-44" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>table_cut <span class="op">=</span> diamonds.groupby([<span class="st">"cut"</span>, <span class="st">"clarity"</span>]).size().reset_index(name<span class="op">=</span><span class="st">"n"</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>table_cut</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>      cut clarity     n
 0    Fair      I1   210
 1    Fair     SI2   466
@@ -1016,7 +1022,7 @@ Tip
 <li>각 조합에 해당하는 관측값의 양에 비례하여 원의 크기를 표시하면,</li>
 <li>cut와 clarity 사이에 약한 상관관계를 맺는 것으로 보임</li>
 </ul>
-<div id="cell-46" class="cell" data-execution_count="41">
+<div id="cell-46" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> (</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(table_cut, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"clarity"</span>, pointsize<span class="op">=</span><span class="st">"n"</span>, color<span class="op">=</span><span class="st">"n"</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
@@ -1030,7 +1036,7 @@ Tip
 <div>
 
 </div>
-<div id="cell-47" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="42">
+<div id="cell-47" class="cell quarto-layout-panel" data-execution_count="8" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="eda_files/figure-html/cell-28-output-1.png" class="img-fluid" width="630"></p>
@@ -1040,10 +1046,28 @@ Tip
 </div>
 </div>
 </div>
+<div id="cell-48" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">'cut'</span>, color<span class="op">=</span><span class="st">'clarity'</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(stat<span class="op">=</span><span class="st">'proportion'</span>, common_norm<span class="op">=</span>[<span class="st">"x"</span>]), so.Stack())</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span>so.Nominal(order<span class="op">=</span>diamonds.clarity.cat.categories))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/skcho/miniconda3/envs/envconda/lib/python3.11/site-packages/seaborn/_stats/counting.py:228: UserWarning: Undefined variable(s) passed for Hist.common_norm: 'x'.
+  self._check_grouping_vars("common_norm", grouping_vars)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-29-output-2.png" width="705" height="451" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>순서가 없는 범주형 변수인 경우, 행과 열을 유사한 정도에 따라 순서를 매기는 알고리즘을 통해 재정렬하여 패턴을 볼 수도 있음</p>
-<div id="cell-49" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"gapminder"</span>, <span class="st">"gapminder"</span>).data</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-50" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"gapminder"</span>, <span class="st">"gapminder"</span>).data</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>          country continent  year  lifeExp       pop  gdpPercap
 0     Afghanistan      Asia  1952    28.80   8425333     779.45
@@ -1057,13 +1081,13 @@ Tip
 [1704 rows x 6 columns]</code></pre>
 </div>
 </div>
-<div id="cell-51" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plotdata <span class="op">=</span> (</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'continent == "Asia"'</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    .pivot(index<span class="op">=</span><span class="st">"country"</span>, columns<span class="op">=</span><span class="st">"year"</span>, values<span class="op">=</span><span class="st">"lifeExp"</span>)  <span class="co"># wide format 변환</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plotdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-52" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plotdata <span class="op">=</span> (</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'continent == "Asia"'</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    .pivot(index<span class="op">=</span><span class="st">"country"</span>, columns<span class="op">=</span><span class="st">"year"</span>, values<span class="op">=</span><span class="st">"lifeExp"</span>)  <span class="co"># wide format 변환</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plotdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 
@@ -1214,42 +1238,42 @@ Tip
 </div>
 </div>
 </div>
-<div id="cell-52" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hierarchical clustering in scipy</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sns.clustermap(plotdata, col_cluster<span class="op">=</span><span class="va">False</span>, method<span class="op">=</span><span class="st">"ward"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-53" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hierarchical clustering in scipy</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sns.clustermap(plotdata, col_cluster<span class="op">=</span><span class="va">False</span>, method<span class="op">=</span><span class="st">"ward"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-32-output-1.png" width="989" height="990" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-33-output-1.png" width="989" height="990" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-53" class="cell">
+<div id="cell-54" class="cell">
 <details class="code-fold">
 <summary>Hierarchical Clustering</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster.hierarchy <span class="im">as</span> sch</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>dendrogram <span class="op">=</span> sch.dendrogram(</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    sch.linkage(plotdata, method<span class="op">=</span><span class="st">"ward"</span>),</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>plotdata.index,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    orientation<span class="op">=</span><span class="st">"left"</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    no_plot<span class="op">=</span><span class="va">True</span>,  <span class="co"># dendrogram plot 생략</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'continent == "Asia"'</span>)</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    .pipe(so.Plot, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"country"</span>, color<span class="op">=</span><span class="st">"lifeExp"</span>)  <span class="co"># pipe operator</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">12</span>, marker<span class="op">=</span><span class="st">"s"</span>))  <span class="co"># square marker</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    .scale(y<span class="op">=</span>so.Nominal(order<span class="op">=</span>dendrogram[<span class="st">"ivl"</span>]), color<span class="op">=</span><span class="st">"rocket"</span>)</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">7</span>))</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster.hierarchy <span class="im">as</span> sch</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>dendrogram <span class="op">=</span> sch.dendrogram(</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    sch.linkage(plotdata, method<span class="op">=</span><span class="st">"ward"</span>),</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>plotdata.index,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    orientation<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    no_plot<span class="op">=</span><span class="va">True</span>,  <span class="co"># dendrogram plot 생략</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">'continent == "Asia"'</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    .pipe(so.Plot, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"country"</span>, color<span class="op">=</span><span class="st">"lifeExp"</span>)  <span class="co"># pipe operator</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">12</span>, marker<span class="op">=</span><span class="st">"s"</span>))  <span class="co"># square marker</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    .scale(y<span class="op">=</span>so.Nominal(order<span class="op">=</span>dendrogram[<span class="st">"ivl"</span>]), color<span class="op">=</span><span class="st">"rocket"</span>)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">7</span>))</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-33-output-1.png" width="458" height="662" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-34-output-1.png" width="458" height="662" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1261,7 +1285,7 @@ Tip
 <ul>
 <li>count 대신 비율을 계산 후 그려보세요.</li>
 <li>예를 들어, color D에 cut 각각의 비율들을 구해 시각화</li>
-<li><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a> pd.crosstab(diamonds[<span class="st">"cut"</span>], diamonds[<span class="st">"color"</span>], normalize<span class="op">=</span><span class="st">'columns'</span>)  <span class="co"># 'columns': 비율을 구하는 방향</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a> pd.crosstab(diamonds[<span class="st">"cut"</span>], diamonds[<span class="st">"color"</span>], normalize<span class="op">=</span><span class="st">'columns'</span>)  <span class="co"># 'columns': 비율을 구하는 방향</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li>Explore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?
 <ul>
@@ -1278,61 +1302,61 @@ Tip
 <li>Scatterplot, 2d-histogram</li>
 <li>Discretize: <code>pd.cut()</code>, <code>pd.qcut()</code></li>
 </ul>
-<div id="cell-57" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds.query(<span class="st">'carat &lt; 3'</span>), x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, color<span class="op">=</span><span class="st">".6"</span>))</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-58" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds.query(<span class="st">'carat &lt; 3'</span>), x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(alpha<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, color<span class="op">=</span><span class="st">".6"</span>))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-35-output-1.png" width="605" height="451" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-36-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>2d-histogram: x, y축 모두 binning</p>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> LogNorm</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sns.jointplot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>, kind<span class="op">=</span><span class="st">"hex"</span>, gridsize<span class="op">=</span><span class="dv">30</span>, height<span class="op">=</span><span class="dv">5</span>, norm<span class="op">=</span>LogNorm())<span class="op">;</span>  <span class="co"># gridsize: bin 개수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-59" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> LogNorm</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>sns.jointplot(diamonds, x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"price"</span>, kind<span class="op">=</span><span class="st">"hex"</span>, gridsize<span class="op">=</span><span class="dv">30</span>, height<span class="op">=</span><span class="dv">5</span>, norm<span class="op">=</span>LogNorm())<span class="op">;</span>  <span class="co"># gridsize: bin 개수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-60" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="53">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-36-output-1.png" class="img-fluid" width="511"></p>
+<p><img src="eda_files/figure-html/cell-37-output-1.png" class="img-fluid" width="511"></p>
 </div>
 </div>
 </div>
 <p>Discretize: 연속 변수를 카테고리화</p>
-<div id="cell-61" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>diamonds_cat <span class="op">=</span> diamonds.query(<span class="st">"carat &lt; 3"</span>).assign(</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    carat_cat<span class="op">=</span><span class="kw">lambda</span> x: pd.cut(x.carat, <span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>),</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    carat_qcat<span class="op">=</span><span class="kw">lambda</span> x: pd.qcut(x.carat, <span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>),</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-62" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>diamonds_cat <span class="op">=</span> diamonds.query(<span class="st">"carat &lt; 3"</span>).assign(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    carat_cat<span class="op">=</span><span class="kw">lambda</span> x: pd.cut(x.carat, <span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    carat_qcat<span class="op">=</span><span class="kw">lambda</span> x: pd.qcut(x.carat, <span class="dv">20</span>, labels<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-62" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-63" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="55">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-38-output-1.png" class="img-fluid" width="589"></p>
+<p><img src="eda_files/figure-html/cell-39-output-1.png" class="img-fluid" width="589"></p>
 </div>
 </div>
 </div>
-<div id="cell-63" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>rangeplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-64" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>rangeplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_cat"</span>, y<span class="op">=</span><span class="st">"price"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-39-output-1.png" width="605" height="451" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-40-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_qcat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-64" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(diamonds_cat, x<span class="op">=</span><span class="st">"carat_qcat"</span>, y<span class="op">=</span><span class="st">"price"</span>, fill<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-65" class="cell quarto-layout-panel" data-layout="[[2, 1]]" data-execution_count="57">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-40-output-1.png" class="img-fluid" width="589"></p>
+<p><img src="eda_files/figure-html/cell-41-output-1.png" class="img-fluid" width="589"></p>
 </div>
 </div>
 </div>
@@ -1349,16 +1373,16 @@ Tip
 <li>Two dimensional plots reveal outliers that are not visible in one dimensional plots. For example, some points in the plot below have an unusual combination of&nbsp;<code>x</code>&nbsp;and&nbsp;<code>y</code>&nbsp;values, which makes the points outliers even though their&nbsp;<code>x</code>&nbsp;and&nbsp;<code>y</code>&nbsp;values appear normal when examined separately.<br>
 Why is a scatterplot a better display than a binned plot for this case?</li>
 </ol>
-<div id="cell-67" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    .limit(x<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">11</span>), y<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">11</span>))</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-68" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    .limit(x<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">11</span>), y<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">11</span>))</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-42-output-1.png" width="605" height="451" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-43-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1388,9 +1412,9 @@ Why is a scatterplot a better display than a binned plot for this case?</li>
 <figcaption>eruption duration (mins) vs.&nbsp;wait time (mins) between eruptions</figcaption>
 </figure>
 </div>
-<div id="cell-69" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>faithful <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"faithful"</span>, <span class="st">"datasets"</span>).data</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>faithful.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-70" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>faithful <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"faithful"</span>, <span class="st">"datasets"</span>).data</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>faithful.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>   eruptions  waiting
 0       3.60       79
@@ -1398,15 +1422,15 @@ Why is a scatterplot a better display than a binned plot for this case?</li>
 2       3.33       74</code></pre>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(faithful, x<span class="op">=</span><span class="st">'eruptions'</span>, y<span class="op">=</span><span class="st">'waiting'</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-71" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(faithful, x<span class="op">=</span><span class="st">'eruptions'</span>, y<span class="op">=</span><span class="st">'waiting'</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots())</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-44-output-1.png" width="605" height="451" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-45-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1432,18 +1456,18 @@ Why is a scatterplot a better display than a binned plot for this case?</li>
 <div>
 
 </div>
-<div id="cell-74" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="62">
+<div id="cell-75" class="cell quarto-layout-panel" data-execution_count="62" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-46-output-1.png" class="img-fluid" width="605"></p>
+<p><img src="eda_files/figure-html/cell-47-output-1.png" class="img-fluid" width="605"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-46-output-2.png" class="img-fluid" width="605"></p>
+<p><img src="eda_files/figure-html/cell-47-output-2.png" class="img-fluid" width="605"></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-46-output-3.png" class="img-fluid" width="605"></p>
+<p><img src="eda_files/figure-html/cell-47-output-3.png" class="img-fluid" width="605"></p>
 </div>
 </div>
 </div>
@@ -1461,10 +1485,10 @@ Why is a scatterplot a better display than a binned plot for this case?</li>
 <div>
 
 </div>
-<div id="cell-77" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="62">
+<div id="cell-78" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="62">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-47-output-1.png" class="img-fluid" width="605"></p>
+<p><img src="eda_files/figure-html/cell-48-output-1.png" class="img-fluid" width="605"></p>
 </div>
 </div>
 </div>
@@ -1480,22 +1504,22 @@ Residual samples
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>diamonds2 <span class="op">=</span> diamonds.query(<span class="st">"carat &lt; 3"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>diamonds_fit <span class="op">=</span> smf.ols(<span class="st">"price ~ carat"</span>, data<span class="op">=</span>diamonds2).fit()</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>diamonds2 <span class="op">=</span> diamonds2.assign(</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    pred<span class="op">=</span>diamonds_fit.fittedvalues,</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    resid<span class="op">=</span>diamonds_fit.resid,</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">126</span>)</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>diamonds2[[<span class="st">"cut"</span>, <span class="st">"carat"</span>, <span class="st">"price"</span>, <span class="st">"pred"</span>, <span class="st">"resid"</span>]].sample(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>diamonds2 <span class="op">=</span> diamonds.query(<span class="st">"carat &lt; 3"</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>diamonds_fit <span class="op">=</span> smf.ols(<span class="st">"price ~ carat"</span>, data<span class="op">=</span>diamonds2).fit()</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>diamonds2 <span class="op">=</span> diamonds2.assign(</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    pred<span class="op">=</span>diamonds_fit.fittedvalues,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    resid<span class="op">=</span>diamonds_fit.resid,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">126</span>)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>diamonds2[[<span class="st">"cut"</span>, <span class="st">"carat"</span>, <span class="st">"price"</span>, <span class="st">"pred"</span>, <span class="st">"resid"</span>]].sample(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<div id="cell-79" class="cell" data-execution_count="63">
+<div id="cell-80" class="cell" data-execution_count="63">
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>             cut  carat  price     pred    resid
 32609      Ideal   0.31    802   117.54   684.46
@@ -1507,9 +1531,9 @@ Residual samples
 47809  Very Good   0.71   1902  3250.49 -1348.49</code></pre>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diamonds_fit.params)  <span class="co"># print coefficients</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R2 = </span><span class="sc">{</span>diamonds_fit<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)  <span class="co"># print R-squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-80" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diamonds_fit.params)  <span class="co"># print coefficients</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R2 = </span><span class="sc">{</span>diamonds_fit<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)  <span class="co"># print R-squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-81" class="cell quarto-layout-panel" data-execution_count="64" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <pre><code>Intercept   -2310.50
@@ -1538,19 +1562,19 @@ Code
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds2, x<span class="op">=</span><span class="st">'carat'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(color<span class="op">=</span><span class="st">".6"</span>, alpha<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">100</span>))</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(diamonds2, x<span class="op">=</span><span class="st">'carat'</span>, y<span class="op">=</span><span class="st">'resid'</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dots(color<span class="op">=</span><span class="st">".6"</span>, alpha<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">100</span>))</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<div id="cell-83" class="cell" data-execution_count="69">
+<div id="cell-84" class="cell" data-execution_count="69">
 <div class="cell-output cell-output-display" data-execution_count="69">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-50-output-1.png" width="605" height="451" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-51-output-1.png" width="605" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1569,21 +1593,21 @@ Code
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sbcustom <span class="im">import</span> rangeplot</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    rangeplot(diamonds2, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"resid"</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sbcustom <span class="im">import</span> rangeplot</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    rangeplot(diamonds2, x<span class="op">=</span><span class="st">"cut"</span>, y<span class="op">=</span><span class="st">"resid"</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">"red"</span>), so.Agg(<span class="kw">lambda</span> x: <span class="dv">0</span>))</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div>
 
 </div>
-<div id="cell-86" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="66">
+<div id="cell-87" class="cell quarto-layout-panel" data-layout="[[3, 1]]" data-execution_count="66">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
-<p><img src="eda_files/figure-html/cell-51-output-1.png" class="img-fluid" width="605"></p>
+<p><img src="eda_files/figure-html/cell-52-output-1.png" class="img-fluid" width="605"></p>
 </div>
 </div>
 </div>
@@ -1604,20 +1628,20 @@ Code
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>diamonds2[<span class="st">"carat_cat"</span>] <span class="op">=</span> pd.qcut(diamonds2[<span class="st">"carat"</span>], <span class="dv">12</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    rangeplot(diamonds2, x<span class="op">=</span><span class="st">'cut'</span>, y<span class="op">=</span><span class="st">'price'</span>)</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"carat_cat"</span>, wrap<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    .share(y<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>diamonds2[<span class="st">"carat_cat"</span>] <span class="op">=</span> pd.qcut(diamonds2[<span class="st">"carat"</span>], <span class="dv">12</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    rangeplot(diamonds2, x<span class="op">=</span><span class="st">'cut'</span>, y<span class="op">=</span><span class="st">'price'</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"carat_cat"</span>, wrap<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    .share(y<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="cell-89" class="cell" data-execution_count="109">
+<div id="cell-90" class="cell" data-execution_count="109">
 <div class="cell-output cell-output-display" data-execution_count="109">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-52-output-1.png" width="758" height="758" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-53-output-1.png" width="758" height="758" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1628,28 +1652,28 @@ Code
 <h1>Exercises</h1>
 <p>Ames Housing Dataset: <a href="https://www.dropbox.com/scl/fi/bf2pr5epuedpp10y3oiys/AmesHousing.csv?rlkey=ulb0l80k28l2kyw9zv51ugfvk&amp;dl=1">AmesHousing.csv</a><br>
 변수에 대한 설명은 <a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview">Kaggle competition 페이지</a>를 참고; 단, 이 페이지에서는 train, test 데이터셋으로 나뉘어 있음.</p>
-<div id="cell-91" class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(<span class="st">"data/AmesHousing.csv"</span>)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># column 이름에서 space와 /를 제거</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>housing.columns <span class="op">=</span> housing.columns.<span class="bu">str</span>.replace(<span class="st">" "</span>, <span class="st">""</span>).<span class="bu">str</span>.replace(<span class="st">"/"</span>, <span class="st">""</span>)</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 불필요한 column 제거</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>housing.drop(columns<span class="op">=</span>[<span class="st">"Order"</span>, <span class="st">"PID"</span>, <span class="st">"SaleType"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co"># outlier 제거</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> housing.query(<span class="st">"GrLivArea &lt; 4000 &amp; SalePrice &lt; 700000"</span>)  <span class="co"># 5 obs removed</span></span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="co"># remodel 여부</span></span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> (housing[<span class="st">"YearRemodAdd"</span>] <span class="op">-</span> housing[<span class="st">"YearBuilt"</span>]) <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"Remodel"</span>] <span class="op">=</span> np.where(idx, <span class="st">"No"</span>, <span class="st">"Yes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-92" class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(<span class="st">"data/AmesHousing.csv"</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># column 이름에서 space와 /를 제거</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>housing.columns <span class="op">=</span> housing.columns.<span class="bu">str</span>.replace(<span class="st">" "</span>, <span class="st">""</span>).<span class="bu">str</span>.replace(<span class="st">"/"</span>, <span class="st">""</span>)</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 불필요한 column 제거</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>housing.drop(columns<span class="op">=</span>[<span class="st">"Order"</span>, <span class="st">"PID"</span>, <span class="st">"SaleType"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co"># outlier 제거</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> housing.query(<span class="st">"GrLivArea &lt; 4000 &amp; SalePrice &lt; 700000"</span>)  <span class="co"># 5 obs removed</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># remodel 여부</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> (housing[<span class="st">"YearRemodAdd"</span>] <span class="op">-</span> housing[<span class="st">"YearBuilt"</span>]) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"Remodel"</span>] <span class="op">=</span> np.where(idx, <span class="st">"No"</span>, <span class="st">"Yes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>위 데이터를 이용하여, 이 단원에서 다룬 탐색적 분석을 연습</p>
 <ul>
 <li>집 값을 예측하는 변수들 중 관심있는 변수들을 선택하면서; 선택이 어려우면 아래 변수들 안에서 살펴볼 것</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="st">"YearBuilt"</span>, <span class="st">"YearRemodAdd"</span>, <span class="st">"GrLivArea"</span>, <span class="st">"TotalBsmtSF"</span>, <span class="st">"BsmtExposure"</span>, <span class="st">"GarageCars"</span>, <span class="st">"GarageArea"</span>, <span class="st">"GarageType"</span>, <span class="st">"Fireplaces"</span>, <span class="st">"KitchenQual"</span>, <span class="st">"Neighborhood"</span>, <span class="st">"Remodel"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="st">"YearBuilt"</span>, <span class="st">"YearRemodAdd"</span>, <span class="st">"GrLivArea"</span>, <span class="st">"TotalBsmtSF"</span>, <span class="st">"BsmtExposure"</span>, <span class="st">"GarageCars"</span>, <span class="st">"GarageArea"</span>, <span class="st">"GarageType"</span>, <span class="st">"Fireplaces"</span>, <span class="st">"KitchenQual"</span>, <span class="st">"Neighborhood"</span>, <span class="st">"Remodel"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Data fields">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1706,37 +1730,37 @@ Data fields
 <li>두 변수가 어떻게 코딩되었는지 이해해보고</li>
 <li>집값은 지어진 연도(<code>YearBuilt</code>)와는 거의 상관이 없고, 리모델링 연도(<code>YearRemodAdd</code>)와만 연관성이 높은지 살펴보세요.</li>
 </ul>
-<div id="cell-96" class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(housing, x<span class="op">=</span><span class="st">'YearRemodAdd'</span>, y<span class="op">=</span><span class="st">'YearBuilt'</span>, color<span class="op">=</span><span class="st">"Remodel"</span>)</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.2</span>))</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"Remodel"</span>)</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".1"</span>), y<span class="op">=</span><span class="st">'YearRemodAdd'</span>)  <span class="co"># y=x 라인을 추가</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-97" class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(housing, x<span class="op">=</span><span class="st">'YearRemodAdd'</span>, y<span class="op">=</span><span class="st">'YearBuilt'</span>, color<span class="op">=</span><span class="st">"Remodel"</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.2</span>))</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    .facet(<span class="st">"Remodel"</span>)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".1"</span>), y<span class="op">=</span><span class="st">'YearRemodAdd'</span>)  <span class="co"># y=x 라인을 추가</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-54-output-1.png" width="747" height="374" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-55-output-1.png" width="747" height="374" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Q2. 동네에 따른 집값(<code>SalePrice</code>)과 집의 크기(<code>GrLivArea</code>)의 관계를 살펴보세요.</p>
-<div id="cell-98" class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(housing, y<span class="op">=</span><span class="st">"Neighborhood"</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    .pair(x<span class="op">=</span>[<span class="st">"SalePrice"</span>, <span class="st">"GrLivArea"</span>])</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".2"</span>, marker<span class="op">=</span><span class="st">"."</span>), so.Agg(<span class="st">"median"</span>))</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>))</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-99" class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(housing, y<span class="op">=</span><span class="st">"Neighborhood"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    .pair(x<span class="op">=</span>[<span class="st">"SalePrice"</span>, <span class="st">"GrLivArea"</span>])</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(color<span class="op">=</span><span class="st">".2"</span>, marker<span class="op">=</span><span class="st">"."</span>), so.Agg(<span class="st">"median"</span>))</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    .layout(size<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>))</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="108">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-55-output-1.png" width="662" height="470" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-56-output-1.png" width="662" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1751,15 +1775,15 @@ Loop를 이용해 여러 플롯을 그리는 팁
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="st">"YearBuilt"</span>, <span class="st">"YearRemodAdd"</span>, <span class="st">"GrLivArea"</span>, <span class="st">"TotalBsmtSF"</span>, <span class="st">"BsmtExposure"</span>, <span class="st">"GarageCars"</span>, <span class="st">"GarageArea"</span>, <span class="st">"GarageType"</span>, <span class="st">"Fireplaces"</span>, <span class="st">"KitchenQual"</span>, <span class="st">"Neighborhood"</span>]</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> X:</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> (</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>        so.Plot(housing, x<span class="op">=</span>x, y<span class="op">=</span><span class="st">"SalePrice"</span>)</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>        .add(so.Dot(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>        .add(so.Line(color<span class="op">=</span><span class="st">".3"</span>), so.PolyFit(<span class="dv">5</span>))</span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    display(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="st">"YearBuilt"</span>, <span class="st">"YearRemodAdd"</span>, <span class="st">"GrLivArea"</span>, <span class="st">"TotalBsmtSF"</span>, <span class="st">"BsmtExposure"</span>, <span class="st">"GarageCars"</span>, <span class="st">"GarageArea"</span>, <span class="st">"GarageType"</span>, <span class="st">"Fireplaces"</span>, <span class="st">"KitchenQual"</span>, <span class="st">"Neighborhood"</span>]</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> X:</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> (</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>        so.Plot(housing, x<span class="op">=</span>x, y<span class="op">=</span><span class="st">"SalePrice"</span>)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>        .add(so.Dot(alpha<span class="op">=</span><span class="fl">.1</span>))</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>        .add(so.Line(color<span class="op">=</span><span class="st">".3"</span>), so.PolyFit(<span class="dv">5</span>))</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>    display(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 
