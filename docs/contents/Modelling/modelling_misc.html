@@ -639,18 +639,20 @@ gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
 </ul>
 <section id="위계적-모형의-비교" class="level3">
 <h3 class="anchored" data-anchor-id="위계적-모형의-비교">위계적 모형의 비교</h3>
-<div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod_r_year <span class="op">=</span> smf.ols(<span class="st">"registered ~ year"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mod_r_temp <span class="op">=</span> smf.ols(<span class="st">"registered ~ year + temp + I(temp**2)"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mod_r_month <span class="op">=</span> smf.ols(<span class="st">"registered ~ year + temp + I(temp**2) + month"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mod_r_wday <span class="op">=</span> smf.ols(<span class="st">"registered ~ year + temp + I(temp**2) + month + wday"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f" year: </span><span class="sc">{</span>mod_r_year<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ch">\n</span><span class="ss">"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"year + temperature: </span><span class="sc">{</span>mod_r_temp<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ch">\n</span><span class="ss">"</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"year + temperature + months: </span><span class="sc">{</span>mod_r_month<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ch">\n</span><span class="ss">"</span>,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"year + temperature + months + days of the week: </span><span class="sc">{</span>mod_r_wday<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mod_r_year <span class="op">=</span> smf.ols(<span class="st">"registered ~ year"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mod_r_temp <span class="op">=</span> smf.ols(<span class="st">"registered ~ year + temp + I(temp**2)"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mod_r_month <span class="op">=</span> smf.ols(<span class="st">"registered ~ year + temp + I(temp**2) + month"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mod_r_wday <span class="op">=</span> smf.ols(<span class="st">"registered ~ year + temp + I(temp**2) + month + wday"</span>, data<span class="op">=</span>bikes_daily).fit()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f" year: </span><span class="sc">{</span>mod_r_year<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ch">\n</span><span class="ss">"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"year + temperature: </span><span class="sc">{</span>mod_r_temp<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ch">\n</span><span class="ss">"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"year + temperature + months: </span><span class="sc">{</span>mod_r_month<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ch">\n</span><span class="ss">"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"year + temperature + months + days of the week: </span><span class="sc">{</span>mod_r_wday<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> year: 0.353
  year + temperature: 0.653
