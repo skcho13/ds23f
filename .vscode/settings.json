@@ -1,0 +1,12 @@
+{
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "[quarto]": {
+        "editor.defaultFormatter": "quarto.quarto"
+    },
+    "git.timeline.showUncommitted": false,
+    "git.timeline.date": "committed",
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": [],
+    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace"
+}

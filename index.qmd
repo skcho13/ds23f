@@ -1,0 +1,64 @@
+---
+title: Welcome
+subtitle: 동국대 융합교육원, 데이터분석 및 시각화, 2025 1학기
+date: last-modified
+author: Sungkyun Cho
+---
+
+## 강의 정보
+강사: 조성균  
+email: sk.cho@snu.ac.kr  
+수업시간: 월, 수 1:00 ~ 2:50PM  
+면담 시간: 수업 후  
+Website: [dgdavs.modellings.art](https://dgdavs.modellings.art)
+
+과제: Notice  
+질문: Communicate/Ask
+
+## 강의 개요
+본 강의에서는 인터넷과 기술의 발전으로 풍부한 데이터들이 양산됨에 따라 그 안에 숨겨진 패턴을 찾고 분석하여 실증적 사실과 원리를 파악하는데 요구되는 기술들을 계발하는데 도움을 주고자 합니다. 이를 위해서는 1) 데이터 분석 툴을 자유자재로 다룰 수 있는 기술, 2) 주어진 데이터에 적절한 툴을 선택할 수 있는 판단력, 3) 파악한 패턴으로부터 현상의 본질을 추론할 수 있는 인과관계 추론의 원리들이 함께 필요합니다.
+
+- 데이터를 조작, 가공하는 기술을 익히고, 
+- 이를 통해 얻은 정제된 데이터를 시각화를 통해패턴을 여러 각도에서 살펴보고, 
+- 데이터 모델링과 통계적 분석을 접목하여 현상에 대한 올바른이해를 돕습니다.
+
+**수업은 크게 5부분으로 나뉨**
+
+- 탐색적 분석 (exploratory data analysis)과 그에 필요한 데이터 전처리 (data wrangling)
+- 데이터 시각화 (data visualization) 
+- 기술적 분석 (descriptive analysis)
+- 모델링 (modelling)
+- 통계 (statistics)
+
+
+### 참고도서
+
+- 번역서: Pandas를 이용한 데이터 분석 실습 2/e  
+  Hands-On Data Analysis with Pandas (2e) by Stefanie Molin: 
+    [code](https://github.com/stefmolin/Hands-On-Data-Analysis-with-Pandas-2nd-edition) in GitHub 
+- [Python for Data Analysis (3e)](https://wesmckinney.com/book/) by Wes McKinney: 
+    [code](https://github.com/wesm/pydata-book/tree/3rd-edition) in GitHub  
+    3판 번역서: 파이썬 라이브러리를 활용한 데이터 분석
+- [R for Data Science](https://r4ds.had.co.nz/index.html) by Wickham & Grolemund; 
+    [2nd edition](https://r4ds.hadley.nz/ )
+
+
+## 수업 활동
+출석 (10%), 일반과제 (30%), 중간고사 (30%), 기말고사 (30%)
+
+## 수업 계획
+1주. 강의 개요 및 데이터 분석의 의미 소개  
+2주. 넘파이와 판다스 라이브러리의 기본  
+3주. 탐색적 분석을 위한 시각화 라이브러리  
+4주. 시각화의 활용1  
+5주. 시각화의 활용2  
+6주. 판다스를 이용한 데이터의 변형 및 가공 1  
+7주. 판다스를 이용한 데이터의 변형 및 가공 2  
+8주. 기술적(descriptive) 분석 1  
+9주. 기술적(descriptive) 분석 2  
+10주. 탐색적 분석 & 및 중간고사  
+11주. 데이터 모델링 기초 & 통계의 기초 개념  
+12주. 데이터 모델링 1  
+13주. 데이터 모델링 2  
+14주. Binary 명목 변수에 대한 분석: 로지스틱 회귀분석 및 GLM 소개  
+15주. 기말고사

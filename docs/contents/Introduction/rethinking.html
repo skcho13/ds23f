@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistical thinking –  Data Analysis &amp; Visualization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../contents/Introduction/setup.html" rel="next">
+<link href="../../contents/Introduction/intro2.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3e062e8fe420344c07f1e837915f9541.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-55b2b16ef464b1d24caa77f57887db60.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5b0e1abfa7b260a7547a9d73df142e4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-20f56965e95c736e2c02136d799c44de.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5R1D200E6D"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5R1D200E6D', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Statistical thinking –  Data Analysis &amp; Visualization">
+<meta property="og:description" content="Data Analysis and Visualization, Dongguk University, 2024-2">
+<meta property="og:image" content="https://dgdavs.modellings.art/contents/images/ladder-causation.jpg">
+<meta property="og:site_name" content="Data Analysis and Visualization in Python">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Statistical thinking</h1>
+        </a>     
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> Data Analysis &amp; Visualization</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"> Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/notice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"> Notice</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Introduction/intro2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Analysis Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Introduction/rethinking.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Statistical Thinking</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Introduction/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../contents/Introduction/pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy and pandas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Introduction/inspection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inspecting data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Introduction/vis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data visualization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Visualize</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Visualize/seaborn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seaborn.objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../contents/Visualize/plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plots</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Visualize/alt_plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alternative plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Visualize/customizing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Customizing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../contents/EDA/eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Analysis I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/EDA/discretize.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discretize</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Transform</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/subsetting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subsetting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../contents/Transform/transform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transforming I</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/nycflights.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Examples</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Transforming II</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/pivot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pivot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/crosstab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pivot Table</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/exercise_wrangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Misc.</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exploratory Analysis II</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/babynames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Baby Names</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Exercises/billboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Billboard</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Exercises/movielens.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MovieLens</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Solutions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/sol1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transforming I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Transform/sol2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transforming II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Exercises/billboard_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Billboard</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Exercises/movielens_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MovieLens</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">Modelling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/model-basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Building I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model building II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling1_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flights to SFO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling2_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bike Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/Modelling/modelling_misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Misc.</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Communicate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1g57REsUnvtSa1Yxr9WWP63yQivs4DO_0wVDHS9A3bO4/edit?usp=sharing" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ask</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#데이터를-분석한다는-것은" id="toc-데이터를-분석한다는-것은" class="nav-link active" data-scroll-target="#데이터를-분석한다는-것은">데이터를 분석한다는 것은?</a>
+  <ul>
+  <li><a href="#예측-모델-vs.-관계원인-분석" id="toc-예측-모델-vs.-관계원인-분석" class="nav-link" data-scroll-target="#예측-모델-vs.-관계원인-분석">예측 모델 vs.&nbsp;관계/원인 분석</a></li>
+  <li><a href="#causal-inference" id="toc-causal-inference" class="nav-link" data-scroll-target="#causal-inference">Causal Inference</a>
+  <ul class="collapse">
+  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">Association</a></li>
+  <li><a href="#intervention" id="toc-intervention" class="nav-link" data-scroll-target="#intervention">Intervention</a></li>
+  <li><a href="#counterfactuals" id="toc-counterfactuals" class="nav-link" data-scroll-target="#counterfactuals">Counterfactuals</a></li>
+  </ul></li>
+  <li><a href="#구체적인-예들" id="toc-구체적인-예들" class="nav-link" data-scroll-target="#구체적인-예들">구체적인 예들</a></li>
+  <li><a href="#분석가의-태도" id="toc-분석가의-태도" class="nav-link" data-scroll-target="#분석가의-태도">분석가의 태도</a></li>
+  <li><a href="#데이터-분석에-관한-전통적인-분류" id="toc-데이터-분석에-관한-전통적인-분류" class="nav-link" data-scroll-target="#데이터-분석에-관한-전통적인-분류">데이터 분석에 관한 전통적인 분류</a></li>
+  </ul></li>
+  <li><a href="#통계적-사고" id="toc-통계적-사고" class="nav-link" data-scroll-target="#통계적-사고">통계적 사고</a>
+  <ul>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions">Distributions</a></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a>
+  <ul class="collapse">
+  <li><a href="#common-causefork" id="toc-common-causefork" class="nav-link" data-scroll-target="#common-causefork">Common Cause/Fork</a></li>
+  <li><a href="#colidersimmorality" id="toc-colidersimmorality" class="nav-link" data-scroll-target="#colidersimmorality">Coliders/Immorality</a></li>
+  <li><a href="#mechanismsmediationschains" id="toc-mechanismsmediationschains" class="nav-link" data-scroll-target="#mechanismsmediationschains">Mechanisms/Mediations/Chains</a></li>
+  <li><a href="#interactionmoderation" id="toc-interactionmoderation" class="nav-link" data-scroll-target="#interactionmoderation">Interaction/Moderation</a></li>
+  </ul></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Statistical thinking</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="데이터를-분석한다는-것은" class="level1">
+<h1>데이터를 분석한다는 것은?</h1>
+<p><em>Data is a window, not a mirror to reality!</em></p>
+<ul>
+<li>수많은 가정과 사전 지식을 전제로 함: 올바른 결과 뿐 아니라 효율적인 분석을 위해 필요</li>
+<li>분석 결과는 주어진 <strong>가정에 대한 분명한 제시</strong>(transparency)와 그 가정을 기반으로 한 적절한 해석이 요구됨</li>
+</ul>
+<section id="예측-모델-vs.-관계원인-분석" class="level2">
+<h2 class="anchored" data-anchor-id="예측-모델-vs.-관계원인-분석">예측 모델 vs.&nbsp;관계/원인 분석</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>예측 모델</strong></p>
+<p>예측의 신속성과 정확성<br>
+Machine Learning 강점<br>
+Algorithmic</p>
+<ul>
+<li>이미지/사물 인식</li>
+<li>개인화된 추천 목록: 유튜브, 넷플릭스</li>
+<li>시리, ChatGPT의 답변</li>
+<li>비즈니스 분석</li>
+<li>이상치 탐지</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>관계/원인 분석</strong></p>
+<p>현상/실재에 대한 이해과 매커니즘 파악<br>
+Statistical Models 강점<br>
+Parametric</p>
+<ul>
+<li>음식/운동의 효능</li>
+<li>광고의 효과</li>
+<li>복지/치안 정책의 효과</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="causal-inference" class="level2">
+<h2 class="anchored" data-anchor-id="causal-inference">Causal Inference</h2>
+<p><img src="../images/ladder-causation.jpg" class="img-fluid" width="750"></p>
+<div style="line-height: 1.5em; font-size: .8em">
+<p>Source: <em>The Book of Why by Judea Pearl, Dana Mackenzie (2018)</em></p>
+</div>
+<section id="association" class="level3">
+<h3 class="anchored" data-anchor-id="association">Association</h3>
+<ul>
+<li>관찰을 기반으로 규칙성 발견하고 예측</li>
+<li>올빼미가 쥐의 움직임을 관찰하고 잠시 후 쥐가 어디에 있을지를 파악</li>
+<li>컴퓨터 바둑 프로그램이 수백만 개의 바둑 게임 데이터베이스를 연구하여 어떤 수와 승률이 높은지 알아내는 것</li>
+<li>하나의 이벤트를 관찰하면 다른 이벤트를 관찰할 가능성이 달라진다면, 하나의 이벤트가 다른 이벤트와 연관되어 있다고 말할 수 있음</li>
+<li>“치약을 구매한 고객이 치실도 구매할 가능성이 얼마나 되는가?”; <span class="math inline">\(P(치실 ~| 치약~)\)</span></li>
+<li>통계의 핵심: 상관관계, 회귀</li>
+<li>올빼미는 쥐가 왜 항상 A 지점에서 B 지점으로 가는지 이해하지 못해도 훌륭한 사냥꾼이 될 수 있음</li>
+<li>위스키 한 병을 들고 있는 보행자가 경적을 울릴 때 다르게 반응할 가능성이 있다는 것을 기계가 스스로 파악할 수 있는가?
+<ul>
+<li>Association 단계의 한계: 유연성과 적응성의 부족</li>
+</ul></li>
+</ul>
+</section>
+<section id="intervention" class="level3">
+<h3 class="anchored" data-anchor-id="intervention">Intervention</h3>
+<ul>
+<li>관찰을 넘어, 세상에 대한 개입</li>
+<li>“치약 가격을 두 배로 올리면 치실 판매량은 어떻게 될까?”</li>
+<li>데이터에는 없는 새로운 종류의 지식을 요구</li>
+<li>통계학의 언어로는 이 질문을 표현하는 것조차 불충분함</li>
+<li>수동적으로 수집된 데이터만으로는 이러한 질문에 대답할 수 없음
+<ul>
+<li>과거의 데이터를 이용하면?</li>
+<li>과거에 가격이 두 배 비쌌을 때, 치실 판매량으로 추론?</li>
+<li>이전에 가격이 두 배 비쌌을 때, 다른 이유가 있었을 수 있음</li>
+</ul></li>
+<li>전통적으로 실험을 통해 해결</li>
+<li>정확한 인과 관계 모델이 있으면 관찰 데이터만으로도 가능; <span class="math inline">\(P(치실 ~| ~do(치약~))\)</span></li>
+<li>사실, 일상 생활에서 항상 개입을 수행: 어떻게(How) 하면 두통이 사라질까?</li>
+</ul>
+</section>
+<section id="counterfactuals" class="level3">
+<h3 class="anchored" data-anchor-id="counterfactuals">Counterfactuals</h3>
+<ul>
+<li>두통이 사라졌다면 왜(Why) 그럴까?</li>
+<li>약을 먹지 않았어도 두통이 사라졌을까?: 반사실적(가상의) 세계 (counterfactual world)</li>
+<li>Individual Treatment Effect: <span class="math inline">\(\tau_i \equiv Y_i(1) - Y_i(0)\)</span>: <em>the fundamental problem of causal inference</em></li>
+<li>Average Treatment Effect: <span class="math inline">\(\tau \equiv E[Y_i(1) - Y_i(0)] = E[Y_i(1)] - E[Y_i(0)]\)</span>: 여러 관측치(데이터)를 이용해 (노이즈를 제거하면서) 최적의 인과효과를 추정</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:10%;">
+<p><br></p>
+</div><div class="column" style="line-height: 1.0em; font-size: .9em">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(T\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(1)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(0)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y(1) - Y(0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>“현재 치약을 구매한 고객이 가격을 두 배로 올려도 여전히 치약을 구매할 확률은 얼마인가?”</li>
+<li>우리는 현실 세계(고객이 현재 가격으로 치약을 구매했다는 것을 알고 있는)와 가상의 세계(가격이 두 배 높은 경우)와 비교</li>
+<li>보이는 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 있는 새로운 세계 <i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> 볼 수 없는 세계(보이는 것과 모순)</li>
+<li>이를 위해서는 “이론” 또는 “자연의 법칙”이라고 볼 수 있는 근본적인 인과 과정의 모델이 필요</li>
+</ul>
+<p>전형적인 인과적 질문들</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>How effective is a given treatment in <strong>preventing</strong> a disease?</li>
+<li>Was it the new tax break that <strong>caused</strong> our sales to go up? Or our marketing campaign?</li>
+<li>What is the annual health-care costs <strong>attributed</strong> to obesity?</li>
+<li>Can hiring records prove an employer guilty of sex <strong>discrimination</strong>?</li>
+<li>I am about to quit my job, will I <strong>regret</strong> it?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>특정 치료법이 질병 예방에 얼마나 효과적일까요?</li>
+<li>새로운 세금 감면 혜택이 매출 상승의 원인이었을까요? 아니면 마케팅 캠페인 때문이었나요?</li>
+<li>비만으로 인한 연간 의료 비용은 얼마인가요?</li>
+<li>채용 기록으로 고용주의 성차별을 입증할 수 있나요?</li>
+<li>직장을 그만두려고 하는데 후회하게 될까요?</li>
+</ul>
+<p>   번역 by DeepL</p>
+</div>
+</div>
+</section>
+</section>
+<section id="구체적인-예들" class="level2">
+<h2 class="anchored" data-anchor-id="구체적인-예들">구체적인 예들</h2>
+<p><strong><em>닭의 울음이 태양을 솟게 하는가?</em></strong></p>
+<p><strong><em>돈과 행복: 패턴 vs.&nbsp;예외 </em></strong></p>
+<ul>
+<li>특정 A의 임금이 <em>p</em> 에서 <em>q</em> 로 증가할 때, 트렌드대로 움직이겠는가?<br>
+</li>
+<li>특정 B의 임금이 <em>r</em> 에서 <em>s</em> 로 감소할 때, 트렌드대로 움직이겠는가?</li>
+<li>특정 C의 임금을 올려주면, 트렌드대로 움직이겠는가?<br>
+<a href="../images/plot_ls3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../images/plot_ls3.png" class="img-fluid" width="450"></a></li>
+</ul>
+<p><strong><em>미혼자에 대한 임금 차별 vs.&nbsp;편견</em></strong></p>
+<ul>
+<li>미혼자에 대한 임금 차별이 있는가? 차별이 의미하는 바는 무엇인가?</li>
+<li>연령을 고려한 후에도 기혼자의 임금은 미혼자보다 높은가?</li>
+<li>연령을 고려한 후/연령을 조정한 후(adjusted for age)의 차이는 얼마라고 봐야하는가?</li>
+</ul>
+<p><a href="../images/plot_wage2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../images/plot_wage2.png" class="img-fluid" width="750"></a></p>
+<p><strong><em>연령을 고려한 마라톤 기록?</em></strong></p>
+<ul>
+<li>나이와는 무관한/독립적인 마라톤 실력에 대해 말하고자 함</li>
+</ul>
+<p><img src="../images/marathon.png" class="img-fluid" width="450"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: https://doi.org/10.1186/2052-1847-6-31</p>
+</div>
+<p><strong><em>가난, 인종, 범죄 간의 관계</em></strong></p>
+<p><a href="https://randomcriticalanalysis.com/2015/11/16/racial-differences-in-homicide-rates-are-poorly-explained-by-economics/">Racial differences in homicide rates are poorly explained by economics</a></p>
+<p><strong><em>출산율은 왜 감소하는가?</em></strong></p>
+<iframe src="https://ourworldindata.org/grapher/children-per-woman-fertility-rate-vs-level-of-prosperity" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
+</iframe>
+</section>
+<section id="분석가의-태도" class="level2">
+<h2 class="anchored" data-anchor-id="분석가의-태도">분석가의 태도</h2>
+<ul>
+<li>심리적 관성/편견 주의</li>
+<li>분석가의 책임의식</li>
+<li>두 가지 접근법(예측과 이해)는 서로 상보 관계!</li>
+</ul>
+</section>
+<section id="데이터-분석에-관한-전통적인-분류" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-분석에-관한-전통적인-분류">데이터 분석에 관한 전통적인 분류</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p><strong>탐색적 분석 vs.&nbsp;가설 검증</strong><br>
+<strong>exploratory vs.&nbsp;confirmatory</strong></p>
+<ul>
+<li>탐색적 분석
+<ul>
+<li>통찰 혹은 가설의 기초 제공</li>
+<li>끼워 맞추기? 오류에 빠지기 쉬움: <a href="https://www.tylervigen.com/spurious-correlations">spurious associations</a></li>
+</ul></li>
+<li>가설 검증
+<ul>
+<li>진위의 확률을 높임</li>
+<li>탐색적 분석으로부터 온 가설은 재테스트</li>
+</ul></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><strong>관찰 vs.&nbsp;실험 데이터</strong><br>
+<strong>observational vs.&nbsp;experimental</strong></p>
+<ul>
+<li>당근과 시력?</li>
+<li>커피의 효과?</li>
+<li>남녀의 임금 차별?</li>
+<li>심리치료의 효과?</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:100%;">
+<ul>
+<li><p><strong>표본 vs.&nbsp;모집단</strong><br>
+<strong>sample vs.&nbsp;population</strong></p>
+<ul>
+<li>Parameter(모수), uncertainty(불확실성)</li>
+<li>내일 태양이 뜰 확률?</li>
+<li>연봉과 삶의 만족도와 관계</li>
+<li>성별과 임금과의 관계</li>
+<li>두통약의 효능: “effect size”</li>
+</ul></li>
+</ul>
+<p><a href="../images/sampling.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="../images/sampling.png" class="img-fluid" width="700"></a><br>
+<a href="../images/sampling3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="../images/sampling3.png" class="img-fluid" width="400"></a></p>
+</div>
+</div>
+</section>
+</section>
+<section id="통계적-사고" class="level1">
+<h1>통계적 사고</h1>
+<section id="distributions" class="level2">
+<h2 class="anchored" data-anchor-id="distributions">Distributions</h2>
+<ul>
+<li><p>남녀 임금의 차이<br>
+ <a href="../images/wage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="../images/wage.png" class="img-fluid" width="300"></a></p></li>
+<li><p>Associatiions과 그 strengths 비교</p></li>
+</ul>
+<p><img src="../images/r2-1.png" class="img-fluid" width="600"></p>
+<p><img src="../images/r2-2.png" class="img-fluid" width="600"></p>
+<p>카테고리 변수에 대해서도 비슷하게 생각할 수 있음.<br>
+이 경우, 두 그룹 간의 차이에 대한 효과의 크기를 말할 수 있고, 예를 들어, 결혼과 삶의 만족도 간의 관계(association)와 그 강도(strength)</p>
+<p><img src="../images/effect-size-married.png" class="img-fluid" width="720"></p>
+</section>
+<section id="confounding" class="level2">
+<h2 class="anchored" data-anchor-id="confounding">Confounding</h2>
+<p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수들(lurking third variables)에 의해 매개되어 있어 진실한 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.</p>
+<section id="common-causefork" class="level3">
+<h3 class="anchored" data-anchor-id="common-causefork">Common Cause/Fork</h3>
+<p>신발을 신고 잠든 다음날 두통이 생긴다면?</p>
+<p><img src="images/causal_diagram_headache.png" class="img-fluid" width="340"><br>
+Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+<p>극단적이지만 이해하지 쉬운 예로는</p>
+<ul>
+<li>머리가 길면 우울증도 높다?</li>
+<li>초등생이 발이 크면 독해력도 높다?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Answers!">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answers!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Spurious relations</p>
+<p> <img src="../images/confounding.png" class="img-fluid" width="450"></p>
+</div>
+</div>
+</div>
+<p>앞서 든 예도 마찬가지로<br>
+  <img src="../images/path3.png" class="img-fluid" width="220"></p>
+<p>올바른 관계를 파악하려면, 동일한 나이에 대해 그 관계를 파악한 후 각 나이에서의 효과를 (weighted) 평균해서 살펴봐야함</p>
+<p>통계에서는 이를 나이를 <strong>통제 (control for age)</strong>한다고 표현하며, 같은 의미로 다음과 같은 표현을 씀</p>
+<ul>
+<li>나이를 <strong>고려</strong>했을 때; <strong>account for</strong> age<br>
+</li>
+<li>나이를 <strong>조정</strong>했을 때; <strong>adjust for</strong> age<br>
+</li>
+<li>나이와 <strong>무관/독립</strong>인; <strong>independent of</strong> age</li>
+</ul>
+<p><strong>Simpson’s paradox</strong></p>
+<p><img src="../images/simpson.jpg" class="img-fluid" width="600"><br>
+Source: The book of why by Judea Pearl</p>
+<p>예를 들어, 은퇴한 노인들을 대상으로 규칙적인 걷기가 사망율을 감소시킬 것이라는 가설을 확인하기 위해 1965년 이후 8000명 가량의 남성들을 추적조사한 데이터의 일부를 이용했는데,</p>
+<ul>
+<li>12년 후 사망율에서 casual walker(하루 1마일 이하)와 intense walker(하루 2마일 이상)가 각각 43%, 21.5%로 나타났음.</li>
+<li>이 걷기의 효과를 의심케 하는 요소들(confounding)은 무엇인가?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Answers!">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answers!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>건강이 나빠 많이 걷지 못했을 수도…</li>
+<li>많이 걷는 사람은 상대적으로 젊을 수도…</li>
+<li>많이 먹는 사람이 덜 걸을 수도…</li>
+<li>술을 많이 먹는 사람이 덜 걸을 수도…</li>
+</ul>
+</div>
+</div>
+</div>
+<p>남녀 연봉 차이의 원인을 찾으려면?</p>
+<ul>
+<li>직업 특성, 부서, 직급, 연령, 출산, 출세욕<br>
+<a href="../images/moderation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="../images/moderation.png" class="img-fluid" width="800"></a><br>
+<img src="../images/slices.png" class="img-fluid" width="200"></li>
+</ul>
+<p><strong>COVID-27</strong><br>
+Source: <em>Introduction to Causal Inference (ICI) by Brady Neal</em></p>
+<p><img src="images/covid.png" class="img-fluid" width="420"></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/causal_diagram_covid1.png" class="img-fluid" width="340"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/causal_diagram_covid2.png" class="img-fluid" width="340"></p>
+</div>
+</div>
+</div>
+<p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
+Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
+<p><img src="images/causal_diagram_grades.png" class="img-fluid" width="500"></p>
+</section>
+<section id="colidersimmorality" class="level3">
+<h3 class="anchored" data-anchor-id="colidersimmorality">Coliders/Immorality</h3>
+<p><strong>미모가 뛰어나면 연기력이 떨어지는가?</strong></p>
+<p><img src="images/collider3.png" class="img-fluid" width="300"></p>
+<p><strong>코딩 기술이 뛰어나면 협업능력이 떨어지는가?</strong><br>
+어느 회사에서 지원자의 코딩 능력과 협업 능력을 1점부터 5점까지 정량화하여,<br>
+총점 8점 이상을 받은 지원자를 모두 채용한다고 했을 때,</p>
+<p><img src="images/collider2.png" class="img-fluid" width="300"></p>
+</section>
+<section id="mechanismsmediationschains" class="level3">
+<h3 class="anchored" data-anchor-id="mechanismsmediationschains">Mechanisms/Mediations/Chains</h3>
+<p><img src="../images/mediation.png" class="img-fluid" width="220"></p>
+<p>만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되었을 때, 나이가 많은 선원들에게서 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 (직접적) 관계를 추론해서는 안됨. 하지만 예측은 여전히 유효함.<br>
+<img src="../images/mediation-2.png" class="img-fluid" width="280"></p>
+</section>
+<section id="interactionmoderation" class="level3">
+<h3 class="anchored" data-anchor-id="interactionmoderation">Interaction/Moderation</h3>
+<p>나이가 듦(age)에 따라 지구력(endurance)의 감소가 강도 높은 운동을 한 기간(년수)(exercise)에 따라 변화</p>
+<ul>
+<li>보호 요인 (protective factor)</li>
+<li>위험 요인 (risk factor)</li>
+</ul>
+<p><img src="../images/interaction.png" class="img-fluid" width="800"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Interaction의 패턴">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interaction의 패턴
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Synergistic or enhancing interaction</li>
+</ol>
+<ul>
+<li>상호작용 효과가 원래 효과들과 같은 방향으로 작용하는 경우</li>
+<li>삶의 만족도(Y)가 직업 스트레스(X)와 부정적인 관계에 있고, 부부관계의 문제(Z)와도 부정적인 관계에 있는 경우</li>
+<li>이 둘의 상호작용이 부정적이라면, 직업 스트레스와 부부관계의 문제가 동시에 증가하면 각각의 sum이 예측하는 것보다 더 낮은 삶의 만족도가 예측됨.</li>
+</ul>
+<ol start="2" type="1">
+<li>Buffering interaction</li>
+</ol>
+<ul>
+<li>두 변수가 반대 방향으로 Y에 작용하고 있을 때, 한 변수가 다른 변수의 효과를 감소시키는 경우</li>
+<li>즉, 한 변수의 impact가 다른 변수의 impact를 줄여주는 경우</li>
+<li>건강보건에 대한 연구에서, 한 변수가 질병의 위험요인이고 다른 변수가 질병의 위험을 줄여주는 보호요인인 경우</li>
+<li>위의 예에서처럼, 나이(X)는 지구력 감소의 위험요인이고, 운동기간(Z)은 지구력 보호요인인 경우</li>
+</ul>
+<ol start="3" type="1">
+<li>Interference or antagonistic interactionin</li>
+</ol>
+<ul>
+<li>두 변수가 같은 방향으로 Y에 작용하고 있을 때, 상호작용은 반대 방향으로 작용하는 경우</li>
+<li>대학생의 학업성취도(Y)에 대하여, 학업동기(X)와 학업능력(Z)이 모두 학업성취도(Y)에 긍정적인 영향을 미치나 이 두 변수는 서로 보완적인 효과를 가지고 있음.</li>
+<li>즉, 성취도에 대한 학업능력의 중요성은 높은 학업동기에 의해 낮아질 수 있음.</li>
+<li>반대로, 학업동기에 대한 중요성은 높은 학업능력에 의해 낮아질 수 있음.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="selection-bias" class="level2">
+<h2 class="anchored" data-anchor-id="selection-bias">Selection Bias</h2>
+<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding); internal validity(내적 타당도)<br>
+일반화할 수 있는 대상의 범위가 제한됨; external validity(외적 타당도)</p>
+<ul>
+<li>노인에 관한 데이터: 누가 사망했는가?
+<ul>
+<li>Survival bias: 일종의 collider bias</li>
+<li>예를 들어, 비만이 사망율에 미치는 효과에 대한 과소추정<br>
+<img src="images/collider-life-expectancy.png" class="img-fluid" width="320"></li>
+</ul></li>
+<li>의료 분야에서 발견되는 패러독스
+<ul>
+<li>비만은 당뇨 환자에게 이익이 되는가?</li>
+</ul></li>
+<li>과거 기록을 이용?; 수녀들의 자서전 연구
+<ul>
+<li>추적조사/종단연구(longitudinal study)</li>
+</ul></li>
+<li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
+<li>누가 참여(안)했는가? 어떤 방식으로 참여했는가?
+<ul>
+<li>관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?</li>
+<li>어떤 사람들이 설문/실험에 참여했는가? 혹은 어떤 문항에 응답했는가?/하지 않았는가?</li>
+</ul></li>
+<li>어떤 유저들의 데이터인가? 가령, SNS의 기록은 누가 남기는가?</li>
+<li>코호트/특정세대의 특성: 그들만의 특성인가?</li>
+</ul>
+<div style="line-height: 1.5em; font-size: .9em">
+<blockquote class="blockquote">
+<p><em>Abraham Wald: “Where are the missing holes?”</em></p>
+<p><img src="images/missing-holes.png" class="img-fluid" width="400"></p>
+<p><a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></p>
+</blockquote>
+</div>
+</section>
+<section id="experiments" class="level2">
+<h2 class="anchored" data-anchor-id="experiments">Experiments</h2>
+<ul>
+<li>개입없이 수동적으로 얻은 관찰 데이터의 분석에서는 항상 confounding이 존재할 기능성이 있음</li>
+<li>결정적인 인과관계를 파악하기 위해, 전통적으로 “통계학”의 시각에서 인과문제를 해결하기 위해 <strong>RCT (randomized controlled trial)</strong>라고 부르는 소위 gold standard한 실험 연구를 통해서 해결하고자 했음</li>
+<li>개념적으로는 “물리적 통제”라고 볼 수 있음; vs.&nbsp;“통계적 통제”</li>
+<li>두 그룹으로 집단을 randomly assign(무선/무작위 배정/할당): 모든 면에서 동질한 성향을 가짐. 예를 들어, 두 집단의 연령이 평균적으로 동일해짐.</li>
+<li>분야마다 효과를 제대로 검증하기 위한 많은 실험 설계들이 발전되었음; 연구방법론</li>
+</ul>
+<p><img src="../images/RCT2.png" class="img-fluid" width="400"> <img src="../images/experiment-validity.png" class="img-fluid" width="400"></p>
+<p>앞서 든 예에서, 걷기가 사망율에 미치는 효과를 검증하려면, 가령 600명을 300명씩 두 그룹으로 무작위로 나눈 후 한쪽은 1마일 이하를 걷도록 하고 나머지는 2마일 이상을 걷게 한 후 12년 후 사망율을 확인해야 함.</p>
+<p>하지만, 실험 연구는 자체로 많은 한계를 지님</p>
+<ul>
+<li>많은 경우 실험이 불가능하거나 완전한 통제가 어려움</li>
+<li>실험에서 처치한 구체적인 상황에서만 유효하고; 어느 지형을 어느 속도로 누구와 어떻게 걸었는지에 대한 실험 통제하에서</li>
+<li>따라서 그 효과 또한 일반화되어 표현하기 어려움</li>
+<li>반대로, 덜 통제된 실험의 경우 어떤 요인의 효과인지 불분명</li>
+<li>완전한 통제를 할수록 더 인위적인 상황이 연출됨; 자연스러운/현실적인 상황에서 적용된다는 보장이 없음</li>
+<li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
+</ul>
+<!-- 
+## Average Treatment Effect
+
+$\mathbb{E}[Y(1) - Y(0)] = \mathbb{E}[Y(1)] - \mathbb{E}[Y(0)] = \mathbb{E}[Y | T = 1] - \mathbb{E}[Y | T = 0]$
+
+::: {.column width="50%" style="line-height: 1.0em; font-size: .9em"}
+| $i$ | $T$ | $Y$ | $Y(1)$ | $Y(0)$ | $Y(1) - Y(0)$ |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:------:|
+| 1   | 0   | 0   |        | 0      | ?            |
+| 2   | 1   | 1   | 1      |        | ?            |
+| 3   | 1   | 0   | 0      |        | ?            |
+| 4   | 0   | 0   |        | 0      | ?            |
+| 5   | 0   | 1   |        | 1      | ?            |
+| 6   | 1   | 1   | 1      |        | ?            |
+:::
+ -->
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dgdavs\.modellings\.art");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../contents/Introduction/intro2.html" class="pagination-link" aria-label="Data Analysis Intro">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Analysis Intro</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../contents/Introduction/setup.html" class="pagination-link" aria-label="Setup">
+        <span class="nav-page-text">Setup</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

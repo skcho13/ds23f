@@ -1,0 +1,191 @@
+project:
+  type: website
+  output-dir: docs
+  render: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!contents/ignore/"
+    - "!contents/Exams/"
+    - "!contents/old/"
+    - "!contents/Statisitcs/"
+    - "!*.py"
+    - "!final*.ipynb"
+    - "!midterm*.ipynb"
+    - "!overview*.ipynb"
+    - "!slides/"
+    - "!*-temp.ipynb"
+    - "!*-temp.qmd"
+    # - "!billboard_sol.ipynb"
+    # - "!movielens_sol.ipynb"
+    # - "!modelling1_ex.ipynb"
+    # - "!modelling2_ex.ipynb"
+    # - "!sol1.ipynb"
+    # - "!sol2.ipynb"
+
+  resources: CNAME
+  preview:
+    port: 5452
+
+website:
+  google-analytics: "G-5R1D200E6D"
+  page-navigation: true
+  bread-crumbs: false
+  # navbar: true
+  title: "{{< fa chart-simple >}} Data Analysis & Visualization"
+  description: "Data Analysis and Visualization, Dongguk University, 2024-2"
+  site-url: "https://dgdavs.modellings.art"
+  site-path: "/"
+  open-graph: 
+    site-name: Data Analysis and Visualization in Python
+  # repo-url:
+  # repo-actions: [edit, issue]
+
+  page-footer:
+    # right: "This page is built with [Quarto](https://quarto.org/)."
+    left: This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
+    # background: 
+
+  sidebar:
+    # background: "#F6F6FF"
+    # logo: 
+    # pinned: true
+    alignment: left
+    # tools:
+    #   - icon: github
+    #     href: 
+    #     text: "GitHub organization"
+    style: "floating"
+    search: true
+    collapse-level: 2
+    
+    contents:
+      - href: index.qmd
+        text: "{{< fa angles-right size=xs >}} Welcome"
+      - href: contents/notice.qmd
+        text: "{{< fa check size=xs >}} Notice"
+      # - href: contents/vote.qmd
+      #   text: "{{< fa magnifying-glass size=xs >}} 설문"
+      # - href: contents/shortcuts.qmd
+        # text: "{{< fa hourglass size=xs >}} 오늘의 숏컷"
+      - text: ---
+      - section: Introduction
+        contents:
+          - href: contents/Introduction/intro2.qmd
+            text: Data Analysis Intro
+          - href: contents/Introduction/rethinking.qmd
+            text: Statistical Thinking
+          - href: contents/Introduction/setup.qmd
+            text: Setup
+          - section: contents/Introduction/pandas.ipynb
+            contents: 
+            - href: contents/Introduction/inspection.ipynb
+          - href: contents/Introduction/vis.ipynb
+            text: Data visualization
+      - text: ---
+      - section: Visualize
+        contents:
+          - href: contents/Visualize/seaborn.ipynb
+            text: Seaborn.objects
+          - section: contents/Visualize/plots.ipynb
+            contents: 
+              - href: contents/Visualize/alt_plots.ipynb
+          - href: contents/Visualize/customizing.ipynb
+      - section: contents/EDA/eda.ipynb
+        contents:
+          - href: contents/EDA/discretize.ipynb
+      - text: ---
+      - section: Transform
+        contents:
+          - href: contents/Transform/subsetting.ipynb
+            # contents:
+            #   - href: contents/Transform/views.ipynb
+          - href: contents/Transform/transform.ipynb
+            contents:
+              - href: contents/Transform/nycflights.ipynb
+                text: Examples
+          - section: Transforming II
+            contents:
+              - href: contents/Transform/combine.ipynb
+              - href: contents/Transform/pivot.ipynb
+              - href: contents/Transform/crosstab.ipynb
+                text: Pivot Table
+              - href: contents/Transform/exercise_wrangle.ipynb
+          - href: contents/Transform/misc.ipynb
+      - section: Exploratory Analysis II
+        contents:
+          - href: contents/Transform/babynames.ipynb
+            text: Baby Names
+          - href: contents/Exercises/billboard.ipynb
+            text: Billboard
+          - href: contents/Exercises/movielens.ipynb
+            text: MovieLens
+      - section: Solutions
+        contents:
+          - href: contents/Transform/sol1.ipynb
+            text: Transforming I
+          - href: contents/Transform/sol2.ipynb
+            text: Transforming II
+          - href: contents/Exercises/billboard_sol.ipynb
+            text: Billboard
+          - href: contents/Exercises/movielens_sol.ipynb
+            text: MovieLens
+      - text: ---
+      - section: Modelling
+        contents:
+          - href: contents/Modelling/model-basic.ipynb
+            text: Model Basics
+          - href: contents/Modelling/modelling1.ipynb
+          - href: contents/Modelling/modelling2.ipynb
+      # #     - href: contents/logistic.ipynb
+      # #   #   - section: Solutions
+      # #   #     contents:
+          - href: contents/Modelling/modelling1_ex.ipynb
+            text: Flights to SFO
+          - href: contents/Modelling/modelling2_ex.ipynb
+            text: Bike Sharing
+          - href: contents/Modelling/modelling_misc.ipynb
+            text: Misc.
+      # #   # #       # contents:
+      # #   #       #   - href: contents/modelling3_ex.ipynb
+      # #   #     #- href: contents/misc4.ipynb
+      # # - text: ---
+      # # - href: contents/statistics.ipynb
+      - text: ---
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1g57REsUnvtSa1Yxr9WWP63yQivs4DO_0wVDHS9A3bO4/edit?usp=sharing
+            text: Ask
+          # - href: https://docs.google.com/document/d/13RYgzt7L4Bbw46kHHpQMNLXWJZMi62hJPk44TBoLteQ/edit?usp=sharing
+
+  # navbar:
+  #   left:
+  #     - href: index.qmd
+  #       text: Home
+  #     - about.qmd
+
+format:
+  html:
+        toc: true
+        toc-depth: 4
+        toc-location: right
+        code-fold: false
+        code-overflow: wrap
+        code-summary: "Show the code"
+        theme:
+          light: [sandstone, theme-light.scss]
+          dark: [darkly, theme-dark.scss]
+        fontsize: 1.1em
+        linestretch: 2
+        code-copy: true
+        highlight-style: gruvbox
+        link-external-newwindow: true
+        bread-crumbs: false
+        grid:
+          body-width: 900px
+          margin-width: 200px
+        # grid:
+        #   sidebar-width: 270px
+        # css: styles.css
+
+
+
